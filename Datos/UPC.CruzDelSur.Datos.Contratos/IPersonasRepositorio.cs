@@ -1,4 +1,4 @@
-﻿using UPC.CruzDelSur.Negocio.Modelo;
+﻿using UPC.CruzDelSur.Negocio.Modelo.Personal;
 
 namespace UPC.CruzDelSur.Datos.Contratos
 {

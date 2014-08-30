@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E456C420-B18B-4B62-B171-6DB3ADF54D7D}</ProjectGuid>
+    <ProjectGuid>{EE618541-580D-4D72-A111-D7D4FAB503C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UPC.CruzDelSur.Datos.Fake</RootNamespace>
-    <AssemblyName>UPC.CruzDelSur.Datos.Fake</AssemblyName>
+    <RootNamespace>UPC.CruzDelSur.Negocio.Modelo.Personal</RootNamespace>
+    <AssemblyName>UPC.CruzDelSur.Negocio.Modelo.Personal</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,22 +31,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextoDatosFake.cs" />
-    <Compile Include="PersonasRepositorioFake.cs" />
+    <Compile Include="DetalleHojaVida.cs" />
+    <Compile Include="Educacion.cs" />
+    <Compile Include="EstadoSolicitud.cs" />
+    <Compile Include="EvaluacionDesempeno.cs" />
+    <Compile Include="ExperienciaLaboral.cs" />
+    <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo\UPC.CruzDelSur.Negocio.Modelo.csproj">
-      <Project>{D87A4EA8-5BFA-40F6-A6E8-4B9760F4257A}</Project>
-      <Name>UPC.CruzDelSur.Negocio.Modelo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UPC.CruzDelSur.Datos.Contratos\UPC.CruzDelSur.Datos.Contratos.csproj">
-      <Project>{326BE282-100A-4EF5-8F08-305251EA602F}</Project>
-      <Name>UPC.CruzDelSur.Datos.Contratos</Name>
-    </ProjectReference>
+    <Compile Include="Solicitud.cs" />
+    <Compile Include="SolicitudCapacitacion.cs" />
+    <Compile Include="TipoDocumento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

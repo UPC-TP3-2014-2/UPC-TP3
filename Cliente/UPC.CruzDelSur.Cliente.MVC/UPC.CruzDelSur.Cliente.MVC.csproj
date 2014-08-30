@@ -174,13 +174,13 @@
       <Project>{326BE282-100A-4EF5-8F08-305251EA602F}</Project>
       <Name>UPC.CruzDelSur.Datos.Contratos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Datos\UPC.CruzDelSur.Datos.Fake\UPC.CruzDelSur.Datos.Fake.csproj">
-      <Project>{e456c420-b18b-4b62-b171-6db3adf54d7d}</Project>
-      <Name>UPC.CruzDelSur.Datos.Fake</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Logica\UPC.CruzDelSur.Negocio.Logica.csproj">
       <Project>{7d86a8fc-e12c-4f00-933e-f6ad00c97321}</Project>
       <Name>UPC.CruzDelSur.Negocio.Logica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Personal\UPC.CruzDelSur.Negocio.Modelo.Personal.csproj">
+      <Project>{ee618541-580d-4d72-a111-d7d4fab503c1}</Project>
+      <Name>UPC.CruzDelSur.Negocio.Modelo.Personal</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo\UPC.CruzDelSur.Negocio.Modelo.csproj">
       <Project>{d87a4ea8-5bfa-40f6-a6e8-4b9760f4257a}</Project>
