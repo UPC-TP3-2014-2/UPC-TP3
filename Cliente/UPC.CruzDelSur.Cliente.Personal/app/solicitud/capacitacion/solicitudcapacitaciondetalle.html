@@ -1,0 +1,136 @@
+﻿<section id="personas-view" class="mainbar" data-ng-controller="solicitudcapacitaciondetalle as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="btn-group">
+                    <button class="btn btn-info"
+                            data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i>
+                        <span>Regresar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"
+                            data-ng-click="vm.cancel()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-undo"></i>
+                        <span>Cancelar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"
+                            data-ng-click="vm.save()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-save"></i>
+                        <span>Guardar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"
+                            data-ng-click="vm.deleteEntity()">
+                        <i class="fa fa-trash-o"></i>
+                        <span>Eliminar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-show="vm.solicitudCapacitacion.estado != 'Pendiente'"
+                            data-ng-click="vm.archivarCapacitaion()">
+                        <i class="fa fa-archive"></i>
+                        <span>Archivar</span>
+                    </button>
+                </div>
+                <span data-ng-show="vm.hasChanges"
+                      class="disolve-animation ng-hide">
+                    <i class="fa fa-asterisk fa-asterisk-large"></i>
+                </span>
+            </div>
+            <div class="row">
+                <div class="widget wmustard">
+                    <div data-cc-widget-header
+                         title="Editar Solicitud de Capacitacion"></div>
+                    <div class="widget-content user">
+                        <div class="user-pic">
+                            <i class="fa fa-check-circle fa-5x pull-right" data-ng-show="vm.solicitudCapacitacion.estado == 'Aprobado'"></i>
+                            <i class="fa fa-times-circle fa-5x pull-right" data-ng-show="vm.solicitudCapacitacion.estado == 'Rechazado'"></i>
+                            <i class="fa fa-circle-o fa-5x pull-right" data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"></i>
+                        </div>
+                        <div class="user-details">
+                            <form role="form">
+                                <div class="form-group"
+                                     data-ng-show="vm.solicitudCapacitacion.estado != 'Pendiente'">
+                                    <label>{{vm.solicitudCapacitacion.estado}}</label>
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               datepicker-popup="yyyy/MM/dd"
+                                               data-ng-model="vm.solicitudCapacitacion.fechaResolucion"
+                                               data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'" />
+                                    </div>
+                                </div>
+                                <div class="form-group"
+                                     data-ng-show="vm.solicitudCapacitacion.estado != 'Pendiente'">
+                                    <label>Detalles</label>
+                                    <textarea data-ng-model="vm.solicitudCapacitacion.detallesResolucion"
+                                              data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
+                                              class="form-control"
+                                              placeholder="Detalles"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tecnico</label>
+                                    <select data-ng-options="t.persona.nombreCompleto for t in vm.tecnicos"
+                                            data-ng-model="vm.solicitudCapacitacion.tecnico"
+                                            data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
+                                            class="form-control"></select>
+                                    <p class="help-block"
+                                       data-ng-show="vm.solicitudCapacitacion.tecnico">
+                                        Nivel actual: {{vm.solicitudCapacitacion.tecnico.especialidad}}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Capacitacion</label>
+                                    <select data-ng-model="vm.solicitudCapacitacion.especialidad"
+                                            data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'" 
+                                            class="form-control">
+                                        <option>Soldador Principiante</option>
+                                        <option>Soldador Intermedio</option>
+                                        <option>Soldador Experto</option>
+                                        <option>Mecanico Principiante</option>
+                                        <option>Mecanico Intermedio</option>
+                                        <option>Mecanico Experto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fecha Planificada</label>
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               data-ng-model="vm.solicitudCapacitacion.fechaPlanificada"
+                                               data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'" 
+                                               datepicker-popup="yyyy/MM/dd"
+                                               is-open="vm.fechaPlanificadaDatePickerOpened"
+                                               show-button-bar="false"
+                                               show-weeks="false" />
+                                        <span class="input-group-btn">
+                                            <button type="button"
+                                                    class="btn btn-default"
+                                                    data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
+                                                    data-ng-click="vm.openFechaPlanificadaDatePicker($event)">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Observaciones</label>
+                                    <textarea data-ng-model="vm.solicitudCapacitacion.observaciones"
+                                              data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'" 
+                                              class="form-control"
+                                              placeholder="Observaciones"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

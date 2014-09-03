@@ -1,0 +1,17 @@
+﻿body {
+    background-color: #005596;
+    padding-top: 70px;
+}
+
+.navbar-default {
+    background-color: #004c8a;
+    border-color: #5e89ab;
+}
+
+.navbar-brand img {
+    margin-top: -13px;
+}
+
+.navbar-default .navbar-nav li a {
+    color: #f2d021;
+}

@@ -1,0 +1,50 @@
+﻿<section id="tecnicos-view" class="mainbar" data-ng-controller="tecnicos as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="btn-group">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i>
+                        <span>Refrescar</span>
+                    </a>
+                    <a class="btn btn-info"
+                       href="#/tecnico/nuevo">
+                        <i class="fa fa-plus"></i>
+                        <span>Nuevo Tecnico</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="widget wmustard">
+                    <div data-cc-widget-header
+                         title="{{vm.title}}"
+                         subtitle="{{vm.tecnicos.length}}"></div>
+                    <div class="widget-content user">
+                        <div class="padd" 
+                             data-ng-repeat="t in vm.tecnicos"
+                             data-ng-click="vm.goToTecnico(t)">
+                            <div class="user" title="Ver detalles">
+                                <img data-cc-img-person="{{t.persona.foto}}"
+                                     class="img-polaroid user-pic" />
+                                <div class="user-details">
+                                    <small class="right">
+                                        {{t.nivel.especialidad.nombre}}
+                                    </small>
+                                    <small class="right">
+                                        {{t.nivel.nombre}} 
+                                    </small>
+                                    <h3>{{t.persona.nombreCompleto}}</h3>
+                                    <h6>Turno: {{t.turno.nombre}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

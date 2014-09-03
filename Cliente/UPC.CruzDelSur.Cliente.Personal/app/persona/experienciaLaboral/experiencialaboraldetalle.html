@@ -1,0 +1,109 @@
+﻿<section id="personas-view" class="mainbar" data-ng-controller="experiencialaboraldetalle as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="btn-group">
+                    <button class="btn btn-info"
+                            data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i>
+                        <span>Regresar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-click="vm.cancel()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-undo"></i>
+                        <span>Cancelar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-click="vm.save()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-save"></i>
+                        <span>Guardar</span>
+                    </button>
+                    <button class="btn btn-info"
+                            data-ng-click="vm.deleteExperienciaLaboral()">
+                        <i class="fa fa-trash-o"></i>
+                        <span>Eliminar</span>
+                    </button>
+                </div>
+                <span data-ng-show="vm.hasChanges"
+                      class="disolve-animation ng-hide">
+                    <i class="fa fa-asterisk fa-asterisk-large"></i>
+                </span>
+            </div>
+            <div class="row">
+                <div class="widget wmustard">
+                    <div data-cc-widget-header
+                         title="Editar Experiencia Laboral"></div>
+                    <div class="widget-content user">
+                        <div class="user-details">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input data-ng-model="vm.experienciaLaboral.institucion"
+                                           class="form-control"
+                                           placeholder="Empresa" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Cargo</label>
+                                    <input data-ng-model="vm.experienciaLaboral.cargo"
+                                           class="form-control"
+                                           placeholder="Cargo" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Desde</label>
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               data-ng-model="vm.experienciaLaboral.desde"
+                                               datepicker-popup="yyyy/MM/dd"
+                                               is-open="vm.desdeDatePickerOpened"
+                                               max-date="vm.datePickerMaxDate"
+                                               show-button-bar="false"
+                                               show-weeks="false" />
+                                        <span class="input-group-btn">
+                                            <button type="button"
+                                                    class="btn btn-default"
+                                                    data-ng-click="vm.desdeOpenDatePicker($event)">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Hasta</label>
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               data-ng-model="vm.experienciaLaboral.hasta"
+                                               datepicker-popup="yyyy/MM/dd"
+                                               is-open="vm.hastaDatePickerOpened"
+                                               max-date="vm.datePickerMaxDate"
+                                               show-button-bar="false"
+                                               show-weeks="false" />
+                                        <span class="input-group-btn">
+                                            <button type="button"
+                                                    class="btn btn-default"
+                                                    data-ng-click="vm.hastaOpenDatePicker($event)">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Observaciones</label>
+                                    <textarea data-ng-model="vm.experienciaLaboral.observaciones"
+                                              class="form-control"
+                                              placeholder="Observaciones"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

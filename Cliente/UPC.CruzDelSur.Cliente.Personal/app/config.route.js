@@ -1,0 +1,131 @@
+﻿(function () {
+    'use strict';
+
+    var app = angular.module('app');
+
+    // Collect the routes
+    app.constant('routes', getRoutes());
+    
+    // Configure the routes and route resolvers
+    app.config(['$routeProvider', 'routes', routeConfigurator]);
+    function routeConfigurator($routeProvider, routes) {
+
+        routes.forEach(function (r) {
+            setRoute(r.url, r.config);
+        });
+        $routeProvider.otherwise({ redirectTo: '/' });
+
+        function setRoute(url, definition) {
+            definition.resolve = angular.extend(definition.resolve || {}, {
+                prime: prime
+            });
+            $routeProvider.when(url, definition);
+
+            return $routeProvider;
+        }
+    }
+
+    prime.$inject = ['datacontext'];
+    function prime(datacontext) { return datacontext.prime(); }
+
+    // Define the routes 
+    function getRoutes() {
+        return [
+            {
+                url: '/',
+                config: {
+                    templateUrl: 'app/dashboard/dashboard.html',
+                    title: 'dashboard',
+                    settings: {
+                        nav: 1,
+                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    }
+                }
+            },
+            {
+                url: '/personas',
+                config: {
+                    title: 'personas',
+                    templateUrl: 'app/persona/personas.html',
+                    settings: {
+                        nav: 2,
+                        content: '<i class="fa fa-group"></i> Personas'
+                    }
+                }
+            },
+            {
+                url: '/persona/:id',
+                config: {
+                    title: 'persona',
+                    templateUrl: 'app/persona/personadetalle.html',
+                    settings: { }
+                }
+            },
+            {
+                url: '/persona/:idPersona/educacion/:idEducacion',
+                config: {
+                    title: 'educacion',
+                    templateUrl: 'app/persona/educacion/educaciondetalle.html',
+                    settings: {}
+                }
+            },
+            {
+                url: '/persona/:idPersona/experienciaLaboral/:idExperienciaLaboral',
+                config: {
+                    title: 'experiencia laboral',
+                    templateUrl: 'app/persona/experienciaLaboral/experiencialaboraldetalle.html',
+                    settings: {}
+                }
+            },
+            {
+                url: '/tecnicos',
+                config: {
+                    title: 'tecnicos',
+                    templateUrl: 'app/tecnico/tecnicos.html',
+                    settings: {
+                        nav: 3,
+                        content: '<i class="fa fa-user"></i> Tecnicos'
+                    }
+                }
+            },
+            {
+                url: '/tecnico/:id',
+                config: {
+                    title: 'tecnico',
+                    templateUrl: 'app/tecnico/tecnicodetalle.html',
+                    settings: {}
+                }
+            },
+            {
+                url: '/solicitudes',
+                config: {
+                    title: 'solicitudes',
+                    templateUrl: 'app/solicitud/solicitudes.html',
+                    settings: {
+                        nav: 4,
+                        content: '<i class="fa fa-file"></i> Solicitudes'
+                    }
+                }
+            },
+            {
+                url: '/solicitud/capacitacion/:id',
+                config: {
+                    title: 'solicitud de capacitacion',
+                    templateUrl: 'app/solicitud/capacitacion/solicitudcapacitaciondetalle.html',
+                    settings: {}
+                }
+            },
+            {
+                url: '/auditorias',
+                config: {
+                    title: 'auditorias',
+                    templateUrl: 'app/auditoria/auditorias.html',
+                    settings: {
+                        nav: 4,
+                        content: '<i class="fa fa-legal"></i> Auditorias'
+                    }
+                }
+            },
+        ];
+    }
+})();

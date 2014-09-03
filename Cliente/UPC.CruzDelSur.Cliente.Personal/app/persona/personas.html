@@ -1,0 +1,51 @@
+﻿<section id="personas-view" class="mainbar" data-ng-controller="personas as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="btn-group">
+                    <a class="btn btn-info"
+                       data-ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i>
+                        <span>Refrescar</span>
+                    </a>
+                    <a class="btn btn-info"
+                       href="#/persona/nuevo">
+                        <i class="fa fa-plus"></i>
+                        <span>Nueva persona</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="widget wmustard">
+                    <div data-cc-widget-header
+                         title="{{vm.title}}"
+                         subtitle="{{vm.personas.length}}"></div>
+                    <div class="widget-content user">
+                        <div class="padd" 
+                             data-ng-repeat="p in vm.personas"
+                             data-ng-click="vm.goToPersona(p)">
+                            <div class="user" title="Ver detalles">
+                                <img data-cc-img-person="{{p.foto}}"
+                                     class="img-polaroid user-pic" />
+                                <div class="user-details">
+                                    <!--<small class="right">{{p.fechaNacimiento | date:'fullDate'}}</small>-->
+                                    <small class="right" 
+                                           ng-show="p.ultimaExperienciaLaboral">
+                                        {{p.ultimaExperienciaLaboral.cargo}} 
+                                        en {{p.ultimaExperienciaLaboral.institucion}} 
+                                        (Desde {{p.ultimaExperienciaLaboral.desde | date:'yyyy/MM/dd'}})
+                                    </small>
+                                    <h3>{{p.nombreCompleto}}</h3>
+                                    <h6>{{p.tipoDocumento.nombre}}: {{p.nroDocumento}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
