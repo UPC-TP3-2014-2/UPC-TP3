@@ -58,6 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracion\CargoConfiguration.cs" />
+    <Compile Include="Configuracion\DetalleHojaVidaConfiguration.cs" />
+    <Compile Include="Configuracion\EducacionConfiguration.cs" />
+    <Compile Include="Configuracion\ExperienciaLaboralConfiguration.cs" />
+    <Compile Include="Configuracion\PersonaConfiguration.cs" />
+    <Compile Include="Configuracion\SolicitudCapacitacionConfiguration.cs" />
+    <Compile Include="Configuracion\SolicitudConfiguration.cs" />
+    <Compile Include="Configuracion\SolicitudPersonalConfiguration.cs" />
+    <Compile Include="Configuracion\TipoDocumentoConfiguration.cs" />
+    <Compile Include="DataDeEjemplo\PersonalDbInitializer.cs" />
+    <Compile Include="DataDeEjemplo\SeedBase.cs" />
+    <Compile Include="DataDeEjemplo\TheBigBangTheory.cs" />
     <Compile Include="PersonalContextoDatos.cs" />
     <Compile Include="PersonalDbContext.cs" />
     <Compile Include="PersonasRepositorio.cs" />
@@ -77,6 +89,7 @@
       <Name>UPC.CruzDelSur.Datos.Contratos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

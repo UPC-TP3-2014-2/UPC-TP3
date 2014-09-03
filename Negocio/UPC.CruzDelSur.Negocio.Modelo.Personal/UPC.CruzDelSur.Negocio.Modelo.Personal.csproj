@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargo.cs" />
     <Compile Include="DetalleHojaVida.cs" />
     <Compile Include="Educacion.cs" />
     <Compile Include="EstadoSolicitud.cs" />
@@ -44,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solicitud.cs" />
     <Compile Include="SolicitudCapacitacion.cs" />
+    <Compile Include="SolicitudPersonal.cs" />
     <Compile Include="TipoDocumento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

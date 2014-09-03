@@ -41,6 +41,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,6 +180,10 @@
     <ProjectReference Include="..\..\Datos\UPC.CruzDelSur.Datos.Contratos\UPC.CruzDelSur.Datos.Contratos.csproj">
       <Project>{326BE282-100A-4EF5-8F08-305251EA602F}</Project>
       <Name>UPC.CruzDelSur.Datos.Contratos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Datos\UPC.CruzDelSur.Datos.Personal\UPC.CruzDelSur.Datos.Personal.csproj">
+      <Project>{92E1A79D-84B0-41D1-B5C6-5583FD688238}</Project>
+      <Name>UPC.CruzDelSur.Datos.Personal</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Logica\UPC.CruzDelSur.Negocio.Logica.csproj">
       <Project>{7d86a8fc-e12c-4f00-933e-f6ad00c97321}</Project>

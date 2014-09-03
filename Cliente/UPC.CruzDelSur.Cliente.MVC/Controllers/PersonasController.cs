@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using UPC.CruzDelSur.Datos.Contratos;
-using UPC.CruzDelSur.Datos.Fake;
+using UPC.CruzDelSur.Datos.Personal;
 
 namespace UPC.CruzDelSur.Cliente.MVC.Controllers
 {
     public class PersonasController : Controller
     {
-        readonly IContextoDatos _db = new ContextoDatosFake();
+        readonly IContextoDatos _db = new PersonalContextoDatos();
 
         // GET: Personas
         public ActionResult Index()

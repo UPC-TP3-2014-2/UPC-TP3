@@ -34,5 +34,10 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
         public string Telefono { get; set; }
 
         public virtual ICollection<DetalleHojaVida> DetallesHojaVida { get; set; }
+
+        [Required(ErrorMessage = "Debe especificar un cargo")]
+        public int CargoId { get; set; }
+
+        public virtual Cargo Cargo { get; set; }
     }
 }

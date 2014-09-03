@@ -16,6 +16,6 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
         public string Observaciones { get; set; }
 
         public int PersonaId { get; set; }
-        public Persona Persona { get; set; }
+        public virtual Persona Persona { get; set; }
     }
 }
