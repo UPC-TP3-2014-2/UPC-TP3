@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="PatronRepositorio.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UPC.CruzDelSur.Datos.Personal.Repositorio&lt;T&gt;">
+    <Position X="3.5" Y="4.75" Width="2" />
+    <Members>
+      <Property Name="Context" Hidden="true" />
+      <Method Name="Repositorio" Hidden="true" />
+      <Property Name="Set" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgQABAiAAAAAAAAAAIAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Repositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.PersonasRepositorio" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>PersonasRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.CargosRepositorio" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CargosRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.EducacionesRepositorio" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EducacionesRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.ExperienciasLaboralesRepositorio" Collapsed="true">
+    <Position X="0.5" Y="9" Width="2.5" />
+    <InheritanceLine Type="UPC.CruzDelSur.Datos.Personal.Repositorio&lt;T&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="4.5" Y="6.623" />
+        <Point X="4.5" Y="7.125" />
+        <Point X="2.5" Y="7.125" />
+        <Point X="2.5" Y="8.625" />
+        <Point X="1.75" Y="8.625" />
+        <Point X="1.75" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExperienciasLaboralesRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.SolicitudesCapacitacionRepositorio" Collapsed="true">
+    <Position X="3.5" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolicitudesCapacitacionRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UPC.CruzDelSur.Datos.Personal.TiposDocumentoRepositorio" Collapsed="true">
+    <Position X="6.75" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TiposDocumentoRepositorio.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="UPC.CruzDelSur.Datos.Contratos.IRepositorio&lt;T&gt;">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="UPC.CruzDelSur.Datos.Contratos.IPersonasRepositorio">
+    <Position X="3.75" Y="3" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="UPC.CruzDelSur.Datos.Contratos.IEducacionesRepositorio" Collapsed="true">
+    <Position X="5.75" Y="3" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="UPC.CruzDelSur.Datos.Contratos.IExperienciasLaboralesRepositorio" Collapsed="true">
+    <Position X="1" Y="3" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
