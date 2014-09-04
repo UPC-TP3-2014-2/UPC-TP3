@@ -1,4 +1,5 @@
-﻿using Breeze.ContextProvider;
+﻿using System.Linq;
+using Breeze.ContextProvider;
 using Breeze.ContextProvider.EF6;
 using Newtonsoft.Json.Linq;
 using UPC.CruzDelSur.Datos.Contratos;
@@ -13,6 +14,11 @@ namespace UPC.CruzDelSur.Datos.Personal
         public PersonalContextoDatos()
         {
             Personas = new PersonasRepositorio(Contexto);
+            Educaciones = new EducacionesRepositorio(Contexto);
+            ExperienciasLaborales = new ExperienciasLaboralesRepositorio(Contexto);
+            SolicitudesCapacitacion = new SolicitudesCapacitacionRepositorio(Contexto);
+            TiposDocumento = new TiposDocumentoRepositorio(Contexto);
+            Cargos = new CargosRepositorio(Contexto);
         }
 
         public string Metadata
@@ -22,9 +28,24 @@ namespace UPC.CruzDelSur.Datos.Personal
 
         public IPersonasRepositorio Personas { get; private set; }
 
+        public IEducacionesRepositorio Educaciones { get; private set; }
+
+        public IExperienciasLaboralesRepositorio ExperienciasLaborales { get; private set; }
+
+        public ISolicitudesCapacitacionRepositorio SolicitudesCapacitacion { get; private set; }
+
+        public ITiposDocumentoRepositorio TiposDocumento { get; private set; }
+
+        public ICargosRepositorio Cargos { get; private set; }
+
         private PersonalDbContext Contexto
         {
             get { return _contextProvider.Context; }
+        }
+
+        public IQueryable<AuditEntry> AuditEntries
+        {
+            get { return Contexto.AuditEntries; }
         }
 
         public SaveResult SaveChanges(JObject saveBundle)

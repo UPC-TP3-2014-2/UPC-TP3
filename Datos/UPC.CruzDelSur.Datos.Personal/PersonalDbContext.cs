@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
 using UPC.CruzDelSur.Datos.Personal.Configuracion;
 using UPC.CruzDelSur.Datos.Personal.DataDeEjemplo;
 using UPC.CruzDelSur.Negocio.Modelo.Personal;
@@ -24,6 +25,7 @@ namespace UPC.CruzDelSur.Datos.Personal
         public DbSet<TipoDocumento> TiposDocumento { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<SolicitudCapacitacion> SolicitudesCapacitacion { get; set; }
+        public DbSet<AuditEntry> AuditEntries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
