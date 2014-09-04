@@ -47,10 +47,6 @@
       <Project>{EE618541-580D-4D72-A111-D7D4FAB503C1}</Project>
       <Name>UPC.CruzDelSur.Negocio.Modelo.Personal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo\UPC.CruzDelSur.Negocio.Modelo.csproj">
-      <Project>{D87A4EA8-5BFA-40F6-A6E8-4B9760F4257A}</Project>
-      <Name>UPC.CruzDelSur.Negocio.Modelo</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

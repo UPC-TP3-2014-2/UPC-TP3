@@ -36,12 +36,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UPC.CruzDelSur.Negocio.Modelo\UPC.CruzDelSur.Negocio.Modelo.csproj">
-      <Project>{d87a4ea8-5bfa-40f6-a6e8-4b9760f4257a}</Project>
-      <Name>UPC.CruzDelSur.Negocio.Modelo</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
