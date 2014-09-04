@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     background-color: #005596;
     padding-top: 70px;
 }
@@ -14,4 +14,43 @@
 
 .navbar-default .navbar-nav li a {
     color: #f2d021;
+}*/
+
+.btn.btn-info {
+    background: #fdce07 !important;
+    border-color: #fdce07 !important;
+}
+
+    .btn.btn-info:hover {
+        background: #E5A600 !important;
+        border-color: #E5A600 !important;
+    }
+
+.widget.wmustard .widget-head {
+    background-color: #fdce07;
+    border: 1px solid #fdce07;
+    color: #fff;
+}
+
+.page-title {
+    color: #fff;
+    margin-right: 12px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #626262;
+}
+
+.widget-content .padd:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #fdce07;
+}
+
+    .widget-content .padd:hover * {
+        color: white;
+    }
+
+.totop {
+    background: #fdce07;
 }

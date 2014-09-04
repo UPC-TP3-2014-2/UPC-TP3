@@ -17,11 +17,11 @@ body {
 }
 
 .sidebar .navi > li > a {
-    background-color: #EFEFEF !important;
+    background-color: #333 !important;
 }
 
 .sidebar .navi li ul li a {
-    color: #EFEFEF;
+    color: #fff;
 }
 
     .sidebar .navi li ul li a:hover {
@@ -29,7 +29,7 @@ body {
     }
 
     .sidebar .navi li ul li a:disabled {
-        color: #EFEFEF;
+        color: #999;
     }
 
 .navbar-inverse .btn-navbar {
@@ -45,7 +45,7 @@ body {
 }
 
     .sidebar .sidebar-inner {
-        background-color: #EFEFEF;
+        background-color: #333;
     }
 
 .sidebar-filler {
@@ -54,7 +54,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    background-color: #EFEFEF;
+    background-color: #333;
     width: 230px;
 }
 
@@ -70,14 +70,14 @@ select > option {
     color: black;
 }
 
-/*input.form-control,
+input.form-control,
 select.form-control,
 textarea.form-control {
     /*width: 205px;*/
-    /*width: 60%;
+    width: 60%;
     display: inline;
     display: block;
-}*/
+}
 
 .widget .padd {
     /*margin-bottom: 0;*/
@@ -129,7 +129,7 @@ small {
 }
 
 .page-title {
-    color: #fff;
+    color: #EEE;
     margin-right: 12px;
 }
 
@@ -141,7 +141,7 @@ small {
 .widget-content .padd:hover {
     cursor: pointer;
     color: white;
-    background-color: #F8B600;
+    background-color: #52b9e9;
 }
 
     .widget-content .padd:hover * {
@@ -173,9 +173,9 @@ small {
     color: #FFFFFF;
 }
 
-/*.form-search {
+.form-search {
     min-height: 2em;
-}*/
+}
 
 .input-group[class*="col-"] {
     width: 80%;
@@ -204,12 +204,13 @@ small {
 
 .navbar .navbar-brand {
     background: url(/content/images/icon.png) no-repeat left center !important;
+    width: 230px;
     margin: 0 1em;
 }
 
 .navbar .brand-title {
     margin-left: 2em;
-    /*color: #FFFFFF;*/
+    color: #FFFFFF;
 }
 
 .navbar-logo img {

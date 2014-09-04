@@ -159,7 +159,6 @@
     <Content Include="app\tecnico\tecnicos.html" />
     <Content Include="app\tecnico\tecnicos.js" />
     <Content Include="Content\CruzDelSur.css" />
-    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\photos\Howard_Wolowitz.jpg" />
     <Content Include="Content\images\photos\Leonard_Hofstadter.jpg" />
     <Content Include="Content\images\photos\Sheldon_Cooper.jpg" />

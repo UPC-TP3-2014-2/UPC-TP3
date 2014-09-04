@@ -78,17 +78,6 @@
                 }
             },
             {
-                url: '/tecnicos',
-                config: {
-                    title: 'tecnicos',
-                    templateUrl: 'app/tecnico/tecnicos.html',
-                    settings: {
-                        nav: 3,
-                        content: '<i class="fa fa-user"></i> Tecnicos'
-                    }
-                }
-            },
-            {
                 url: '/tecnico/:id',
                 config: {
                     title: 'tecnico',
@@ -102,7 +91,7 @@
                     title: 'solicitudes',
                     templateUrl: 'app/solicitud/solicitudes.html',
                     settings: {
-                        nav: 4,
+                        nav: 3,
                         content: '<i class="fa fa-file"></i> Solicitudes'
                     }
                 }
