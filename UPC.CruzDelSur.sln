@@ -36,6 +36,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.Personal", "Datos\UPC.CruzDelSur.Datos.Personal\UPC.CruzDelSur.Datos.Personal.csproj", "{92E1A79D-84B0-41D1-B5C6-5583FD688238}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Modelo.CheckIn", "Negocio\UPC.CruzDelSur.Negocio.Modelo.CheckIn\UPC.CruzDelSur.Negocio.Modelo.CheckIn.csproj", "{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.CheckIn", "Datos\UPC.CruzDelSur.Datos.CheckIn\UPC.CruzDelSur.Datos.CheckIn.csproj", "{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn(1)", "http://localhost:65198", "{91A702F3-4807-4ACA-BB23-19170A19F797}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_65198"
+		Debug.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65198\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_65198"
+		Release.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65198\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +95,18 @@ Global
 		{92E1A79D-84B0-41D1-B5C6-5583FD688238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92E1A79D-84B0-41D1-B5C6-5583FD688238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92E1A79D-84B0-41D1-B5C6-5583FD688238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A702F3-4807-4ACA-BB23-19170A19F797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A702F3-4807-4ACA-BB23-19170A19F797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A702F3-4807-4ACA-BB23-19170A19F797}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A702F3-4807-4ACA-BB23-19170A19F797}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +119,8 @@ Global
 		{7824A587-F5D7-47CF-9996-B1A3EC503D85} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
 		{EE618541-580D-4D72-A111-D7D4FAB503C1} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
 		{92E1A79D-84B0-41D1-B5C6-5583FD688238} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
+		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
+		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
+		{91A702F3-4807-4ACA-BB23-19170A19F797} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
 	EndGlobalSection
 EndGlobal
