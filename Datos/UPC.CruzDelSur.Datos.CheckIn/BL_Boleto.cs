@@ -34,8 +34,8 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  objBoleto.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                  objBoleto.Pasajero = dr["Pasajero"].ToString();
                  objBoleto.Precio = dr["DEC_PRECIOPASAJE"].ToString();
-                 objBoleto.Placa = dr["CHR_PLACA"].ToString();
-                 objBoleto.TipoServicio = dr["VCH_DETTIPOSERVICIO"].ToString();
+                 objBoleto.Placa = dr["VCH_PLACA"].ToString();
+                 objBoleto.TipoServicio = dr["VCH_NOMBRE"].ToString();
                  objBoleto.Origen = dr["VCH_ORIGEN"].ToString();
                  objBoleto.Destino = dr["VCH_DESTINO"].ToString();
                  objBoleto.FechaSalida = dr["FechaSalida"].ToString();
@@ -71,8 +71,8 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  objBoleto.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                  objBoleto.Pasajero = dr["Pasajero"].ToString();
                  objBoleto.Precio = dr["DEC_PRECIOPASAJE"].ToString();
-                 objBoleto.Placa = dr["CHR_PLACA"].ToString();
-                 objBoleto.TipoServicio = dr["VCH_DETTIPOSERVICIO"].ToString();
+                 objBoleto.Placa = dr["VCH_PLACA"].ToString();
+                 objBoleto.TipoServicio = dr["VCH_NOMBRE"].ToString();
                  objBoleto.Origen = dr["VCH_ORIGEN"].ToString();
                  objBoleto.Destino = dr["VCH_DESTINO"].ToString();
                  objBoleto.FechaSalida = dr["FechaSalida"].ToString();
@@ -107,8 +107,8 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  objBoleto.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                  objBoleto.Pasajero = dr["Pasajero"].ToString();
                  objBoleto.Precio = dr["DEC_PRECIOPASAJE"].ToString();
-                 objBoleto.Placa = dr["CHR_PLACA"].ToString();
-                 objBoleto.TipoServicio = dr["VCH_DETTIPOSERVICIO"].ToString();
+                 objBoleto.Placa = dr["VCH_PLACA"].ToString();
+                 objBoleto.TipoServicio = dr["VCH_NOMBRE"].ToString();
                  objBoleto.Origen = dr["VCH_ORIGEN"].ToString();
                  objBoleto.Destino = dr["VCH_DESTINO"].ToString();
                  objBoleto.FechaSalida = dr["FechaSalida"].ToString();
@@ -141,8 +141,8 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  //Object of the propery class
                  BE_Boleto objBoleto = new BE_Boleto();
                  //asign values
-                 objBoleto.CodVehiculo = dr["INT_CODIGOVEHICULO"].ToString();
-                 objBoleto.Placa = dr["CHR_PLACA"].ToString();
+                 objBoleto.CodVehiculo = dr["INT_VEHICULO"].ToString();
+                 objBoleto.Placa = dr["VCH_PLACA"].ToString();
                  objBoleto.FechaSalida = dr["FechaSalida"].ToString();
                  objBoleto.HoraSalida = dr["HoraSalida"].ToString();
                  objBoleto.Asiento = dr["CHR_ASIENTO"].ToString();
