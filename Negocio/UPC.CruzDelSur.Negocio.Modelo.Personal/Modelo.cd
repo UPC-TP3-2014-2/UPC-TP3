@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Cargo">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cargo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.DetalleHojaVida">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+      <Property Name="PersonaId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAAAAAAAAQAAEBAAAAAAAAAAEACAAAAA=</HashCode>
+      <FileName>DetalleHojaVida.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Persona" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Educacion">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQ=</HashCode>
+      <FileName>Educacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.EvaluacionDesempeno">
+    <Position X="14.75" Y="5.25" Width="2" />
+    <Members>
+      <Property Name="EvaluadoId" Hidden="true" />
+      <Property Name="EvaluadorId" Hidden="true" />
+      <Property Name="Id" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Evaluador" Type="UPC.CruzDelSur.Negocio.Modelo.Personal.Persona">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.836" Y="0.235" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEAAAAAAgAEAAAEAAAAAAAgEAAAAAA=</HashCode>
+      <FileName>EvaluacionDesempeno.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Evaluado" />
+      <Property Name="Evaluador" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.ExperienciaLaboral">
+    <Position X="9.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>ExperienciaLaboral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Persona">
+    <Position X="14.75" Y="2.25" Width="1.75" />
+    <Members>
+      <Property Name="CargoId" Hidden="true" />
+      <Property Name="Id" Hidden="true" />
+      <Property Name="TipoDocumentoId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAACAAgAEACAAkAAAAAAABAADAAAAQgAAAAA=</HashCode>
+      <FileName>Persona.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TipoDocumento" />
+      <Property Name="Cargo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="DetallesHojaVida" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.TipoDocumento">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TipoDocumento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
