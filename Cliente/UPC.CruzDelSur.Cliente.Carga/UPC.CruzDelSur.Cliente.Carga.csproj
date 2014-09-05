@@ -241,7 +241,7 @@
     <Content Include="SitePopup.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CRUZDELSUR.Controller\CRUZDELSUR.Controller.csproj">
+    <ProjectReference Include="..\UPC.CruzDelSur.Cliente.Carga.Controller\UPC.CruzDelSur.Cliente.Carga.Controller.csproj">
       <Project>{4446C4E4-D3B3-4A25-ABBB-577A8CF0A5F7}</Project>
       <Name>CRUZDELSUR.Controller</Name>
     </ProjectReference>
