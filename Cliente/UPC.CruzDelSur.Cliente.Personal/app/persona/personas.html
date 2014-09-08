@@ -28,7 +28,6 @@
                                 <img data-cc-img-person="{{p.foto}}"
                                      class="img-polaroid user-pic" />
                                 <div class="user-details">
-                                    <!--<small class="right">{{p.fechaNacimiento | date:'fullDate'}}</small>-->
                                     <small class="right" 
                                            ng-show="p.ultimaExperienciaLaboral">
                                         {{p.ultimaExperienciaLaboral.cargo}} 
@@ -37,6 +36,7 @@
                                     </small>
                                     <h3>{{p.nombreCompleto}}</h3>
                                     <h6>{{p.tipoDocumento.nombre}}: {{p.nroDocumento}}</h6>
+                                    <h6>{{p.cargo.nombre}}</h6>
                                 </div>
                             </div>
                         </div>

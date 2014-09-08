@@ -25,7 +25,7 @@
         vm.openFechaPlanificadaDatePicker = openFechaPlanificadaDatePicker;
         vm.solicitudCapacitacion = undefined;
         vm.save = save;
-        vm.tecnicos = [];
+        vm.trabajadores = [];
         vm.title = 'solicitudcapacitaciondetalle';
 
         Object.defineProperty(vm, 'canSave', {
@@ -111,8 +111,11 @@
         function goBack() { goToParent(); }
 
         function initLookups() {
-            datacontext.tecnico.getAll().then(function(data) {
-                vm.tecnicos = data;
+            var lookups = datacontext.lookup.lookupCachedData;
+            vm.capacitaciones = lookups.capacitaciones;
+
+            datacontext.persona.getAll().then(function(data) {
+                vm.trabajadores = data;
             });
         }
 

@@ -72,28 +72,26 @@
                                               placeholder="Detalles"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tecnico</label>
-                                    <select data-ng-options="t.persona.nombreCompleto for t in vm.tecnicos"
-                                            data-ng-model="vm.solicitudCapacitacion.tecnico"
+                                    <label>Trabajador</label>
+                                    <select data-ng-options="t.nombreCompleto for t in vm.trabajadores"
+                                            data-ng-model="vm.solicitudCapacitacion.trabajador"
                                             data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
                                             class="form-control"></select>
                                     <p class="help-block"
-                                       data-ng-show="vm.solicitudCapacitacion.tecnico">
-                                        Nivel actual: {{vm.solicitudCapacitacion.tecnico.especialidad}}
+                                       data-ng-show="vm.solicitudCapacitacion.trabajador">
+                                        Cargo: {{vm.solicitudCapacitacion.trabajador.cargo.nombre}}
                                     </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Capacitacion</label>
-                                    <select data-ng-model="vm.solicitudCapacitacion.especialidad"
+                                    <select data-ng-options="c.nombre for c in vm.capacitaciones"
+                                            data-ng-model="vm.solicitudCapacitacion.capacitacion"
                                             data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'" 
-                                            class="form-control">
-                                        <option>Soldador Principiante</option>
-                                        <option>Soldador Intermedio</option>
-                                        <option>Soldador Experto</option>
-                                        <option>Mecanico Principiante</option>
-                                        <option>Mecanico Intermedio</option>
-                                        <option>Mecanico Experto</option>
-                                    </select>
+                                            class="form-control"></select>
+                                    <p class="help-block"
+                                       data-ng-show="vm.solicitudCapacitacion.capacitacion && vm.solicitudCapacitacion.capacitacion.id != 0">
+                                        Duración: {{vm.solicitudCapacitacion.capacitacion.duracion}} hrs
+                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha Planificada</label>

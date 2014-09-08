@@ -59,10 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuditEntry.cs" />
+    <Compile Include="CapacitacionesRepositorio.cs" />
     <Compile Include="CargosRepositorio.cs" />
+    <Compile Include="Configuracion\CapacitacionConfiguration.cs" />
     <Compile Include="Configuracion\CargoConfiguration.cs" />
     <Compile Include="Configuracion\DetalleHojaVidaConfiguration.cs" />
     <Compile Include="Configuracion\EducacionConfiguration.cs" />
+    <Compile Include="Configuracion\EvaluacionDesempenoConfiguration.cs" />
     <Compile Include="Configuracion\ExperienciaLaboralConfiguration.cs" />
     <Compile Include="Configuracion\PersonaConfiguration.cs" />
     <Compile Include="Configuracion\SolicitudCapacitacionConfiguration.cs" />

@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo.cs" />
+    <Compile Include="Capacitacion.cs" />
     <Compile Include="DetalleHojaVida.cs" />
     <Compile Include="Educacion.cs" />
     <Compile Include="EstadoSolicitud.cs" />

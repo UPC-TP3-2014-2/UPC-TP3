@@ -10,44 +10,18 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
             ToTable("TA_SOLICITUDESCAPACITACION");
             Property(s => s.FechaPlanificada)
                 .HasColumnName("DTE_FECHAPLANIFICADA");
-            Property(s => s.Especialidad)
-                .HasColumnName("VCH_ESPECIALIDAD");
-            Property(s => s.PersonaId)
+            Property(s => s.CapacitacionId)
+                .HasColumnName("INT_CODIGOCAPACITACION");
+            Property(s => s.TrabajadorId)
                 .HasColumnName("INT_CODIGOPERSONA");
 
-            HasRequired(s => s.Persona)
+            HasRequired(s => s.Trabajador)
                 .WithMany()
-                .HasForeignKey(s => s.PersonaId);
+                .HasForeignKey(s => s.TrabajadorId);
+
+            HasRequired(s => s.Capacitacion)
+                .WithMany()
+                .HasForeignKey(s => s.CapacitacionId);
         }
-    }
-
-    public class EvaluacionDesempenoConfiguration : EntityTypeConfiguration<EvaluacionDesempeno>
-    {
-        public EvaluacionDesempenoConfiguration()
-        {
-            ToTable("TA_EVALUACIONESDESEMPENO");
-            Property(e => e.Id)
-                .HasColumnName("INT_CODIGOEVALUACIONDESEMPENO");
-            Property(e => e.Fecha)
-                .HasColumnName("DTE_FECHA");
-            Property(e => e.Nota)
-                .HasColumnName("DEC_NOTA");
-            Property(e => e.Observaciones)
-                .HasColumnName("VCH_OBSERVACIONES");
-            Property(e => e.EvaluadorId)
-                .HasColumnName("INT_CODIGOEVALUADOR");
-            Property(e => e.EvaluadoId)
-                .HasColumnName("INT_CODIGOEVALUADO");
-
-            HasRequired(e => e.Evaluador)
-                .WithMany()
-                .HasForeignKey(e => e.EvaluadorId)
-                .WillCascadeOnDelete(false);
-
-            HasRequired(e => e.Evaluado)
-                .WithMany()
-                .HasForeignKey(e => e.EvaluadoId)
-                .WillCascadeOnDelete(false);
-        } 
     }
 }

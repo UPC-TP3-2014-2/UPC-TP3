@@ -149,9 +149,9 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 {
                     FechaRegistro = new DateTime(2014, 08, 02),
                     FechaPlanificada = new DateTime(2014, 08, 25),
-                    Especialidad = "Mecanico Experto",
-                    Persona = _howard,
-                    Observaciones = "Soliciado por el tecnico, aprovechando la capacitacion ya planificada para nuevo proyecto"
+                    Capacitacion = SeguridadVial,
+                    Trabajador = _howard,
+                    Observaciones = "Soliciado por la persona, aprovechando la capacitacion ya planificada para nuevo proyecto"
                 }, 
                 new SolicitudCapacitacion
                 {
@@ -159,8 +159,8 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                     FechaPlanificada = new DateTime(2014, 08, 25),
                     Estado = EstadoSolicitud.Aprobado,
                     FechaResolucion = new DateTime(2014, 08, 06),
-                    Especialidad = "Mecanico Experto",
-                    Persona = _leonard,
+                    Capacitacion = BusesScania,
+                    Trabajador = _leonard,
                     Observaciones = "Capacitacion urgente para nuevo proyecto",
                     DetallesResolucion = "Aprobado por la urgencia del caso"
                 },
@@ -170,9 +170,9 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                     FechaPlanificada = new DateTime(2014, 09, 01),
                     Estado = EstadoSolicitud.Rechazado,
                     FechaResolucion = new DateTime(2014, 06, 28),
-                    Especialidad = "Mecanico Experto",
-                    Persona = _howard,
-                    Observaciones = "Solicitado por el mismo tecnico",
+                    Capacitacion = CamionesVolvo,
+                    Trabajador = _howard,
+                    Observaciones = "Solicitado por la misma persona",
                     DetallesResolucion = "No esta listo para este tipo de capacitacion"
                 }
             });

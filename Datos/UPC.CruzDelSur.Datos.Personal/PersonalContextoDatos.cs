@@ -19,6 +19,7 @@ namespace UPC.CruzDelSur.Datos.Personal
             SolicitudesCapacitacion = new SolicitudesCapacitacionRepositorio(Contexto);
             TiposDocumento = new TiposDocumentoRepositorio(Contexto);
             Cargos = new CargosRepositorio(Contexto);
+            Capacitaciones = new CapacitacionesRepositorio(Contexto);
         }
 
         public string Metadata
@@ -27,16 +28,12 @@ namespace UPC.CruzDelSur.Datos.Personal
         }
 
         public IPersonasRepositorio Personas { get; private set; }
-
         public IEducacionesRepositorio Educaciones { get; private set; }
-
         public IExperienciasLaboralesRepositorio ExperienciasLaborales { get; private set; }
-
         public ISolicitudesCapacitacionRepositorio SolicitudesCapacitacion { get; private set; }
-
         public ITiposDocumentoRepositorio TiposDocumento { get; private set; }
-
         public ICargosRepositorio Cargos { get; private set; }
+        public ICapacitacionesRepositorio Capacitaciones { get; private set; }
 
         private PersonalDbContext Contexto
         {

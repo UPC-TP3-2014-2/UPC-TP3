@@ -43,6 +43,7 @@
         function setLookups() {
             this.lookupCachedData = {
                 tiposDocumento: this._getAllLocal(entityNames.tipoDocumento, 'nombre'),
+                capacitaciones: this._getAllLocal(entityNames.capacitacion, 'nombre'),
                 cargos: this._getAllLocal(entityNames.cargo, 'nombre')
             }
         }

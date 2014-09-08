@@ -11,11 +11,13 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
         public DateTime FechaPlanificada { get; set; }
 
         [Required(ErrorMessage = "Debe especificar la persona a la que se brindara la capacitacion")]
-        public int PersonaId { get; set; }
+        public int TrabajadorId { get; set; }
 
-        public virtual Persona Persona { get; set; }
+        public virtual Persona Trabajador { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar la especialidad objetivo de la capacitacion")]
-        public string Especialidad { get; set; }
+        [Required(ErrorMessage = "Debe especificar la capacitación objetivo")]
+        public int CapacitacionId { get; set; }
+
+        public virtual Capacitacion Capacitacion { get; set; }
     }
 }

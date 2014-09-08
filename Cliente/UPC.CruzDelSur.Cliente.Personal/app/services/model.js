@@ -8,6 +8,7 @@
     function model() {
         var entityNames = {
             auditoria: 'AuditEntry',
+            capacitacion: 'Capacitacion',
             cargo: 'Cargo',
             educacion: 'Educacion',
             experienciaLaboral: 'ExperienciaLaboral',
@@ -33,6 +34,8 @@
             var unchanged = breeze.EntityState.Unchanged;
 
             createNullo(entityNames.tipoDocumento);
+            createNullo(entityNames.cargo);
+            createNullo(entityNames.capacitacion);
 
             function createNullo(entityName, values) {
                 var initialValues = values || { nombre: ' [Seleccione un ' + entityName + ']' };

@@ -14,6 +14,7 @@
 
         vm.activate = activate;
         vm.cancel = cancel;
+        vm.cargos = [];
         vm.datePickerMaxDate = datePickerMaxDate;
         vm.datePickerOpened = false;
         vm.deletePersona = deletePersona;
@@ -112,6 +113,7 @@
         function initLookups() {
             var lookups = datacontext.lookup.lookupCachedData;
             vm.tiposDocumento = lookups.tiposDocumento;
+            vm.cargos = lookups.cargos;
         }
 
         function isNew() {

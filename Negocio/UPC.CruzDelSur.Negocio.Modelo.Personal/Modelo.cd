@@ -48,8 +48,8 @@
       <FileName>EvaluacionDesempeno.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Evaluado" />
       <Property Name="Evaluador" />
+      <Property Name="Evaluado" />
     </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.ExperienciaLaboral">
@@ -88,5 +88,55 @@
       <FileName>TipoDocumento.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Solicitud">
+    <Position X="19.75" Y="0.5" Width="1.75" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+      <Method Name="Solicitud" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAACAAAACEAAAAAAAAAAAQAAAgAAg=</HashCode>
+      <FileName>Solicitud.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Estado" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.SolicitudCapacitacion">
+    <Position X="17.75" Y="3.75" Width="1.75" />
+    <Members>
+      <Property Name="CursoId" Hidden="true" />
+      <Property Name="TrabajadorId" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAAAI=</HashCode>
+      <FileName>SolicitudCapacitacion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Trabajador" />
+      <Property Name="Capacitacion" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.SolicitudPersonal">
+    <Position X="21.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>SolicitudPersonal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Capacitacion">
+    <Position X="17.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Capacitacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UPC.CruzDelSur.Negocio.Modelo.Personal.EstadoSolicitud" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQI=</HashCode>
+      <FileName>EstadoSolicitud.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

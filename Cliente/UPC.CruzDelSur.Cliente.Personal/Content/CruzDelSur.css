@@ -54,3 +54,23 @@
 .totop {
     background: #fdce07;
 }
+
+.sidebar .sidebar-inner {
+    background-color: #000;
+}
+
+.sidebar .navi > li.current > a  {
+    background-color: #626262;
+}
+
+.sidebar .navi > li > a {
+    background-color: #000 !important;
+}
+.sidebar .navi > li > a:hover {
+    background-color: #626262 !important;
+}
+
+    
+.sidebar-filler {
+    background-color: #000;
+}

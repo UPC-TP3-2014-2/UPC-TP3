@@ -77,6 +77,12 @@
                                            placeholder="Apellidos" />
                                 </div>
                                 <div class="form-group">
+                                    <label>Cargo</label>
+                                    <select data-ng-options="c.nombre for c in vm.cargos"
+                                            data-ng-model="vm.persona.cargo"
+                                            class="form-control"></select>
+                                </div>
+                                <div class="form-group">
                                     <label>Fecha de Nacimiento</label>
                                     <div class="input-group">
                                         <input type="text"
