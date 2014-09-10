@@ -154,8 +154,8 @@
     <Content Include="app\services\routemediator.js" />
     <Content Include="app\solicitud\capacitacion\solicitudcapacitaciondetalle.html" />
     <Content Include="app\solicitud\capacitacion\solicitudcapacitaciondetalle.js" />
-    <Content Include="app\solicitud\solicitudes.html" />
-    <Content Include="app\solicitud\solicitudes.js" />
+    <Content Include="app\solicitud\capacitacion\solicitudescapacitacion.html" />
+    <Content Include="app\solicitud\capacitacion\solicitudes.js" />
     <Content Include="app\tecnico\tecnicos.html" />
     <Content Include="app\tecnico\tecnicos.js" />
     <Content Include="Content\CruzDelSur.css" />
