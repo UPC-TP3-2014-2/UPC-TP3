@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Abastecimiento | @ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("_Navbar")
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-1.11.1.min.js")"></script>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

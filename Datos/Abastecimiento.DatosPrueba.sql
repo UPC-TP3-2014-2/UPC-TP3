@@ -4,7 +4,7 @@ go
 
 declare
 	@contador int = 1, 
-	@totalContador int = 30, 
+	@totalContador int = 10, 
 	@contadorString varchar(10) = ''
 
 -- Datos de prueba del módulo de Abastecimiento.
@@ -51,8 +51,8 @@ begin
 	insert into TA_PROGRAMACION_RUTA(INT_CODIGO_RUTA, DTM_FECHA_ORIGEN, DTM_FECHA_DESTINO, INT_CODIGOVEHICULO, INT_CODIGOPERSONA, BLN_ESTADO)
 	values(@contador, dateadd(day, @contador * -1, getdate()), dateadd(day, @contador, getdate()), @contador, @contador, 1)
 	
-	insert into TA_SOLICITUDCOCINA(INT_CODIGO_REFRIGERIO, INT_CODIGO_PROGRAMACION_RUTA, INT_CANTIDAD, BLN_ESTADO)
-	values(@contador, @contador, @contador, 1)
+	insert into TA_SOLICITUDCOCINA(INT_CODIGO_REFRIGERIO, INT_CODIGO_PROGRAMACION_RUTA, INT_CANTIDAD, DTE_FECHA_SOLICITUD, BLN_ESTADO)
+	values(@contador, @contador, @contador, dateadd(day, @contador * -1, getdate()),  1)
 	
 	insert into TA_SOLICITUDINSUMO(INT_CODIGO_SOLICITUDCOCINA, INT_CODIGO_INSUMO, DTE_FECHA_SOLICITUD, INT_CANTIDAD, VCH_UNIDAD, BLN_ESTADO)
 	values(@contador, @contador, dateadd(day, @contador * -1, getdate()), @contador, 'Unidad ' + @contadorString, 1)
@@ -64,10 +64,16 @@ end
 
 --select * from TA_INSUMO
 --select * from TA_SOLICITUDINSUMO
---select * from TA_SOLICITUDCOCINA
+--select * from ta_solicitudcocina
 --select * from TA_PROGRAMACION_RUTA
 --select * from TA_PERSONA
 --select * from TA_VEHICULO
 --select * from TA_RUTA
 --select * from TA_AGENCIA
 --select * from TA_UBIGEO
+
+--select * from TA_PROGRAMACION_RUTA
+
+--select a.int_codigo_solicitudcocina, a.int_codigo_refrigerio, a.int_codigo_programacion_ruta, a.int_cantidad, a.bln_estado, d.int_vehiculo, d.vch_placa, c.int_codigo_ruta, c.vch_origen, c.vch_destino from ta_solicitudcocina a left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo) 
+--select * from ta_programacion_ruta
+

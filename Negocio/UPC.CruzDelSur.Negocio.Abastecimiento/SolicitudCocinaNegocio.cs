@@ -15,10 +15,20 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
         protected ISolicitudCocinaRepositorio Repositorio = SolicitudCocinaRepositorio.ObtenerInstancia();
 
 
+		public IQueryable<SolicitudCocina> ObtenerTodos()
+		{
+			return Repositorio.ObtenerTodos().Where(item => item.Estado == true);
+		}
+
         public void Insertar(SolicitudCocina solicitudCocina)
         {
             Repositorio.Insertar(solicitudCocina);
         }
+
+		public void AnularSolicitud(int id)
+		{
+			Repositorio.AnularSolicitud(id);
+		}
 
     }
 }

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Anular Solicitud de Cocina";
+}
+
+
+@if (ViewBag.SolicitudCocinaId != null)
+{
+    <h2>Anulación de Solicitud de Cocina</h2>
+    <p>
+        Se anuló la solicitud de cocina nro @ViewBag.SolicitudCocinaId
+    </p>
+}
+else if (ViewBag.Error != null)
+{ 
+    <h2>Error al Anular Solicitud de Cocina</h2>
+    <p>
+        @ViewBag.Error
+    </p>
+}
+
+<div>
+    @Html.RouteLink("Regresar", "Solicitud_Cocina", new { action = "Index" })
+</div>

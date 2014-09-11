@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Buscar Solicitud de Cocina";
+}
+
+<h2>Buscar Solicitud de Cocina</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Criterios de Búsqueda</div>
+            <div class="panel-body">
+                @using (Html.BeginRouteForm("Solicitud_Cocina", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="solicitud_cocina_id">Nro. Solicitud Cocina</label>
+                        <input type="number" class="form-control" placeholder="Nro. Solicitud Cocina" name="solicitud_cocina_id" id="solicitud_cocina_id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="solicitud_cocina_fecha_inicial">Fecha Inicial</label>
+                        <input type="date" class="form-control" placeholder="Fecha Inicial" name="solicitud_cocina_fecha_inicial" id="solicitud_cocina_fecha_inicial" />
+                    </div>
+                    <div class="form-group">
+                        <label for="solicitud_cocina_fecha_final">Fecha Final</label>
+                        <input type="date" class="form-control" placeholder="Fecha Final" name="solicitud_cocina_fecha_final" id="solicitud_cocina_fecha_final" />
+                    </div>
+                    if (ViewBag.ErrorParameters != null    )
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.ErrorParameters
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label> </label>
+                        <button class="btn btn-success btn-block"><i class="fa fa-search"></i> Buscar</button>
+                    </div>
+                     
+                }
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">Información</div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Fecha de Solicitud</th>
+                        <th>Solicitud de Cocina</th>
+                        <th>Placa Unidad Transporte</th>
+                        <th>Ruta Programada</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.ListadoSolicitudCocina != null)
+                    {
+                        foreach (var item in ViewBag.ListadoSolicitudCocina)
+                        {
+                            <tr>
+                                <td>@item.FechaSolicitud</td>
+                                <td>@item.Id</td>
+                                <td>@item.ProgramacionRuta.Vehiculo.Placa</td>
+                                <td>@item.ProgramacionRuta.Ruta.Origen - @item.ProgramacionRuta.Ruta.Destino</td>
+                                <td>
+                                    <a href="@Url.RouteUrl("Solicitud_Cocina", new { action = "Edit", id = item.Id })" >Actualizar</a> | 
+                                    <a href="#" data-toggle="modal" data-target="#modal@(item.Id)">Anular</a>
+                                </td>
+                            </tr>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal@(item.Id)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">¿Está seguro de anular la Solicitud de Comida?</h4>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <a href="@Url.RouteUrl("Solicitud_Cocina", new { action = "Cancel", id = item.Id })" class="btn btn-danger">Anular Solicitud</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
