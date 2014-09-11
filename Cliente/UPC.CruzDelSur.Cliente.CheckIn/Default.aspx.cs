@@ -74,7 +74,7 @@ public partial class Default2 : System.Web.UI.Page
             itemVehiculo.Text = Server.HtmlDecode(row.Cells[4].Text); //Vehiculo
             ListItem itemLiberarAsiento = new ListItem();
             itemLiberarAsiento.Text = Server.HtmlDecode(row.Cells[11].Text); //Asiento actual
-            Response.Redirect("~/GestionarAsiento.aspx?ID=" + itemVehiculo.Text + "&nroboleta=" + item.Text + "&nroAsientoL" + itemLiberarAsiento.Text);
+            Response.Redirect("~/GestionarAsiento.aspx?ID=" + itemVehiculo.Text + "&nroboleta=" + item.Text + "&nroAsientoL=" + itemLiberarAsiento.Text);
         }
 
         if (e.CommandName == "cmdImprimir")
