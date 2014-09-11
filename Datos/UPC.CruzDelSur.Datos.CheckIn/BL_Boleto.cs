@@ -31,6 +31,9 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  //Object of the propery class
                  BE_Boleto objBoleto = new BE_Boleto();
                  //asign values
+                 objBoleto.CodVehiculo = dr[15].ToString();//dr["INT_VEHICULO"].ToString();
+                 objBoleto.Mensaje = dr[16].ToString(); //dr["Mensaje"].ToString();
+
                  objBoleto.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                  objBoleto.Pasajero = dr["Pasajero"].ToString();
                  objBoleto.Precio = dr["DEC_PRECIOPASAJE"].ToString();
@@ -46,9 +49,13 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                  objBoleto.Chofer = dr["Chofer"].ToString();
                  objBoleto.FechaActual = dr["FechaActual"].ToString();
                  objBoleto.HoraActual = dr["HoraActual"].ToString();
+
+                 objBoleto.CodVehiculo = dr[15].ToString();//dr["INT_VEHICULO"].ToString();
+                 objBoleto.Mensaje = dr[16].ToString(); //dr["Mensaje"].ToString();
                  //add one row to the list
                  lst.Add(objBoleto);
              }
+
              return lst;
          }
 
@@ -153,15 +160,18 @@ namespace UPC.CruzDelSur.Datos.CheckIn
              return lst;
          }
 
-         public BE_Boleto f_ActualizarAsiento(string nroboleto, string nroasiento)
+         public BE_Boleto f_ActualizarAsiento(string nroboleto, string nroasiento, string nroasientol)
          {
-             SqlParameter[] param = new SqlParameter[14];
+             SqlParameter[] param = new SqlParameter[3];
              param[0] = new SqlParameter("CHR_NUMEROBOLETO", SqlDbType.VarChar);
              param[0].Value = nroboleto;
              param[0].Direction = ParameterDirection.Input;
              param[1] = new SqlParameter("CHR_ASIENTO", SqlDbType.VarChar);
              param[1].Value = nroasiento;
              param[1].Direction = ParameterDirection.Input;
+             param[2] = new SqlParameter("CHR_ASIENTO_L", SqlDbType.VarChar);
+             param[2].Value = nroasientol;
+             param[2].Direction = ParameterDirection.Input;
 
              SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_BOLETOACTUALIZARASIENTO", param);
 

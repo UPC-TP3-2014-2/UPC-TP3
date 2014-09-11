@@ -26,6 +26,7 @@ public partial class Default2 : System.Web.UI.Page
 
     private void BindData()
     {
+        //IBL_Boleto carga = new BL_Boleto();
         IBL_Boleto carga = new BL_Boleto();
         List<BE_Boleto> ListaBoleto = carga.f_ListadoBoleto(txtNroBoleto.Text, txtDNI.Text);
         grvDetalle.DataSource = ListaBoleto;
@@ -68,9 +69,12 @@ public partial class Default2 : System.Web.UI.Page
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + item.Text);
-
+            item.Text = Server.HtmlDecode(row.Cells[1].Text); //Boleto
+            ListItem itemVehiculo = new ListItem();
+            itemVehiculo.Text = Server.HtmlDecode(row.Cells[4].Text); //Vehiculo
+            ListItem itemLiberarAsiento = new ListItem();
+            itemLiberarAsiento.Text = Server.HtmlDecode(row.Cells[11].Text); //Asiento actual
+            Response.Redirect("~/GestionarAsiento.aspx?ID=" + itemVehiculo.Text + "&nroboleta=" + item.Text + "&nroAsientoL" + itemLiberarAsiento.Text);
         }
 
         if (e.CommandName == "cmdImprimir")

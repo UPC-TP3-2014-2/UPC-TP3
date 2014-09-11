@@ -77,6 +77,9 @@
         <asp:BoundField HeaderText="Precio" DataField="Precio">
         <ItemStyle HorizontalAlign="Left" />
         </asp:BoundField>
+        <asp:BoundField HeaderText="Vehiculo" DataField="CodVehiculo">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
         <asp:BoundField HeaderText="Placa" DataField="Placa">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
@@ -111,6 +114,9 @@
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
         <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Mensaje" DataField="Mensaje">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 
