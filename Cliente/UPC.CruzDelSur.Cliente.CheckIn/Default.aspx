@@ -120,7 +120,7 @@
             </EmptyDataTemplate>            
         </asp:GridView>  
         
-         <asp:Button ID="btnImprimir" runat="server" CssClass="mybtnstyle" Text="Imprimir Información de Viaje" OnClientClick = "return PrintPanel();" />
+         <asp:Button ID="btnImprimir" runat="server" CssClass="mybtnstyle" Text="Imprimir Información de Viaje" OnClientClick = "return PrintPanel();" OnClick="btnImprimir_Click" />
          <asp:Button ID="btnInicio" runat="server" CssClass="mybtnstyle" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>
 

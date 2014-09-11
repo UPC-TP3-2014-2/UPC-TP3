@@ -87,5 +87,9 @@ public partial class Default2 : System.Web.UI.Page
     protected void btnInicio_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Inicio.aspx");
-    }   
+    }
+    protected void btnImprimir_Click(object sender, EventArgs e)
+    {
+
+    }
 }
