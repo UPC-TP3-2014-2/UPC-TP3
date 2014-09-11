@@ -23,8 +23,6 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
         public string Apellidos { get; set; }
 
         [Required]
-        [Range(typeof(DateTime), "01/01/1900", "01/01/1996", // TODO: Implement a custom annotation for this
-            ErrorMessage = "La pesona debe ser mayor de 18 años")]
         public DateTime FechaNacimiento { get; set; }
 
         public string Foto { get; set; }
