@@ -1,0 +1,94 @@
+﻿@model UPC.CruzDelSur.Cliente.Abastecimiento.Models.SolicitudCocinaModel
+@{
+    ViewBag.Title = "Registrar Solicitud Cocina";
+}
+
+<h2>Registrar Solicitud de Cocina</h2>
+
+@using (Html.BeginRouteForm("Solicitud_Cocina", new { action = "New" }, FormMethod.Post))
+{
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Seleccione una Ruta Programada</legend>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Ruta</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListadoProgramacionRuta != null)
+                        {
+                            foreach (var item in ViewBag.ListadoProgramacionRuta)
+                            {
+                                <tr>
+                                    <td>@item.Vehiculo.Placa</td>
+                                    <td>@item.Ruta.Origen - @item.Ruta.Destino</td>
+                                    <td>
+                                        @{ int ProgramacionRutaId = item.Id; }
+                                        @Html.RadioButtonFor(model => model.ProgramacionRutaId, ProgramacionRutaId)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+            
+                </table>
+            </fieldset>
+        </div>
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Seleccione un Refrigerio</legend>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Refrigerio</th>
+                            <th>Cantidad</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ListadoRefrigerios != null)
+                        {
+                            foreach (var item in ViewBag.ListadoRefrigerios)
+                            {
+                                <tr>
+                                    <td>@item.Descripcion</td>
+                                    <td>
+                                        <div class="col-lg-6">
+                                            @Html.TextBoxFor(model => model.Cantidad, new { @class = "form-control", type="number", placeholder="Cantidad" })
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @{ int id = item.Id; }
+                                        @Html.RadioButtonFor(model => model.RefrigerioId, id)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+            
+                </table>
+            </fieldset>
+        </div>
+    </div>
+    
+    if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+    
+    <div>
+        <button type="submit" class="btn btn-success">Grabar Datos</button>
+    </div>
+    
+    
+    
+    
+    
+       
+}

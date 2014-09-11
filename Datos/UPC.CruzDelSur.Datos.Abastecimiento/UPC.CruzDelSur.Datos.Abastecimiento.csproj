@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgramacionRutaRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefrigerioRepositorio.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="SolicitudCocinaRepositorio.cs" />
     <Compile Include="SolicitudInsumoRepositorio.cs" />

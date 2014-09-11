@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UPC.CruzDelSur.Cliente.Abastecimiento.Models;
 using UPC.CruzDelSur.Modelo.Abastecimiento;
 using UPC.CruzDelSur.Negocio.Abastecimiento;
 
@@ -73,5 +74,32 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 			return View();
 		}
 
+
+
+		[HttpGet]
+		public ActionResult New()
+		{
+			ViewBag.ListadoRefrigerios = new RefrigerioNegocio().ObtenerTodos();
+			ViewBag.ListadoProgramacionRuta = new ProgramacionRutaNegocio().ObtenerTodos();
+			return View();
+		}
+
+
+		[HttpPost]
+		public ActionResult New(SolicitudCocinaModel solicitudCocinaModel)
+		{
+			try
+			{
+				new SolicitudCocinaNegocio().Insertar(solicitudCocinaModel.GetEntity());
+				return RedirectToRoute("Solicitud_Cocina", new { action = "Index" });
+			}
+			catch (Exception)
+			{
+				ViewBag.Error = "Ha ocurrido un error al grabar los datos.";
+				throw;
+			}
+
+			return View();
+		}
     }
 }

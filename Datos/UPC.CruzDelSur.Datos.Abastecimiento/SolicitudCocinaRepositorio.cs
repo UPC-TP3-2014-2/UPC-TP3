@@ -81,12 +81,13 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 
         public void Insertar(SolicitudCocina solicitudCocina)
         {
-            string Query = "insert into ta_solicitudcocina(int_codigo_refrigerio, int_codigo_programacion_ruta, int_cantidad, bln_estado) values(@int_codigo_refrigerio, @int_codigo_programacion_ruta, @int_cantidad, @bln_estado) set @id = scope_identity()";
+            string Query = "insert into ta_solicitudcocina(int_codigo_refrigerio, int_codigo_programacion_ruta, dte_fecha_solicitud, int_cantidad, bln_estado) values(@int_codigo_refrigerio, @int_codigo_programacion_ruta, @dte_fecha_solicitud, @int_cantidad, @bln_estado) set @id = scope_identity()";
             DbCommand DbCommand = Database.GetSqlStringCommand(Query);
             Database.AddOutParameter(DbCommand, "@id", DbType.Int32, 4);
             Database.AddInParameter(DbCommand, "@int_codigo_refrigerio", DbType.Int32, solicitudCocina.Refrigerio.Id);
             Database.AddInParameter(DbCommand, "@int_codigo_programacion_ruta", DbType.Int32, solicitudCocina.ProgramacionRuta.Id);
-            Database.AddInParameter(DbCommand, "@int_cantidad", DbType.Int32, solicitudCocina.Cantidad);
+			Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudCocina.FechaSolicitud);
+			Database.AddInParameter(DbCommand, "@int_cantidad", DbType.Int32, solicitudCocina.Cantidad);
             Database.AddInParameter(DbCommand, "@bln_estado", DbType.Boolean, solicitudCocina.Estado);
 
             int RowsAffected = Database.ExecuteNonQuery(DbCommand);

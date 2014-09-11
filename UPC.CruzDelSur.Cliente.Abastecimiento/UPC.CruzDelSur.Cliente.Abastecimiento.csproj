@@ -137,6 +137,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SolicitudCocinaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,10 +274,10 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\SolicitudCocina\Index.cshtml" />
     <Content Include="Views\SolicitudCocina\Cancel.cshtml" />
+    <Content Include="Views\SolicitudCocina\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

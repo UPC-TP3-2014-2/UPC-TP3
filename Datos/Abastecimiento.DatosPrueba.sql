@@ -64,7 +64,7 @@ end
 
 --select * from TA_INSUMO
 --select * from TA_SOLICITUDINSUMO
---select * from ta_solicitudcocina
+--select * from TA_SOLICITUDCOCINA
 --select * from TA_PROGRAMACION_RUTA
 --select * from TA_PERSONA
 --select * from TA_VEHICULO
@@ -77,3 +77,26 @@ end
 --select a.int_codigo_solicitudcocina, a.int_codigo_refrigerio, a.int_codigo_programacion_ruta, a.int_cantidad, a.bln_estado, d.int_vehiculo, d.vch_placa, c.int_codigo_ruta, c.vch_origen, c.vch_destino from ta_solicitudcocina a left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo) 
 --select * from ta_programacion_ruta
 
+
+select int_codigo_refrigerio, vch_descripcion, vch_tipo_unidad from ta_refrigerio
+
+select
+	a.int_codigo_programacion_ruta, 
+	a.int_codigo_ruta, 
+	a.dtm_fecha_origen, 
+	a.dtm_fecha_destino, 
+	a.tim_hora_salida, 
+	a.tim_hora_llegada, 
+	a.int_tipo_servicio, 
+	a.int_codigovehiculo, 
+	a.int_codigopersona, 
+	a.bln_estado, 
+	b.vch_placa, 
+	c.vch_origen, 
+	c.vch_destino
+from ta_programacion_ruta a
+left outer join ta_vehiculo b on(a.int_codigovehiculo = b.int_vehiculo)
+left outer join ta_ruta c on(a.int_codigo_ruta = c.int_codigo_ruta)
+
+
+select a.int_codigo_programacion_ruta, a.int_codigo_ruta, a.dtm_fecha_origen, a.dtm_fecha_destino, a.tim_hora_salida, a.tim_hora_llegada, a.int_tipo_servicio, a.int_codigovehiculo, a.int_codigopersona, a.bln_estado, b.vch_placa, c.vch_origen, c.vch_destino from ta_programacion_ruta a left outer join ta_vehiculo b on(a.int_codigovehiculo = b.int_vehiculo) left outer join ta_ruta c on(a.int_codigo_ruta = c.int_codigo_ruta)

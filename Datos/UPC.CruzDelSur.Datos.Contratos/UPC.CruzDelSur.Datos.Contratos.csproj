@@ -39,11 +39,13 @@
     <Compile Include="ICargosRepositorio.cs" />
     <Compile Include="IContextoDatos.cs" />
     <Compile Include="IPersonasRepositorio.cs" />
+    <Compile Include="IRefrigerioRepositorio.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="ISolicitudCocinaRepositorio.cs" />
     <Compile Include="ISolicitudesCapacitacionRepositorio.cs" />
     <Compile Include="ISolicitudInsumoRepositorio.cs" />
     <Compile Include="ITiposDocumentoRepositorio.cs" />
+    <Compile Include="IProgramacionRutaRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
