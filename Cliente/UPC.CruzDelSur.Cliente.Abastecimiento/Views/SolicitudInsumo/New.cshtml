@@ -1,0 +1,37 @@
+﻿@model UPC.CruzDelSur.Cliente.Abastecimiento.Models.SolicitudInsumoModel
+
+@{
+    ViewBag.Title = "Registrar Solicitud de Consumo";
+}
+
+<h2>Registrar Solicitud de Consumo</h2>
+
+@using (Html.BeginRouteForm("Solicitud_Insumo", new { action = "New" }, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id)
+        @Html.TextBoxFor(model => model.Id)
+    </div>
+    <fieldset>
+        <legend>Solicitud de Cocina</legend>
+        <div class="form-group">
+
+        </div>
+    </fieldset>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-success"><i class="fa fa-ok"></i> Registrar</button>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

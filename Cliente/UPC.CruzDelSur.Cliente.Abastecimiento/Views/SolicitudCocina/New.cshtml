@@ -1,0 +1,81 @@
+﻿@model UPC.CruzDelSur.Cliente.Abastecimiento.Models.SolicitudCocinaModel
+
+@{
+    ViewBag.Title = "Registrar Solicitud de Cocina";
+}
+
+<h2>Registrar Solicitud de Cocina</h2>
+
+@using (Html.BeginRouteForm("Solicitud_Cocina", new { action = "New" }, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Ingreso de Ruta Programada</legend>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.RutaProgramadaId, new { @class = "form-control", placeholder = "Ruta Programada", type = "number" })
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="button"><i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Ingreso de Refrigerio y Cantidad</legend>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.RefrigerioId, new { @class = "form-control", placeholder = "Refrigerio", type = "number" })
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="button"><i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            @Html.TextBoxFor(model => model.Cantidad, new { @class = "form-control", placeholder = "Ingrese cantidad", type = "number" })
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            @if (ViewBag.AlertDanger != null)
+            {
+                <div class="alert alert-danger" role="alert">@ViewBag.AlertDanger</div>
+            }
+    
+            @if (ViewBag.AlertSuccess != null)
+            {
+                <div class="alert alert-success" role="alert">@ViewBag.AlertSuccess</div>
+            }
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-success"><i class="fa fa-ok"></i> Registrar</button>
+    </div>
+
+}
+
+<div>
+    @Html.RouteLink("Regresar", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
