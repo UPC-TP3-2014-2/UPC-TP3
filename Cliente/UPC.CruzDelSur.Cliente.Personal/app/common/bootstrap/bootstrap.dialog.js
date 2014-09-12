@@ -29,9 +29,9 @@
         return service;
 
         function deleteDialog(itemName) {
-            var title = 'Confirm Delete';
+            var title = 'Confirmar Eliminacion';
             itemName = itemName || 'item';
-            var msg = 'Delete ' + itemName + '?';
+            var msg = 'Eliminar ' + itemName + '?';
 
             return confirmationDialog(title, msg);
         }
