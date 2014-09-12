@@ -1,12 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GestionarEquipaje.aspx.cs" Inherits="GestionarEquipaje" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="GestionarEquipaje.aspx.cs" Inherits="GestionarEquipaje" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>.:| Empresa de Transportes Cruz del Sur</title>
-    <script type = "text/javascript">
+    <%--<script type = "text/javascript">
         function PrintPanel() {
             var panel = document.getElementById("<%=pnlContents.ClientID %>");
             var printWindow = window.open('', '', 'height=400,width=800');
@@ -20,10 +15,7 @@
             }, 500);
             return false;
         }
-    </script>
-</head>
-<body>
-    <form id="form1" runat="server">   
+    </script>--%>
     <div id="contenedor">
     <h2>GESTIONAR EQUIPAJE</h2>
     <br />
@@ -141,6 +133,5 @@ Tierra de acogimiento y de tolerancia, Marruecos no deja de ser un país apegado
        
              
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>

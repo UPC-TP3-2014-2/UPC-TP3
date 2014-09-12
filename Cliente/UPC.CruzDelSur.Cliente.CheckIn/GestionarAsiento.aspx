@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GestionarAsiento.aspx.cs" Inherits="GestionarAsiento" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="GestionarAsiento.aspx.cs" Inherits="GestionarAsiento" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>.:| Empresa de Transportes Cruz del Sur</title>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div id="contenedor">
     <h2>GESTIONAR ASIENTO</h2>
     <h3>Asientos Disponibles</h3>
@@ -58,7 +50,6 @@
             onclick="btnRetornar_Click" />
 
     </div>
-    </form>
 
 <table>
 <tr>
@@ -136,5 +127,4 @@
 </tr>
 </table>
 
-</body>
-</html>
+</asp:Content>

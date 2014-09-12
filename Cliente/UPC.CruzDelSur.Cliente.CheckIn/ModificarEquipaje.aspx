@@ -7,7 +7,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <title>.:| Empresa de Transportes Cruz del Sur</title>
 </head>
-<body>
+<body class="mainbar" >
     <form id="form1" runat="server">
     <div id="contenedor">
     <h2>GESTIONAR EQUIPAJE</h2>
