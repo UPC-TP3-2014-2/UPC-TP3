@@ -19,8 +19,10 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/jquery-1.7.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+
+
 
 </head>
 <body>
@@ -64,8 +66,9 @@
                             <li class="active dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Checkin <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="GestionarAsiento.aspx">Gestionar Asiento</a></li>
+                                    <li><a href="AdministrarCheckin.aspx">Gestionar Checkin</a></li>
                                     <li><a href="GestionarEquipaje.aspx">Gestionar Equipaje</a></li>
+                                    <li><a href="VerificarEquipaje.aspx">Verificar Equipaje</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Carga</a></li>
@@ -96,10 +99,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>
-                        &copy; <%: DateTime.Now.Year %> - My ASP.NET Application
-               
-                    </p>
+                    
                 </div>
             </div>
         </footer>

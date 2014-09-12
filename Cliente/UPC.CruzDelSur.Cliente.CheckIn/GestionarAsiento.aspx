@@ -9,7 +9,7 @@
             DataKeyNames="Asiento" 
             OnRowCommand="grvAsientos_RowCommand" 
             GridLines="None"
-            CssClass="mGrid"
+            CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt"> 
             <Columns>
@@ -47,7 +47,7 @@
         </asp:GridView>
         <br />
         <asp:Button ID="btnRetornar" runat="server" Text="Regresar" 
-            onclick="btnRetornar_Click" />
+            onclick="btnRetornar_Click" CssClass="btn" />
 
     </div>
 

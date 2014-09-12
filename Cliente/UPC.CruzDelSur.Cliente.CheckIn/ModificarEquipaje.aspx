@@ -1,25 +1,25 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ModificarEquipaje.aspx.cs" Inherits="ModificarEquipaje" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ModificarEquipaje.aspx.cs" Inherits="ModificarEquipaje" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+    <!DOCTYPE html>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <title>.:| Empresa de Transportes Cruz del Sur</title>
 </head>
 <body class="mainbar" >
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">--%>
     <div id="contenedor">
     <h2>GESTIONAR EQUIPAJE</h2>
     <h3>Listado de Tiket Pendientes de Asignar</h3>
     <br />              
-    <h2>Boleta Nro: <asp:Label ID="lblNroBoleta" runat="server"></asp:Label></h2>
+    <h2>Boleto Nro: <asp:Label ID="lblNroBoleta" runat="server"></asp:Label></h2>
         
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
             DataKeyNames="Codigo" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
-            CssClass="mGrid"
+            CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
         <Columns>
@@ -59,6 +59,7 @@
          <asp:Button ID="btnRegresar" runat="server" CssClass="mybtnstyle" Text="Regresar" onclick="btnRetornar_Click"/>
                       
     </div>
-    </form>
+    <%--</form>
 </body>
-</html>
+</html>--%>
+</asp:Content>

@@ -48,6 +48,6 @@ public partial class GestionarAsiento : System.Web.UI.Page
 
     protected void btnRetornar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/AdministrarCheckin.aspx");
     }
 }

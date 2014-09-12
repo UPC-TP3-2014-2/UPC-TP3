@@ -1,11 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AdministrarCheckin.aspx.cs" Inherits="Default2" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head id="Head1" runat="server">
+
+<%--<!DOCTYPE html>
+
+<html >
+<head>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>.:| Empresa de Transportes Cruz del Sur</title>
+    <title>.:| Empresa de Transportes Cruz del Sur</title>--%>
     <script type = "text/javascript">
         function PrintPanel() {
             var panel = document.getElementById("<%=pnlContents.ClientID %>");
@@ -21,20 +24,20 @@
             return false;
         }
     </script>
-</head>
+<%--</head>
 <body>
-    <form id="form1" runat="server">   
+    <form id="form1" runat="server">   --%>
     <div id="contenedor">
-    <h2>ADMINISTRACIÓN DE CHECK IN</h2>
+    <h2 class="h2">ADMINISTRACIÓN DE CHECK IN</h2>
     <br />
         <fieldset>
         <legend style="font-size:14px">Búsqueda:</legend>
-            <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
-            <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="Nro Boleto:" CssClass="form-group"></asp:Label>
+            <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-            <asp:Label ID="Label2" runat="server" Text="DNI" ></asp:Label>
-            <asp:TextBox ID="txtDNI" runat="server"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="mybtnstyle" 
+            <asp:Label ID="Label2" runat="server" Text="DNI" CssClass="form-group" ></asp:Label>
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn" 
                 onclick="btnBuscar_Click" />
                 <br /><br />
        </fieldset>        
@@ -42,7 +45,7 @@
             DataKeyNames="NroBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
-            CssClass="mGrid"
+            CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
         <Columns>
@@ -155,7 +158,10 @@ Tierra de acogimiento y de tolerancia, Marruecos no deja de ser un país apegado
         </asp:Panel>
        
              
-    </div>
+    <%--</div>
     </form>
 </body>
-</html>
+</html>--%>
+
+
+        </asp:Content>

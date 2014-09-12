@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="GestionarEquipaje.aspx.cs" Inherits="GestionarEquipaje" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="VerificarEquipaje.aspx.cs" Inherits="GestionarEquipaje" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <script type = "text/javascript">
@@ -17,15 +17,13 @@
         }
     </script>
     <div id="contenedor">
-    <h2>GESTIONAR EQUIPAJE</h2>
+    <h2>VERIFICAR CONTENIDO DE EQUIPAJE</h2>
     <br />
         <fieldset>
         <legend style="font-size:14px">Búsqueda:</legend>
-            <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Nro Ticket:"></asp:Label>
             <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-            <asp:Label ID="Label2" runat="server" Text="DNI" MaxLength="8"></asp:Label>
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn" 
                 onclick="btnBuscar_Click" />
                 <br /><br />
