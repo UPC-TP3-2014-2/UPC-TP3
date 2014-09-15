@@ -25,11 +25,11 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 
     private void BindData()
     {
-        //IBL_Equipaje carga = new BL_Equipaje();
-        //List<BE_Equipaje> ListaBoleto = carga.f_listarEquipajeBoleto(txtNroBoleto.Text, txtDNI.Text);
-        //grvDetalle.DataSource = ListaBoleto;
-        //grvDetalle.DataBind();
-        //btnImprimir.Visible = true;
+        IBL_Equipaje carga = new BL_Equipaje();
+        List<BE_Equipaje> ListaBoleto = carga.f_verificarEquipajeBoleto(txtNroBoleto.Text, txtDNI.Text);
+        grvDetalle.DataSource = ListaBoleto;
+        grvDetalle.DataBind();
+        btnImprimir.Visible = true;
     }
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)

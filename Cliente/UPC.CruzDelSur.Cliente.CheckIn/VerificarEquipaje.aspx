@@ -21,8 +21,13 @@
     <br />
         <fieldset>
         <legend style="font-size:14px">Búsqueda:</legend>
-            <asp:Label ID="Label1" runat="server" Text="Nro Ticket:"></asp:Label>
+
+            <asp:Label ID="Label2" runat="server" Text="DNI" MaxLength="8"></asp:Label>
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
             <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+
+             <br /><br />
 
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn" 
                 onclick="btnBuscar_Click" />
@@ -40,7 +45,7 @@
             <ItemTemplate>
                 <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
                     onClientClick="return confirm('Está seguro de confirmar su Equipaje?')"
-                    ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
+                    ImageUrl="~/img/ok.jpg" ToolTip="Registrar embarque" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
