@@ -132,8 +132,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AbastecimientoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SolicitudCocinaController.cs" />
+    <Compile Include="Controllers\SolicitudInsumoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,6 +277,8 @@
     <Content Include="Views\SolicitudCocina\Index.cshtml" />
     <Content Include="Views\SolicitudCocina\Cancel.cshtml" />
     <Content Include="Views\SolicitudCocina\New.cshtml" />
+    <Content Include="Views\Abastecimiento\Index.cshtml" />
+    <Content Include="Views\SolicitudInsumo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,11 +287,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Negocio\UPC.CruzDelSur.Modelo.Abastecimiento\UPC.CruzDelSur.Modelo.Abastecimiento.csproj">
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Modelo.Abastecimiento\UPC.CruzDelSur.Modelo.Abastecimiento.csproj">
       <Project>{8a1b592c-7c7d-4f2a-ae9a-d8d962d9f49d}</Project>
       <Name>UPC.CruzDelSur.Modelo.Abastecimiento</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Negocio\UPC.CruzDelSur.Negocio.Abastecimiento\UPC.CruzDelSur.Negocio.Abastecimiento.csproj">
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Abastecimiento\UPC.CruzDelSur.Negocio.Abastecimiento.csproj">
       <Project>{81a875f5-aa12-4638-8ef8-0507382aff1a}</Project>
       <Name>UPC.CruzDelSur.Negocio.Abastecimiento</Name>
     </ProjectReference>

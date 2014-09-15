@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Modelo.Abast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Abastecimiento", "Negocio\UPC.CruzDelSur.Negocio.Abastecimiento\UPC.CruzDelSur.Negocio.Abastecimiento.csproj", "{81A875F5-AA12-4638-8EF8-0507382AFF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Cliente.Abastecimiento", "UPC.CruzDelSur.Cliente.Abastecimiento\UPC.CruzDelSur.Cliente.Abastecimiento.csproj", "{A40DA5AD-EF72-4C84-8F7E-4336C0618FCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Cliente.Abastecimiento", "Cliente\UPC.CruzDelSur.Cliente.Abastecimiento\UPC.CruzDelSur.Cliente.Abastecimiento.csproj", "{A40DA5AD-EF72-4C84-8F7E-4336C0618FCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
