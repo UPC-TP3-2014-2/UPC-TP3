@@ -70,7 +70,7 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
+            Response.Redirect("~/ModificarVerificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
         }
 
         if (e.CommandName == "cmdImprimir")
