@@ -10,7 +10,7 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
     {
         
 		[HttpGet]
-		public ActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
