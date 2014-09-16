@@ -5,7 +5,9 @@
 
     angular.module('app').factory(serviceId, model);
 
-    function model() {
+    model.$inject = ['model.validation'];
+
+    function model(modelValidation) {
         var entityNames = {
             auditoria: 'AuditEntry',
             capacitacion: 'Capacitacion',
@@ -21,13 +23,16 @@
         var service = {
             configureMetadataStore: configureMetadataStore,
             createNullos: createNullos,
-            entityNames: entityNames
+            entityNames: entityNames,
+            extendMetadata: extendMetadata
         };
 
         return service;
 
         function configureMetadataStore(metadataStore) {
             registerPersona(metadataStore);
+
+            modelValidation.createAndRegister(entityNames);
         }
 
         function createNullos(manager) {
@@ -42,6 +47,10 @@
 
                 return manager.createEntity(entityName, initialValues, unchanged);
             }
+        }
+
+        function extendMetadata(metadataStore) {
+            modelValidation.applyValidators(metadataStore);
         }
 
         function registerPersona(metadataStore) {
