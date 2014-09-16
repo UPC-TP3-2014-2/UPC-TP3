@@ -48,8 +48,16 @@
 
     <div>
       <h2>Programar Filmacion</h2>  
-     <fieldset style="margin:10px; padding:10px;">
-     <legend style="font-size:14px">INFORMACIÓN DE FILMACION</legend>
+      <br />
+
+
+        <div class="panel panel-default">
+
+  <div class="panel-heading">Información de filmacion</div>
+
+          
+            <br />
+
          <table width="50%">
          <tr>
          <td style="width:15%">Codigo Salida Bus: </td>
@@ -58,7 +66,7 @@
          <tr>
          <td>Inicio Grabacion: </td>
          <td>
-               <asp:TextBox ID="txtIniGrab" runat="server" ReadOnly="true" Width="150px"></asp:TextBox>
+               <asp:TextBox ID="txtIniGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
                       <img src="/img/calendar.jpg" />
 
          </td>
@@ -66,7 +74,7 @@
          <tr>
          <td>Fin Grabacion: </td>
          <td>
-             <asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px"></asp:TextBox>
+             <asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
                       <img src="/img/calendar.jpg" />
 
          </td>
@@ -87,13 +95,13 @@
 
          <tr>
          <td>
-              <asp:Button ID="btnGrabar" runat="server" Text="Grabar" OnClick="Button1_Click" />
-             <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="btnActualizar_Click" />
+              <asp:Button ID="btnGrabar" runat="server" Text="Grabar" OnClick="Button1_Click" CssClass="btn btn-success" />
+             <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" OnClick="btnActualizar_Click" CssClass="btn btn-success" />
          </td>
          <td>
              
             
-              <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
+              <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" CssClass="btn btn-primary" />
 
              
              
@@ -122,13 +130,10 @@
               &nbsp;</td>
          </tr>
          </table>
-     </fieldset>
-
-     
-
-
      <br />
-   
-    </div>
+          <br />
+
+          </div>
+             </div>  
 </asp:Content>
 

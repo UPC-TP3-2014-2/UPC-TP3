@@ -83,6 +83,9 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 objBoleto.Chofer = dr["Chofer"].ToString();
                 objBoleto.FechaActual = dr["FechaActual"].ToString();
                 objBoleto.HoraActual = dr["HoraActual"].ToString();
+                objBoleto.CodVehiculo = dr["INT_VEHICULO"].ToString();
+                objBoleto.EstadoCheckin = dr["ESTADO_CHECKIN"].ToString();
+                objBoleto.EstadoHora = dr["ESTADO_HORA"].ToString();
                 //add one row to the list
                 lst.Add(objBoleto);
             }
@@ -118,6 +121,9 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 objBoleto.Chofer = dr["Chofer"].ToString();
                 objBoleto.FechaActual = dr["FechaActual"].ToString();
                 objBoleto.HoraActual = dr["HoraActual"].ToString();
+                objBoleto.CodVehiculo = dr["INT_VEHICULO"].ToString();
+                objBoleto.EstadoCheckin = dr["ESTADO_CHECKIN"].ToString();
+                objBoleto.EstadoHora = dr["ESTADO_HORA"].ToString();
                 //add one row to the list
                 lst.Add(objBoleto);
             }
