@@ -119,7 +119,11 @@
         <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Mensaje" DataField="Mensaje">
+        <asp:BoundField HeaderText="Estado Checkin" DataField="EstadoCheckin">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+
+            <asp:BoundField HeaderText="Estado Hora" DataField="EstadoHora">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 

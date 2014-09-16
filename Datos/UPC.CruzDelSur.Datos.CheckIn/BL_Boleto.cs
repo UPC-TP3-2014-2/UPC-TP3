@@ -46,7 +46,8 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 objBoleto.FechaActual = dr["FechaActual"].ToString();
                 objBoleto.HoraActual = dr["HoraActual"].ToString();
                 objBoleto.CodVehiculo = dr["INT_VEHICULO"].ToString();
-                //objBoleto.Mensaje = dr[16].ToString(); //dr["Mensaje"].ToString();
+                objBoleto.EstadoCheckin = dr["ESTADO_CHECKIN"].ToString();
+                objBoleto.EstadoHora = dr["ESTADO_HORA"].ToString();
                 //add one row to the list
                 lst.Add(objBoleto);
             }
