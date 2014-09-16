@@ -15,6 +15,7 @@ public partial class Inicio : System.Web.UI.Page
     protected void btnGestionarChekin_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Default.aspx");
+        
     }
 
     protected void btnGestionarEquipaje_Click(object sender, EventArgs e)

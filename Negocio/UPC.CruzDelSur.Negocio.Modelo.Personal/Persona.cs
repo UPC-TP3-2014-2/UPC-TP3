@@ -13,21 +13,19 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
 
         public virtual TipoDocumento TipoDocumento { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar un tipo de documento")]
+        [Required]
         public int TipoDocumentoId { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar un numero de documento")]
+        [Required]
         public string NroDocumento { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar un nombre")]
+        [Required]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar un apellido")]
+        [Required]
         public string Apellidos { get; set; }
 
         [Required]
-        [Range(typeof(DateTime), "01/01/1900", "01/01/1996", // TODO: Implement a custom annotation for this
-            ErrorMessage = "La pesona debe ser mayor de 18 años")]
         public DateTime FechaNacimiento { get; set; }
 
         public string Foto { get; set; }

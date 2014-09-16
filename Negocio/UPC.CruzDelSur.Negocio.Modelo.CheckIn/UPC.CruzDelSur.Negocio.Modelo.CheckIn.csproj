@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BE_Boleto.cs" />
     <Compile Include="BE_Equipaje.cs" />
+    <Compile Include="BE_Filmacion.cs" />
     <Compile Include="BE_Tiket.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

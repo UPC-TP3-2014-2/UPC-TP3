@@ -7,8 +7,7 @@ using System.Web.UI.WebControls;
 using UPC.CruzDelSur.Negocio.Modelo.CheckIn;
 using UPC.CruzDelSur.Datos.CheckIn;
 using UPC.CruzDelSur.Datos.CheckIn.Interface;
-
-public partial class Default2 : System.Web.UI.Page
+public partial class GestionarEquipaje : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,8 +25,8 @@ public partial class Default2 : System.Web.UI.Page
 
     private void BindData()
     {
-        IBL_Boleto carga = new BL_Boleto();
-        List<BE_Boleto> ListaBoleto = carga.f_ListadoBoleto(txtNroBoleto.Text, txtDNI.Text);
+        IBL_Equipaje carga = new BL_Equipaje();
+        List<BE_Equipaje> ListaBoleto = carga.f_verificarEquipajeBoleto(txtNroBoleto.Text, txtDNI.Text);
         grvDetalle.DataSource = ListaBoleto;
         grvDetalle.DataBind();
         btnImprimir.Visible = true;
@@ -35,16 +34,17 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
     {
-        if (e.CommandName == "cmdCheckIn")
+        if (e.CommandName == "cmdConfirmar")
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
 
-            IBL_Boleto carga = new BL_Boleto();
-            List<BE_Boleto> ListaBoleto = carga.f_CheckIn(item.Text);
-            grvDetalle.DataSource = ListaBoleto;
+            IBL_Equipaje carga = new BL_Equipaje();
+            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 2);
+
+            grvDetalle.DataSource = ListarEquipaje;
             grvDetalle.DataBind();
             btnImprimir.Visible = true;
         }
@@ -56,9 +56,9 @@ public partial class Default2 : System.Web.UI.Page
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
 
-            IBL_Boleto carga = new BL_Boleto();
-            List<BE_Boleto> ListaBoleto = carga.f_CancelarCheckIn(item.Text);
-            grvDetalle.DataSource = ListaBoleto;
+            IBL_Equipaje carga = new BL_Equipaje();
+            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 3);
+            grvDetalle.DataSource = ListarEquipaje;
             grvDetalle.DataBind();
             btnImprimir.Visible = false;
         }
@@ -68,9 +68,9 @@ public partial class Default2 : System.Web.UI.Page
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
+            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + item.Text);
-
+            Response.Redirect("~/ModificarVerificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
         }
 
         if (e.CommandName == "cmdImprimir")
@@ -79,7 +79,7 @@ public partial class Default2 : System.Web.UI.Page
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Write("<script>window.open('ImprimirBoleto.aspx?nroboleto=" + item.Text + "','_blank')</script>");
+            Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
         }
 
     }
@@ -87,5 +87,6 @@ public partial class Default2 : System.Web.UI.Page
     protected void btnInicio_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Inicio.aspx");
-    }   
+    }       
+
 }

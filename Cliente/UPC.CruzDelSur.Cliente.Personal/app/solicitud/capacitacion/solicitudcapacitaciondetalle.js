@@ -75,7 +75,7 @@
         }
 
         function goToParent() {
-            $location.path('/solicitudes');
+            $location.path('/solicitudes/capacitacion');
         }
 
         function onDestroy() {

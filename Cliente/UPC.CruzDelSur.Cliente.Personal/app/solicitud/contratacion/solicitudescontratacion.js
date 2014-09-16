@@ -1,12 +1,12 @@
 ﻿(function () {
     'use strict';
 
-    var controllerId = 'solicitudes';
+    var controllerId = 'solicitudescontratacion';
 
     angular.module('app').controller(controllerId,
-        ['$location', 'common', 'datacontext', solicitudes]);
+        ['$location', 'common', 'datacontext', solicitudescontratacion]);
 
-    function solicitudes($location, common, datacontext) {
+    function solicitudescontratacion($location, common, datacontext) {
         var getLogFn = common.logger.getLogFn;
         var log = getLogFn(controllerId);
 

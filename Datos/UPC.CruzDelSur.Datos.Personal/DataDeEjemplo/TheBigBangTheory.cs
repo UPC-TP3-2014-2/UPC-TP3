@@ -157,23 +157,17 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 {
                     FechaRegistro = new DateTime(2014, 08, 01),
                     FechaPlanificada = new DateTime(2014, 08, 25),
-                    Estado = EstadoSolicitud.Aprobado,
-                    FechaResolucion = new DateTime(2014, 08, 06),
                     Capacitacion = BusesScania,
                     Trabajador = _leonard,
-                    Observaciones = "Capacitacion urgente para nuevo proyecto",
-                    DetallesResolucion = "Aprobado por la urgencia del caso"
+                    Observaciones = "Capacitacion urgente para nuevo proyecto"
                 },
                 new SolicitudCapacitacion
                 {
                     FechaRegistro = new DateTime(2014, 05, 20),
                     FechaPlanificada = new DateTime(2014, 09, 01),
-                    Estado = EstadoSolicitud.Rechazado,
-                    FechaResolucion = new DateTime(2014, 06, 28),
                     Capacitacion = CamionesVolvo,
                     Trabajador = _howard,
-                    Observaciones = "Solicitado por la misma persona",
-                    DetallesResolucion = "No esta listo para este tipo de capacitacion"
+                    Observaciones = "Solicitado por la misma persona"
                 }
             });
 

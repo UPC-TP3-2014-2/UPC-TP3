@@ -1,49 +1,52 @@
 ﻿<section id="personas-view" class="mainbar" data-ng-controller="personas as vm">
     <section class="matter">
         <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    {{vm.title}}
+                    <small>({{vm.personas.length}})</small>
+                </h1>
+            </div>
             <div class="row">
                 <div class="btn-group">
-                    <a class="btn btn-info"
-                       data-ng-click="vm.refresh()">
-                        <i class="fa fa-refresh"></i>
-                        <span>Refrescar</span>
-                    </a>
-                    <a class="btn btn-info"
+                    <a class="btn btn-default"
                        href="#/persona/nuevo">
                         <i class="fa fa-plus"></i>
                         <span>Nueva persona</span>
                     </a>
+                    <a class="btn btn-default"
+                       data-ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i>
+                        <span>Refrescar</span>
+                    </a>
                 </div>
             </div>
+            &nbsp;
             <div class="row">
-                <div class="widget wmustard">
-                    <div data-cc-widget-header
-                         title="{{vm.title}}"
-                         subtitle="{{vm.personas.length}}"></div>
-                    <div class="widget-content user">
-                        <div class="padd" 
-                             data-ng-repeat="p in vm.personas"
-                             data-ng-click="vm.goToPersona(p)">
-                            <div class="user" title="Ver detalles">
+                <div class="list-group">
+                    <a href=""
+                       class="list-group-item"
+                       title="Ver detalles"
+                       data-ng-repeat="p in vm.personas"
+                       data-ng-click="vm.goToPersona(p)">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-1">
                                 <img data-cc-img-person="{{p.foto}}"
-                                     class="img-polaroid user-pic" />
-                                <div class="user-details">
-                                    <small class="right" 
-                                           ng-show="p.ultimaExperienciaLaboral">
-                                        {{p.ultimaExperienciaLaboral.cargo}} 
-                                        en {{p.ultimaExperienciaLaboral.institucion}} 
-                                        (Desde {{p.ultimaExperienciaLaboral.desde | date:'yyyy/MM/dd'}})
-                                    </small>
-                                    <h3>{{p.nombreCompleto}}</h3>
-                                    <h6>{{p.tipoDocumento.nombre}}: {{p.nroDocumento}}</h6>
-                                    <h6>{{p.cargo.nombre}}</h6>
-                                </div>
+                                     class="img-polaroid img-responsive img-rounded" />
+                            </div>
+                            <div class="col-xs-12 col-md-11">
+                                <span class="pull-right"
+                                      ng-show="p.ultimaExperienciaLaboral">
+                                    {{p.ultimaExperienciaLaboral.cargo}}
+                                    en {{p.ultimaExperienciaLaboral.institucion}}
+                                    (Desde {{p.ultimaExperienciaLaboral.desde | date:'yyyy/MM/dd'}})
+                                </span>
+                                <h3 class="list-group-item-heading">{{p.nombreCompleto}}</h3>
+                                <h4>{{p.cargo.nombre}}</h4>
+                                <p>{{p.tipoDocumento.nombre}}: {{p.nroDocumento}}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

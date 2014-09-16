@@ -1,6 +1,8 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Negocio", "Negocio", "{A902A575-64C5-4C9E-A735-E3984F23B91E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cliente", "Cliente", "{2D78FC4E-25F2-4765-BD38-3B496F89A1BC}"
@@ -32,6 +34,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.Chec
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{49e46821-5bbf-4837-8de6-d8dd1cac5a08}|UPC.CruzDelSur.Negocio.Modelo.CheckIn.dll;{5bdb5419-ceeb-42f9-a3a2-618d5a350e8d}|UPC.CruzDelSur.Datos.CheckIn.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/UPC.CruzDelSur.Cliente.CheckIn"
 		Debug.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UPC.CruzDelSur.Cliente.CheckIn\"
