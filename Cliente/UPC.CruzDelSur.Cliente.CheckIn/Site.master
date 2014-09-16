@@ -91,19 +91,22 @@
                 <!-- /.container-fluid -->
             </nav>
         </header>
-        <div id="body">
-            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-            <section class="content-wrapper main-content clear-fix">
+     
+       <div id="contenedor">
+ 
+  <div id="cuerpo">
+  
+   <div id="principal">
                 <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    
-                </div>
-            </div>
-        </footer>
+       <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+       
+    </div>
+  </div>  
+</div> 
+
+
+
+
     </form>
 </body>
 </html>

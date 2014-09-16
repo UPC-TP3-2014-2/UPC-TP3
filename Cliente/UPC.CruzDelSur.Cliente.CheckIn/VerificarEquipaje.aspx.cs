@@ -42,7 +42,7 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
 
             IBL_Equipaje carga = new BL_Equipaje();
-            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 2);
+            List<BE_Equipaje> ListarEquipaje = carga.f_verificarEstadoEquipaje(item.Text);
 
             grvDetalle.DataSource = ListarEquipaje;
             grvDetalle.DataBind();
