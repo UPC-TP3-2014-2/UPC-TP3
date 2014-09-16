@@ -42,12 +42,12 @@ public partial class GestionarAsiento : System.Web.UI.Page
             string NroAsiento = (string)this.grvAsientos.DataKeys[index]["Asiento"];
             NroAsientoL = (string)(Session["NroAsientoL"]);
             BE_Boleto objBoleto = carga.f_ActualizarAsiento(NroBoleto, NroAsiento, NroAsientoL);
-            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + NroBoleto);
+            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + NroBoleto + "&nroAsientoL=" + NroAsientoL);
         }
     }
 
     protected void btnRetornar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/AdministrarCheckin.aspx");
     }
 }

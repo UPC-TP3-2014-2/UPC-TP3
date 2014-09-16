@@ -22,8 +22,9 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string Chofer { get; set; }
         public string FechaActual { get; set; }
         public string HoraActual { get; set; }
-
         public string CodVehiculo { get; set; }
-        public string Mensaje { get; set; }
+        public string EstadoCheckin{ get; set; }
+        public string EstadoHora { get; set; }
+
     }
 }
