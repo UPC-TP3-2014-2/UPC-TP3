@@ -75,7 +75,8 @@
                         <select data-ng-options="t.nombreCompleto for t in vm.trabajadores"
                                 data-ng-model="vm.solicitudCapacitacion.trabajador"
                                 data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
-                                class="form-control"></select>
+                                class="form-control"
+                                data-z-validate></select>
                         <p class="help-block"
                            data-ng-show="vm.solicitudCapacitacion.trabajador">
                             Cargo: {{vm.solicitudCapacitacion.trabajador.cargo.nombre}}
@@ -86,7 +87,8 @@
                         <select data-ng-options="c.nombre for c in vm.capacitaciones"
                                 data-ng-model="vm.solicitudCapacitacion.capacitacion"
                                 data-ng-disabled="vm.solicitudCapacitacion.estado != 'Pendiente'"
-                                class="form-control"></select>
+                                class="form-control"
+                                data-z-validate></select>
                         <p class="help-block"
                            data-ng-show="vm.solicitudCapacitacion.capacitacion && vm.solicitudCapacitacion.capacitacion.id != 0">
                             Duración: {{vm.solicitudCapacitacion.capacitacion.duracion}} hrs
