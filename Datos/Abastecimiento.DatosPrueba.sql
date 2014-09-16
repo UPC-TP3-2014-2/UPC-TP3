@@ -60,7 +60,8 @@ begin
 	select @contador += 1
 end
 
-select * from TA_SOLICITUDCOCINA
+select * from TA_SOLICITUDINSUMO
+select * from TA_DET_SOLICITUDINSUMO
 
 
 select 

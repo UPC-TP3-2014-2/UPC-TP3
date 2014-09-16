@@ -32,5 +32,12 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 			return Json(Listado, JsonRequestBehavior.AllowGet);
 		}
+
+		[HttpPost]
+		public JsonResult SearchById(int id)
+		{
+			Insumo Insumo = InsumoNegocio.ObtenerPorId(id);
+			return Json(Insumo, JsonRequestBehavior.AllowGet);
+		}
     }
 }

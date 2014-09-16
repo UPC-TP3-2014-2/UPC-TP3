@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-md-8">
-        @using (Html.BeginRouteForm("Solicitud_Insumo", new { action = "Register" }, FormMethod.Post, new { role = "form" }))
+        @using (Html.BeginRouteForm("Solicitud_Insumo", new { action = "Register" }, FormMethod.Post, new { role = "form", name = "solicitud-insumo-form", id = "solicitud-insumo-form" }))
         {
             @Html.AntiForgeryToken();
             @Html.ValidationSummary();
@@ -23,7 +23,9 @@
                         <div class="form-group">
                             <label for="solicitud-cocina-id">Nro Solicitud de Cocina</label>
                             <div class="input-group">
-                                <input type="text" name="solicitud-cocina-id" id="solicitud-cocina-id" value=" " disabled class="form-control" placeholder="Nro Solicitud de Cocina" />
+                                @Html.HiddenFor(model => model.SolicitudCocinaId)
+                                @Html.TextBoxFor(model => model.SolicitudCocinaId, new { name = "solicitud-cocina-id", id = "solicitud-cocina-id", disabled = "disabled", @class = "form-control",  placeholder = "Nro Solicitud de Cocina" })
+                                @*<input type="text" name="solicitud-cocina-id" id="solicitud-cocina-id" value=" " disabled class="form-control" placeholder="Nro Solicitud de Cocina" />*@
                                 <span class="input-group-btn">
                                     <a class="btn btn-primary" data-toggle="collapse" href="#buscar-solicitud-cocina-container"><i class="fa fa-search"></i> Buscar</a> @*para colapsar*@
                                 </span>
@@ -46,7 +48,7 @@
                                         </div>
                                         <div class="form-group">
                                             <a href="@Url.RouteUrl("Solicitud_Cocina", new { action = "Search" })" class="btn btn-success btn-sm" id="buscar-solicitud-cocina"><i class="fa fa-search"></i> Buscar</a>
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-cancel"></i> Cancelar</button>
+                                            <a href="#buscar-solicitud-cocina-container" class="btn btn-danger btn-sm" data-toggle="collapse"><i class="fa fa-cancel"></i> Cancelar</a>
                                         </div>
                                     </div>
                                     <div>
@@ -102,7 +104,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <a href="@Url.RouteUrl("Insumo", new { action = "Search" })" class="btn btn-success btn-sm" id="buscar-insumo"><i class="fa fa-search"></i> Buscar</a>
-                                                <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-cancel"></i> Cancelar</button>
+                                                <a class="btn btn-danger btn-sm" data-toggle="collapse" href="#busq-insumo-container"><i class="fa fa-cancel"></i> Cancelar</a> @*para colapsar*@
                                             </div>
                                         </div>
                                         <div>
@@ -121,31 +123,30 @@
                                             <tbody>
                                             </tbody>
                                         </table>
+
+                                        <div class="alert alert-danger alert-dismissible" role="alert" id="buscar-insumo-aceptar-error">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" id="buscar-insumo-aceptar" class="btn btn-success"><i class="fa fa-check"></i> Aceptar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <table class="table">
+                        <table class="table" id="insumo-tabla">
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Descripción</th>
-                                    <th>Tipo</th>
                                     <th>Unidad</th>
                                     <th>Cantidad</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                             </tbody>
                         </table>
-                        <div class="alert alert-danger alert-dismissible" role="alert" id="buscar-insumo-aceptar-error">
-                        </div>
-                        <div class="form-group">
-                            <button type="button" id="buscar-insumo-aceptar" class="btn btn-success"><i class="fa fa-check"></i> Aceptar</button>
-                        </div>
                     </div>
                 </div>
             </div>

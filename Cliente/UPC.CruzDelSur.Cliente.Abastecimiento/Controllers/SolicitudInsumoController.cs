@@ -27,8 +27,9 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 
 		[HttpPost]
-		public ActionResult Register(SolicitudInsumoModel solicitudInsumo)
+		public ActionResult Register(FormCollection form)
 		{
+			
 			return View();
 		}
 

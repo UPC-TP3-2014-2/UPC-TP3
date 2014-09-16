@@ -17,6 +17,11 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 			return InsumoRepositorio.ObtenerTodos();
 		}
 
+		public Insumo ObtenerPorId(int id)
+		{
+			return InsumoRepositorio.ObtenerPorId(id);
+		}
+
 
 	}
 }
