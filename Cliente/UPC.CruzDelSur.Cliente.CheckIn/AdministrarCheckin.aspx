@@ -1,9 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AdministrarCheckin.aspx.cs" Inherits="Default2" %>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-
-
-
-<%--<!DOCTYPE html>
+    
+    <%--<!DOCTYPE html>
 
 <html >
 <head>
@@ -27,20 +26,47 @@
 <%--</head>
 <body>
     <form id="form1" runat="server">   --%>
-    <div id="contenedor">
-    <h2 class="h2">ADMINISTRACIÓN DE CHECK IN</h2>
+    
+    
+    
+    <h2 class="h2">Gestionar CheckIn</h2>
+    
     <br />
-        <fieldset>
-        <legend style="font-size:14px">Búsqueda:</legend>
-            <asp:Label ID="Label1" runat="server" Text="Nro Boleto:" CssClass="form-group"></asp:Label>
-            <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-            <asp:Label ID="Label2" runat="server" Text="DNI" CssClass="form-group" ></asp:Label>
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn" 
+
+        <div class="panel panel-default">
+
+  <div class="panel-heading">Criterios de búsqueda</div>
+
+          
+            <br />
+
+          
+  <div class="form-inline">
+      <div class="form-group">
+       &nbsp;       &nbsp;
+       <asp:Label ID="Label1" runat="server" Text="Nro Boleto:" CssClass="form-group"></asp:Label>
+            <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control" ></asp:TextBox>
+       &nbsp;&nbsp;
+       <asp:Label ID="Label2" runat="server" Text="Nro DNI:" CssClass="form-group"></asp:Label>
+    
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" ></asp:TextBox>
+    
+            &nbsp;&nbsp;
+    
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
-                <br /><br />
-       </fieldset>        
+
+          <br />
+          <br />
+
+          </div>
+             </div>  
+       </div>     
+
+   
+
+       
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
             DataKeyNames="NroBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
@@ -133,8 +159,8 @@
             </EmptyDataTemplate>            
         </asp:GridView>  
         
-         <asp:Button ID="btnImprimir" runat="server" CssClass="mybtnstyle" Text="Imprimir Información de Viaje" OnClientClick = "return PrintPanel();" OnClick="btnImprimir_Click" />
-         <asp:Button ID="btnInicio" runat="server" CssClass="mybtnstyle" 
+         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Imprimir Información de Viaje" OnClientClick = "return PrintPanel();" OnClick="btnImprimir_Click" />
+         <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>
 
         <asp:Panel ID="pnlContents" runat="server">

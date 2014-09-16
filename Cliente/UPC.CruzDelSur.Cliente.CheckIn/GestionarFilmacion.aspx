@@ -39,21 +39,39 @@
 
 
     <div id="contenedor">
-    <h2>GESTIONAR FILMACION</h2>
+    <h2>Gestionar Filmación</h2>
     <br />
-        <fieldset>
-        <legend style="font-size:14px">Búsqueda:</legend>
+       <br />
+
+
+        <div class="panel panel-default">
+
+  <div class="panel-heading">Criterios de búsqueda</div>
+
+          
+            <br />
+
+          
+  <div class="form-inline">
+      <div class="form-group">
+        &nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Fecha:"></asp:Label>
-            <asp:TextBox ID="txtDate" runat="server" ReadOnly = "true"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" 
-                onclick="btnBuscar_Click" />
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtDate" runat="server" ReadOnly = "true" CssClass="form-control"></asp:TextBox>
+            &nbsp;&nbsp;
     
-                <br /><br />
-       </fieldset>        
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" onclick="btnBuscar_Click"/>
+     
+             <br />
+          <br />
+
+          </div>
+             </div>  
+       </div>          
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
-            CssClass="mGrid"
+            CssClass="table"
             DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
@@ -105,8 +123,8 @@
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-         <asp:Button ID="btnImprimir" runat="server" CssClass="mybtnstyle" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
-         <asp:Button ID="btnInicio" runat="server" CssClass="mybtnstyle" 
+         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
+         <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>
 
         <asp:Panel ID="pnlContents" runat="server">

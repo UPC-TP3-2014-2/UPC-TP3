@@ -127,6 +127,43 @@ namespace UPC.CruzDelSur.Datos.CheckIn
            return lst;
        }
 
+
+
+       public List<BE_Equipaje> f_verificarEstadoEquipaje(String nroboleto)
+       {
+           List<BE_Equipaje> lst = new List<BE_Equipaje>();
+           SqlParameter[] param = new SqlParameter[2];
+           param[0] = new SqlParameter("pNROBOLETO", SqlDbType.VarChar);
+           param[0].Value = nroboleto;
+           param[0].Direction = ParameterDirection.Input;
+           
+
+           DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_EQUIPAJEVERIFICARESTADO", param);
+           int ColumnCount = ds.Tables.Count;
+           DataTable dt = ds.Tables[0];
+           foreach (DataRow dr in dt.Rows)
+           {
+               //Object of the propery class
+               BE_Equipaje objEquipaje = new BE_Equipaje();
+               //asign values
+               objEquipaje.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
+               objEquipaje.Pasajero = dr["Pasajero"].ToString();
+               objEquipaje.Peso = dr["DEC_PESO"].ToString();
+               objEquipaje.Origen = dr["VCH_ORIGEN"].ToString();
+               objEquipaje.Destino = dr["VCH_DESTINO"].ToString();
+               objEquipaje.FechaSalida = dr["FechaSalida"].ToString();
+               objEquipaje.HoraSalida = dr["HoraSalida"].ToString();
+               objEquipaje.TipoEquipaje = dr["VCH_NOMBREETIQUETA"].ToString();
+               objEquipaje.Ubicacion = dr["VCH_UBICACION"].ToString();
+               objEquipaje.FechaActual = dr["FechaActual"].ToString();
+               objEquipaje.HoraActual = dr["HoraActual"].ToString();
+               objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
+               //add one row to the list
+               lst.Add(objEquipaje);
+           }
+           return lst;
+       }
+
        public BE_Tiket f_modificarEquipaje(int codequipaje, int codboleto)
        {
            SqlParameter[] param = new SqlParameter[14];
