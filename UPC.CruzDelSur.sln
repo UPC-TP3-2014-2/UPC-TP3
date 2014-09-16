@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
@@ -29,6 +28,36 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Modelo.CheckIn", "Negocio\UPC.CruzDelSur.Negocio.Modelo.CheckIn\UPC.CruzDelSur.Negocio.Modelo.CheckIn.csproj", "{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.CheckIn", "Datos\UPC.CruzDelSur.Datos.CheckIn\UPC.CruzDelSur.Datos.CheckIn.csproj", "{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn(1)", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{49e46821-5bbf-4837-8de6-d8dd1cac5a08}|UPC.CruzDelSur.Negocio.Modelo.CheckIn.dll;{5bdb5419-ceeb-42f9-a3a2-618d5a350e8d}|UPC.CruzDelSur.Datos.CheckIn.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/UPC.CruzDelSur.Cliente.CheckIn"
+		Debug.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UPC.CruzDelSur.Cliente.CheckIn\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/UPC.CruzDelSur.Cliente.CheckIn"
+		Release.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\UPC.CruzDelSur.Cliente.CheckIn\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.Abastecimiento", "Datos\UPC.CruzDelSur.Datos.Abastecimiento\UPC.CruzDelSur.Datos.Abastecimiento.csproj", "{006018DF-5C2C-4C3D-853F-192DF0BD0A9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Modelo.Abastecimiento", "Negocio\UPC.CruzDelSur.Modelo.Abastecimiento\UPC.CruzDelSur.Modelo.Abastecimiento.csproj", "{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Abastecimiento", "Negocio\UPC.CruzDelSur.Negocio.Abastecimiento\UPC.CruzDelSur.Negocio.Abastecimiento.csproj", "{81A875F5-AA12-4638-8EF8-0507382AFF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Cliente.Abastecimiento", "Cliente\UPC.CruzDelSur.Cliente.Abastecimiento\UPC.CruzDelSur.Cliente.Abastecimiento.csproj", "{AF7DFD11-7A93-4AC0-926C-BF6250336597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +93,26 @@ Global
 		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +125,13 @@ Global
 		{5C474916-C5D4-41FB-BC2E-18E5DE3A3C84} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
 		{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
 		{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
+		{B70C5C48-BB02-40FB-A038-8809AAAD3B3E} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
+		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
+		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
+		{81A875F5-AA12-4638-8EF8-0507382AFF1A} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
+		{AF7DFD11-7A93-4AC0-926C-BF6250336597} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

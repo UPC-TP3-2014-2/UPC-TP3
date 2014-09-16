@@ -61,7 +61,7 @@
         }
 
         function deleteEntity() {
-            return bsDialog.deleteDialog('Solicitud de Capacitacion')
+            return bsDialog.deleteDialog('Solicitud de Capacitación')
                 .then(confirmDelete);
 
             function confirmDelete() {

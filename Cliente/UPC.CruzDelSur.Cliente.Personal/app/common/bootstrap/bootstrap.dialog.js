@@ -21,19 +21,21 @@
             '        <p>{{message}}</p>' +
             '    </div>' +
             '    <div class="modal-footer">' +
-            '        <button class="btn btn-primary" data-ng-click="ok()">{{okText}}</button>' +
-            '        <button class="btn btn-info" data-ng-click="cancel()">{{cancelText}}</button>' +
+            '        <button class="btn btn-danger" data-ng-click="ok()">{{okText}}</button>' +
+            '        <button class="btn btn-default" data-ng-click="cancel()">{{cancelText}}</button>' +
             '    </div>' +
             '</div>');
 
         return service;
 
         function deleteDialog(itemName) {
-            var title = 'Confirmar Eliminacion';
-            itemName = itemName || 'item';
-            var msg = 'Eliminar ' + itemName + '?';
+            var title = 'Confirmar Eliminación';
+            itemName = itemName || 'esta entidad';
+            var msg = '¿Desea eliminar ' + itemName + '?';
+            var okText = 'Eliminar';
+            var cancelText = 'Cancelar';
 
-            return confirmationDialog(title, msg);
+            return confirmationDialog(title, msg, okText, cancelText);
         }
 
         function confirmationDialog(title, msg, okText, cancelText) {
