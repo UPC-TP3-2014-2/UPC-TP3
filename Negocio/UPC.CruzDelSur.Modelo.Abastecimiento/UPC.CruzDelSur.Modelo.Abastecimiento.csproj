@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agencia.cs" />
+    <Compile Include="DetSolicitudInsumo.cs" />
     <Compile Include="Insumo.cs" />
     <Compile Include="ProgramacionRuta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

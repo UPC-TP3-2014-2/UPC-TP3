@@ -49,7 +49,7 @@ function buscarInsumo() {
         limpiarTablaBusquedaInsumo();
 
         data.forEach(function (item) {
-            var registro = '<tr><td>' + item['Id'] + '</td><td>' + item['Descripcion'] + '</td><td><input type="checkbox" name="insumo-id" value="' + item['Id'] + '" /></td></tr>';
+            var registro = '<tr><td>' + item['Id'] + '</td><td>' + item['Descripcion'] + '</td><td><input type="checkbox" name="insumo-id-select" value="' + item['Id'] + '" /></td></tr>';
             $("#buscar-insumo-tabla tbody").append(registro);
         });
 
@@ -121,7 +121,7 @@ function aceptarBusquedaSolicitudCocina() {
 
 function aceptarBusquedaInsumo() {
 
-    var insumos = $('input[name="insumo-id"]:checked');
+    var insumos = $('input[name="insumo-id-select"]:checked');
 
     
     insumos.each(function () {
@@ -129,7 +129,7 @@ function aceptarBusquedaInsumo() {
         var id = $(this).val();
 
         $.post('/Insumo/SearchById/' + id, function (data) {
-            var registro = '<tr><td>' + data['Id'] + '<input type="hidden" name="insumo-id[' + data['Id'] + ']" id="insumo-id[' + data['Id'] + ']" value="1" /></td><td>' + data['Descripcion'] + '</td><td>' + data['Descripcion'] + '</td><td><div class="col-lg-4"><input type="number" name="insumo-cantidad[' + data['Id'] + ']" id="insumo-cantidad[' + data['Id'] + ']" class="form-control" /></div></td></td></tr>';
+            var registro = '<tr><td>' + data['Id'] + '<input type="hidden" name="insumo-id" id="insumo-id[' + data['Id'] + ']" value="' + data['Id'] + '" /></td><td>' + data['Descripcion'] + '</td><td>' + data['Descripcion'] + '</td><td><div class="col-lg-4"><input type="number" name="insumo-cantidad" id="insumo-cantidad[' + data['Id'] + ']" class="form-control" /></div></td></td></tr>';
             $('#insumo-tabla tbody').append(registro);
         });
 
@@ -144,13 +144,34 @@ function registrarSolicitudInsumo() {
 
     var url = $(this).attr("action");
     var data = {
-        'SolicitudCocinaId': $('#SolicitudCocinaId').val()
+        'SolicitudCocinaId': $('#SolicitudCocinaId').val(),
+        'Insumos': []
     };
     
 
-    $.post(url, data, function (data) {
-        console.log("Correcto");
-    })
+    var filas = $('#insumo-tabla tbody').each(function (item) {
+        
+        console.log(item);
+        var id = $('input[name="insumo-id"]', this).val();
+        var cantidad = $('input[name="insumo-cantidad"]', this).val()
+
+        data['Insumos'].push(id);
+    });
+
+    console.log(data);
+
+    
+    //$.ajax({
+    //    type: "POST",
+    //    url: url,
+    //    data: data, 
+    //    success: function (data) {
+    //        alert(data.Result);
+    //    },
+    //    dataType: "json",
+    //    traditional: true,
+    //    contentType: "application/json; charset=utf-8"
+    //});
 
     return false;
 }

@@ -28,18 +28,18 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
             {
                 while (Reader.Read())
                 {
-                    Listado.Add(
-                        new SolicitudInsumo()
-                        {
-                            Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-                            SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
-                            Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
-                            FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
-                            Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-                            Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-                            Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
-                        }
-                        );
+					//Listado.Add(
+					//	new SolicitudInsumo()
+					//	{
+					//		Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+					//		SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
+					//		Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
+					//		FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
+					//		Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
+					//		Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
+					//		Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
+					//	}
+					//	);
                 }
             }
 
@@ -57,16 +57,16 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
             {
                 if (Reader.Read())
                 {
-                    return new SolicitudInsumo()
-                    {
-                        Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-                        SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
-                        Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
-                        FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
-                        Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-                        Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-                        Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
-                    };
+					//return new SolicitudInsumo()
+					//{
+					//	Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+					//	SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
+					//	Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
+					//	FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
+					//	Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
+					//	Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
+					//	Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
+					//};
                 }
             }
 
@@ -77,9 +77,14 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
             throw new NotImplementedException();
         }
 
-        public void Insertar(SolicitudInsumo entidad)
+        public void Insertar(SolicitudInsumo solicitudInsumo)
         {
-            throw new NotImplementedException();
+			string Query = "insert into ta_solicitudinsumo(dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado_solicitud) values(@dte_fecha_solicitud, @int_codigo_solicitudcocina, @tin_estado_solicitud)";
+			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
+			Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudInsumo.FechaSolicitud);
+			Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, solicitudInsumo.SolicitudCocina.Id);
+			Database.AddInParameter(DbCommand, "@tin_estado_solicitud", DbType.Boolean, solicitudInsumo.Estado);
+			Database.ExecuteNonQuery(DbCommand);
         }
 
         public void Actualizar(SolicitudInsumo entidad)
@@ -96,5 +101,16 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
         {
             throw new NotImplementedException();
         }
-    }
+
+
+		public int ObtenerUltimoId()
+		{
+			string Query = "select max(int_codigo_solicitudinsumo) from ta_solicitudinsumo";
+			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
+
+			return Convert.ToInt32(Database.ExecuteScalar(DbCommand));
+
+
+		}
+	}
 }
