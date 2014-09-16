@@ -15,6 +15,7 @@
         var fromToRangeValidator;
         var legalAgeValidator;
         var requireReferenceValidator;
+        var futureDateValidator;
 
         var service = {
             applyValidators: applyValidators,
@@ -27,6 +28,7 @@
 
             applyToPersona(metadataStore);
             applyToExperienciaLaboral(metadataStore);
+            applyToSolicitudCapacitacion(metadataStore);
 
             log('Validators applied', null, serviceId);
         }
@@ -56,6 +58,21 @@
                 .push(requireReferenceValidator);
         }
 
+        function applyToSolicitudCapacitacion(metadataStore) {
+            var solicitudCapacitacionType = metadataStore.getEntityType(entityNames.solicitudCapacitacion);
+
+            solicitudCapacitacionType.getProperty('trabajador').validators
+                .push(requireReferenceValidator);
+
+            solicitudCapacitacionType.getProperty('capacitacion').validators
+                .push(requireReferenceValidator);
+
+            var fechaPlanificada = solicitudCapacitacionType.getProperty('fechaPlanificada');
+            fechaPlanificada.displayName = 'Fecha Planificada';
+            fechaPlanificada.validators
+                .push(futureDateValidator);
+        }
+
         function createAndRegister(eNames) {
             entityNames = eNames;
 
@@ -71,6 +88,9 @@
 
             legalAgeValidator = createLegalAgeValidator();
             Validator.register(legalAgeValidator);
+
+            futureDateValidator = createFutureDateValidator();
+            Validator.register(futureDateValidator);
 
             log('Validators created and registered', null, serviceId, false);
         }
@@ -96,6 +116,19 @@
                 }
 
                 return true;
+            }
+        }
+
+        function createFutureDateValidator() {
+            var name = 'futureDate';
+            var ctx = {
+                messageTemplate: '%displayName% no puede ser una fecha en el pasado'
+            };
+            var val = new Validator(name, valFn, ctx);
+            return val;
+
+            function valFn(value) {
+                return value ? moment().diff(value, 'days') <= 0 : true;
             }
         }
 
