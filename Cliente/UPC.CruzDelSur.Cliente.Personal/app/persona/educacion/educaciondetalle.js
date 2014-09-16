@@ -51,7 +51,7 @@
         }
 
         function deleteEducacion() {
-            return bsDialog.deleteDialog('Educacion')
+            return bsDialog.deleteDialog('Educación')
                 .then(confirmDelete);
 
             function confirmDelete() {
