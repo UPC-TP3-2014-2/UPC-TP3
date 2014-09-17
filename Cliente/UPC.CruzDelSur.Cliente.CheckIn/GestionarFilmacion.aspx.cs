@@ -26,12 +26,36 @@ public partial class GestionarFilmacion : System.Web.UI.Page
 
     private void BindData()
     {
+
+
+
         IBL_Filmacion carga = new BL_Filmacion();
         string dt = Request.Form[txtDate.UniqueID];
-        List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt));
-        grvDetalle.DataSource = ListaFilmacion;
-        grvDetalle.DataBind();
+
+        if (dt.Equals(""))
+        {
+            string message = "Ingrese una fecha de busqueda.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("alert('");
+            sb.Append(message);
+            sb.Append("')};");
+            sb.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
+        else
+        {
+            List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt));
+            grvDetalle.DataSource = ListaFilmacion;
+            grvDetalle.DataBind();
      
+        }
+
+        
+
+
+        
     }
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
