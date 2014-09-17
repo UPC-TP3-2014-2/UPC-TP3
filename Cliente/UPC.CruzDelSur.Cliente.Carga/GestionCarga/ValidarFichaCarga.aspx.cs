@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+
+
+using System.Security.Cryptography;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+using UPC.CruzDelSur.Negocio.Modelo.Carga;
+using UPC.CruzDelSur.Datos.Carga;
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class ValidarFichaCarga : System.Web.UI.Page
     {
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -15,22 +27,17 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
                 {
                     hffichacarga.Value = Context.Request.QueryString["idficha"].ToString();
 
+                    btnIngresarCodigo.OnClientClick = "javascript:OpenModalDialog('Validar.aspx?opt=2&idcarga=" + hffichacarga.Value + " ','null','400','800')";
 
 
 
+                    UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBEMG_ES01_FichaCarga = oBL_Carga.f_ListadoUnoCarga(Int32.Parse(hffichacarga.Value));
 
-
-                    List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                    ParametroGenerico _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MG_ES01_FichaCarga_ID";
-                    _BEParametro.valor = hffichacarga.Value;
-                    _ArrayParam.Add(_BEParametro);
-
-                    BEMG_ES01_FichaCarga oBEMG_ES01_FichaCarga = _servletGestionCarga.ListarUnoFichas(_ArrayParam);
-
-
-                    lblNumeroFicha.Text = oBEMG_ES01_FichaCarga.Ficha;
-                    lblImporteTotal.Text = oBEMG_ES01_FichaCarga.ImporteTotal.ToString();
+                    lblEstadoPago.Text = oBEMG_ES01_FichaCarga.ESTADOPAGO;
+                    lblClave.Text = oBEMG_ES01_FichaCarga.CLAVE_SEGURIDAD ;
+                    lblNumeroFicha.Text = oBEMG_ES01_FichaCarga.FICHA;
+                    lblImporteTotal.Text = oBEMG_ES01_FichaCarga.DBL_IMPORTETOTAL.ToString();
 
 
 
@@ -38,40 +45,33 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
 
 
 
-                    _ArrayParam = new List<ParametroGenerico>();
-                    _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MK_ProgramacionRuta_ID";
-                    _BEParametro.valor = oBEMG_ES01_FichaCarga.MK_ProgramacionRuta_ID;
-                    _ArrayParam.Add(_BEParametro);
-                    BEMK_ProgramacionRuta oBEMK_ProgramacionRuta = _servletGestionCarga.ListarUnoProgramacionRuta(_ArrayParam);
-                    lblAgenciaOrigen.Text = oBEMK_ProgramacionRuta.Origen;
-                    lblAgenciaDestino.Text = oBEMK_ProgramacionRuta.Destino;
+
+
+
+                    UPC.CruzDelSur.Datos.Carga.Programacion_Ruta oBL_Programacion_Ruta = new UPC.CruzDelSur.Datos.Carga.Programacion_Ruta();
+
+
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Programacion_Ruta oBE_Programacion_Ruta = oBL_Programacion_Ruta.f_UnoProgramacion_Ruta(Int32.Parse(oBEMG_ES01_FichaCarga.CODIGO_PROGRAMACION_RUTA.ToString()));
+
+
+
+                    lblAgenciaOrigen.Text = oBE_Programacion_Ruta.ORIGEN;
+                    lblAgenciaDestino.Text = oBE_Programacion_Ruta.DESTINO;
 
 
 
 
 
+                    UPC.CruzDelSur.Datos.Carga.Cliente oBL_Cliente = new UPC.CruzDelSur.Datos.Carga.Cliente();
 
-                    _ArrayParam = new List<ParametroGenerico>();
-                    _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MG_ES04_Cliente_ID";
-                    _BEParametro.valor = oBEMG_ES01_FichaCarga.MG_ES04_Cliente_ID;
-                    _ArrayParam.Add(_BEParametro);
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oBE_Cliente = oBL_Cliente.f_UnoCliente(oBEMG_ES01_FichaCarga.CLIENTE_ORIGEN);
 
-                    BEMG_ES04_Cliente oBEMG_ES04_Cliente = _servletGestionCarga.ListarUnoCliente(_ArrayParam);
-
-                    lblRemitente.Text = String.Concat(oBEMG_ES04_Cliente.Nombres, " ", oBEMG_ES04_Cliente.Apellidos);
+                    lblRemitente.Text = String.Concat(oBE_Cliente.NOMBRES, " ", oBE_Cliente.APELLIDOS);
 
 
-                    _ArrayParam = new List<ParametroGenerico>();
-                    _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MG_ES04_Cliente_ID";
-                    _BEParametro.valor = oBEMG_ES01_FichaCarga.MG_ES04_Cliente_T_MG_ES04_Cliente_ID;
-                    _ArrayParam.Add(_BEParametro);
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oBE_Cliente2 = oBL_Cliente.f_UnoCliente(oBEMG_ES01_FichaCarga.CLIENTE_DESTINO);
 
-                    oBEMG_ES04_Cliente = _servletGestionCarga.ListarUnoCliente(_ArrayParam);
-
-                    lblDestinatario.Text = String.Concat(oBEMG_ES04_Cliente.Nombres, " ", oBEMG_ES04_Cliente.Apellidos);
+                    lblDestinatario.Text = String.Concat(oBE_Cliente2.NOMBRES, " ", oBE_Cliente2.APELLIDOS);
 
 
 
@@ -79,6 +79,16 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
 
                 }
 
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoFichaCarga.aspx");
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoFichaCarga.aspx");
         }
     }
 }

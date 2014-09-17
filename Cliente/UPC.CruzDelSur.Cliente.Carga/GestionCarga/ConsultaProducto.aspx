@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true" CodeBehind="ConsultaProducto.aspx.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.GestionCarga.ConsultaProducto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true" CodeBehind="ConsultaProducto.aspx.cs" Inherits="CRUZDELSUR.UI.Web.GestionCarga.ConsultaProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -8,18 +8,18 @@
     <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False" 
         onrowcommand="gvProductos_RowCommand" Width="100%">
         <Columns>
-            <asp:BoundField DataField="MG_ES03_Producto_ID" HeaderText="ID" />
-            <asp:BoundField DataField="Producto" HeaderText="Producto" />
-            <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-            <asp:BoundField DataField="Precio" HeaderText="Precio" />
-            <asp:BoundField DataField="TipoCarga" HeaderText="Tipo Carga" />
-            
+            <asp:BoundField DataField="CODIGO_PRODUCTO" HeaderText="ID" />
+            <asp:BoundField DataField="NOMBRE" HeaderText="Producto" />
+            <asp:BoundField DataField="Precio" HeaderText="Precio" />            
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ID="lnkSeleccionar" runat="server" 
-                        CommandArgument='<%# Eval("MG_ES03_Producto_ID")%>' CommandName="Seleccionar">Seleccionar</asp:LinkButton>
+                    <asp:CheckBox ID="lnkSeleccionar" runat="server"  CssClass='<%# Eval("CODIGO_PRODUCTO")%>' />
+                    
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <br />
+    <asp:Button ID="btnSeleccionarProductos" runat="server" Text="Seleccionar Productos" OnClick="btnSeleccionarProductos_Click"  />
+
 </asp:Content>

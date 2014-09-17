@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true" CodeBehind="Validar.aspx.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.GestionCarga.Validar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true" CodeBehind="Validar.aspx.cs" Inherits="CRUZDELSUR.UI.Web.GestionCarga.Validar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

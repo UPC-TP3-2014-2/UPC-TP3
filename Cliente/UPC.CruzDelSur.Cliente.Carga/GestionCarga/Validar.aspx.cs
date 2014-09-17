@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
+using System.Web.UI.WebControls;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+
+using UPC.CruzDelSur.Cliente.Carga;
+using UPC.CruzDelSur.Datos.Carga;
+using UPC.CruzDelSur.Negocio.Modelo.Carga;
+
+
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class Validar : System.Web.UI.Page
     {
 
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,24 +35,24 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
             {
                 if (Context.Request.QueryString["opt"] == "1")
                 {
+                    
                     Session["clave"] = Seguridad.Encriptar(txtClave.Text.ToString());
                     this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Seleccionado'); CloseFormOK();</script>"));
                 }
                 if (Context.Request.QueryString["opt"] == "2")
                 {
 
+                    UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBE_Carga = oBL_Carga.f_ListadoUnoCarga(Int32.Parse(Context.Request.QueryString["idcarga"]));
 
-                    List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                    ParametroGenerico _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MG_ES01_FichaCarga_ID";
-                    _BEParametro.valor = Session["idcarga"].ToString();
-                    _ArrayParam.Add(_BEParametro);
 
-                    BEMG_ES01_FichaCarga oBEMG_ES01_FichaCarga = _servletGestionCarga.ListarUnoFichas(_ArrayParam);
+                    
 
-                    if (oBEMG_ES01_FichaCarga.ClaveSeguridad == Seguridad.Encriptar (txtClave.Text).ToString())
+                    if (oBE_Carga.CLAVE_SEGURIDAD == Seguridad.Encriptar(txtClave.Text).ToString())
                     {
-                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave Validada'); CloseFormOK();</script>"));
+                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El codigo Ingresado es correcto'); CloseFormOK();</script>"));
+                        int o = oBL_Carga.f_ActualizarEstadoCarga("Entregado", Context.Request.QueryString["idcarga"] );
+
                     }
                     else
                         this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave ingresada no es validad, no se puede validar la carga'); CloseFormOK();</script>"));  

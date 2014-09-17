@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-namespace UPC.CruzDelSur.Cliente.Carga
+namespace CRUZDELSUR.UI.Web
 {
     public partial class SitePopup : System.Web.UI.MasterPage
     {

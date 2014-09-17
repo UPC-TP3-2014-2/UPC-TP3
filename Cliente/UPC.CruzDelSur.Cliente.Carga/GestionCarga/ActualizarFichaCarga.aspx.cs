@@ -1,253 +1,334 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+
+
+using System.Security.Cryptography;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UPC.CruzDelSur.Datos.Carga;
+using UPC.CruzDelSur.Negocio.Modelo.Carga;
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class ActualizarFichaCarga : System.Web.UI.Page
     {
 
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+        //ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.IsPostBack)
-            //{
-
-            if (!String.IsNullOrEmpty(Context.Request.QueryString["idficha"]))
+            if (!Page.IsPostBack)
             {
-                hffichacarga.Value = Context.Request.QueryString["idficha"].ToString();
+                UPC.CruzDelSur.Datos.Carga.Carga CodigoFicha  = new UPC.CruzDelSur.Datos.Carga.Carga();
+
+                txtFicha.Text = CodigoFicha.f_GenerarNumero();
+                if (!String.IsNullOrEmpty(Context.Request.QueryString["idficha"]))
+                {
+                    hffichacarga.Value = Context.Request.QueryString["idficha"].ToString();
 
 
-                Session["idcarga"] = hffichacarga.Value;
+                    Session["idcarga"] = hffichacarga.Value;
+
+
+                    UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Carga  oBE_Carga = oBL_Carga.f_ListadoUnoCarga(Int32.Parse(hffichacarga.Value));
+
+
+                    txtFicha.Text = oBE_Carga.FICHA;
+                    txtObservacion.Text = oBE_Carga.OBSERVACION;
+                    lblClave.Text = oBE_Carga.CLAVE_SEGURIDAD;
+                    txtImporteTotal.Text = oBE_Carga.DBL_IMPORTETOTAL.ToString();
+                    txtPesoTotal.Text = oBE_Carga.DBL_PESOTOTAL.ToString();
+                    ddlTipoPago.SelectedValue = oBE_Carga.TIPO_PAGO.ToString();
+
+
+                    UPC.CruzDelSur.Datos.Carga.DetalleCarga oBL_DetalleCarga = new UPC.CruzDelSur.Datos.Carga.DetalleCarga();
+
+
+                    Session["idProgramacionRuta"] = oBE_Carga.CODIGO_PROGRAMACION_RUTA;
+                    Session["idRemitente"] = oBE_Carga.CLIENTE_ORIGEN;
+                    Session["idDestinatario"] = oBE_Carga.CLIENTE_DESTINO;
+
+
+                    if (Session["ListaProducto"] == null)
+                        Session["ListaProducto"] = oBL_DetalleCarga.f_ListaDetalleCarga(Int32.Parse(hffichacarga.Value));
 
 
 
-                List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                ParametroGenerico _BEParametro = new ParametroGenerico();
-                _BEParametro.nombre = "MG_ES01_FichaCarga_ID";
-                _BEParametro.valor = hffichacarga.Value;
-                _ArrayParam.Add(_BEParametro);
-
-                BEMG_ES01_FichaCarga oBEMG_ES01_FichaCarga = _servletGestionCarga.ListarUnoFichas(_ArrayParam);
-                txtFicha.Text = oBEMG_ES01_FichaCarga.Ficha;
-                //txtImporteTotal .Text = oBEMG_ES01_FichaCarga.ImporteTotal.ToString();
-                //txtObservacion.Text = oBEMG_ES01_FichaCarga.Observacion.ToString();
-                //txtPesoTotal.Text = oBEMG_ES01_FichaCarga.PesoTotal.ToString();
-
-
-                Session["idProgramacionRuta"] = oBEMG_ES01_FichaCarga.MK_ProgramacionRuta_ID;
-                Session["idRemitente"] = oBEMG_ES01_FichaCarga.MG_ES04_Cliente_ID;
-                Session["idDestinatario"] = oBEMG_ES01_FichaCarga.MG_ES04_Cliente_T_MG_ES04_Cliente_ID;
+                    if (Session["idRemitente"] != null)
+                    {
+                        UPC.CruzDelSur.Datos.Carga.Cliente oBL_Cliente = new UPC.CruzDelSur.Datos.Carga.Cliente();
+                        UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oCliente = oBL_Cliente.f_UnoCliente(Session["idRemitente"].ToString());
+                        txtRemitente.Text = String.Concat(oCliente.NOMBRES, " ", oCliente.APELLIDOS);
+                        txtDniRemitente.Text = oCliente.DOCUMENTO;
+                        HFIdClienteRemi.Value = oCliente.DOCUMENTO;
+                    }
+                    if (Session["idDestinatario"] != null)
+                    {
 
 
+                        UPC.CruzDelSur.Datos.Carga.Cliente oBL_Cliente = new UPC.CruzDelSur.Datos.Carga.Cliente();
+                        UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oCliente = oBL_Cliente.f_UnoCliente(Session["idDestinatario"].ToString());
 
+                        txtDestinatario.Text = String.Concat(oCliente.NOMBRES, " ", oCliente.APELLIDOS);
+                        txtDNIDestinatario.Text = oCliente.DOCUMENTO;
+
+                        HFIdClienteDest.Value = oCliente.DOCUMENTO;
+
+                    }
+
+
+
+                    
+                }
 
             }
+
 
 
             if (Session["idProgramacionRuta"] != null)
             {
                 //CREAMOS LOS PARAMETROS
-                List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                ParametroGenerico _BEParametro = new ParametroGenerico();
-                _BEParametro.nombre = "MK_ProgramacionRuta_ID";
-                _BEParametro.valor = Session["idProgramacionRuta"].ToString();
-                _ArrayParam.Add(_BEParametro);
-                BEMK_ProgramacionRuta oBEMK_ProgramacionRuta = _servletGestionCarga.ListarUnoProgramacionRuta(_ArrayParam);
-                ddlAgenciaDestino.SelectedValue = oBEMK_ProgramacionRuta.MG_ES10_Agencia_T_MG_ES10_Agencia_ID.ToString();
-                txtFechasalida.Text = oBEMK_ProgramacionRuta.FechaHoraOrigen.ToShortDateString();
-                txtfechallegada.Text = oBEMK_ProgramacionRuta.FechaHoraDestino.ToShortDateString();
-                txtUnidadTransporte.Text = oBEMK_ProgramacionRuta.Descripcion;
-                MK_ProgramacionRuta_ID.Value = oBEMK_ProgramacionRuta.MK_ProgramacionRuta_ID.ToString();
+
+                UPC.CruzDelSur.Datos.Carga.Programacion_Ruta oBL_Programacion_Ruta = new UPC.CruzDelSur.Datos.Carga.Programacion_Ruta();
+
+                UPC.CruzDelSur.Negocio.Modelo.Carga.Programacion_Ruta oBE_Programacion_Ruta = oBL_Programacion_Ruta.f_UnoProgramacion_Ruta(Int32.Parse(Session["idProgramacionRuta"].ToString()));
+
+
+                ddlAgenciaDestino.SelectedValue = oBE_Programacion_Ruta.CODIGO_AGENCIADESTINO.ToString();
+                txtFechasalida.Text = oBE_Programacion_Ruta.FECHA_ORIGEN.Value.ToShortDateString();
+                txtfechallegada.Text = oBE_Programacion_Ruta.FECHA_DESTINO.Value.ToShortDateString();
+                MK_ProgramacionRuta_ID.Value = oBE_Programacion_Ruta.CODIGO_PROGRAMACION_RUTA.ToString();
+                txtUnidadTransporte.Text = oBE_Programacion_Ruta.PLACA.ToString();
             }
 
 
-            if (Session["clave"] != null)
-            {
-                lblClave.Text = Session["clave"].ToString();
-            }
-
-            if (Session["idRemitente"] != null)
-            {
-
-
-                List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                ParametroGenerico _BEParametro = new ParametroGenerico();
-                _BEParametro.nombre = "MG_ES04_Cliente_ID";
-                _BEParametro.valor = Session["idRemitente"].ToString();
-                _ArrayParam.Add(_BEParametro);
-
-                BEMG_ES04_Cliente oBEMG_ES04_Cliente = _servletGestionCarga.ListarUnoCliente(_ArrayParam);
+            //    if (Session["clave"] != null)
+            //    {
+            //        lblClave.Text = Session["clave"].ToString();
+            //    }
 
 
 
-                txtRemitente.Text = String.Concat(oBEMG_ES04_Cliente.Nombres, " ", oBEMG_ES04_Cliente.Apellidos);
-                txtDniRemitente.Text = oBEMG_ES04_Cliente.Documento;
-
-                HFIdClienteRemi.Value = oBEMG_ES04_Cliente.MG_ES04_Cliente_ID.ToString();
 
 
-            }
-            if (Session["idDestinatario"] != null)
-            {
-
-                List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                ParametroGenerico _BEParametro = new ParametroGenerico();
-                _BEParametro.nombre = "MG_ES04_Cliente_ID";
-                _BEParametro.valor = Session["idDestinatario"].ToString();
-                _ArrayParam.Add(_BEParametro);
-
-                BEMG_ES04_Cliente oBEMG_ES04_Cliente = _servletGestionCarga.ListarUnoCliente(_ArrayParam);
-
-
-
-                txtDestinatario.Text = String.Concat(oBEMG_ES04_Cliente.Nombres, " ", oBEMG_ES04_Cliente.Apellidos);
-                txtDNIDestinatario.Text = oBEMG_ES04_Cliente.Documento;
-
-                HFIdClienteDest.Value = oBEMG_ES04_Cliente.MG_ES04_Cliente_ID.ToString();
-
-            }
-
-
-
-            List<BEMG_ES03_Producto> ListaProducto = new List<BEMG_ES03_Producto>();
+            List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga> ListaProducto = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga>();
             if (Session["ListaProducto"] != null)
             {
-                ListaProducto = (List<BEMG_ES03_Producto>)Session["ListaProducto"];
+                ListaProducto = (List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga>)Session["ListaProducto"];
             }
             else
             {
-                ListaProducto.Add(new BEMG_ES03_Producto());
+                gvProductos.DataSource = null;
+                gvProductos.DataBind();
             }
-
             if (Session["idProducto"] != null)
             {
-                List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                ParametroGenerico _BEParametro = new ParametroGenerico();
-                _BEParametro.nombre = "MG_ES03_Producto_ID";
-                _BEParametro.valor = Session["idProducto"].ToString();
-                _ArrayParam.Add(_BEParametro);
-
-                BEMG_ES03_Producto oBEMG_ES03_Producto = _servletGestionCarga.ListarUnoProductos(_ArrayParam);
-
-                ListaProducto.RemoveAll(item => item.MG_ES03_Producto_ID == oBEMG_ES03_Producto.MG_ES03_Producto_ID);
-                ListaProducto.Add(oBEMG_ES03_Producto);
+                UPC.CruzDelSur.Datos.Carga.Producto oBL_Producto = new UPC.CruzDelSur.Datos.Carga.Producto();
+                UPC.CruzDelSur.Negocio.Modelo.Carga.Producto oBE_Producto = oBL_Producto.f_ListadoUnoProducto(Int32.Parse(Session["idProducto"].ToString()));
 
 
+                ListaProducto.RemoveAll(item => item.CODIGO_PRODUCTO == oBE_Producto.CODIGO_PRODUCTO);
+                ListaProducto.RemoveAll(item => item.CODIGO_PRODUCTO == 0);
+
+                UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga oBE_DetalleCarga = new UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga();
+                oBE_DetalleCarga.CODIGO_PRODUCTO = oBE_Producto.CODIGO_PRODUCTO;
+                oBE_DetalleCarga.DESCRIPCION = oBE_Producto.DESCRIPCION;
+                oBE_DetalleCarga.PRECIO = oBE_Producto.PRECIO;
+                ListaProducto.Add(oBE_DetalleCarga);
 
                 Session["ListaProducto"] = ListaProducto;
-
             }
             if (Session["clave"] != null)
             {
                 lblClave.Text = Session["clave"].ToString();
             }
 
-            gvProductos.DataSource = ListaProducto;
-            gvProductos.DataBind();
+
+            if (gvProductos.Rows.Count != ListaProducto.Count())
+            {
+                gvProductos.DataSource = ListaProducto;
+                gvProductos.DataBind();
+            }
+
+
+
+            CalculaPesoTotalImporteTotal();
+
+            //    //}
 
             //}
-
-        }
-        protected void setInfo()
-        {
-            ViewState["codigoFicha"] = txtFicha.Text;
-        }
-        protected void GetInfo()
-        {
-            txtFicha.Text = ViewState["codigoFicha"].ToString();
+            //protected void setInfo()
+            //{
+            //    ViewState["codigoFicha"] = txtFicha.Text;
+            //}
+            //protected void GetInfo()
+            //{
+            //    txtFicha.Text = ViewState["codigoFicha"].ToString();
         }
         protected void gvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Eliminar")
             {
-                List<BEMG_ES03_Producto> ListaProducto = new List<BEMG_ES03_Producto>();
+                List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga> ListaProducto = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga>();
                 if (Session["ListaProducto"] != null)
                 {
-                    ListaProducto = (List<BEMG_ES03_Producto>)Session["ListaProducto"];
+                    ListaProducto = (List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga>)Session["ListaProducto"];
+                    UPC.CruzDelSur.Datos.Carga.Producto oBL_Producto = new UPC.CruzDelSur.Datos.Carga.Producto();
+                    UPC.CruzDelSur.Negocio.Modelo.Carga.Producto oBE_Producto = oBL_Producto.f_ListadoUnoProducto(Int32.Parse(e.CommandArgument.ToString()));
 
+                    ListaProducto.RemoveAll(item => item.CODIGO_PRODUCTO == oBE_Producto.CODIGO_PRODUCTO);
 
-                    List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-                    ParametroGenerico _BEParametro = new ParametroGenerico();
-                    _BEParametro.nombre = "MG_ES03_Producto_ID";
-                    _BEParametro.valor = e.CommandArgument.ToString();
-                    _ArrayParam.Add(_BEParametro);
-
-                    BEMG_ES03_Producto oBEMG_ES03_Producto = _servletGestionCarga.ListarUnoProductos(_ArrayParam);
-
-
-                    ListaProducto.RemoveAll(item => item.MG_ES03_Producto_ID == oBEMG_ES03_Producto.MG_ES03_Producto_ID);
+                    Session["ListaProducto"] = ListaProducto;
                     gvProductos.DataSource = ListaProducto;
                     gvProductos.DataBind();
+
+                    CalculaPesoTotalImporteTotal();
 
                 }
             }
         }
 
-        protected void btnAceptar_Click(object sender, EventArgs e)
+        void CalculaPesoTotalImporteTotal()
         {
-            BEMG_ES01_FichaCarga oBEMG_ES01_FichaCarga = new BEMG_ES01_FichaCarga();
-
-            oBEMG_ES01_FichaCarga.ClaveSeguridad = lblClave.Text;
-            oBEMG_ES01_FichaCarga.DestiDni = int.Parse(txtDNIDestinatario.Text);
-            oBEMG_ES01_FichaCarga.MG_ES10_Agencia_IDDestino = Convert.ToInt32(ddlAgenciaDestino.SelectedValue);
-            oBEMG_ES01_FichaCarga.MG_ES10_Agencia_IDOrigen = Convert.ToInt32(ddlAgenciaOrigen.SelectedValue);
-            oBEMG_ES01_FichaCarga.Destinatario = txtDestinatario.Text;
-            oBEMG_ES01_FichaCarga.Estado = "Registrado";
-            oBEMG_ES01_FichaCarga.EstadoPago = true;
-            oBEMG_ES01_FichaCarga.FechaModifica = DateTime.Now.Date;
-            oBEMG_ES01_FichaCarga.FechaRegistra = DateTime.Now.Date;
-            oBEMG_ES01_FichaCarga.FechaRegistro = DateTime.Now.Date;
-            oBEMG_ES01_FichaCarga.Ficha = txtFicha.Text;
-            oBEMG_ES01_FichaCarga.MG_ES04_Cliente_T_MG_ES04_Cliente_ID = int.Parse(HFIdClienteDest.Value);
-            oBEMG_ES01_FichaCarga.MG_ES04_Cliente_ID = int.Parse(HFIdClienteRemi.Value);
-            oBEMG_ES01_FichaCarga.ImporteTotal = double.Parse(txtImporteTotal.Text);
-            oBEMG_ES01_FichaCarga.Observacion = txtObservacion.Text;
-            oBEMG_ES01_FichaCarga.PesoTotal = double.Parse(txtPesoTotal.Text);
-            oBEMG_ES01_FichaCarga.RemiDni = Int32.Parse(txtDniRemitente.Text);
-            oBEMG_ES01_FichaCarga.Remitente = txtRemitente.Text;
-            oBEMG_ES01_FichaCarga.TipoPago = ddlTipoPago.Text;
-            oBEMG_ES01_FichaCarga.UsuarioModifica = "shuaman";
-            oBEMG_ES01_FichaCarga.UsuarioRegistra = "shuaman";
-            oBEMG_ES01_FichaCarga.MK_ProgramacionRuta_ID = int.Parse(MK_ProgramacionRuta_ID.Value);
-
-
-
-
-
-            List<BEMG_ES02_DetalleFCarga> oListaDetalleFCargaDTO = new List<BEMG_ES02_DetalleFCarga>();
-
+            Double importetotal = 0;
+            Double pesototal = 0;
             foreach (GridViewRow row in gvProductos.Rows)
             {
-                BEMG_ES02_DetalleFCarga oDetalleFCargaDTO = new BEMG_ES02_DetalleFCarga();
-
-                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
                 TextBox txtPeso = (TextBox)row.FindControl("txtPeso");
-                TextBox txtimporte = (TextBox)row.FindControl("txtimporte");
 
-                oDetalleFCargaDTO.Cantidad = Int32.Parse(txtCantidad.Text);
-                oDetalleFCargaDTO.Descripcion = row.Cells[2].Text;
-                oDetalleFCargaDTO.MG_ES03_Producto_ID = Int32.Parse(row.Cells[0].Text);
-                oDetalleFCargaDTO.Importe = Int32.Parse(txtimporte.Text);
-                oDetalleFCargaDTO.Peso = Int32.Parse(txtPeso.Text);
-                oDetalleFCargaDTO.Producto = row.Cells[1].Text; ;
-                oDetalleFCargaDTO.TipoCarga = row.Cells[3].Text; ;
-                oDetalleFCargaDTO.MG_ES01_FichaCarga_ID = oBEMG_ES01_FichaCarga.MG_ES01_FichaCarga_ID;
+                TextBox txtimporte = (TextBox)row.FindControl("txtimporte");
+                DropDownList ddlTipoCarga = (DropDownList)row.FindControl("ddlTipoCarga");
+
+                if (txtimporte.Text != "")
+                {
+                    if (txtimporte.Text.Trim().ToString() == "")
+                        importetotal += 0;
+                    else
+                        importetotal += double.Parse(txtimporte.Text);
+                }
+                if (txtPeso.Text != "")
+                    if (txtPeso.Text.Trim().ToString() == "")
+                        pesototal += 0;
+                    else
+                        pesototal += double.Parse(txtPeso.Text);
+
+            }
+            txtImporteTotal.Text = importetotal.ToString();
+            txtPesoTotal.Text = pesototal.ToString();
+            txtigv.Text = (importetotal * 0.18).ToString();
+            txtTotal.Text = (importetotal * 1.18).ToString();
+
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+            if (gvProductos.Rows.Count == 0)
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Debe Seleccionar Productos'); </script>"));
+                return;
+            }
+
+            if (lblClave.Text.Trim().ToString().Length == 0)
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Debe Ingresar la clave de seguridad'); </script>"));
+                return;
+            }
+
+
+
+
+            UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBE_Carga = new UPC.CruzDelSur.Negocio.Modelo.Carga.Carga();
+            oBE_Carga.CODIGO_CARGA = Int32.Parse(hffichacarga.Value);
+
+            List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga> oListaDetalleFCargaDTO = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga>();
+            Double importetotal = 0;
+            Double pesototal = 0;
+            foreach (GridViewRow row in gvProductos.Rows)
+            {
+                UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga oDetalleFCargaDTO = new UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga();
+
+
+                UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga oBEMG_ES03_Producto = (UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga)row.DataItem;
+
+
+                TextBox txtCantidad = row.FindControl("txtCantidad") as TextBox;
+                TextBox txtPeso = (TextBox)row.FindControl("txtPeso");
+
+                TextBox txtimporte = (TextBox)row.FindControl("txtimporte");
+                DropDownList ddlTipoCarga = (DropDownList)row.FindControl("ddlTipoCarga");
+
+                importetotal += double.Parse(txtimporte.Text);
+                pesototal += double.Parse(txtPeso.Text);
+
+
+
+                oDetalleFCargaDTO.CANTIDAD = Int32.Parse(txtCantidad.Text);
+                oDetalleFCargaDTO.DESCRIPCION = row.Cells[1].Text;
+                oDetalleFCargaDTO.CODIGO_PRODUCTO = Int32.Parse(row.Cells[0].Text);
+                oDetalleFCargaDTO.DBL_IMPORTE = double.Parse(txtimporte.Text);
+                oDetalleFCargaDTO.DBL_PESO = double.Parse(txtPeso.Text);
+
+                oDetalleFCargaDTO.TIPO_CARGA = Int32.Parse(ddlTipoCarga.SelectedValue);
+
+                oDetalleFCargaDTO.CODIGO_CARGA = oBE_Carga.CODIGO_CARGA;
                 oListaDetalleFCargaDTO.Add(oDetalleFCargaDTO);
             }
 
 
-            int reg = _servletGestionCarga.InsertarFichaCarga(oBEMG_ES01_FichaCarga, oListaDetalleFCargaDTO);
 
 
 
 
 
-            Response.Redirect("ListadoFichaCarga.aspx");
+
+            oBE_Carga.CLAVE_SEGURIDAD = lblClave.Text;
+            oBE_Carga.DESTINATARIO = txtDestinatario.Text;
+            oBE_Carga.CLIENTE_DESTINO = HFIdClienteDest.Value;
+            oBE_Carga.DESTINATARIO = txtDestinatario.Text;
+            oBE_Carga.ESTADO = "Registrado";
+            oBE_Carga.CODIGO_GUIA = null;
+            oBE_Carga.ESTADOPAGO = ddlTipoPago.SelectedValue;
+            oBE_Carga.FECHA_REGISTRO = DateTime.Now.Date;
+            oBE_Carga.FICHA = txtFicha.Text;
+            oBE_Carga.CLIENTE_ORIGEN = HFIdClienteRemi.Value;
+            oBE_Carga.REMITENTE = txtRemitente.Text;
+            oBE_Carga.DBL_IMPORTETOTAL = importetotal;
+            oBE_Carga.OBSERVACION = txtObservacion.Text;
+            oBE_Carga.DBL_PESOTOTAL = pesototal;
+
+
+            txtigv.Text = (importetotal * 0.18).ToString();
+            txtTotal.Text = (importetotal * 1.18).ToString();
+
+
+            oBE_Carga .DBL_IGV = (importetotal * 0.18);
+            oBE_Carga.DBL_TOTAL  = (importetotal * 1.18);
+
+            oBE_Carga.CODIGO_PROGRAMACION_RUTA = int.Parse(MK_ProgramacionRuta_ID.Value);
+            oBE_Carga.oDetalleCarga = oListaDetalleFCargaDTO;
+
+            UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+
+
+
+
+
+            int resultado = oBL_Carga.f_AgregarCarga(oBE_Carga);
+
+
+
+
+            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El Registro se realizo con exito'); window.location = 'ListadoFichaCarga.aspx'; </script>"));
+            //Response.Redirect("ListadoFichaCarga.aspx");
         }
 
         protected void btnIngresarCodigo_Click(object sender, EventArgs e)
@@ -265,7 +346,8 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
-                BEMG_ES03_Producto oBEMG_ES03_Producto =(BEMG_ES03_Producto) e.Row .DataItem ;
+
+                UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga oBEMG_ES03_Producto = (UPC.CruzDelSur.Negocio.Modelo.Carga.DetalleCarga)e.Row.DataItem;
 
 
                 TextBox txtCantidad = e.Row.FindControl("txtCantidad") as TextBox;
@@ -276,29 +358,71 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
 
                 if (lblPrecio != null)
                 {
-                    
-                    lblPrecio.ID = String.Concat("precio-", oBEMG_ES03_Producto.MG_ES03_Producto_ID.ToString());
+
+                    //lblPrecio.ID = String.Concat("precio-", oBEMG_ES03_Producto.CODIGO_PRODUCTO.ToString());
 
                 }
-                
-                if (txtCantidad != null)
-                { 
-                    txtCantidad.ID =String.Concat("producto-", oBEMG_ES03_Producto.MG_ES03_Producto_ID.ToString());
 
-                    txtCantidad.Attributes.Add("onChange", "CalcularImporteProducto('" + txtCantidad.ClientID + "','" + lblPrecio.ClientID + "','" + txtimporte.ClientID + "')");
+                if (txtCantidad != null)
+                {
+                    //txtCantidad.ID = String.Concat("producto-", oBEMG_ES03_Producto.CODIGO_PRODUCTO.ToString());
+
+                    txtCantidad.Attributes.Add("onChange", "CalcularImporteProducto('" + txtCantidad.ClientID + "','" + lblPrecio.ClientID + "','" + txtPeso.ClientID + "','" + txtimporte.ClientID + "')");
+
+
 
                 }
 
                 if (txtPeso != null)
                 {
 
-
-                    txtPeso.Attributes.Add("onChange", "CalcularPesoTotal()");
+                    txtPeso.Attributes.Add("onChange", "CalcularImporteProducto('" + txtCantidad.ClientID + "','" + lblPrecio.ClientID + "','" + txtPeso.ClientID + "','" + txtimporte.ClientID + "');CalcularPesoTotal()");
+                    //txtPeso.Attributes.Add("onChange", "");
 
                 }
 
 
             }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            UPC.CruzDelSur.Datos.Carga.Cliente oBL_Cliente = new UPC.CruzDelSur.Datos.Carga.Cliente();
+            UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oCliente = oBL_Cliente.f_UnoCliente(txtDniRemitente.Text.Trim());
+
+            if (oCliente != null && oCliente.NOMBRES != null)
+            {
+                txtRemitente.Text = String.Concat(oCliente.NOMBRES, " ", oCliente.APELLIDOS);
+                txtDniRemitente.Text = oCliente.DOCUMENTO;
+                HFIdClienteRemi.Value = oCliente.DOCUMENTO;
+                Session["idRemitente"] = txtDniRemitente.Text;
+            }
+            else
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El Cliente no existe'); CloseFormOK();</script>"));
+            }
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            UPC.CruzDelSur.Datos.Carga.Cliente oBL_Cliente = new UPC.CruzDelSur.Datos.Carga.Cliente();
+            UPC.CruzDelSur.Negocio.Modelo.Carga.Cliente oCliente = oBL_Cliente.f_UnoCliente(txtDNIDestinatario.Text.Trim());
+
+            if (oCliente != null && oCliente.NOMBRES  != null)
+            {
+                txtDestinatario.Text = String.Concat(oCliente.NOMBRES, " ", oCliente.APELLIDOS);
+                txtDNIDestinatario.Text = oCliente.DOCUMENTO;
+
+                HFIdClienteDest.Value = oCliente.DOCUMENTO;
+                Session["idDestinatario"] = txtDNIDestinatario.Text;
+            }
+            else
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El Cliente no existe'); CloseFormOK();</script>"));
+            }
+
+
         }
 
     }

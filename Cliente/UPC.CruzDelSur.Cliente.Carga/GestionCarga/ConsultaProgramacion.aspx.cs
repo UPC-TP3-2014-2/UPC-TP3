@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+
+using UPC.CruzDelSur.Datos.Carga;
+using UPC.CruzDelSur.Negocio.Modelo.Carga;
+
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class ConsultaProgramacion : System.Web.UI.Page
     {
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -31,15 +37,10 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         }
         void CargarRutas()
         {
-            //CREAMOS LOS PARAMETROS
-            List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-            ParametroGenerico _BEParametro = new ParametroGenerico();
-            _BEParametro.nombre = "MG_ES10_Agencia_ID";
-            _BEParametro.valor = ddlAgencias.SelectedValue ;
-            _ArrayParam.Add(_BEParametro);
-
             //Invocamos al controlador de flota
-            _servletGestionCarga.ListarProgramacionRuta(gvProgramacionRuta, _ArrayParam);
+            UPC.CruzDelSur.Datos.Carga.Programacion_Ruta oBL_Programacion_Ruta = new UPC.CruzDelSur.Datos.Carga.Programacion_Ruta();
+            gvProgramacionRuta.DataSource = oBL_Programacion_Ruta.f_Programacion_Ruta(Int32.Parse(ddlAgencias.SelectedValue));
+            gvProgramacionRuta.DataBind();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SitePopup.master.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.SitePopup" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SitePopup.master.cs" Inherits="CRUZDELSUR.UI.Web.SitePopup" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,7 +13,7 @@
 </head>
 <body style="background-image: url('http://localhost:3088/img/fondo.png'); background-repeat: repeat">
     
-    <form id="Form1" runat="server" >
+    <form id="Form1" runat="server" class="main" >
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <div class="popup">
@@ -30,7 +30,7 @@
             </div>
             
         </div>
-        <div class="main">
+        <div class="main" style="background-color:white;display:inline-block;width:93%">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div class="clear">

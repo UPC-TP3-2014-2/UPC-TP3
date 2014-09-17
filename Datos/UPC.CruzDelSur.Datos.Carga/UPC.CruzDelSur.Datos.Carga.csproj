@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4291F2D2-6040-47C9-A9C7-2E123C59BAB5}</ProjectGuid>
+    <ProjectGuid>{E00CD48B-3BAD-4B39-B99B-246C9BBD4829}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Datos.Carga</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Datos.Carga</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,30 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DABEMG_ES02_DetalleFCarga.cs" />
-    <Compile Include="DABitacora.cs" />
-    <Compile Include="DAMG_ES01_FichaCarga.cs" />
-    <Compile Include="DAMG_ES03_Producto.cs" />
-    <Compile Include="DAMG_ES04_Cliente.cs" />
-    <Compile Include="DAMK_ProgramacionRuta.cs" />
-    <Compile Include="DAProgramacionRuta.cs" />
-    <Compile Include="DATipoIncidencia.cs" />
-    <Compile Include="Funciones\Populate.cs" />
-    <Compile Include="Funciones\UCMapeador.cs" />
-    <Compile Include="Global\Conexion.cs" />
-    <Compile Include="Global\ParametroGenerico.cs" />
-    <Compile Include="Global\SQL.cs" />
+    <Compile Include="Carga.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="DetalleCarga.cs" />
+    <Compile Include="Producto.cs" />
+    <Compile Include="Programacion_Ruta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\Cache\CacheUtil.cs" />
-    <Compile Include="User\Cache\UCDataReaderCache.cs" />
-    <Compile Include="User\Cache\UCReflectionCache.cs" />
-    <Compile Include="User\MapeadorGenerico\MapeadorGenerico.cs" />
-    <Compile Include="User\MapeadorGenerico\ObjectCreateMethod.cs" />
-    <Compile Include="User\MapeoXML\LectorXML.cs" />
-    <Compile Include="User\MapeoXML\MapeadorXML.cs" />
-    <Compile Include="User\Serializador.cs" />
-    <Compile Include="User\Validacion.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Carga\UPC.CruzDelSur.Negocio.Modelo.Carga.csproj">
+      <Project>{eb815d4a-6e92-4cac-ab9e-29fc56ee9c50}</Project>
+      <Name>UPC.CruzDelSur.Negocio.Modelo.Carga</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPC.CruzDelSur.Datos.Contratos\UPC.CruzDelSur.Datos.Contratos.csproj">
+      <Project>{326be282-100a-4ef5-8f08-305251ea602f}</Project>
+      <Name>UPC.CruzDelSur.Datos.Contratos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

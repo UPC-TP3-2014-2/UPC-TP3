@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
+namespace CRUZDELSUR.UI.Web.GestionCarga {
     
     
     public partial class Validar {

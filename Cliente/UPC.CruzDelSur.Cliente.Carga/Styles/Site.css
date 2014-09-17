@@ -3,7 +3,7 @@
 
 body   
 {
-    background: #b6b7bc;
+    background: #005597 url("../img/fondo.png") center repeat;
     font-size: .80em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
@@ -94,21 +94,12 @@ first child of the left and right table columns */
     border: 1px solid #496077;
 }
 
-
-.popup
-{
-    width: 700px;
-    background-color: #fff;
-    margin: 20px auto 0px auto;
-    border: 1px solid #496077;
-}
-
 .header
 {
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background:#004C8B url('../img/fondo.jpg') no-repeat right;
     width: 100%;
 }
 
@@ -298,7 +289,32 @@ div.accountInfo
 
 .submitButton
 {
-    
     text-align: right;
     padding-right: 10px;
+}
+
+.logo_es{background:url('../img/logo.png') no-repeat center;}
+
+#logo{
+    display:inline;
+    float:left;
+    width:242px;
+    cursor: pointer;
+    height:49px;
+}
+
+#contLogo{
+  float:left;
+  cursor: pointer;
+  margin:15px 0 0 12px;
+  width:241px;
+}
+
+#bizq{float:left;}
+#bizq{
+    width:218px;
+    margin:0;
+    padding-left:2px;
+    background:url("../images/index/tabs/borde.gif") repeat-x bottom;
+    min-height: 420px;
 }

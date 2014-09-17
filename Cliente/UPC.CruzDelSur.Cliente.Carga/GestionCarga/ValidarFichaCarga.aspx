@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true"
-    CodeBehind="ValidarFichaCarga.aspx.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.GestionCarga.ValidarFichaCarga" %>
+    CodeBehind="ValidarFichaCarga.aspx.cs" Inherits="CRUZDELSUR.UI.Web.GestionCarga.ValidarFichaCarga" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -10,7 +10,7 @@
     <style>
         .fila
         {
-            width: 80%;
+            width: 30%;
             padding-left: 5%;
             margin-top: 5px;
             margin-bottom: 15px
@@ -126,7 +126,7 @@
         </div>
     </div>
 
-    <div class="fila">
+    <div class="fila" style="display: inline-block;width:30%;vertical-align:top">
         <div class="izquierda">
             <div class="campoizquierda">
                 <span class="campo">Clave de Seguridad:</span>
@@ -134,9 +134,18 @@
             <div class="campoderecha">
                 <asp:Label ID="lblClave" runat="server" Text="Label"></asp:Label>
             </div>
+            
         </div>
+        
     </div>
-    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" />
-    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+    <div style="display: inline-block;width:30%;vertical-align:top">
+        
+
+        <asp:Button ID="btnIngresarCodigo" runat="server" Text="Ingresar Clave" 
+            />
+    </div>
+    <br />
+    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
+    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
     <asp:HiddenField ID="hffichacarga" runat="server" />
 </asp:Content>

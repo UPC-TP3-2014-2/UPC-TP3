@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CRUZDELSUR.UI.Web.SiteMaster" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -28,7 +28,7 @@
                 <div class="loginDisplay" style="background-image: url('/img/fondo.jpg')">
                     <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                         <AnonymousTemplate>
-                            [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                            [ <a href="~/GestionCarga/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
                             ]
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -43,19 +43,7 @@
                 </div>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
-                    IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Control de servicio" >
-                            <asp:MenuItem NavigateUrl="~/Flota/AdministrarBitacoraViaje.aspx" 
-                                Text="Administración Bitacora de Viaje" 
-                                Value="Administración Bitacora de Viaje"></asp:MenuItem>
-                        </asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Mantenimiento de flota" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Gestion" />
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Seguridad" />
-                    </Items>
-                </asp:Menu>
+                
             </div>
         </div>
         <div class="main">

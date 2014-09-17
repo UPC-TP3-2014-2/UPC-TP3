@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+using UPC.CruzDelSur.Datos.Carga;
+
+
+
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class ConsultaCliente : System.Web.UI.Page
     {
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,15 +29,10 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         }
         void CargarClientes()
         {
-            //CREAMOS LOS PARAMETROS
-            List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-            ParametroGenerico _BEParametro = new ParametroGenerico();
-            _BEParametro.nombre = "Documento";
-            _BEParametro.valor = txtNombres.Text;
-            _ArrayParam.Add(_BEParametro);
-
-            //Invocamos al controlador de flota
-            _servletGestionCarga.ListarClientes (gvCliente , _ArrayParam);
+            
+            Cliente oBL_Cliente = new Cliente();
+            gvCliente.DataSource = oBL_Cliente.f_ListadoCliente(txtNombres.Text.Trim());
+            gvCliente.DataBind();
         }
         protected void gvCliente_RowCommand(object sender, GridViewCommandEventArgs e)
         {

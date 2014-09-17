@@ -1,20 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
-using C.Data.Global;
-using UPC.CruzDelSur.Cliente.Carga.Controller.GestionCarga;
 
-namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
+using System.Text;
+using System.Data;
+
+using UPC.CruzDelSur.Negocio.Modelo.Carga;
+using UPC.CruzDelSur.Datos.Carga;
+
+
+namespace CRUZDELSUR.UI.Web.GestionCarga
 {
     public partial class ListadoFichaCarga : System.Web.UI.Page
     {
-        ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
+        //ServletGestionCarga _servletGestionCarga = new ServletGestionCarga();
         protected void btnnuevo_Click(object sender, EventArgs e)
         {
-            Session.Remove("idProgramacionRuta") ;
-            Session.Remove ("idRemitente");
+            Session.Remove("idcarga");
+            Session.Remove("idProgramacionRuta");
+            Session.Remove("idRemitente");
             Session.Remove("idDestinatario");
-
+            Session.Remove("ListaProducto");
+            Session.Remove("idProducto");
+            Session.Remove("idcarga");
+            Session.Remove("clave");
             Response.Redirect("ActualizarFichaCarga.aspx");
 
         }
@@ -27,32 +39,43 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         }
         void CargarFichas()
         {
-            //CREAMOS LOS PARAMETROS
-            List<ParametroGenerico> _ArrayParam = new List<ParametroGenerico>();
-            ParametroGenerico _BEParametro = new ParametroGenerico();
-            _BEParametro.nombre = "OPT";
-            _BEParametro.valor = DdlCriterio.SelectedValue;
 
-            _ArrayParam.Add(_BEParametro);
-
-
-            _BEParametro = new ParametroGenerico();
-            _BEParametro.nombre = "DESCRIPCION";
-            _BEParametro.valor = txtdato.Text ;
-
-            _ArrayParam.Add(_BEParametro);
-
-            //Invocamos al controlador de flota
-            _servletGestionCarga.ListarFichas(gvfichacarga, _ArrayParam);
+            UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+            gvfichacarga.DataSource = oBL_Carga.f_ListadoCarga(DdlCriterio.SelectedValue.ToString(),txtdato.Text.Trim().ToString());
+            gvfichacarga.DataBind();
+            
         }
 
         protected void gvfichacarga_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+
             if (e.CommandName == "Modificar")
             {
+                Session.Remove("idProgramacionRuta");
+                Session.Remove("idRemitente");
+                Session.Remove("idDestinatario");
+                Session.Remove("ListaProducto");
+                Session.Remove("idProducto");
+                Session.Remove("idcarga");
                 Response.Redirect(String.Concat("ActualizarFichaCarga.aspx?idficha=", e.CommandArgument));
             }
+            if (e.CommandName == "Anular")
+            {
+                Session.Remove("idProducto");
+                Session.Remove("idProgramacionRuta");
+                Session.Remove("idRemitente");
+                Session.Remove("idDestinatario");
+                Session.Remove("ListaProducto");
+                Session.Remove("idcarga");
+
+                UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
+                int o = oBL_Carga.f_ActualizarEstadoCarga("Anulado", e.CommandArgument.ToString());
+                CargarFichas();
+
+
+
+            }
+
         }
 
         protected void btnbuscar_Click(object sender, EventArgs e)
@@ -65,10 +88,46 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
-                BEMG_ES01_FichaCarga oBEMG_ES01_FichaCarga = (BEMG_ES01_FichaCarga)e.Row.DataItem;
+                UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBEMG_ES01_FichaCarga = (UPC.CruzDelSur.Negocio.Modelo.Carga.Carga)e.Row.DataItem;
+
 
                 LinkButton lnkButtonValidar = (LinkButton)e.Row.FindControl("lnkButtonValidar");
-                lnkButtonValidar.Attributes.Add("onClick", "javascript:OpenModalDialog('ValidarFichaCarga.aspx?idficha=" + oBEMG_ES01_FichaCarga.MG_ES01_FichaCarga_ID  + "','null','400','400')");
+                LinkButton lnkModificar = (LinkButton)e.Row.FindControl("lnkModificar");
+                LinkButton LinkButton2 = (LinkButton)e.Row.FindControl("LinkButton2");
+
+
+                
+
+
+                if (oBEMG_ES01_FichaCarga.ESTADO == "Anulado" || oBEMG_ES01_FichaCarga.ESTADO == "Entregado")
+                {
+                    lnkButtonValidar.Visible = false;
+                    lnkModificar.Visible = false;
+                    LinkButton2.Visible = false;
+                }
+
+
+                lnkButtonValidar.Attributes.Add("href", "ValidarFichaCarga.aspx?idficha=" + oBEMG_ES01_FichaCarga.CODIGO_CARGA);
+
+
+                LinkButton LinkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+                LinkButton1.Attributes.Add("onClick", "javascript:OpenModalDialog('ImprimirFichaCarga.aspx?idficha=" + oBEMG_ES01_FichaCarga.CODIGO_CARGA + "','null','500','900')");
+
+                if (Session["rol"].ToString() == "Recepcionista")
+                {
+                    lnkButtonValidar.Visible = true;
+                    lnkModificar.Visible = false;
+                    LinkButton2.Visible = false;
+                    LinkButton1.Visible = false;
+                }
+                else
+                {
+                    lnkButtonValidar.Visible = false;
+                    lnkModificar.Visible = true;
+                    LinkButton2.Visible = true;
+                    LinkButton1.Visible = true;
+                }
+
 
 
             }

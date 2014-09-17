@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70459E6C-6CA2-401C-8E20-31CD6E9AFDA6}</ProjectGuid>
+    <ProjectGuid>{EB815D4A-6E92-4CAC-AB9E-29FC56EE9C50}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Negocio.Modelo.Carga</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Negocio.Modelo.Carga</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,36 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEBitacora.cs" />
-    <Compile Include="BEConductor.cs" />
-    <Compile Include="BEDetalleBitacora.cs" />
-    <Compile Include="BEMarcaVehiculo.cs" />
-    <Compile Include="BEMG_ES01_FichaCarga.cs" />
-    <Compile Include="BEMG_ES02_DetalleFCarga.cs" />
-    <Compile Include="BEMG_ES03_Producto.cs" />
-    <Compile Include="BEMG_ES04_Cliente.cs" />
-    <Compile Include="BEMG_ES05_TrazabilidadCarga.cs" />
-    <Compile Include="BEMG_ES06_FichaMovimiento.cs" />
-    <Compile Include="BEMG_ES07_Almacen.cs" />
-    <Compile Include="BEMG_ES08_GuiaRemision.cs" />
-    <Compile Include="BEMG_ES09_DetalleGuiaRemision.cs" />
-    <Compile Include="BEMG_ES10_Agencia.cs" />
-    <Compile Include="BEMK_Conductor.cs" />
-    <Compile Include="BEMK_MarcaVehiculo.cs" />
-    <Compile Include="BEMK_Modelo.cs" />
-    <Compile Include="BEMK_ProgramacionRuta.cs" />
-    <Compile Include="BEMK_RutaBE.cs" />
-    <Compile Include="BEMK_UnidadTransporte.cs" />
-    <Compile Include="BEModelo.cs" />
-    <Compile Include="BEMS_Perfil_Usuario.cs" />
-    <Compile Include="BEMS_Permisos.cs" />
-    <Compile Include="BEMS_Usuario.cs" />
-    <Compile Include="BEProgramacionRuta.cs" />
-    <Compile Include="BERuta.cs" />
-    <Compile Include="BETipoIncidencia.cs" />
-    <Compile Include="BETipoServicio.cs" />
-    <Compile Include="BEUnidadTransporte.cs" />
+    <Compile Include="Carga.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="DetalleCarga.cs" />
+    <Compile Include="Producto.cs" />
+    <Compile Include="Programacion_Ruta.cs" />
+    <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

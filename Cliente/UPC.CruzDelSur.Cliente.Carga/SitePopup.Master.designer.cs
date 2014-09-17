@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace UPC.CruzDelSur.Cliente.Carga {
+namespace CRUZDELSUR.UI.Web {
     
     
     public partial class SitePopup {
