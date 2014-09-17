@@ -14,46 +14,28 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
     public class SolicitudCocinaRepositorio : Repositorio<SolicitudCocinaRepositorio>, ISolicitudCocinaRepositorio
     {
 
+		protected IProgramacionRutaRepositorio ProgramacionRutaRepo = ProgramacionRutaRepositorio.ObtenerInstancia();
+
+
+		protected SolicitudCocinaRepositorio() { }
+
+
         public IQueryable<SolicitudCocina> ObtenerTodos()
         {
-            DbCommand DbCommand = Database.GetSqlStringCommand("select a.int_codigo_solicitudcocina, a.int_codigo_programacion_ruta, a.dte_fecha_solicitud, a.bln_estado, d.int_vehiculo, d.vch_placa, c.int_codigo_ruta, e.int_codigo_agencia, e.vch_nombre, f.int_codigo_agencia, f.vch_nombre from ta_solicitudcocina a left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo) left outer join ta_agencia e on(c.int_codigo_agenciaorigen = e.int_codigo_agencia) left outer join ta_agencia f on(c.int_codigo_agenciadestino = f.int_codigo_agencia)");
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, bln_estado from ta_solicitudcocina");
 			IList<SolicitudCocina> ListadoSolicitudCocina = new List<SolicitudCocina>();
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
 			{
 				while (Reader.Read())
 				{
-                    SolicitudCocina SolicitudCocina = new SolicitudCocina()
-                    {
-                        Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-                        ProgramacionRuta = new ProgramacionRuta()
-                        {
-                            Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0,
-                            Vehiculo = new Vehiculo()
-                            {
-                                Id = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-                                Placa = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-                            },
-                            Ruta = new Ruta()
-                            {
-                                Id = (!Reader.IsDBNull(6)) ? Reader.GetInt32(6) : 0,
-                                AgenciaOrigen = new Agencia()
-                                {
-                                    Id = (!Reader.IsDBNull(7)) ? Reader.GetInt32(7) : 0,
-                                    Nombre = (!Reader.IsDBNull(8)) ? Reader.GetString(8) : String.Empty,
-                                },
-                                AgenciaDestino = new Agencia()
-                                {
-                                    Id = (!Reader.IsDBNull(9)) ? Reader.GetInt32(9) : 0,
-                                    Nombre = (!Reader.IsDBNull(10)) ? Reader.GetString(10) : String.Empty,
-                                }
-                            }
-                        },
-                        FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
+					ListadoSolicitudCocina.Add(new SolicitudCocina()
+					{
+						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+						ProgramacionRuta = (!Reader.IsDBNull(1)) ? ProgramacionRutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new ProgramacionRuta() { Id = 0 }, 
+						FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
                         Estado = (!Reader.IsDBNull(3) && Reader.GetBoolean(3))
-                    };
-
-                    ListadoSolicitudCocina.Add(SolicitudCocina);
+					});
 				}
 			}
 
@@ -62,46 +44,24 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 
         public SolicitudCocina ObtenerPorId(int id)
         {
-            DbCommand DbCommand = Database.GetSqlStringCommand("select a.int_codigo_solicitudcocina, a.int_codigo_programacion_ruta, a.dte_fecha_solicitud, a.bln_estado, d.int_vehiculo, d.vch_placa, c.int_codigo_ruta, e.int_codigo_agencia, e.vch_nombre, f.int_codigo_agencia, f.vch_nombre from ta_solicitudcocina a left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo) left outer join ta_agencia e on(c.int_codigo_agenciaorigen = e.int_codigo_agencia) left outer join ta_agencia f on(c.int_codigo_agenciadestino = f.int_codigo_agencia) where a.int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
-            Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, id);
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, bln_estado from ta_solicitudcocina where int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
+			Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, id);
 
-            using (IDataReader Reader = Database.ExecuteReader(DbCommand))
-            {
-                if (Reader.Read())
-                {
-                    return new SolicitudCocina()
-                    {
-                        Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-                        ProgramacionRuta = new ProgramacionRuta()
-                        {
-                            Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0,
-                            Vehiculo = new Vehiculo()
-                            {
-                                Id = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-                                Placa = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-                            },
-                            Ruta = new Ruta()
-                            {
-                                Id = (!Reader.IsDBNull(6)) ? Reader.GetInt32(6) : 0,
-                                AgenciaOrigen = new Agencia()
-                                {
-                                    Id = (!Reader.IsDBNull(7)) ? Reader.GetInt32(7) : 0,
-                                    Nombre = (!Reader.IsDBNull(8)) ? Reader.GetString(8) : String.Empty,
-                                },
-                                AgenciaDestino = new Agencia()
-                                {
-                                    Id = (!Reader.IsDBNull(9)) ? Reader.GetInt32(9) : 0,
-                                    Nombre = (!Reader.IsDBNull(10)) ? Reader.GetString(10) : String.Empty,
-                                }
-                            }
-                        },
-                        FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
-                        Estado = (!Reader.IsDBNull(3) && Reader.GetBoolean(3))
-                    };
-                }
-            }
+			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
+			{
+				if (Reader.Read())
+				{
+					return new SolicitudCocina()
+					{
+						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+						ProgramacionRuta = (!Reader.IsDBNull(1)) ? ProgramacionRutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new ProgramacionRuta() { Id = 0 },
+						FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
+						Estado = (!Reader.IsDBNull(3) && Reader.GetBoolean(3))
+					};
+				}
+			}
 
-            return null;
+			return null;
         }
 
         public void Insertar(SolicitudCocina solicitudCocina)

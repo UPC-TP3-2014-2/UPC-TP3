@@ -266,14 +266,6 @@
       <Project>{326BE282-100A-4EF5-8F08-305251EA602F}</Project>
       <Name>UPC.CruzDelSur.Datos.Contratos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Datos\UPC.CruzDelSur.Datos.Personal\UPC.CruzDelSur.Datos.Personal.csproj">
-      <Project>{92E1A79D-84B0-41D1-B5C6-5583FD688238}</Project>
-      <Name>UPC.CruzDelSur.Datos.Personal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Personal\UPC.CruzDelSur.Negocio.Modelo.Personal.csproj">
-      <Project>{EE618541-580D-4D72-A111-D7D4FAB503C1}</Project>
-      <Name>UPC.CruzDelSur.Negocio.Modelo.Personal</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
