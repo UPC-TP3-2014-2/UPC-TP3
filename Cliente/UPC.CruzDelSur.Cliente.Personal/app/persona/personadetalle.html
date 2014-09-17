@@ -1,169 +1,182 @@
 ﻿<section id="personas-view" class="mainbar" data-ng-controller="personadetalle as vm">
     <section class="matter">
         <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    {{vm.persona.nombreCompleto || 'Nueva Persona'}}
+                    <span data-ng-show="vm.hasChanges"
+                          class="disolve-animation ng-hide">
+                        <i class="fa fa-asterisk fa-asterisk-large"></i>
+                    </span>
+                </h1>
+            </div>
             <div class="row">
                 <div class="btn-group">
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
                             data-ng-click="vm.goBack()">
                         <i class="fa fa-hand-o-left"></i>
                         <span>Regresar</span>
                     </button>
-                    <button class="btn btn-info"
-                            data-ng-click="vm.cancel()"
-                            data-ng-disabled="!vm.canSave">
-                        <i class="fa fa-undo"></i>
-                        <span>Cancelar</span>
-                    </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-primary"
                             data-ng-click="vm.save()"
                             data-ng-disabled="!vm.canSave">
                         <i class="fa fa-save"></i>
                         <span>Guardar</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
+                            data-ng-click="vm.cancel()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-undo"></i>
+                        <span>Cancelar</span>
+                    </button>
+                    <button class="btn btn-danger"
                             data-ng-click="vm.deletePersona()">
                         <i class="fa fa-trash-o"></i>
                         <span>Eliminar</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
                             data-ng-click="vm.goToExperienciaLaboral()"
                             data-ng-disabled="vm.isNew">
                         <i class="fa fa-plus"></i>
                         <span>Agregar Experiencia Laboral</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
                             data-ng-click="vm.goToEducacion()"
                             data-ng-disabled="vm.isNew">
                         <i class="fa fa-plus"></i>
-                        <span>Agregar Educacion</span>
+                        <span>Agregar Educación</span>
                     </button>
                 </div>
-                <span data-ng-show="vm.hasChanges"
-                      class="disolve-animation ng-hide">
-                    <i class="fa fa-asterisk fa-asterisk-large"></i>
-                </span>
             </div>
+            &nbsp;
             <div class="row">
-                <div class="widget wmustard">
-                    <div data-cc-widget-header
-                         title="Editar {{vm.persona.nombreCompleto || 'Nueva Persona'}}"></div>
-                    <div class="widget-content user">
-                        <img data-cc-img-person="{{vm.persona.foto}}"
-                             class="img-polaroid user-pic" />
-                        <div class="user-details">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Tipo de Documento</label>
-                                    <select data-ng-options="td.nombre for td in vm.tiposDocumento"
-                                            data-ng-model="vm.persona.tipoDocumento"
-                                            class="form-control"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nro de Documento</label>
-                                    <input data-ng-model="vm.persona.nroDocumento"
+                <tabset>
+                    <tab heading="Detalles">
+                        &nbsp;
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Tipo de Documento</label>
+                                <select data-ng-options="td.nombre for td in vm.tiposDocumento"
+                                        data-ng-model="vm.persona.tipoDocumento"
+                                        class="form-control"
+                                        data-z-validate></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Nro de Documento</label>
+                                <input data-ng-model="vm.persona.nroDocumento"
+                                       class="form-control"
+                                       data-z-validate
+                                       placeholder="Nro de Documento" />
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input data-ng-model="vm.persona.nombre"
+                                       class="form-control"
+                                       data-z-validate
+                                       placeholder="Nombre" />
+                            </div>
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                <input data-ng-model="vm.persona.apellidos"
+                                       class="form-control"
+                                       data-z-validate
+                                       placeholder="Apellidos" />
+                            </div>
+                            <div class="form-group">
+                                <label>Cargo</label>
+                                <select data-ng-options="c.nombre for c in vm.cargos"
+                                        data-ng-model="vm.persona.cargo"
+                                        class="form-control"
+                                        data-z-validate></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <div class="input-group">
+                                    <input type="text"
                                            class="form-control"
-                                           placeholder="Nro de Documento" />
+                                           data-ng-model="vm.persona.fechaNacimiento"
+                                           datepicker-popup="yyyy/MM/dd"
+                                           is-open="vm.datePickerOpened"
+                                           max-date="vm.datePickerMaxDate"
+                                           show-button-bar="false"
+                                           show-weeks="false" />
+                                    <span class="input-group-btn">
+                                        <button type="button"
+                                                class="btn btn-default"
+                                                data-ng-click="vm.openDatePicker($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input data-ng-model="vm.persona.nombre"
-                                           class="form-control"
-                                           placeholder="Nombre" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Apellidos</label>
-                                    <input data-ng-model="vm.persona.apellidos"
-                                           class="form-control"
-                                           placeholder="Apellidos" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Fecha de Nacimiento</label>
-                                    <div class="input-group">
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="vm.persona.fechaNacimiento"
-                                               datepicker-popup="yyyy/MM/dd"
-                                               is-open="vm.datePickerOpened"
-                                               max-date="vm.datePickerMaxDate"
-                                               show-button-bar="false"
-                                               show-weeks="false" />
-                                        <span class="input-group-btn">
-                                            <button type="button" 
-                                                    class="btn btn-default" 
-                                                    data-ng-click="vm.openDatePicker($event)">
-                                                <i class="fa fa-calendar"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                            </div>
+                            <!--<div class="form-group">
                                     <label>Foto</label>
                                     <span class="form-control-static">
                                         <img data-cc-img-person="{{vm.persona.foto}}"
                                              class="img-polaroid" />
                                     </span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Direccion</label>
-                                    <input data-ng-model="vm.persona.direccion"
-                                           class="form-control"
-                                           placeholder="Direccion" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Telefono</label>
-                                    <input data-ng-model="vm.persona.telefono"
-                                           class="form-control"
-                                           placeholder="Telefono" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="widget wmustard">
-                    <div data-cc-widget-header
-                         title="Experiencia Laboral"
-                         subtitle="{{vm.persona.experienciasLaborales.length}}"></div>
-                    <div class="widget-content user">
-                        <div class="padd"
-                             data-ng-repeat="e in vm.persona.experienciasLaborales"
-                             data-ng-click="vm.goToExperienciaLaboral(e)">
-                            <h5><strong>{{e.cargo}}</strong></h5>
-                            <h6><strong>{{e.institucion}}</strong></h6>
-                            <small data-ng-show="e.observaciones">{{e.observaciones}}</small>
-                            <div>
-                                <span>{{e.desde | date:'yyyy/MM/dd'}} - </span>
-                                <span data-ng-show="e.hasta">{{e.hasta | date:'yyyy/MM/dd'}}</span>
-                                <span data-ng-show="!e.hasta">Presente</span>
+                                </div>-->
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input data-ng-model="vm.persona.direccion"
+                                       class="form-control"
+                                       placeholder="Dirección" />
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="widget wmustard">
-                    <div data-cc-widget-header
-                         title="Educacion"
-                         subtitle="{{vm.persona.educaciones.length}}"></div>
-                    <div class="widget-content user">
-                        <div class="padd"
-                             data-ng-repeat="e in vm.persona.educaciones"
-                             data-ng-click="vm.goToEducacion(e)">
-                            <h5><strong>{{e.institucion}}</strong></h5>
-                            <h6><strong>{{e.gradoObtenido}}</strong></h6>
-                            <small data-ng-show="e.observaciones">{{e.observaciones}}</small>
-                            <div>
-                                <span>{{e.desde | date:'yyyy/MM/dd'}} - </span>
-                                <span data-ng-show="e.hasta">{{e.hasta | date:'yyyy/MM/dd'}}</span>
-                                <span data-ng-show="!e.hasta">Presente</span>
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input data-ng-model="vm.persona.telefono"
+                                       class="form-control"
+                                       placeholder="Teléfono" />
                             </div>
+                        </form>
+                    </tab>
+                    <tab>
+                        <tab-heading>
+                            Experiencia Laboral
+                            <span class="badge">{{vm.persona.experienciasLaborales.length}}</span>
+                        </tab-heading>
+                        &nbsp;
+                        <div class="list-group">
+                            <a href=""
+                               class="list-group-item"
+                               title="Ver detalles"
+                               data-ng-repeat="e in vm.persona.experienciasLaborales"
+                               data-ng-click="vm.goToExperienciaLaboral(e)">
+                                <h5><strong>{{e.cargo}}</strong></h5>
+                                <h6><strong>{{e.institucion}}</strong></h6>
+                                <small data-ng-show="e.observaciones">{{e.observaciones}}</small>
+                                <div>
+                                    <span>{{e.desde | date:'yyyy/MM/dd'}} - </span>
+                                    <span data-ng-show="e.hasta">{{e.hasta | date:'yyyy/MM/dd'}}</span>
+                                    <span data-ng-show="!e.hasta">Presente</span>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </div>
+                    </tab>
+                    <tab>
+                        <tab-heading>
+                            Educación
+                            <span class="badge">{{vm.persona.educaciones.length}}</span>
+                        </tab-heading>
+                        &nbsp;
+                        <div class="list-group">
+                            <a href="" 
+                               class="list-group-item"
+                               title="Ver detalles"
+                               data-ng-repeat="e in vm.persona.educaciones"
+                               data-ng-click="vm.goToEducacion(e)">
+                                <h5><strong>{{e.institucion}}</strong></h5>
+                                <h6><strong>{{e.gradoObtenido}}</strong></h6>
+                                <small data-ng-show="e.observaciones">{{e.observaciones}}</small>
+                                <div>
+                                    <span>{{e.desde | date:'yyyy/MM/dd'}} - </span>
+                                    <span data-ng-show="e.hasta">{{e.hasta | date:'yyyy/MM/dd'}}</span>
+                                    <span data-ng-show="!e.hasta">Presente</span>
+                                </div>
+                            </a>
+                        </div>
+                    </tab>
+                </tabset>
             </div>
         </div>
     </section>

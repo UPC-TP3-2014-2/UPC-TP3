@@ -78,21 +78,13 @@
                 }
             },
             {
-                url: '/tecnico/:id',
+                url: '/solicitudes/capacitacion',
                 config: {
-                    title: 'tecnico',
-                    templateUrl: 'app/tecnico/tecnicodetalle.html',
-                    settings: {}
-                }
-            },
-            {
-                url: '/solicitudes',
-                config: {
-                    title: 'solicitudes',
-                    templateUrl: 'app/solicitud/solicitudes.html',
+                    title: 'solicitudes de capacitacion',
+                    templateUrl: 'app/solicitud/capacitacion/solicitudescapacitacion.html',
                     settings: {
                         nav: 3,
-                        content: '<i class="fa fa-file"></i> Solicitudes'
+                        content: '<i class="fa fa-file"></i> Capacitaciones'
                     }
                 }
             },
@@ -105,12 +97,31 @@
                 }
             },
             {
+                url: '/solicitudes/contratacion',
+                config: {
+                    title: 'solicitudes de contratacion',
+                    templateUrl: 'app/solicitud/contratacion/solicitudescontratacion.html',
+                    settings: {
+                        nav: 4,
+                        content: '<i class="fa fa-file"></i> Contrataciones'
+                    }
+                }
+            },
+            {
+                url: '/solicitud/contratacion/:id',
+                config: {
+                    title: 'solicitud de contratacion',
+                    templateUrl: 'app/solicitud/contratacion/solicitudcontrataciondetalle.html',
+                    settings: {}
+                }
+            },
+            {
                 url: '/auditorias',
                 config: {
                     title: 'auditorias',
                     templateUrl: 'app/auditoria/auditorias.html',
                     settings: {
-                        nav: 4,
+                        nav: 5,
                         content: '<i class="fa fa-legal"></i> Auditorias'
                     }
                 }

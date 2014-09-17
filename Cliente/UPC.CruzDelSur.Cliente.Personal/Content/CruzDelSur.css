@@ -1,8 +1,16 @@
-﻿/*body {
-    background-color: #005596;
+﻿body {
     padding-top: 70px;
 }
 
+.sidebar {
+    position: fixed;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
+/*
 .navbar-default {
     background-color: #004c8a;
     border-color: #5e89ab;
@@ -14,7 +22,7 @@
 
 .navbar-default .navbar-nav li a {
     color: #f2d021;
-}*/
+}
 
 .btn.btn-info {
     background: #fdce07 !important;
@@ -54,3 +62,24 @@
 .totop {
     background: #fdce07;
 }
+
+.sidebar .sidebar-inner {
+    background-color: #000;
+}
+
+.sidebar .navi > li.current > a  {
+    background-color: #626262;
+}
+
+.sidebar .navi > li > a {
+    background-color: #000 !important;
+}
+.sidebar .navi > li > a:hover {
+    background-color: #626262 !important;
+}
+
+    
+.sidebar-filler {
+    background-color: #000;
+}
+    */

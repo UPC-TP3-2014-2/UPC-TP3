@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Negocio.Modelo.Personal</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Negocio.Modelo.Personal</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo.cs" />
+    <Compile Include="Capacitacion.cs" />
     <Compile Include="DetalleHojaVida.cs" />
     <Compile Include="Educacion.cs" />
     <Compile Include="EstadoSolicitud.cs" />

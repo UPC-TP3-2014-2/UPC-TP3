@@ -111,6 +111,7 @@ namespace UPC.CruzDelSur.Cliente.Personal.Controllers
             {
                 TiposDocumento = _context.TiposDocumento.ObtenerTodos(),
                 Cargos = _context.Cargos.ObtenerTodos(),
+                Capacitaciones = _context.Capacitaciones.ObtenerTodos(),
             };
         }
 

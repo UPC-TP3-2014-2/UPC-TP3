@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Datos.Personal</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Datos.Personal</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Breeze.ContextProvider">
@@ -59,10 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuditEntry.cs" />
+    <Compile Include="CapacitacionesRepositorio.cs" />
     <Compile Include="CargosRepositorio.cs" />
+    <Compile Include="Configuracion\CapacitacionConfiguration.cs" />
     <Compile Include="Configuracion\CargoConfiguration.cs" />
     <Compile Include="Configuracion\DetalleHojaVidaConfiguration.cs" />
     <Compile Include="Configuracion\EducacionConfiguration.cs" />
+    <Compile Include="Configuracion\EvaluacionDesempenoConfiguration.cs" />
     <Compile Include="Configuracion\ExperienciaLaboralConfiguration.cs" />
     <Compile Include="Configuracion\PersonaConfiguration.cs" />
     <Compile Include="Configuracion\SolicitudCapacitacionConfiguration.cs" />

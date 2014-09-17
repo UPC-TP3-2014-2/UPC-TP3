@@ -52,7 +52,7 @@
                 .from('SolicitudesCapacitacion')
                 .where(predicate)
                 .orderBy(orderBy)
-                .expand('tecnico, tecnico.persona')
+                .expand('trabajador, trabajador.cargo, capacitacion')
                 .toType(entityName)
                 .using(self.manager)
                 .execute()

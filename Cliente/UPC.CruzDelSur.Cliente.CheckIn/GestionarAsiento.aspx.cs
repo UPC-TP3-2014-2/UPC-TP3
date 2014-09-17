@@ -10,6 +10,7 @@ using UPC.CruzDelSur.Datos.CheckIn.Interface;
 public partial class GestionarAsiento : System.Web.UI.Page
 {
     public string NroBoleto = "";
+    public string NroAsientoL = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,6 +20,8 @@ public partial class GestionarAsiento : System.Web.UI.Page
             Int32 IdVehiculo = Convert.ToInt32(Request.QueryString["ID"]);
             NroBoleto = Request.QueryString["nroboleta"];
             Session["NroBoleto"] = NroBoleto;
+            NroAsientoL = Request.QueryString["nroAsientoL"];
+            Session["NroAsientoL"] = NroAsientoL;
             IBL_Boleto carga = new BL_Boleto();
             List<BE_Boleto> ListaBoleto = carga.f_ConsultarAsientosVehiculo(IdVehiculo);
             grvAsientos.DataSource = ListaBoleto;
@@ -37,13 +40,14 @@ public partial class GestionarAsiento : System.Web.UI.Page
             IBL_Boleto carga = new BL_Boleto();
             NroBoleto = (string)(Session["NroBoleto"]);
             string NroAsiento = (string)this.grvAsientos.DataKeys[index]["Asiento"];
-            BE_Boleto objBoleto = carga.f_ActualizarAsiento(NroBoleto, NroAsiento);
-            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + NroBoleto);
+            NroAsientoL = (string)(Session["NroAsientoL"]);
+            BE_Boleto objBoleto = carga.f_ActualizarAsiento(NroBoleto, NroAsiento, NroAsientoL);
+            Response.Redirect("~/GestionarAsiento.aspx?ID=1&nroboleta=" + NroBoleto + "&nroAsientoL=" + NroAsiento);
         }
     }
 
     protected void btnRetornar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Default.aspx");
+        Response.Redirect("~/AdministrarCheckin.aspx");
     }
 }

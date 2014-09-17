@@ -1,114 +1,112 @@
 ﻿<section id="personas-view" class="mainbar" data-ng-controller="educaciondetalle as vm">
     <section class="matter">
         <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    Educación
+                    <span data-ng-show="vm.hasChanges"
+                          class="disolve-animation ng-hide">
+                        <i class="fa fa-asterisk fa-asterisk-large"></i>
+                    </span>
+                </h1>
+            </div>
             <div class="row">
                 <div class="btn-group">
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
                             data-ng-click="vm.goBack()">
                         <i class="fa fa-hand-o-left"></i>
                         <span>Regresar</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-default"
                             data-ng-click="vm.cancel()"
                             data-ng-disabled="!vm.canSave">
                         <i class="fa fa-undo"></i>
                         <span>Cancelar</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-primary"
                             data-ng-click="vm.save()"
                             data-ng-disabled="!vm.canSave">
                         <i class="fa fa-save"></i>
                         <span>Guardar</span>
                     </button>
-                    <button class="btn btn-info"
+                    <button class="btn btn-danger"
                             data-ng-click="vm.deleteEducacion()">
                         <i class="fa fa-trash-o"></i>
                         <span>Eliminar</span>
                     </button>
                 </div>
-                <span data-ng-show="vm.hasChanges"
-                      class="disolve-animation ng-hide">
-                    <i class="fa fa-asterisk fa-asterisk-large"></i>
-                </span>
             </div>
+            &nbsp;
             <div class="row">
-                <div class="widget wmustard">
-                    <div data-cc-widget-header
-                         title="Editar Educacion"></div>
-                    <div class="widget-content user">
-                        <div class="user-details">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Tipo de Educacion</label>
-                                    <select data-ng-options="te for te in vm.tiposEducacion"
-                                            data-ng-model="vm.educacion.tipo"
-                                            class="form-control"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Institucion</label>
-                                    <input data-ng-model="vm.educacion.institucion"
-                                           class="form-control"
-                                           placeholder="Institucion" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Grado Obtenido</label>
-                                    <input data-ng-model="vm.educacion.gradoObtenido"
-                                           class="form-control"
-                                           placeholder="Grado Obtenido" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Desde</label>
-                                    <div class="input-group">
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="vm.educacion.desde"
-                                               datepicker-popup="yyyy/MM/dd"
-                                               is-open="vm.desdeDatePickerOpened"
-                                               max-date="vm.datePickerMaxDate"
-                                               show-button-bar="false"
-                                               show-weeks="false" />
-                                        <span class="input-group-btn">
-                                            <button type="button"
-                                                    class="btn btn-default"
-                                                    data-ng-click="vm.desdeOpenDatePicker($event)">
-                                                <i class="fa fa-calendar"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Hasta</label>
-                                    <div class="input-group">
-                                        <input type="text"
-                                               class="form-control"
-                                               data-ng-model="vm.educacion.hasta"
-                                               datepicker-popup="yyyy/MM/dd"
-                                               is-open="vm.hastaDatePickerOpened"
-                                               max-date="vm.datePickerMaxDate"
-                                               show-button-bar="false"
-                                               show-weeks="false" />
-                                        <span class="input-group-btn">
-                                            <button type="button"
-                                                    class="btn btn-default"
-                                                    data-ng-click="vm.hastaOpenDatePicker($event)">
-                                                <i class="fa fa-calendar"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Observaciones</label>
-                                    <textarea data-ng-model="vm.educacion.observaciones"
-                                           class="form-control"
-                                           placeholder="Observaciones"></textarea>
-                                </div>
-                            </form>
+                <form role="form">
+                    <div class="form-group">
+                        <label>Tipo de Educación</label>
+                        <select data-ng-options="te for te in vm.tiposEducacion"
+                                data-ng-model="vm.educacion.tipo"
+                                class="form-control"
+                                data-z-validate></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Institución</label>
+                        <input data-ng-model="vm.educacion.institucion"
+                               class="form-control"
+                               placeholder="Institución"
+                               data-z-validate />
+                    </div>
+                    <div class="form-group">
+                        <label>Grado Obtenido</label>
+                        <input data-ng-model="vm.educacion.gradoObtenido"
+                               class="form-control"
+                               placeholder="Grado Obtenido"
+                               data-z-validate />
+                    </div>
+                    <div class="form-group">
+                        <label>Desde</label>
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   data-ng-model="vm.educacion.desde"
+                                   datepicker-popup="yyyy/MM/dd"
+                                   is-open="vm.desdeDatePickerOpened"
+                                   max-date="vm.datePickerMaxDate"
+                                   show-button-bar="false"
+                                   show-weeks="false" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        data-ng-click="vm.desdeOpenDatePicker($event)">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label>Hasta</label>
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   data-ng-model="vm.educacion.hasta"
+                                   datepicker-popup="yyyy/MM/dd"
+                                   is-open="vm.hastaDatePickerOpened"
+                                   max-date="vm.datePickerMaxDate"
+                                   show-button-bar="false"
+                                   show-weeks="false" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        data-ng-click="vm.hastaOpenDatePicker($event)">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Observaciones</label>
+                        <textarea data-ng-model="vm.educacion.observaciones"
+                                  class="form-control"
+                                  placeholder="Observaciones"></textarea>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
