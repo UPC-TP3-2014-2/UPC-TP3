@@ -38,6 +38,7 @@
     <Compile Include="ICapacitacionesRepositorio.cs" />
     <Compile Include="ICargosRepositorio.cs" />
     <Compile Include="IContextoDatos.cs" />
+    <Compile Include="IDetSolicitudCocinaRepositorio.cs" />
     <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
     <Compile Include="IInsumoRepositorio.cs" />
     <Compile Include="IPersonasRepositorio.cs" />

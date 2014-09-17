@@ -10,7 +10,5 @@ namespace UPC.CruzDelSur.Datos.Contratos
     public interface ISolicitudCocinaRepositorio : IRepositorio<SolicitudCocina>
     {
 
-		void AnularSolicitud(int id);
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 {
     abstract public class Repositorio<T> where T: class
     {
+        protected Database Database = DatabaseFactory.CreateDatabase();
 
         #region Singleton
 

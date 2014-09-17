@@ -10,14 +10,6 @@ declare
 -- Datos de prueba del módulo de Abastecimiento.
 
 
--- Borramos información
-delete from TA_INSUMO
-delete from TA_REFRIGERIO
-
-
-
-
-
 -- insertamos información de prueba.
 while @contador <= @totalContador
 begin
@@ -51,8 +43,8 @@ begin
 	insert into TA_PROGRAMACION_RUTA(INT_CODIGO_RUTA, DTM_FECHA_ORIGEN, DTM_FECHA_DESTINO, INT_CODIGOVEHICULO, INT_CODIGOPERSONA, BLN_ESTADO)
 	values(@contador, dateadd(day, @contador * -1, getdate()), dateadd(day, @contador, getdate()), @contador, @contador, 1)
 	
-	insert into TA_SOLICITUDCOCINA(INT_CODIGO_SOLICITUDCOCINA, INT_CODIGO_REFRIGERIO, INT_CODIGO_PROGRAMACION_RUTA, INT_CANTIDAD, DTE_FECHASOLICITUD, BLN_ESTADO)
-	values(@contador, @contador, @contador, @contador,  dateadd(day, @contador, getdate()), 1)
+	--insert into TA_SOLICITUDCOCINA(INT_CODIGO_SOLICITUDCOCINA, INT_CODIGO_PROGRAMACION_RUTA, DTE_FECHA_SOLICITUD, BLN_ESTADO)
+	--values(@contador, @contador, dateadd(day, @contador, getdate()), 1)
 	
 	--insert into TA_SOLICITUDINSUMO(INT_CODIGO_SOLICITUDCOCINA, INT_CODIGO_INSUMO, DTE_FECHA_SOLICITUD, INT_CANTIDAD, VCH_UNIDAD, BLN_ESTADO)
 	--values(@contador, @contador, dateadd(day, @contador * -1, getdate()), @contador, 'Unidad ' + @contadorString, 1)
@@ -60,33 +52,5 @@ begin
 	select @contador += 1
 end
 
-insert into ta_solicitudinsumo(dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado_solicitud) values(@dte_fecha_solicitud, @int_codigo_solicitudcocina, @tin_estado_solicitud)
-insert into ta_det_solicitudinsumo(int_codigo_solicitudinsumo, int_codigo_insumo, int_cantidad, vch_unidad) values(@int_codigo_solicitudinsumo, @int_codigo_insumo, @int_cantidad, @vch_unidad)
-
-
-select 
-	a.int_codigo_solicitudcocina, 
-	a.int_codigo_refrigerio, 
-	a.int_codigo_programacion_ruta, 
-	a.int_cantidad, 
-	a.bln_estado, 
-	a.dte_fecha_solicitud, 
-	d.int_vehiculo, 
-	d.vch_placa, 
-	c.int_codigo_ruta, 
-	e.int_codigo_agencia, 
-	e.vch_nombre, 
-	f.int_codigo_agencia, 
-	f.vch_nombre
-from ta_solicitudcocina a 
-left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) 
-left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) 
-left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo)
-left outer join ta_agencia e on(c.int_codigo_agenciaorigen = e.int_codigo_agencia)
-left outer join ta_agencia f on(c.int_codigo_agenciadestino = f.int_codigo_agencia)
-
-
-select a.int_codigo_solicitudcocina, a.int_codigo_refrigerio, a.int_codigo_programacion_ruta, a.int_cantidad, a.bln_estado, a.dte_fecha_solicitud, d.int_vehiculo, d.vch_placa, c.int_codigo_ruta, e.int_codigo_agencia, e.vch_nombre, f.int_codigo_agencia, f.vch_nombre from ta_solicitudcocina a left outer join ta_programacion_ruta b on(a.int_codigo_programacion_ruta = b.int_codigo_programacion_ruta) left outer join ta_ruta c on(b.int_codigo_ruta = c.int_codigo_ruta) left outer join ta_vehiculo d on(b.int_codigovehiculo = d.int_vehiculo) left outer join ta_agencia e on(c.int_codigo_agenciaorigen = e.int_codigo_agencia) left outer join ta_agencia f on(c.int_codigo_agenciadestino = f.int_codigo_agencia)
-
-select int_codigo_insumo, vch_descripcion, vch_tipo_unidad, dte_fecha_vencimiento from ta_insumo
-
+select * from TA_PROGRAMACION_RUTA
+insert into TA_SOLICITUDCOCINA(INT_CODIGO_PROGRAMACION_RUTA, DTE_FECHA_SOLICITUD, BLN_ESTADO) values(1, getdate(), 1)

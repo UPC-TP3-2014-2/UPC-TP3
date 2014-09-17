@@ -12,23 +12,43 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
     public class SolicitudCocinaNegocio
     {
 
-        protected ISolicitudCocinaRepositorio Repositorio = SolicitudCocinaRepositorio.ObtenerInstancia();
+        protected ISolicitudCocinaRepositorio SolicitudCocinaRepo = SolicitudCocinaRepositorio.ObtenerInstancia();
 
 
 		public IQueryable<SolicitudCocina> ObtenerTodos()
 		{
-			return Repositorio.ObtenerTodos().Where(item => item.Estado == true);
+			return SolicitudCocinaRepo.ObtenerTodos();
 		}
+
+        public IQueryable<SolicitudCocina> ObtenerTodosActivos()
+        {
+            return SolicitudCocinaRepo.ObtenerTodos().Where(item => item.Estado == true);
+        }
+
+        public SolicitudCocina ObtenerPorId(int id)
+        {
+            return SolicitudCocinaRepo.ObtenerPorId(id);
+        }
 
         public void Insertar(SolicitudCocina solicitudCocina)
         {
-            Repositorio.Insertar(solicitudCocina);
+            SolicitudCocinaRepo.Insertar(solicitudCocina);
         }
 
-		public void AnularSolicitud(int id)
-		{
-			Repositorio.AnularSolicitud(id);
-		}
+        public void Actualizar(SolicitudCocina solicitudCocina)
+        {
+            SolicitudCocinaRepo.Actualizar(solicitudCocina);
+        }
+
+        public void Eliminar(SolicitudCocina solicitudCocina)
+        {
+            SolicitudCocinaRepo.Eliminar(solicitudCocina);
+        }
+
+        public void Eliminar(int id)
+        {
+            SolicitudCocinaRepo.Eliminar(id);
+        }
 
     }
 }
