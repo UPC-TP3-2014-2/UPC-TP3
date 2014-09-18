@@ -15,7 +15,7 @@
         vm.solicitudesCapacitacion = [];
         vm.solicitudesCapacitacionArchivadas = [];
         vm.refresh = refresh;
-        vm.title = 'Solicitudes';
+        vm.title = 'Solicitudes de Capacitación';
 
         activate();
 

@@ -13,13 +13,16 @@ namespace UPC.CruzDelSur.Datos.Personal
 
         public PersonalContextoDatos()
         {
-            Personas = new PersonasRepositorio(Contexto);
+            Areas = new AreasRepositorio(Contexto);
             Educaciones = new EducacionesRepositorio(Contexto);
             ExperienciasLaborales = new ExperienciasLaboralesRepositorio(Contexto);
-            SolicitudesCapacitacion = new SolicitudesCapacitacionRepositorio(Contexto);
-            TiposDocumento = new TiposDocumentoRepositorio(Contexto);
-            Cargos = new CargosRepositorio(Contexto);
             Capacitaciones = new CapacitacionesRepositorio(Contexto);
+            Cargos = new CargosRepositorio(Contexto);
+            Personas = new PersonasRepositorio(Contexto);
+            SolicitudesCapacitacion = new SolicitudesCapacitacionRepositorio(Contexto);
+            SolicitudesPersonal = new SolicitudesPersonalRepositorio(Contexto);
+            TiposDocumento = new TiposDocumentoRepositorio(Contexto);
+            TiposEducacion = new TiposEducacionRepositorio(Contexto);
         }
 
         public string Metadata
@@ -27,6 +30,7 @@ namespace UPC.CruzDelSur.Datos.Personal
             get { return _contextProvider.Metadata(); }
         }
 
+        public IAreasRepositorio Areas { get; private set; }
         public IPersonasRepositorio Personas { get; private set; }
         public IEducacionesRepositorio Educaciones { get; private set; }
         public IExperienciasLaboralesRepositorio ExperienciasLaborales { get; private set; }
@@ -34,6 +38,8 @@ namespace UPC.CruzDelSur.Datos.Personal
         public ITiposDocumentoRepositorio TiposDocumento { get; private set; }
         public ICargosRepositorio Cargos { get; private set; }
         public ICapacitacionesRepositorio Capacitaciones { get; private set; }
+        public ITiposEducacionRepositorio TiposEducacion { get; private set; }
+        public ISolicitudesPersonalRepositorio SolicitudesPersonal { get; private set; }
 
         private PersonalDbContext Contexto
         {
