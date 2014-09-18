@@ -32,8 +32,12 @@
             get: canSave
         });
 
-        function canSave() { return vm.hasChanges && !vm.isSaving; }
+        Object.defineProperty(vm, 'isNew', {
+            get: isNew
+        });
 
+        function canSave() { return vm.hasChanges && !vm.isSaving; }
+        
         activate();
 
         function activate() {
@@ -61,7 +65,11 @@
         }
 
         function deleteEntity() {
-            return bsDialog.deleteDialog('Solicitud de Capacitación')
+            return bsDialog.deleteDialog(
+                    '¿Desea anular esta Solicitud de Capacitación?',
+                    'Confirmar Anulación',
+                    'Anular',
+                    'warning')
                 .then(confirmDelete);
 
             function confirmDelete() {
@@ -120,7 +128,7 @@
         }
 
         function isNew() {
-            return vm.solicitudCapacitacion.id <= 0;
+            return vm.solicitudCapacitacion && vm.solicitudCapacitacion.id <= 0;
         }
 
         function openFechaPlanificadaDatePicker($event) {

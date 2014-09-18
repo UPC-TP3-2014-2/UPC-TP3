@@ -29,24 +29,28 @@
 
             var logFn = service[fnName] || service.log;
             return function (msg, data, showToast) {
-                logFn(msg, data, moduleId, (showToast === undefined) ? false : showToast);
+                logFn(msg, data, moduleId, showToast);
             };
         }
 
         function log(message, data, source, showToast) {
+            showToast = (showToast === undefined) ? false : showToast;
             logIt(message, data, source, showToast, 'info');
         }
 
         function logWarning(message, data, source, showToast) {
+            showToast = (showToast === undefined) ? true : showToast;
             logIt(message, data, source, showToast, 'warning');
         }
 
         function logSuccess(message, data, source, showToast) {
+            showToast = (showToast === undefined) ? true : showToast;
             logIt(message, data, source, showToast, 'success');
         }
 
         function logError(message, data, source, showToast) {
-            logIt(message, data, source, (showToast === undefined) ? true : showToast, 'error');
+            showToast = (showToast === undefined) ? true : showToast;
+            logIt(message, data, source, showToast, 'error');
         }
 
         function logIt(message, data, source, showToast, toastType) {

@@ -36,7 +36,8 @@
                     </button>
                     <button class="btn btn-warning"
                             data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"
-                            data-ng-click="vm.deleteEntity()">
+                            data-ng-click="vm.deleteEntity()"
+                            data-ng-disabled="vm.isNew">
                         <i class="fa fa-trash-o"></i>
                         <span>Anular</span>
                     </button>
