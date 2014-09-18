@@ -44,6 +44,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                objEquipaje.HoraActual = dr["HoraActual"].ToString();
                objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
                objEquipaje.CodBoleto = Convert.ToInt32(dr["INT_CODIGOBOLETO"]);
+               objEquipaje.EstadoVerificacion = dr["ESTADO_VERIFICACION"].ToString();
                //add one row to the list
                lst.Add(objEquipaje);
            }
@@ -160,6 +161,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                objEquipaje.FechaActual = dr["FechaActual"].ToString();
                objEquipaje.HoraActual = dr["HoraActual"].ToString();
                objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
+               objEquipaje.EstadoVerificacion = dr["ESTADO_VERIFICACION"].ToString();
                //add one row to the list
                lst.Add(objEquipaje);
            }
@@ -180,5 +182,6 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
            return new BE_Tiket();
        }
+       
     }
 }
