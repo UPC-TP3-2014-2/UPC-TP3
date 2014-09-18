@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Datos.Contratos</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Datos.Contratos</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -37,12 +37,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAgenciaRepositorio.cs" />
     <Compile Include="ICapacitacionesRepositorio.cs" />
     <Compile Include="ICargaRepositorio.cs" />
     <Compile Include="ICargosRepositorio.cs" />
     <Compile Include="IClienteRepositorio.cs" />
     <Compile Include="IContextoDatos.cs" />
     <Compile Include="IDetalleCargaRepositorio.cs" />
+    <Compile Include="IDetSolicitudCocinaRepositorio.cs" />
     <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
     <Compile Include="IInsumoRepositorio.cs" />
     <Compile Include="IPersonasRepositorio.cs" />
@@ -50,11 +52,13 @@
     <Compile Include="IProgramacion_Ruta.cs" />
     <Compile Include="IRefrigerioRepositorio.cs" />
     <Compile Include="IRepositorio.cs" />
+    <Compile Include="IRutaRepositorio.cs" />
     <Compile Include="ISolicitudCocinaRepositorio.cs" />
     <Compile Include="ISolicitudesCapacitacionRepositorio.cs" />
     <Compile Include="ISolicitudInsumoRepositorio.cs" />
     <Compile Include="ITiposDocumentoRepositorio.cs" />
     <Compile Include="IProgramacionRutaRepositorio.cs" />
+    <Compile Include="IVehiculoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +69,10 @@
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Carga\UPC.CruzDelSur.Negocio.Modelo.Carga.csproj">
       <Project>{eb815d4a-6e92-4cac-ab9e-29fc56ee9c50}</Project>
       <Name>UPC.CruzDelSur.Negocio.Modelo.Carga</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.CheckIn\UPC.CruzDelSur.Negocio.Modelo.CheckIn.csproj">
+      <Project>{49e46821-5bbf-4837-8de6-d8dd1cac5a08}</Project>
+      <Name>UPC.CruzDelSur.Negocio.Modelo.CheckIn</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Personal\UPC.CruzDelSur.Negocio.Modelo.Personal.csproj">
       <Project>{ee618541-580d-4d72-a111-d7d4fab503c1}</Project>

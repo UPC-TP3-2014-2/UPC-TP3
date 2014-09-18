@@ -1,39 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using UPC.CruzDelSur.Modelo.Abastecimiento;
 using UPC.CruzDelSur.Negocio.Abastecimiento;
 
 namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
-    public class SolicitudCocinaController : Controller
+    public class SolicitudCocinaController : ApiController
     {
+		protected SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
-		SolicitudCocinaNegocio Negocio = new SolicitudCocinaNegocio();
-       
-		[HttpPost]
-        public JsonResult Search()
+		[HttpGet]
+		public IEnumerable<SolicitudCocina> Get()
+		{
+			return SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+		}
+
+		[HttpGet]
+		public IEnumerable<SolicitudCocina> Get(DateTime fechaInicial, DateTime fechaFinal)
+		{
+			fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
+			fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
+			
+			return SolicitudCocinaNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
+		}
+
+
+        [HttpGet]
+        public SolicitudCocina Get(int id)
         {
-
-			var Listado = new List<object>();
-
-			foreach (SolicitudCocina SolicitudCocina in Negocio.ObtenerTodos())
-			{
-				Listado.Add(
-					new 
-					{ 
-						FechaIngreso = SolicitudCocina.FechaSolicitud.ToShortDateString(),
-						NroSolicitud = SolicitudCocina.Id,
-						UnidadTransporte = SolicitudCocina.ProgramacionRuta.Vehiculo.Placa,
-						RutaProgramada = SolicitudCocina.ProgramacionRuta.Ruta.AgenciaOrigen.Nombre + " - " + SolicitudCocina.ProgramacionRuta.Ruta.AgenciaDestino.Nombre
-					}
-				);
-			}
-
-			return Json(Listado, JsonRequestBehavior.AllowGet);
+            return SolicitudCocinaNegocio.ObtenerPorId(id);
         }
 
+
+        [HttpPost]
+        public SolicitudCocina Post(SolicitudCocina solicitudCocina)
+        {
+            solicitudCocina.FechaSolicitud = DateTime.Now;
+            solicitudCocina.Estado = 1;
+            SolicitudCocinaNegocio.Insertar(solicitudCocina);
+			return solicitudCocina;
+        }
+
+
+        [HttpPut]
+        public SolicitudCocina Put(SolicitudCocina solicitudCocina)
+        {
+            SolicitudCocinaNegocio.Actualizar(solicitudCocina);
+			return solicitudCocina;
+        }
+
+		
     }
 }

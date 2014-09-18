@@ -9,6 +9,6 @@ namespace UPC.CruzDelSur.Datos.Contratos
 {
     public interface ISolicitudInsumoRepositorio : IRepositorio<SolicitudInsumo>
     {
-		int ObtenerUltimoId();
+		
     }
 }

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Modelo.Abastecimiento</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Modelo.Abastecimiento</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agencia.cs" />
+    <Compile Include="DetSolicitudCocina.cs" />
     <Compile Include="DetSolicitudInsumo.cs" />
     <Compile Include="Insumo.cs" />
     <Compile Include="ProgramacionRuta.cs" />

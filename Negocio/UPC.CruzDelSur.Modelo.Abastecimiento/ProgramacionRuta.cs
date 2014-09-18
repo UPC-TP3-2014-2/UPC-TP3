@@ -8,7 +8,6 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
 {
     public class ProgramacionRuta
     {
-
         public int Id { get; set; }
         public Ruta Ruta { get; set; }
         public DateTime FechaOrigen { get; set; }
@@ -18,6 +17,5 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
         public int TipoServicio { get; set; }
         public Vehiculo Vehiculo { get; set; }
         public bool Estado { get; set; }
-
     }
 }
