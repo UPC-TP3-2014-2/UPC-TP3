@@ -70,15 +70,15 @@ namespace UPC.CruzDelSur.Datos.CheckIn
             param[4].Value = estado;
             param[4].Direction = ParameterDirection.Input;
 
-           return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_INSERTARFILMACION", param);
+            return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_INSERTARFILMACION", param);
 
-        
+
         }
 
 
-        public int f_ActualizarFilmacion(string SolFilmacion, string iniGrab, string finGrab, string rutaVideo)
+        public int f_ActualizarFilmacion(string SolFilmacion, string iniGrab, string finGrab, string rutaVideo, string estado)
         {
-            SqlParameter[] param = new SqlParameter[4];
+            SqlParameter[] param = new SqlParameter[5];
             param[0] = new SqlParameter("INT_SOL_FILM", SqlDbType.VarChar);
             param[0].Value = SolFilmacion;
             param[0].Direction = ParameterDirection.Input;
@@ -91,9 +91,14 @@ namespace UPC.CruzDelSur.Datos.CheckIn
             param[3] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
             param[3].Value = rutaVideo;
             param[3].Direction = ParameterDirection.Input;
+            param[4] = new SqlParameter("ESTADO", SqlDbType.VarChar);
+            param[4].Value = estado;
+            param[4].Direction = ParameterDirection.Input;
 
             return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_ACTUALIZARFILMACION", param);
 
         }
+
+
     }
 }

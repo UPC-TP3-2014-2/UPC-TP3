@@ -68,9 +68,9 @@ public partial class GestionarFilmacion : System.Web.UI.Page
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
-            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            string estado = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            string solFilmacion = Convert.ToString(grvDetalle.DataKeys[index].Value);
+            string cod = Convert.ToString(grvDetalle.DataKeys[index].Values[0].ToString());
+            string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
+            string solFilmacion = Convert.ToString(grvDetalle.DataKeys[index].Values[2].ToString());
             string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
             string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
             string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
@@ -94,14 +94,18 @@ public partial class GestionarFilmacion : System.Web.UI.Page
 
         }
 
-        if (e.CommandName == "cmdEditar")
+        if (e.CommandName == "cmdCopia")
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
-            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
+            string cod = Convert.ToString(grvDetalle.DataKeys[index].Values[0].ToString());
+            string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
+            string solFilmacion = Convert.ToString(grvDetalle.DataKeys[index].Values[2].ToString());
+            string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
+            string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
+            string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
+            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
         }
 
         if (e.CommandName == "cmdImprimir")

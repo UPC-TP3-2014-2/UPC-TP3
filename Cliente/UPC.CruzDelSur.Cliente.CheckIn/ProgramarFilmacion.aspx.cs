@@ -30,9 +30,10 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
                 iniGrab = Convert.ToString(Request.QueryString["iniGrab"]);
                 finGrab = Convert.ToString(Request.QueryString["finGrab"]);
                 rutavideo = Convert.ToString(Request.QueryString["rutaVideo"]);
-                ViewState["solFilm"] = solfilm = Convert.ToString(Request.QueryString["solFilm"]);
+                ViewState["solFilm"] = Convert.ToString(Request.QueryString["solFilm"]);
+                ViewState["estado"] = estado;
 
-                if (estado.Equals("P"))
+                if (estado.Equals("P") || estado.Equals("A"))
                 {
                     lblCodBus.Text = CodSalBus.ToString();
                     txtIniGrab.Text = iniGrab;
@@ -41,12 +42,13 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
                     btnActualizar.Visible = true;
                     btnGrabar.Visible = false;
                 }
-                else
+                else if(estado.Equals(""))
                 {
                     lblCodBus.Text = CodSalBus.ToString();
                     btnGrabar.Enabled = true;
                     btnActualizar.Visible = false;
                 }
+               
           
         }
     }
@@ -119,7 +121,7 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
             string ruta = "Videos/" + "Bus_" + codbus + "_" + dt2;
             
            // DateTime a= DateTime.Parse(dt1);
-            resultado = carga.f_RegistrarFilmacion(codbus, dt1, dt2, ruta, estado);
+            resultado = carga.f_RegistrarFilmacion(codbus, dt1, dt2, ruta,estado);
             if (resultado > 0)
             {
                 btnGrabar.Enabled = false;
@@ -144,6 +146,7 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
         string codbus = lblCodBus.Text;
         string dt1 = Request.Form[txtIniGrab.UniqueID];
         string dt2 = Request.Form[txtFinGrab.UniqueID];
+        string estado = Convert.ToString(ViewState["estado"]);
         IBL_Filmacion carga = new BL_Filmacion();
         string film = Convert.ToString(ViewState["solFilm"]);
        
@@ -202,12 +205,15 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
         }
         else
         {
-
+            if (estado.Equals("A"))
+            {
+                estado = "S";
+            }
 
             string ruta = "Videos/" + "Bus_" + codbus + "_" + dt2;
+            
 
-
-            resultado = carga.f_ActualizarFilmacion(film, dt1, dt2, ruta);
+            resultado = carga.f_ActualizarFilmacion(film, dt1, dt2, ruta,estado);
 
             if (resultado > 0)
             {
