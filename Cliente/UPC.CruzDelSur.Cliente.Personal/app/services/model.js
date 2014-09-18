@@ -46,7 +46,7 @@
             createNullo(entityNames.capacitacion);
 
             function createNullo(entityName, values) {
-                var initialValues = values || { nombre: ' [Seleccione un ' + entityName + ']' };
+                var initialValues = values || { nombre: ' [Seleccione ' + entityName + ']' };
 
                 return manager.createEntity(entityName, initialValues, unchanged);
             }
