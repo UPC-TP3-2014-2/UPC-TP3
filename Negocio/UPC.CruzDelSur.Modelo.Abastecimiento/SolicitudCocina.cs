@@ -11,6 +11,6 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
         public int Id { get; set; }
         public ProgramacionRuta ProgramacionRuta { get; set; }
 		public DateTime FechaSolicitud { get; set; }
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
     }
 }

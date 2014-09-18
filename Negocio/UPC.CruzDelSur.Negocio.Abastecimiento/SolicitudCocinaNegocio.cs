@@ -22,7 +22,7 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 
         public IQueryable<SolicitudCocina> ObtenerTodosActivos()
         {
-            return SolicitudCocinaRepo.ObtenerTodos().Where(item => item.Estado == true);
+            return SolicitudCocinaRepo.ObtenerTodos().Where(item => item.Estado == 1);
         }
 
         public SolicitudCocina ObtenerPorId(int id)

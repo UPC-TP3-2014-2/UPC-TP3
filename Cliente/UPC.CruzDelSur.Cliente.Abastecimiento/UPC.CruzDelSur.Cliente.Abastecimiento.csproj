@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Cliente.Abastecimiento</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Cliente.Abastecimiento</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -54,9 +54,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -208,9 +208,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InsumoController.cs" />
     <Compile Include="Controllers\ProgramacionRutaController.cs" />
     <Compile Include="Controllers\RefrigerioController.cs" />
     <Compile Include="Controllers\SolicitudCocinaController.cs" />
+    <Compile Include="Controllers\SolicitudInsumoController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -330,9 +332,12 @@
     <Content Include="Scripts\webapp\library\checklist-model.js" />
     <Content Include="Scripts\webapp\library\ui-bootstrap-0.11.0.min.js" />
     <Content Include="Scripts\webapp\library\ui-bootstrap-tpls-0.11.0.min.js" />
-    <Content Include="Scripts\webapp\template\consultar_solicitud_cocina.html" />
+    <Content Include="Scripts\webapp\library\underscore-min.js" />
     <Content Include="Scripts\webapp\template\home.html" />
-    <Content Include="Scripts\webapp\template\actualizar_solicitud_cocina.html" />
+    <Content Include="Scripts\webapp\template\solicitud-cocina\registrar.html" />
+    <Content Include="Scripts\webapp\template\solicitud-cocina\consultar.html" />
+    <Content Include="Scripts\webapp\template\solicitud-insumo\consultar.html" />
+    <Content Include="Scripts\webapp\template\solicitud-insumo\registrar.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

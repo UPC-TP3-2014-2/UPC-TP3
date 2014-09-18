@@ -7,6 +7,7 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
 {
 	public class DetSolicitudInsumo
 	{
+        public int Id { get; set; }
 		public SolicitudInsumo SolicitudInsumo { get; set; }
 		public Insumo Insumo { get; set; }
 		public int Cantidad { get; set; }

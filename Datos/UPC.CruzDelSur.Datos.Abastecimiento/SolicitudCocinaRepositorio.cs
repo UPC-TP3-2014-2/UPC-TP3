@@ -22,7 +22,7 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 
         public IQueryable<SolicitudCocina> ObtenerTodos()
         {
-			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, bln_estado from ta_solicitudcocina");
+            DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, tin_estado from ta_solicitudcocina");
 			IList<SolicitudCocina> ListadoSolicitudCocina = new List<SolicitudCocina>();
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
@@ -34,7 +34,7 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
 						ProgramacionRuta = (!Reader.IsDBNull(1)) ? ProgramacionRutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new ProgramacionRuta() { Id = 0 }, 
 						FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
-                        Estado = (!Reader.IsDBNull(3) && Reader.GetBoolean(3))
+                        Estado = (!Reader.IsDBNull(3)) ? Reader.GetByte(3) : 0
 					});
 				}
 			}
@@ -44,7 +44,7 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 
         public SolicitudCocina ObtenerPorId(int id)
         {
-			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, bln_estado from ta_solicitudcocina where int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
+            DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, tin_estado from ta_solicitudcocina where int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
 			Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, id);
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
@@ -56,7 +56,7 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
 						ProgramacionRuta = (!Reader.IsDBNull(1)) ? ProgramacionRutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new ProgramacionRuta() { Id = 0 },
 						FechaSolicitud = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
-						Estado = (!Reader.IsDBNull(3) && Reader.GetBoolean(3))
+						Estado = (!Reader.IsDBNull(3)) ? Reader.GetByte(3) : 0
 					};
 				}
 			}

@@ -1,0 +1,100 @@
+﻿<div ng-controller="SolicitudInsumoController">
+    
+    <fieldset>
+        <legend>Registrar Solicitud de Insumos</legend> 
+    </fieldset>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Solicitud de Cocina</div>
+        
+        <div class="panel-body">
+            <div class="col-lg-3">
+                <input type="text" class="form-control" disabled="disabled" value="{{ registrar.solicitudInsumo.solicitudCocina.id }}" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" disabled="disabled" value="{{ registrar.solicitudInsumo.solicitudCocina.programacionRuta.vehiculo.placa }}" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" disabled="disabled" value="{{ registrar.solicitudInsumo.solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - {{ registrar.solicitudInsumo.solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }}" />
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="registrar.buscarSolicitudCocina()"><i class="fa fa-search"></i> Consultar Solicitudes de Cocina</button>
+            </div>
+        </div>
+        
+        <div class="panel-body" collapse="registrar.collapse.solicitudCocina">
+            <div class="panel panel-warning">
+                <div class="panel-heading">Búsqueda de Solicitudes de Cocina</div>
+                <div class="panel-body">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha Solicitud</th>
+                                <th>Nro Solicitud</th>
+                                <th>Unidad Transporte</th>
+                                <th>Ruta Programada</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, solicitudCocina) in registrar.listado.solicitudCocina" ng-class="{ success: $parent.registrar.solicitudCocinaIndex == key}">
+                                <td>{{ solicitudCocina.fechaSolicitud }}</td>
+                                <td>{{ solicitudCocina.id }}</td>
+                                <td>{{ solicitudCocina.programacionRuta.vehiculo.placa }}</td>
+                                <td>{{ solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - {{ solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }}</td>
+                                <td>
+                                    <input type="radio" name="solicitudCocinaIndex" ng-model="$parent.registrar.solicitudCocinaIndex" value="{{ key }}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-success" ng-click="registrar.aceptarBusquedaSolicitudCocina()"><i class="fa fa-check"></i> Aceptar</button>
+                    <button class="btn btn-danger" ng-click="registrar.cancelarBusquedaSolicitudCocina()"><i class="fa fa-close"></i> Cancelar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Insumos</div>
+        <div class="panel-body">
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Ingrese nombre del insumo." ng-model="registrar.insumoSeleccionado" typeahead="insumo as insumo.descripcion for insumo in registrar.buscarInsumos() | filter: { descripcion : $viewValue }" />
+            </div>
+            <div class="clearfix">
+                <div class="form-group pull-left">
+                    <button class="btn btn-success" ng-click="registrar.agregarInsumo(registrar.insumoSeleccionado)"><i class="fa fa-plus"></i> Agregar Insumo</button>
+                </div>
+            </div>
+
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Unidad</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, detSolicitudInsumo) in registrar.detSolicitudInsumo">
+                        <td>{{ detSolicitudInsumo.insumo.descripcion }}</td>
+                        <td>{{ detSolicitudInsumo.insumo.tipoUnidad }}</td>
+                        <td>
+                            <input type="number" value="{{ detSolicitudInsumo.cantidad }}" ng-model="registrar.detSolicitudInsumo[key].cantidad" class="form-control" />
+                        </td>
+                        <td><a class="btn btn-danger btn-xs" ng-click="registrar.quitarInsumo(key)"><i class="fa fa-close"></i> Remover</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <div>
+        <button class="btn btn-success" ng-click="registrar.grabarSolicitudInsumo(registrar.solicitudInsumo)"><i class="fa fa-save"></i> Registrar Solicitud de Insumos</button>
+        <a class="btn btn-danger" href="#/SolicitudInsumo"><i class="fa fa-close"></i> Cancelar</a>
+    </div>
+</div>

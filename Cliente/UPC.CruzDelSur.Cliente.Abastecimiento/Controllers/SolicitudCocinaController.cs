@@ -14,38 +14,37 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 		SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
-
-
-		public IEnumerable<SolicitudCocina> Get()
+		[HttpGet]
+        public IEnumerable<SolicitudCocina> Get()
 		{
-			return SolicitudCocinaNegocio.ObtenerTodos();
+            return SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
 		}
-		
-		
 
-		//// GET api/solicitudcocina/5
-		//public string Get(int id)
-		//{
-		//	return "value";
-		//}
 
-        // POST api/solicitudcocina
-		public HttpResponseMessage Post(SolicitudCocina solicitudCocina)
+        [HttpGet]
+        public SolicitudCocina Get(int id)
         {
-			solicitudCocina.FechaSolicitud = DateTime.Now;
-			solicitudCocina.Estado = true;
-			SolicitudCocinaNegocio.Insertar(solicitudCocina);
-			return new HttpResponseMessage(HttpStatusCode.Created);
+            return SolicitudCocinaNegocio.ObtenerPorId(id);
         }
 
-		//// PUT api/solicitudcocina/5
-		//public void Put(int id, [FromBody]string value)
-		//{
-		//}
 
-		//// DELETE api/solicitudcocina/5
-		//public void Delete(int id)
-		//{
-		//}
+        [HttpPost]
+        public HttpResponseMessage Post(SolicitudCocina solicitudCocina)
+        {
+            solicitudCocina.FechaSolicitud = DateTime.Now;
+            solicitudCocina.Estado = 1;
+            SolicitudCocinaNegocio.Insertar(solicitudCocina);
+            return Request.CreateResponse(HttpStatusCode.Created, solicitudCocina);
+        }
+
+
+        [HttpPut]
+        public HttpResponseMessage Put(SolicitudCocina solicitudCocina)
+        {
+            SolicitudCocinaNegocio.Actualizar(solicitudCocina);
+            return Request.CreateResponse(HttpStatusCode.Created, solicitudCocina);
+        }
+
+		
     }
 }

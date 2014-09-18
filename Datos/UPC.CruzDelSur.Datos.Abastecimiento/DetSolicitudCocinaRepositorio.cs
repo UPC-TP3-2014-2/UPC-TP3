@@ -30,7 +30,6 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
             Database.AddInParameter(DbCommand, "@int_codigo_det_solicitudcocina", DbType.Int32, detSolicitudCocina.SolicitudCocina.Id);
             Database.AddInParameter(DbCommand, "@int_codigo_refrigerio", DbType.Int32, detSolicitudCocina.Refrigerio.Id);
             Database.AddInParameter(DbCommand, "@int_cantidad", DbType.Int32, detSolicitudCocina.Cantidad);
-            Database.AddInParameter(DbCommand, "@bln_estado", DbType.Boolean, detSolicitudCocina.Estado);
             int RowsAffected = Database.ExecuteNonQuery(DbCommand);
         }
 
@@ -41,7 +40,6 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
             Database.AddInParameter(DbCommand, "@int_codigo_det_solicitudcocina", DbType.Int32, detSolicitudCocina.SolicitudCocina.Id);
             Database.AddInParameter(DbCommand, "@int_codigo_refrigerio", DbType.Int32, detSolicitudCocina.Refrigerio.Id);
             Database.AddInParameter(DbCommand, "@int_cantidad", DbType.Int32, detSolicitudCocina.Cantidad);
-            Database.AddInParameter(DbCommand, "@bln_estado", DbType.Boolean, detSolicitudCocina.Estado);
             int RowsAffected = Database.ExecuteNonQuery(DbCommand);
         }
 

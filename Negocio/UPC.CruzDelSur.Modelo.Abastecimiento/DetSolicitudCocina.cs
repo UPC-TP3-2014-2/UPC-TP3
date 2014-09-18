@@ -11,6 +11,5 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
         public SolicitudCocina SolicitudCocina { get; set; }
         public Refrigerio Refrigerio { get; set; }
         public int Cantidad { get; set; }
-        public bool Estado { get; set; }
     }
 }
