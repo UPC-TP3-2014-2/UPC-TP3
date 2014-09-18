@@ -111,7 +111,7 @@
                 url: '/solicitud/personal/:id',
                 config: {
                     title: 'solicitud de personal',
-                    templateUrl: 'app/solicitud/contratacion/solicitudpersonaldetalle.html',
+                    templateUrl: 'app/solicitud/personal/solicitudpersonaldetalle.html',
                     settings: {}
                 }
             },

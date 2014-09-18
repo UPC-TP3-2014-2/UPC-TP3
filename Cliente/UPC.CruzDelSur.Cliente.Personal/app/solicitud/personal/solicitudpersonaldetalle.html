@@ -80,39 +80,95 @@
                     </div>
                     <div class="form-group">
                         <label>Cargo</label>
-                        <select data-ng-options="c.nombre for c in vm.cargos"
+                        <select data-ng-options="c.nombre for c in vm.solicitudPersonal.area.cargos"
                                 data-ng-model="vm.solicitudPersonal.cargo"
                                 data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
                                 class="form-control"
                                 data-z-validate></select>
                     </div>
                     <div class="form-group">
-                        <label>Fecha Planificada</label>
+                        <label>Salario</label>
+                        <input data-ng-model="vm.solicitudPersonal.salario"
+                               class="form-control"
+                               placeholder="Salario" />
+                    </div>
+                    <div class="form-group">
+                        <label>Inicio</label>
+                        <select data-ng-model="vm.solicitudPersonal.inicio"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate>
+                            <option>Inmediato</option>
+                            <option>A mediano plazo</option>
+                            <option>A largo plazo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Contrato</label>
+                        <select data-ng-model="vm.solicitudPersonal.contrato"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate>
+                            <option>Tiempo Completo</option>
+                            <option>Tiempo Parcial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Vencimiento</label>
                         <div class="input-group">
                             <input type="text"
                                    class="form-control"
-                                   data-ng-model="vm.solicitudPersonal.fechaPlanificada"
+                                   data-ng-model="vm.solicitudPersonal.fechaVencimiento"
                                    data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
                                    datepicker-popup="yyyy/MM/dd"
-                                   is-open="vm.fechaPlanificadaDatePickerOpened"
+                                   is-open="vm.fechaVencimientoDatePickerOpened"
                                    show-button-bar="false"
                                    show-weeks="false" />
                             <span class="input-group-btn">
                                 <button type="button"
                                         class="btn btn-default"
                                         data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
-                                        data-ng-click="vm.openFechaPlanificadaDatePicker($event)">
+                                        data-ng-click="vm.openFechaVencimientoDatePicker($event)">
                                     <i class="fa fa-calendar"></i>
                                 </button>
                             </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Observaciones</label>
-                        <textarea data-ng-model="vm.solicitudPersonal.observaciones"
+                        <label>Grado de educación mínimo requerido</label>
+                        <select data-ng-options="t.nombre for t in vm.tiposEducacion"
+                                data-ng-model="vm.solicitudPersonal.tipoEducacion"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Detalles Educación</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.educacionDescripcion"
                                   data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
                                   class="form-control"
-                                  placeholder="Observaciones"></textarea>
+                                  placeholder="Detalles Educación"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Experiencia</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.experienciaLaboral"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Experiencia"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Funciones</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.funciones"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Funciones"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Requisitos</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.requisitos"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Requisitos"></textarea>
                     </div>
                 </form>
             </div>

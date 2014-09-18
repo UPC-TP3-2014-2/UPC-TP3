@@ -12,6 +12,12 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
                 .HasColumnName("INT_CODIGOCARGO");
             Property(c => c.Nombre)
                 .HasColumnName("VCH_NOMBRE");
+            Property(c => c.AreaId)
+                .HasColumnName("INT_CODIGOAREA");
+
+            HasRequired(c => c.Area)
+                .WithMany(a => a.Cargos)
+                .HasForeignKey(c => c.AreaId);
         }
     }
 }

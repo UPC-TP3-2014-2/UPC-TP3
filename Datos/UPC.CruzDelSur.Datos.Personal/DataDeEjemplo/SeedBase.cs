@@ -11,12 +11,13 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
         protected const string Inmediato = "Inmediato";
         protected static readonly DateTime Date = (DateTime) SqlDateTime.MinValue;
 
-        protected readonly Area Finanzas = new Area{Nombre = "Finanzas"};
-        protected readonly Area RecursosHumanos = new Area{Nombre = "Recursos Humanos"};
-        protected readonly Area Operaciones = new Area{Nombre = "Operaciones"};
-        protected readonly Area Mantenimiento = new Area{Nombre = "Mantenimiento"};
-        protected readonly Area Logistica = new Area{Nombre = "Logística"};
-        
+        protected readonly Area Gerencia = new Area {Nombre = "Gerencia"};
+        protected readonly Area Finanzas = new Area {Nombre = "Finanzas"};
+        protected readonly Area RecursosHumanos = new Area {Nombre = "Recursos Humanos"};
+        protected readonly Area Operaciones = new Area {Nombre = "Operaciones"};
+        protected readonly Area Mantenimiento = new Area {Nombre = "Mantenimiento"};
+        protected readonly Area Logistica = new Area {Nombre = "Logística"};
+
         protected readonly TipoEducacion Tecnico = new TipoEducacion {Nombre = "Técnico"};
         protected readonly TipoEducacion Universitario = new TipoEducacion {Nombre = "Universitario"};
         protected readonly TipoEducacion PostGrado = new TipoEducacion {Nombre = "Post-Grado"};
@@ -32,16 +33,19 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
         protected readonly Capacitacion CamionesScania = new Capacitacion {Nombre = "Camiones Scania", Duracion = 24};
         protected readonly Capacitacion BusesVolvo = new Capacitacion {Nombre = "Buses Volvo", Duracion = 20};
         protected readonly Capacitacion CamionesVolvo = new Capacitacion {Nombre = "Camiones Volvo", Duracion = 30};
+
         protected readonly Capacitacion BusesMercedesBenz = new Capacitacion
         {
             Nombre = "Buses Mercedes Benz",
             Duracion = 8
         };
+
         protected readonly Capacitacion CamionesMercedesBenz = new Capacitacion
         {
             Nombre = "Camiones Mercedes Benz",
             Duracion = 12
         };
+
         protected readonly Capacitacion SeguridadVial = new Capacitacion {Nombre = "Seguridad Vial", Duracion = 16};
         protected readonly Capacitacion PrimerosAuxilios = new Capacitacion {Nombre = "Primeros Auxilios", Duracion = 8};
 
@@ -50,14 +54,18 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
             SeedAreas(context);
             SeedTiposDocumento(context);
             SeedTiposEducacion(context);
-            SeedCargos(context);
             SeedCapacitaciones(context);
         }
 
         private void SeedAreas(DbContext context)
         {
+            Gerencia.Cargos = new[] {Gerente};
+            Operaciones.Cargos = new[] {Conductor};
+            Logistica.Cargos = new[] {EncargadoLogistica};
+
             context.Set<Area>().AddRange(new[]
             {
+                Gerencia,
                 Finanzas,
                 RecursosHumanos,
                 Operaciones,
@@ -103,18 +111,6 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
             {
                 Dni,
                 CarneExtranjeria
-            });
-
-            context.SaveChanges();
-        }
-
-        private void SeedCargos(DbContext context)
-        {
-            context.Set<Cargo>().AddRange(new[]
-            {
-                Conductor,
-                EncargadoLogistica,
-                Gerente
             });
 
             context.SaveChanges();

@@ -30,6 +30,21 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
                 .HasColumnName("VCH_FUNCIONES");
             Property(s => s.Requisitos)
                 .HasColumnName("VCH_REQUISITOS");
+
+            HasRequired(s => s.Area)
+                .WithMany()
+                .HasForeignKey(s => s.AreaId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(s => s.Cargo)
+                .WithMany()
+                .HasForeignKey(s => s.CargoId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(s => s.TipoEducacion)
+                .WithMany()
+                .HasForeignKey(s => s.TipoEducacionId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

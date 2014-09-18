@@ -83,8 +83,15 @@
                                        placeholder="Apellidos" />
                             </div>
                             <div class="form-group">
+                                <label>Area</label>
+                                <select data-ng-options="a.nombre for a in vm.areas"
+                                        data-ng-model="vm.persona.area"
+                                        class="form-control"
+                                        data-z-validate></select>
+                            </div>
+                            <div class="form-group">
                                 <label>Cargo</label>
-                                <select data-ng-options="c.nombre for c in vm.cargos"
+                                <select data-ng-options="c.nombre for c in vm.persona.area.cargos"
                                         data-ng-model="vm.persona.cargo"
                                         class="form-control"
                                         data-z-validate></select>

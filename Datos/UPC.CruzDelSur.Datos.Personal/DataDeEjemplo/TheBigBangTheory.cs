@@ -30,6 +30,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Cooper",
                 FechaNacimiento = new DateTime(1985, 04, 27),
                 Foto = "Sheldon_Cooper.jpg",
+                Area = Gerencia,
                 Cargo = Gerente,
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
@@ -76,6 +77,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Hofstadter",
                 FechaNacimiento = new DateTime(1982, 07, 20),
                 Foto = "Leonard_Hofstadter.jpg",
+                Area = Operaciones,
                 Cargo = Conductor,
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
@@ -112,6 +114,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Wolowitz",
                 FechaNacimiento = new DateTime(1987, 06, 10),
                 Foto = "Howard_Wolowitz.jpg",
+                Area = Operaciones,
                 Cargo = Conductor,
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
@@ -192,8 +195,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                     EducacionDescripcion = "Administracion, Ingeniería industrial",
                     ExperienciaLaboral = "Preferentemente con 4 años de experiencia en gerencia de operaciones y logística",
                     Requisitos = "Manejo avanzado de Microsoft Office (Excel, Word, Power Point)",
-                    Funciones = @"
-1. Elaborar un plan estratégico para el Área Logística.
+                    Funciones = @"1. Elaborar un plan estratégico para el Área Logística.
 2. Reclutar y capacitar al personal adecuado para los diferentes puestos en el departamento.
 3. Realizar las evaluaciones de personal y dar retroalimentación a cada miembro del equipo con un plan de acción para mejorar el desempeño y motivación del equipo.
 4. Controlar la implementación de buenas prácticas y las recomendaciones de nuestros socios comerciales (Proveedores de Mercaderías etc.).

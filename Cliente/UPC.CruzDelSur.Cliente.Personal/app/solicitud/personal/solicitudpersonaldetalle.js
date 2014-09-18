@@ -15,7 +15,6 @@
         vm.archivarPersonal = archivarPersonal;
         vm.areas = [];
         vm.cancel = cancel;
-        vm.cargos = [];
         vm.deleteEntity = deleteEntity;
         vm.fechaVencimientoDatePickerOpened = false;
         vm.goBack = goBack;
@@ -115,7 +114,6 @@
         function initLookups() {
             var lookups = datacontext.lookup.lookupCachedData;
             vm.areas = lookups.areas;
-            vm.cargos = lookups.cargos;
             vm.tiposEducacion = lookups.tiposEducacion;
         }
 
