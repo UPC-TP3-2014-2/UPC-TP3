@@ -1,0 +1,177 @@
+﻿<section id="personas-view" class="mainbar" data-ng-controller="solicitudpersonaldetalle as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    <i class="fa fa-check-circle fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Aprobado'"></i>
+                    <i class="fa fa-times-circle fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Rechazado'"></i>
+                    <i class="fa fa-circle-o fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"></i>
+                    Solicitud de Capacitación
+                    <span data-ng-show="vm.hasChanges"
+                          class="disolve-animation ng-hide">
+                        <i class="fa fa-asterisk fa-asterisk-large"></i>
+                    </span>
+                </h1>
+            </div>
+            <div class="row">
+                <div class="btn-group">
+                    <button class="btn btn-default"
+                            data-ng-click="vm.goBack()">
+                        <i class="fa fa-hand-o-left"></i>
+                        <span>Regresar</span>
+                    </button>
+                    <button class="btn btn-default"
+                            data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"
+                            data-ng-click="vm.cancel()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-undo"></i>
+                        <span>Cancelar</span>
+                    </button>
+                    <button class="btn btn-primary"
+                            data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"
+                            data-ng-click="vm.save()"
+                            data-ng-disabled="!vm.canSave">
+                        <i class="fa fa-save"></i>
+                        <span>Guardar</span>
+                    </button>
+                    <button class="btn btn-danger"
+                            data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"
+                            data-ng-click="vm.deleteEntity()">
+                        <i class="fa fa-trash-o"></i>
+                        <span>Eliminar</span>
+                    </button>
+                    <!--<button class="btn btn-warning"
+                            data-ng-show="vm.solicitudPersonal.estado != 'Pendiente'"
+                            data-ng-click="vm.archivarCapacitaion()">
+                        <i class="fa fa-archive"></i>
+                        <span>Archivar</span>
+                    </button>-->
+                </div>
+            </div>
+            &nbsp;
+            <div class="row">
+                <form role="form">
+                    <div class="form-group"
+                         data-ng-show="vm.solicitudPersonal.estado != 'Pendiente'">
+                        <label>{{vm.solicitudPersonal.estado}}</label>
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   datepicker-popup="yyyy/MM/dd"
+                                   data-ng-model="vm.solicitudPersonal.fechaResolucion"
+                                   data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'" />
+                        </div>
+                    </div>
+                    <div class="form-group"
+                         data-ng-show="vm.solicitudPersonal.estado != 'Pendiente'">
+                        <label>Detalles</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.detallesResolucion"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Detalles"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Área</label>
+                        <select data-ng-options="a.nombre for a in vm.areas"
+                                data-ng-model="vm.solicitudPersonal.area"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cargo</label>
+                        <select data-ng-options="c.nombre for c in vm.solicitudPersonal.area.cargos"
+                                data-ng-model="vm.solicitudPersonal.cargo"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Salario</label>
+                        <input data-ng-model="vm.solicitudPersonal.salario"
+                               class="form-control"
+                               placeholder="Salario" />
+                    </div>
+                    <div class="form-group">
+                        <label>Inicio</label>
+                        <select data-ng-model="vm.solicitudPersonal.inicio"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate>
+                            <option>Inmediato</option>
+                            <option>A mediano plazo</option>
+                            <option>A largo plazo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Contrato</label>
+                        <select data-ng-model="vm.solicitudPersonal.contrato"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate>
+                            <option>Tiempo Completo</option>
+                            <option>Tiempo Parcial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Vencimiento</label>
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   data-ng-model="vm.solicitudPersonal.fechaVencimiento"
+                                   data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                   datepicker-popup="yyyy/MM/dd"
+                                   is-open="vm.fechaVencimientoDatePickerOpened"
+                                   show-button-bar="false"
+                                   show-weeks="false" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                        data-ng-click="vm.openFechaVencimientoDatePicker($event)">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Grado de educación mínimo requerido</label>
+                        <select data-ng-options="t.nombre for t in vm.tiposEducacion"
+                                data-ng-model="vm.solicitudPersonal.tipoEducacion"
+                                data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                class="form-control"
+                                data-z-validate></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Detalles Educación</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.educacionDescripcion"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Detalles Educación"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Experiencia</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.experienciaLaboral"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Experiencia"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Funciones</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.funciones"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Funciones"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Requisitos</label>
+                        <textarea data-ng-model="vm.solicitudPersonal.requisitos"
+                                  data-ng-disabled="vm.solicitudPersonal.estado != 'Pendiente'"
+                                  class="form-control"
+                                  placeholder="Requisitos"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</section>

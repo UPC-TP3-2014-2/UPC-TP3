@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using UPC.CruzDelSur.Datos.Personal.Configuracion;
+using System.Reflection;
 using UPC.CruzDelSur.Datos.Personal.DataDeEjemplo;
 using UPC.CruzDelSur.Negocio.Modelo.Personal;
 
@@ -31,17 +30,8 @@ namespace UPC.CruzDelSur.Datos.Personal
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Configurations.Add(new CargoConfiguration());
-            modelBuilder.Configurations.Add(new TipoDocumentoConfiguration());
-            modelBuilder.Configurations.Add(new PersonaConfiguration());
-            modelBuilder.Configurations.Add(new DetalleHojaVidaConfiguration());
-            modelBuilder.Configurations.Add(new EducacionConfiguration());
-            modelBuilder.Configurations.Add(new ExperienciaLaboralConfiguration());
-            modelBuilder.Configurations.Add(new SolicitudConfiguration());
-            modelBuilder.Configurations.Add(new SolicitudCapacitacionConfiguration());
-            modelBuilder.Configurations.Add(new SolicitudPersonalConfiguration());
-            modelBuilder.Configurations.Add(new EvaluacionDesempenoConfiguration());
-            
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }

@@ -9,6 +9,7 @@
 
     function model(modelValidation) {
         var entityNames = {
+            area: 'Area',
             auditoria: 'AuditEntry',
             capacitacion: 'Capacitacion',
             cargo: 'Cargo',
@@ -16,6 +17,7 @@
             experienciaLaboral: 'ExperienciaLaboral',
             persona: 'Persona',
             solicitudCapacitacion: 'SolicitudCapacitacion',
+            solicitudPersonal: 'SolicitudPersonal',
             tipoDocumento: 'TipoDocumento',
             tipoEducacion: 'TipoEducacion',
         };
@@ -39,11 +41,12 @@
             var unchanged = breeze.EntityState.Unchanged;
 
             createNullo(entityNames.tipoDocumento);
+            createNullo(entityNames.tipoEducacion);
             createNullo(entityNames.cargo);
             createNullo(entityNames.capacitacion);
 
             function createNullo(entityName, values) {
-                var initialValues = values || { nombre: ' [Seleccione un ' + entityName + ']' };
+                var initialValues = values || { nombre: ' [Seleccione ' + entityName + ']' };
 
                 return manager.createEntity(entityName, initialValues, unchanged);
             }

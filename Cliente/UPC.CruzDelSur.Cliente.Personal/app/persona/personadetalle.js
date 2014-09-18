@@ -12,9 +12,9 @@
         var vm = this;
         var logError = common.logger.getLogFn(controllerId, 'error');
 
+        vm.areas = [];
         vm.activate = activate;
         vm.cancel = cancel;
-        vm.cargos = [];
         vm.datePickerMaxDate = datePickerMaxDate;
         vm.datePickerOpened = false;
         vm.deletePersona = deletePersona;
@@ -57,7 +57,7 @@
         function canSave() { return vm.hasChanges && !vm.isSaving; }
 
         function datePickerMaxDate() {
-            return moment.subtract('years', 18);
+            return moment().subtract('years', 18);
         }
 
         function deletePersona() {
@@ -112,8 +112,8 @@
 
         function initLookups() {
             var lookups = datacontext.lookup.lookupCachedData;
+            vm.areas = lookups.areas;
             vm.tiposDocumento = lookups.tiposDocumento;
-            vm.cargos = lookups.cargos;
         }
 
         function isNew() {

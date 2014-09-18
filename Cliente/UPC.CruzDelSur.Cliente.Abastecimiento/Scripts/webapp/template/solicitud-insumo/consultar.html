@@ -1,0 +1,68 @@
+﻿<div ng-controller="SolicitudInsumoController">
+    
+    <fieldset>
+        <legend>Consultar Solicitud de Insumos</legend> 
+    </fieldset>
+
+    <div class="form-group">
+        <a href="#/SolicitudInsumo/Register" class="btn btn-primary"><i class="fa fa-plus"></i> Registrar Solicitud Insumo</a>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Criterios de Búsqueda</div>
+        <div class="panel-body">
+            
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <input type="number" class="form-control" placeholder="Nro. Solicitud" ng-model="consultar.solicitudInsumoId" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="consultar.buscarSolicitudInsumoPorId(consultar.solicitudInsumoId)"><i class="fa fa-search"></i> Buscar</button>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="col-lg-9 form-inline">
+                <input type="date" class="form-control" ng-model="consultar.fechaSolicitudDesde" />
+                <input type="date" class="form-control" ng-model="consultar.fechaSolicitudHasta" />
+                
+                <div class="form-group">
+                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudInsumoPorRangoFechas(consultar.fechaSolicitudDesde, consultar.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Fecha Solicitud</th>
+                        <th>Nro Solicitud</th>
+                        <th>Nro Solicitud Cocina</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, solicitudInsumo) in consultar.listado.solicitudInsumo" ng-class="{ danger: solicitudInsumo.estado == 0}">
+                        <td>{{ solicitudInsumo.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ solicitudInsumo.id }}</td>
+                        <td>{{ solicitudInsumo.solicitudCocina.id }}</td>
+                        <td ng-switch on="solicitudInsumo.estado">
+                            <span ng-switch-when="1">Registrado</span>
+                            <span ng-switch-when="0">Anulado</span>
+                            <span ng-switch-default>{{ solicitudInsumo.estado }}</span>
+                        </td>
+                        <td>
+                            <div ng-if="solicitudInsumo.estado == 1">
+                                <a class="btn btn-xs btn-info" href="#/SolicitudInsumo/Edit/{{ solicitudInsumo.id }}"><i class="fa fa-edit"></i> Actualizar</a>
+                                <a class="btn btn-xs btn-danger" href="#/SolicitudInsumo/Anular/{{ solicitudInsumo.id }}"><i class="fa fa-close"></i> Anular</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

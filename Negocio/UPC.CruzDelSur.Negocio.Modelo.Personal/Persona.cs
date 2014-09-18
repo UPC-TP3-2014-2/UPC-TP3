@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace UPC.CruzDelSur.Negocio.Modelo.Personal
@@ -36,7 +33,12 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
 
         public virtual ICollection<DetalleHojaVida> DetallesHojaVida { get; set; }
 
-        [Required(ErrorMessage = "Debe especificar un cargo")]
+        [Required]
+        public int AreaId { get; set; }
+
+        public virtual Area Area { get; set; }
+
+        [Required]
         public int CargoId { get; set; }
 
         public virtual Cargo Cargo { get; set; }

@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-default navbar-static-top" role="navigation">
+﻿<nav class="navbar navbar-default navbar-static-top" role="navigation" ng-controller="NavbarController">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -16,7 +16,17 @@
                 <li><a href="http://localhost:32075">Personal</a></li>
                 <li><a href="http://localhost:2382/Inicio.aspx">Checkin</a></li>
                 <li><a href="http://localhost:31026/">Carga</a></li>
-                <li class="active"><a href="http://localhost:53521/">Abastecimiento</a></li>
+                <li class="dropdown active" on-toggle="toggled(open)">
+                    <a class="dropdown-toggle" href="#">Abastecimiento <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#/SolicitudCocina">Solicitud de Cocina</a>
+                        </li>
+                        <li>
+                            <a href="#/SolicitudInsumo">Solicitud de Insumos</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

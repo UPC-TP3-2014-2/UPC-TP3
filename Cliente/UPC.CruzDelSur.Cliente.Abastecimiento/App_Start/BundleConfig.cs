@@ -18,12 +18,26 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento
 						"~/Scripts/jquery.unobtrusive*",
 						"~/Scripts/jquery.validate*"));
 
+			bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+						"~/Scripts/knockout-{version}.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
+				"~/Scripts/app/ajaxlogin.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/todo").Include(
+				"~/Scripts/app/todo.bindings.js",
+				"~/Scripts/app/todo.datacontext.js",
+				"~/Scripts/app/todo.model.js",
+				"~/Scripts/app/todo.viewmodel.js"));
+
 			// Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información sobre los formularios. De este modo, estará
 			// preparado para la producción y podrá utilizar la herramienta de creación disponible en http://modernizr.com para seleccionar solo las pruebas que necesite.
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/modernizr-*"));
 
-			bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+			bundles.Add(new StyleBundle("~/Content/css").Include(
+				"~/Content/Site.css",
+				"~/Content/TodoList.css"));
 
 			bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
 						"~/Content/themes/base/jquery.ui.core.css",

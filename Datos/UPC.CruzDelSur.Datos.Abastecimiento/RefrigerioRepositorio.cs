@@ -13,19 +13,19 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 	public class RefrigerioRepositorio : Repositorio<RefrigerioRepositorio>, IRefrigerioRepositorio
 	{
 
-		protected Database Database = DatabaseFactory.CreateDatabase();
+		protected RefrigerioRepositorio() { }
 
 
 		public IQueryable<Refrigerio> ObtenerTodos()
 		{
 			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_refrigerio, vch_descripcion, vch_tipo_unidad from ta_refrigerio");
-			IList<Refrigerio> ListadoRefrigerios = new List<Refrigerio>();
+			IList<Refrigerio> ListadoRefrigerio = new List<Refrigerio>();
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
 			{
 				while (Reader.Read())
 				{
-					ListadoRefrigerios.Add(new Refrigerio() 
+					ListadoRefrigerio.Add(new Refrigerio() 
 					{ 
 						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
 						Descripcion = (!Reader.IsDBNull(1)) ? Reader.GetString(1) : String.Empty,
@@ -34,12 +34,28 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 				}
 			}
 
-			return ListadoRefrigerios.AsQueryable();
+			return ListadoRefrigerio.AsQueryable();
 		}
 
 		public Refrigerio ObtenerPorId(int id)
 		{
-			throw new NotImplementedException();
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_refrigerio, vch_descripcion, vch_tipo_unidad from ta_refrigerio where int_codigo_refrigerio = @int_codigo_refrigerio");
+			Database.AddInParameter(DbCommand, "@int_codigo_refrigerio", DbType.Int32, id);
+
+			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
+			{
+				while (Reader.Read())
+				{
+					return new Refrigerio()
+					{
+						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+						Descripcion = (!Reader.IsDBNull(1)) ? Reader.GetString(1) : String.Empty,
+						TipoUnidad = (!Reader.IsDBNull(2)) ? Reader.GetString(2) : String.Empty
+					};
+				}
+			}
+
+			return null;
 		}
 
 		public void Insertar(Refrigerio entidad)

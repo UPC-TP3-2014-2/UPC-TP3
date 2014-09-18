@@ -10,41 +10,40 @@ using UPC.CruzDelSur.Modelo.Abastecimiento;
 
 namespace UPC.CruzDelSur.Datos.Abastecimiento
 {
-	public class InsumoRepositorio : IInsumoRepositorio
+	public class InsumoRepositorio : Repositorio<InsumoRepositorio >,  IInsumoRepositorio
 	{
 
-		protected Database Database = DatabaseFactory.CreateDatabase();
+		protected InsumoRepositorio() { }
+
 
 		public IQueryable<Insumo> ObtenerTodos()
 		{
-			string Query = "select int_codigo_insumo, vch_descripcion, vch_tipo_unidad, dte_fecha_vencimiento from ta_insumo";
-			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
-			IList<Insumo> Listado = new List<Insumo>();
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_insumo, vch_descripcion, vch_tipo_unidad, dte_fecha_vencimiento from ta_insumo");
+			IList<Insumo> ListadoInsumo = new List<Insumo>();
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
 			{
 				while (Reader.Read())
 				{
-					Listado.Add(
+					ListadoInsumo.Add(
 						new Insumo()
 						{
 							Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
 							Descripcion = (!Reader.IsDBNull(1)) ? Reader.GetString(1) : String.Empty,
 							TipoUnidad = (!Reader.IsDBNull(2)) ? Reader.GetString(2) : String.Empty,
 							FechaVencimiento = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900")
-						}
-						);
+						});
 				}
 			}
 
-			return Listado.AsQueryable();
+			return ListadoInsumo.AsQueryable();
 		}
+
 
 		public Insumo ObtenerPorId(int id)
 		{
-			string Query = "select int_codigo_insumo, vch_descripcion, vch_tipo_unidad, dte_fecha_vencimiento from ta_insumo where int_codigo_insumo = @int_codigo_insumo";
-			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
-			Database.AddInParameter(DbCommand, "int_codigo_insumo", DbType.Int32, id);
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_insumo, vch_descripcion, vch_tipo_unidad, dte_fecha_vencimiento from ta_insumo where int_codigo_insumo = @int_codigo_insumo");
+			Database.AddInParameter(DbCommand, "@int_codigo_insumo", DbType.Int32, id);
 
 			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
 			{
