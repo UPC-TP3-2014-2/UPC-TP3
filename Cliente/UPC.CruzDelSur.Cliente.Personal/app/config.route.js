@@ -97,10 +97,10 @@
                 }
             },
             {
-                url: '/solicitudes/contratacion',
+                url: '/solicitudes/personal',
                 config: {
-                    title: 'solicitudes de contratacion',
-                    templateUrl: 'app/solicitud/contratacion/solicitudescontratacion.html',
+                    title: 'solicitudes de personal',
+                    templateUrl: 'app/solicitud/personal/solicitudespersonal.html',
                     settings: {
                         nav: 4,
                         content: '<i class="fa fa-file"></i> Contrataciones'
@@ -108,10 +108,10 @@
                 }
             },
             {
-                url: '/solicitud/contratacion/:id',
+                url: '/solicitud/personal/:id',
                 config: {
-                    title: 'solicitud de contratacion',
-                    templateUrl: 'app/solicitud/contratacion/solicitudcontrataciondetalle.html',
+                    title: 'solicitud de personal',
+                    templateUrl: 'app/solicitud/contratacion/solicitudpersonaldetalle.html',
                     settings: {}
                 }
             },

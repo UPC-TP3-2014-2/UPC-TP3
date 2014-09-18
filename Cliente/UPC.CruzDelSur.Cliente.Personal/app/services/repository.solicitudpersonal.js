@@ -1,13 +1,13 @@
 ﻿(function () {
     'use strict';
 
-    var serviceId = 'repository.solicitudcapacitacion';
+    var serviceId = 'repository.solicitudpersonal';
 
     angular.module('app').factory(serviceId,
-        ['model', 'repository.abstract', RepositorySolicitudCapacitacion]);
+        ['model', 'repository.abstract', RepositorySolicitudPersonal]);
 
-    function RepositorySolicitudCapacitacion(model, AbstractRepository) {
-        var entityName = model.entityNames.solicitudCapacitacion;
+    function RepositorySolicitudPersonal(model, AbstractRepository) {
+        var entityName = model.entityNames.solicitudPersonal;
         var EntityQuery = breeze.EntityQuery;
         var where = breeze.Predicate("archivada", '==', false);
         var orderBy = 'fechaRegistro desc';
@@ -29,13 +29,13 @@
 
         function create() {
             var entity = this.manager.createEntity(entityName);
-            entity.fechaPlanificada = moment().add(1, 'months');
+            entity.fechaVencimiento = moment().add(1, 'months');
             return entity;
         }
 
         function getAll(forceRemote, archivadas) {
             var self = this;
-            var solicitudesCapacitacion = [];
+            var solicitudesPersonal = [];
 
             var predicate = where;
             if (archivadas) {
@@ -43,27 +43,27 @@
             }
 
             if (self._areItemsLoaded() && !forceRemote) {
-                solicitudesCapacitacion = self._getAllLocal(entityName, orderBy, predicate);
+                solicitudesPersonal = self._getAllLocal(entityName, orderBy, predicate);
                 
-                return self.$q.when(solicitudesCapacitacion);
+                return self.$q.when(solicitudesPersonal);
             }
 
             return EntityQuery
-                .from('SolicitudesCapacitacion')
+                .from('SolicitudesPersonal')
                 .where(predicate)
                 .orderBy(orderBy)
-                .expand('trabajador, trabajador.cargo, capacitacion')
+                .expand('area, cargo, tipoEducacion')
                 .toType(entityName)
                 .using(self.manager)
                 .execute()
                 .then(querySucceeded, self._queryFailed);
 
             function querySucceeded(data) {
-                solicitudesCapacitacion = data.results;
+                solicitudesPersonal = data.results;
                 self._areItemsLoaded(true);
-                self.log('Se obtuvieron [Solicitudes de Capacitacion] del origen de datos remoto', solicitudesCapacitacion, true);
+                self.log('Se obtuvieron [Solicitudes de Personal] del origen de datos remoto', solicitudesPersonal);
 
-                return solicitudesCapacitacion;
+                return solicitudesPersonal;
             }
         }
 
@@ -77,7 +77,7 @@
             }
 
             return EntityQuery
-                .from('SolicitudesCapacitacion')
+                .from('SolicitudesPersonal')
                 .inlineCount(true)
                 .using(this.manager)
                 .execute()

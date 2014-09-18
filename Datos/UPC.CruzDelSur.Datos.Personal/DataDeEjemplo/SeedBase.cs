@@ -7,14 +7,25 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
 {
     public abstract class SeedBase
     {
+        protected const string TiempoCompleto = "Tiempo Completo";
+        protected const string Inmediato = "Inmediato";
         protected static readonly DateTime Date = (DateTime) SqlDateTime.MinValue;
 
-        protected readonly string PostGrado = "Post-Grado";
+        protected readonly Area Finanzas = new Area{Nombre = "Finanzas"};
+        protected readonly Area RecursosHumanos = new Area{Nombre = "Recursos Humanos"};
+        protected readonly Area Operaciones = new Area{Nombre = "Operaciones"};
+        protected readonly Area Mantenimiento = new Area{Nombre = "Mantenimiento"};
+        protected readonly Area Logistica = new Area{Nombre = "Logística"};
+        
+        protected readonly TipoEducacion Tecnico = new TipoEducacion {Nombre = "Técnico"};
+        protected readonly TipoEducacion Universitario = new TipoEducacion {Nombre = "Universitario"};
+        protected readonly TipoEducacion PostGrado = new TipoEducacion {Nombre = "Post-Grado"};
 
         protected readonly TipoDocumento Dni = new TipoDocumento {Nombre = "DNI"};
         protected readonly TipoDocumento CarneExtranjeria = new TipoDocumento {Nombre = "Carne de Extranjeria"};
 
         protected readonly Cargo Conductor = new Cargo {Nombre = "Conductor"};
+        protected readonly Cargo EncargadoLogistica = new Cargo {Nombre = "Encargado de Logística"};
         protected readonly Cargo Gerente = new Cargo {Nombre = "Gerente"};
 
         protected readonly Capacitacion BusesScania = new Capacitacion {Nombre = "Buses Scania", Duracion = 16};
@@ -36,9 +47,25 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
 
         public virtual void Seed(DbContext context)
         {
+            SeedAreas(context);
             SeedTiposDocumento(context);
+            SeedTiposEducacion(context);
             SeedCargos(context);
             SeedCapacitaciones(context);
+        }
+
+        private void SeedAreas(DbContext context)
+        {
+            context.Set<Area>().AddRange(new[]
+            {
+                Finanzas,
+                RecursosHumanos,
+                Operaciones,
+                Mantenimiento,
+                Logistica
+            });
+
+            context.SaveChanges();
         }
 
         private void SeedCapacitaciones(DbContext context)
@@ -53,6 +80,18 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 CamionesMercedesBenz,
                 SeguridadVial,
                 PrimerosAuxilios
+            });
+
+            context.SaveChanges();
+        }
+
+        private void SeedTiposEducacion(DbContext context)
+        {
+            context.Set<TipoEducacion>().AddRange(new[]
+            {
+                Tecnico,
+                Universitario,
+                PostGrado
             });
 
             context.SaveChanges();
@@ -74,6 +113,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
             context.Set<Cargo>().AddRange(new[]
             {
                 Conductor,
+                EncargadoLogistica,
                 Gerente
             });
 

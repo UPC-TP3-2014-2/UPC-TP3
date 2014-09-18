@@ -150,6 +150,7 @@
     <Content Include="app\services\repository.experienciaLaboral.js" />
     <Content Include="app\services\repository.lookup.js" />
     <Content Include="app\services\repository.persona.js" />
+    <Content Include="app\services\repository.solicitudpersonal.js" />
     <Content Include="app\services\repository.solicitudcapacitacion.js" />
     <Content Include="app\services\repository.tecnico.js" />
     <Content Include="app\services\routemediator.js" />
@@ -157,8 +158,10 @@
     <Content Include="app\solicitud\capacitacion\solicitudcapacitaciondetalle.js" />
     <Content Include="app\solicitud\capacitacion\solicitudescapacitacion.html" />
     <Content Include="app\solicitud\capacitacion\solicitudescapacitacion.js" />
-    <Content Include="app\solicitud\contratacion\solicitudescontratacion.html" />
-    <Content Include="app\solicitud\contratacion\solicitudescontratacion.js" />
+    <Content Include="app\solicitud\personal\solicitudpersonaldetalle.html" />
+    <Content Include="app\solicitud\personal\solicitudpersonaldetalle.js" />
+    <Content Include="app\solicitud\personal\solicitudespersonal.html" />
+    <Content Include="app\solicitud\personal\solicitudespersonal.js" />
     <Content Include="app\tecnico\tecnicos.html" />
     <Content Include="app\tecnico\tecnicos.js" />
     <Content Include="Content\breeze.directives.css" />

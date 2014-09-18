@@ -10,10 +10,26 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
             ToTable("TA_SOLICITUDESPERSONAL");
             Property(s => s.FechaVencimiento)
                 .HasColumnName("DTE_FECHAVENCIMIENTO");
-            Property(s => s.Asunto)
-                .HasColumnName("VCH_ASUNTO");
-            Property(s => s.Descripcion)
-                .HasColumnName("VCH_DESCRIPCION");
+            Property(s => s.AreaId)
+                .HasColumnName("INT_CODIGOAREA");
+            Property(s => s.CargoId)
+                .HasColumnName("INT_CODIGOCARGO");
+            Property(s => s.Salario)
+                .HasColumnName("DEC_SALARIO");
+            Property(s => s.Inicio)
+                .HasColumnName("VCH_INICIO");
+            Property(s => s.Contrato)
+                .HasColumnName("VCH_CONTRATO");
+            Property(s => s.TipoEducacionId)
+                .HasColumnName("INT_CODIGOTIPOEDUCACION");
+            Property(s => s.EducacionDescripcion)
+                .HasColumnName("VCH_EDUCACIONDESCRIPCION");
+            Property(s => s.ExperienciaLaboral)
+                .HasColumnName("VCH_EXPERIENCIALABORAL");
+            Property(s => s.Funciones)
+                .HasColumnName("VCH_FUNCIONES");
+            Property(s => s.Requisitos)
+                .HasColumnName("VCH_REQUISITOS");
         }
     }
 }

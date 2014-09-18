@@ -1,0 +1,62 @@
+﻿<section id="solicitudes-personal-view" class="mainbar" data-ng-controller="solicitudespersonal as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    {{vm.title}}
+                    <small>({{vm.solicitudesPersonal.length}})</small>
+                </h1>
+            </div>
+            <div class="row">
+                <div class="btn-group">
+                    <a class="btn btn-default"
+                       href="#/solicitud/personal/nuevo">
+                        <i class="fa fa-plus"></i>
+                        <span>Nueva Solicitud de Personal</span>
+                    </a>
+                    <a class="btn btn-default"
+                       data-ng-click="vm.refresh()">
+                        <i class="fa fa-refresh"></i>
+                        <span>Refrescar</span>
+                    </a>
+                </div>
+            </div>
+            &nbsp;
+            <div class="row">
+                <div class="list-group">
+                    <a href=""
+                       class="list-group-item"
+                       title="Ver detalles"
+                       data-ng-repeat="s in vm.solicitudesPersonal"
+                       data-ng-click="vm.goToSolicitudPersonal(s)">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-1">
+                                <i class="fa fa-check-circle fa-5x" data-ng-show="s.estado == 'Aprobado'"></i>
+                                <i class="fa fa-times-circle fa-5x" data-ng-show="s.estado == 'Rechazado'"></i>
+                                <i class="fa fa-circle-o fa-5x" data-ng-show="s.estado == 'Pendiente'"></i>
+                            </div>
+                            <div class="col-xs-12 col-md-11">
+                                <span class="pull-right">
+                                    <p class="list-group-item-text">
+                                        <strong>Registrado:</strong> {{s.fechaRegistro | date:'yyyy/MM/dd'}}
+                                    </p>
+                                    <p class="list-group-item-text">
+                                        <strong>Fecha de vencimiento:</strong> {{s.fechaVencimiento | date:'yyyy/MM/dd'}}
+                                    </p>
+                                    <p class="list-group-item-text"
+                                       data-ng-show="s.estado != 'Pendiente'">
+                                        <strong>{{s.estado}}:</strong> {{s.fechaResolucion | date:'yyyy/MM/dd'}}
+                                    </p>
+                                </span>
+                                <p class="list-group-item-text">{{s.estado}}</p>
+                                <h3 class="list-group-item-heading">{{s.cargo.nombre}}</h3>
+                                <h4 class="list-group-item-text">{{s.area.nombre}}</h4>
+                                <p class="list-group-item-text">{{s.contrato}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

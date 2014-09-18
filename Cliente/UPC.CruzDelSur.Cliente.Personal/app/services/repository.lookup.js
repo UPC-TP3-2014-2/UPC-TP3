@@ -42,9 +42,11 @@
 
         function setLookups() {
             this.lookupCachedData = {
-                tiposDocumento: this._getAllLocal(entityNames.tipoDocumento, 'nombre'),
+                areas: this._getAllLocal(entityNames.area, 'nombre'),
                 capacitaciones: this._getAllLocal(entityNames.capacitacion, 'nombre'),
-                cargos: this._getAllLocal(entityNames.cargo, 'nombre')
+                cargos: this._getAllLocal(entityNames.cargo, 'nombre'),
+                tiposDocumento: this._getAllLocal(entityNames.tipoDocumento, 'nombre'),
+                tiposEducacion: this._getAllLocal(entityNames.tipoEducacion, 'nombre'),
             }
         }
     }

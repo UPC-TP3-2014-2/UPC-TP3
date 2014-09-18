@@ -17,6 +17,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
 
             SeedPersonas(context);
             SeedSolicitudesCapacitacion(context);
+            SeedSolicitudesPersonal(context);
         }
 
         private void SeedPersonas(DbContext context)
@@ -168,6 +169,36 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                     Capacitacion = CamionesVolvo,
                     Trabajador = _howard,
                     Observaciones = "Solicitado por la misma persona"
+                }
+            });
+
+            context.SaveChanges();
+        }
+
+        private void SeedSolicitudesPersonal(DbContext context)
+        {
+            context.Set<SolicitudPersonal>().AddRange(new[]
+            {
+                new SolicitudPersonal
+                {
+                    FechaRegistro = new DateTime(2014, 09, 15),
+                    FechaVencimiento = new DateTime(2014, 10, 15),
+                    Area = Logistica,
+                    Cargo = EncargadoLogistica,
+                    Salario = 25000,
+                    Inicio = Inmediato,
+                    Contrato = TiempoCompleto,
+                    TipoEducacion = Universitario,
+                    EducacionDescripcion = "Administracion, Ingeniería industrial",
+                    ExperienciaLaboral = "Preferentemente con 4 años de experiencia en gerencia de operaciones y logística",
+                    Requisitos = "Manejo avanzado de Microsoft Office (Excel, Word, Power Point)",
+                    Funciones = @"
+1. Elaborar un plan estratégico para el Área Logística.
+2. Reclutar y capacitar al personal adecuado para los diferentes puestos en el departamento.
+3. Realizar las evaluaciones de personal y dar retroalimentación a cada miembro del equipo con un plan de acción para mejorar el desempeño y motivación del equipo.
+4. Controlar la implementación de buenas prácticas y las recomendaciones de nuestros socios comerciales (Proveedores de Mercaderías etc.).
+5. Asegurar el abastecimiento eficiente a cada Sucursal de todos los productos que comercializamos
+"
                 }
             });
 
