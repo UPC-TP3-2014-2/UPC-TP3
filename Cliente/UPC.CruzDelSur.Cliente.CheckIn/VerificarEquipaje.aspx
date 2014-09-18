@@ -17,22 +17,38 @@
         }
     </script>
     <div id="contenedor">
-    <h2>VERIFICAR CONTENIDO DE EQUIPAJE</h2>
-    <br />
-        <fieldset>
-        <legend style="font-size:14px">Búsqueda:</legend>
+    <h2>Verificar contenido de equipaje</h2>
+  <br />
+         <div class="panel panel-default">
+
+  <div class="panel-heading">Criterios de búsqueda</div>
+
+          
+            <br />
+
+          
+  <div class="form-inline">
+      <div class="form-group">
+       &nbsp;       &nbsp;
 
             <asp:Label ID="Label2" runat="server" Text="DNI" MaxLength="8"></asp:Label>
+
+            &nbsp;&nbsp;
             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
+
+             &nbsp;&nbsp;
             <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-             <br /><br />
-
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn" 
+             
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
-                <br /><br />
-       </fieldset>        
+                <br />
+          <br />
+
+          </div>
+             </div>  
+       </div>         
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
             DataKeyNames="CodBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
@@ -106,8 +122,8 @@
             </EmptyDataTemplate>            
         </asp:GridView>  
         
-         <asp:Button ID="btnImprimir" runat="server" CssClass="mybtnstyle" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
-         <asp:Button ID="btnInicio" runat="server" CssClass="mybtnstyle" 
+         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
+         <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>
 
         <asp:Panel ID="pnlContents" runat="server">

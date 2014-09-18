@@ -10,8 +10,8 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
     {
 
         public int Id { get; set; }
-        public string Origen { get; set; }
-        public string Destino { get; set; }
+        public Agencia AgenciaOrigen { get; set; }
+		public Agencia AgenciaDestino { get; set; }
         public bool Estado { get; set; }
 
     }

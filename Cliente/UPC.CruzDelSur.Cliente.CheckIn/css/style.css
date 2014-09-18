@@ -16,10 +16,18 @@ h1 {
     width: 700px;
     margin: 10px auto;
 }
-#contenedor {
-    width: 98%;
-    margin: 10px auto;
+
+#contenedor{
+   text-align: left;
+   width: 1180px;
+   margin: auto;
 }
+
+#cuerpo{
+   margin: 10px 0px 10px 0px;
+}
+
+
 
 .mGrid { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
     .mGrid td { padding: 2px; border: solid 1px #c1c1c1; color: #717171; }
