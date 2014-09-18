@@ -1,3 +1,78 @@
+锘縐SE [master]
+GO
+/****** Object:  Database [CSUR]    Script Date: 16/09/2014 07:27:34 p.m. ******/
+CREATE DATABASE [CSUR]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'CSUR', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\CSUR.mdf' , SIZE = 4288KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'CSUR_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\CSUR_log.ldf' , SIZE = 1072KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [CSUR] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [CSUR].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [CSUR] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [CSUR] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [CSUR] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [CSUR] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [CSUR] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [CSUR] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [CSUR] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [CSUR] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [CSUR] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [CSUR] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [CSUR] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [CSUR] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [CSUR] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [CSUR] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [CSUR] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [CSUR] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [CSUR] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [CSUR] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [CSUR] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [CSUR] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [CSUR] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [CSUR] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [CSUR] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [CSUR] SET  MULTI_USER 
+GO
+ALTER DATABASE [CSUR] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [CSUR] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [CSUR] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [CSUR] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [CSUR] SET DELAYED_DURABILITY = DISABLED 
+GO
 USE [CSUR]
 GO
 /****** Object:  Table [dbo].[__MigrationHistory]    Script Date: 16/09/2014 07:27:34 p.m. ******/
@@ -722,43 +797,23 @@ CREATE TABLE [dbo].[TA_RUTA](
 ) ON [PRIMARY]
 
 GO
-
-
-
-
 /****** Object:  Table [dbo].[TA_SOLICITUDCOCINA]    Script Date: 16/09/2014 07:27:34 p.m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE TABLE [dbo].[TA_SOLICITUDCOCINA](
-	[INT_CODIGO_SOLICITUDCOCINA] [int] IDENTITY(1,1) NOT NULL,
+	[INT_CODIGO_SOLICITUDCOCINA] [int] NOT NULL,
+	[INT_CODIGO_REFRIGERIO] [int] NOT NULL,
 	[INT_CODIGO_PROGRAMACION_RUTA] [int] NOT NULL,
+	[INT_CANTIDAD] [int] NULL,
+	[BLN_ESTADO] [bit] NOT NULL,
 	[DTE_FECHA_SOLICITUD] [smalldatetime] NULL,
-	[BLN_ESTADO] [tinyint] NOT NULL
  CONSTRAINT [PK_SOLPRODCOCINA] PRIMARY KEY CLUSTERED 
 (
 	[INT_CODIGO_SOLICITUDCOCINA] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
-
-/****** Object:  Table [dbo].[TA_DET_SOLICITUDCOCINA]    Script Date: 16/09/2014 07:27:34 p.m. ******/
-CREATE TABLE [dbo].[TA_DET_SOLICITUDCOCINA](
-	[INT_CODIGO_DET_SOLICITUDCOCINA] [int] IDENTITY(1,1) NOT NULL,
-	[INT_CODIGO_SOLICITUDCOCINA] [int] NOT NULL,
-	[INT_CODIGO_REFRIGERIO] [int] NOT NULL,
-	[INT_CANTIDAD] [int] NULL,
-	[BLN_ESTADO] [bit] NOT NULL
- CONSTRAINT [PK_DETSOLPRODCOCINA] PRIMARY KEY CLUSTERED 
-(
-	[INT_CODIGO_DET_SOLICITUDCOCINA] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-
-
 
 GO
 /****** Object:  Table [dbo].[TA_SOLICITUDES]    Script Date: 16/09/2014 07:27:34 p.m. ******/
@@ -847,7 +902,7 @@ CREATE TABLE [dbo].[TA_SOLICITUDINSUMO](
 	[INT_CODIGO_SOLICITUDINSUMO] [int] NOT NULL,
 	[DTE_FECHA_SOLICITUD] [smalldatetime] NOT NULL,
 	[INT_CODIGO_SOLICITUDCOCINA] [int] NULL,
-	[TIN_ESTADO] [tinyint] NOT NULL,
+	[TIN_ESTADO_SOLICITUD] [tinyint] NOT NULL,
  CONSTRAINT [PK_SOLICITUDINSUMO] PRIMARY KEY CLUSTERED 
 (
 	[INT_CODIGO_SOLICITUDINSUMO] ASC
@@ -1420,10 +1475,10 @@ REFERENCES [dbo].[TA_PROGRAMACION_RUTA] ([INT_CODIGO_PROGRAMACION_RUTA])
 GO
 ALTER TABLE [dbo].[TA_SOLICITUDCOCINA] CHECK CONSTRAINT [FK_TA_SOLICITUDCOCINA_TA_PROGRAMACION_RUTA]
 GO
-ALTER TABLE [dbo].[TA_DET_SOLICITUDCOCINA]  WITH CHECK ADD  CONSTRAINT [FK_TA_DET_SOLICITUDCOCINA_TA_REFRIGERIO] FOREIGN KEY([INT_CODIGO_REFRIGERIO])
+ALTER TABLE [dbo].[TA_SOLICITUDCOCINA]  WITH CHECK ADD  CONSTRAINT [FK_TA_SOLICITUDCOCINA_TA_REFRIGERIO] FOREIGN KEY([INT_CODIGO_REFRIGERIO])
 REFERENCES [dbo].[TA_REFRIGERIO] ([INT_CODIGO_REFRIGERIO])
 GO
---ALTER TABLE [dbo].[TA_SOLICITUDCOCINA] CHECK CONSTRAINT [FK_TA_SOLICITUDCOCINA_TA_REFRIGERIO]
+ALTER TABLE [dbo].[TA_SOLICITUDCOCINA] CHECK CONSTRAINT [FK_TA_SOLICITUDCOCINA_TA_REFRIGERIO]
 GO
 ALTER TABLE [dbo].[TA_SOLICITUDESCAPACITACION]  WITH CHECK ADD  CONSTRAINT [FK_dbo.TA_SOLICITUDESCAPACITACION_dbo.Capacitacion_INT_CODIGOCAPACITACION] FOREIGN KEY([INT_CODIGOCAPACITACION])
 REFERENCES [dbo].[Capacitacion] ([Id])
@@ -1531,12 +1586,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_ASIENTOSVEHICULO 1
+-- Ejecuci贸n: SP_ASIENTOSVEHICULO 1
 --****************************************************************************
 CREATE Procedure [dbo].[SP_ASIENTOSVEHICULO]
 (
@@ -1567,12 +1622,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_BOLETOACTUALIZARASIENTO '001-000001','02'
+-- Ejecuci贸n: SP_BOLETOACTUALIZARASIENTO '001-000001','02'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_BOLETOACTUALIZARASIENTO]
 (
@@ -1616,12 +1671,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_BOLETOCANCELARCHECKIN '001-000001'
+-- Ejecuci贸n: SP_BOLETOCANCELARCHECKIN '001-000001'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_BOLETOCANCELARCHECKIN]
 (
@@ -1660,12 +1715,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_BOLETOCHECKIN '001-000001'
+-- Ejecuci贸n: SP_BOLETOCHECKIN '001-000001'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_BOLETOCHECKIN]
 (
@@ -1698,14 +1753,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 --                     @pDNI       - Nro de DNI del Pasajero 
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_BOLETOCONSULTAR '001-000001',Null
--- Ejecuci髇: SP_BOLETOCONSULTAR Null,'09982311'
+-- Ejecuci贸n: SP_BOLETOCONSULTAR '001-000001',Null
+-- Ejecuci贸n: SP_BOLETOCONSULTAR Null,'09982311'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_BOLETOCONSULTAR]
 (
@@ -1958,12 +2013,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_EQUIPAJEACTUALIZARESTADO '001-000001',2
+-- Ejecuci贸n: SP_EQUIPAJEACTUALIZARESTADO '001-000001',2
 --****************************************************************************
 CREATE Procedure [dbo].[SP_EQUIPAJEACTUALIZARESTADO]
 (
@@ -2009,14 +2064,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 --                     @pDNI       - Nro de DNI del Pasajero 
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_EQUIPAJECONSULTAR '001-000001',Null
--- Ejecuci髇: SP_EQUIPAJECONSULTAR Null,'07195613'
+-- Ejecuci贸n: SP_EQUIPAJECONSULTAR '001-000001',Null
+-- Ejecuci贸n: SP_EQUIPAJECONSULTAR Null,'07195613'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_EQUIPAJECONSULTAR]
 (
@@ -2072,14 +2127,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 --                     @pDNI       - Nro de DNI del Pasajero 
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_EQUIPAJECONSULTAR '001-000001',Null
--- Ejecuci髇: SP_EQUIPAJECONSULTAR Null,'07195613'
+-- Ejecuci贸n: SP_EQUIPAJECONSULTAR '001-000001',Null
+-- Ejecuci贸n: SP_EQUIPAJECONSULTAR Null,'07195613'
 --****************************************************************************
 CREATE Procedure [dbo].[SP_EQUIPAJEVERIFICAR]
 (
@@ -2135,12 +2190,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: SP_EQUIPAJEACTUALIZARESTADO '001-000001',2
+-- Ejecuci贸n: SP_EQUIPAJEACTUALIZARESTADO '001-000001',2
 --****************************************************************************
 CREATE Procedure [dbo].[SP_EQUIPAJEVERIFICARESTADO]
 (
@@ -2826,12 +2881,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 --****************************************************************************
 -- Valida los datos del usuario para el ingreso
--- Input             : @pNROBOLETO - N鷐ero de Boleto
+-- Input             : @pNROBOLETO - N煤mero de Boleto
 -- Output            : Datos de boleto
 -- Creado por        : xxx
--- Fec Creaci髇      : xx              
+-- Fec Creaci贸n      : xx              
 ------------------------------------------------------------------------------
--- Ejecuci髇: exec SP_TIKETCONSULTAR 
+-- Ejecuci贸n: exec SP_TIKETCONSULTAR 
 --****************************************************************************
 CREATE Procedure [dbo].[SP_TIKETCONSULTAR]
 As
