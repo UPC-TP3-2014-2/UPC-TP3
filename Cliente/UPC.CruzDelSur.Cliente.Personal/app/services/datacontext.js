@@ -14,14 +14,19 @@
         var logSuccess = getLogFn(serviceId, 'success');
         var manager = emFactory.newManager();
         var primePromise;
-        var repoNames = ['auditoria', 'educacion', 'experienciaLaboral', 'lookup', 'persona', 'tecnico', 'solicitudCapacitacion'];
+        var repoNames = [
+            'auditoria',
+            'educacion',
+            'experienciaLaboral',
+            'lookup',
+            'persona',
+            'tecnico',
+            'solicitudCapacitacion',
+            'solicitudPersonal'
+        ];
         var $q = common.$q;
 
         var service = {
-            // TODO: Remove these
-            getPeople: getPeople,
-            getMessageCount: getMessageCount,
-
             cancel: cancel,
             markDeleted: markDeleted,
             prime: prime,

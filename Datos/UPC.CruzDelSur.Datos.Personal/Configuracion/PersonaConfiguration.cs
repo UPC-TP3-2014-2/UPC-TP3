@@ -26,6 +26,8 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
                 .HasColumnName("VCH_DIRECCION");
             Property(p => p.Telefono)
                 .HasColumnName("VCH_TELEFONO");
+            Property(p => p.AreaId)
+                .HasColumnName("INT_CODIGOAREA");
             Property(p => p.CargoId)
                 .HasColumnName("INT_CODIGOCARGO");
             
@@ -33,14 +35,20 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
                 .WithMany()
                 .HasForeignKey(p => p.TipoDocumentoId);
 
+            HasRequired(p => p.Area)
+                .WithMany()
+                .HasForeignKey(p => p.AreaId)
+                .WillCascadeOnDelete(false);
+
             HasRequired(p => p.Cargo)
                 .WithMany()
-                .HasForeignKey(p => p.CargoId);
+                .HasForeignKey(p => p.CargoId)
+                .WillCascadeOnDelete(false);
 
             HasMany(p => p.DetallesHojaVida)
                 .WithRequired(d => d.Persona)
                 .HasForeignKey(d => d.PersonaId)
-                .WillCascadeOnDelete(true);
+                .WillCascadeOnDelete(false);
         }
     }
 }

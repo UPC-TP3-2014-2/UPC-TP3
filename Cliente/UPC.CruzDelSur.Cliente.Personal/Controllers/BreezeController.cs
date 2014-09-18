@@ -103,15 +103,25 @@ namespace UPC.CruzDelSur.Cliente.Personal.Controllers
         }
 
         [HttpGet]
+        public IQueryable<SolicitudPersonal> SolicitudesPersonal()
+        {
+            _tracer.Info(Request, ControllerContext.ControllerDescriptor.ControllerType.FullName, "Obteniendo Solicitudes de Personal");
+
+            return _context.SolicitudesPersonal.ObtenerTodos();
+        }
+
+        [HttpGet]
         public object Lookups()
         {
             _tracer.Info(Request, ControllerContext.ControllerDescriptor.ControllerType.FullName, "Obteniendo Datos de Consulta");
 
             return new
             {
-                TiposDocumento = _context.TiposDocumento.ObtenerTodos(),
-                Cargos = _context.Cargos.ObtenerTodos(),
+                Areas = _context.Areas.ObtenerTodos(),
                 Capacitaciones = _context.Capacitaciones.ObtenerTodos(),
+                Cargos = _context.Cargos.ObtenerTodos(),
+                TiposDocumento = _context.TiposDocumento.ObtenerTodos(),
+                TiposEducacion = _context.TiposEducacion.ObtenerTodos(),
             };
         }
 

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Datos.Contratos</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Datos.Contratos</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,29 +30,46 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAreasRepositorio.cs" />
     <Compile Include="ICapacitacionesRepositorio.cs" />
+    <Compile Include="ICargaRepositorio.cs" />
     <Compile Include="ICargosRepositorio.cs" />
+    <Compile Include="IClienteRepositorio.cs" />
     <Compile Include="IContextoDatos.cs" />
+    <Compile Include="IDetalleCargaRepositorio.cs" />
+    <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
+    <Compile Include="IEducacionesRepositorio.cs" />
+    <Compile Include="IExperienciasLaboralesRepositorio.cs" />
+    <Compile Include="IInsumoRepositorio.cs" />
     <Compile Include="IPersonasRepositorio.cs" />
+    <Compile Include="IProductoRepositorio.cs" />
+    <Compile Include="IProgramacion_Ruta.cs" />
     <Compile Include="IRefrigerioRepositorio.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="ISolicitudCocinaRepositorio.cs" />
     <Compile Include="ISolicitudesCapacitacionRepositorio.cs" />
+    <Compile Include="ISolicitudesPersonalRepositorio.cs" />
     <Compile Include="ISolicitudInsumoRepositorio.cs" />
     <Compile Include="ITiposDocumentoRepositorio.cs" />
     <Compile Include="IProgramacionRutaRepositorio.cs" />
+    <Compile Include="ITiposEducacionRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Modelo.Abastecimiento\UPC.CruzDelSur.Modelo.Abastecimiento.csproj">
       <Project>{8a1b592c-7c7d-4f2a-ae9a-d8d962d9f49d}</Project>
       <Name>UPC.CruzDelSur.Modelo.Abastecimiento</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Carga\UPC.CruzDelSur.Negocio.Modelo.Carga.csproj">
+      <Project>{eb815d4a-6e92-4cac-ab9e-29fc56ee9c50}</Project>
+      <Name>UPC.CruzDelSur.Negocio.Modelo.Carga</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Negocio.Modelo.Personal\UPC.CruzDelSur.Negocio.Modelo.Personal.csproj">
       <Project>{ee618541-580d-4d72-a111-d7d4fab503c1}</Project>

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Negocio.Modelo.Personal</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Negocio.Modelo.Personal</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -36,6 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="Capacitacion.cs" />
     <Compile Include="DetalleHojaVida.cs" />
@@ -49,6 +52,7 @@
     <Compile Include="SolicitudCapacitacion.cs" />
     <Compile Include="SolicitudPersonal.cs" />
     <Compile Include="TipoDocumento.cs" />
+    <Compile Include="TipoEducacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Modelo.cd" />

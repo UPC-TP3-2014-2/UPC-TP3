@@ -28,9 +28,20 @@
 
             applyToPersona(metadataStore);
             applyToExperienciaLaboral(metadataStore);
+            applyToEducacion(metadataStore);
             applyToSolicitudCapacitacion(metadataStore);
 
             log('Validators applied', null, serviceId);
+        }
+
+        function applyToEducacion(metadataStore) {
+            var educacionType = metadataStore.getEntityType(entityNames.educacion);
+
+            educacionType.validators
+                .push(fromToRangeValidator);
+
+            educacionType.getProperty('tipo').validators
+                .push(requireReferenceValidator);
         }
 
         function applyToExperienciaLaboral(metadataStore) {

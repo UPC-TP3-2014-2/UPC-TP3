@@ -10,10 +10,7 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
     {
         public int Id { get; set; }
         public SolicitudCocina SolicitudCocina { get; set; }
-        public Insumo Insumo { get; set; }
         public DateTime FechaSolicitud { get; set; }
-        public int Cantidad { get; set; }
-        public string Unidad { get; set; }
         public bool Estado { get; set; }
     }
 }
