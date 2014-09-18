@@ -2,7 +2,7 @@
 
 namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
 {
-    public class PersonalDbInitializer : DropCreateDatabaseAlways<PersonalDbContext>
+    public class PersonalDbInitializer : CreateDatabaseIfNotExists<PersonalDbContext>
     {
         private readonly SeedBase _seed;
 

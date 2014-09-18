@@ -12,6 +12,5 @@ namespace UPC.CruzDelSur.Datos.Contratos
 
 		void AnularSolicitud(int id);
 
-
     }
 }

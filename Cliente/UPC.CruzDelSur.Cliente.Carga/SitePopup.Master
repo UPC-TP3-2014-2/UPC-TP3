@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SitePopup.master.cs" Inherits="CRUZDELSUR.UI.Web.SitePopup" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>    
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+       <script src="Js/Util.js" type="text/javascript"></script>
+       <script src="../Scripts/OpenModalDialog.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-image: url('http://localhost:3088/img/fondo.png'); background-repeat: repeat">
+    
+    <form id="Form1" runat="server" class="main" >
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div class="popup">
+        <div>
+            <div class="header">
+                <div id="contLogo">
+                    <div id="logo" class="logo_es" title="Cruz del Sur" 
+                        style="background-image: url('img/fondo.jpg')">
+                    <img src="../img/logo.png" />
+                    </div>
+                    <!--div id="txtLogo"></div-->
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="main" style="background-color:white;display:inline-block;width:93%">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer" 
+        style="background-image: url('/img/fondo.png'); background-repeat: repeat">
+    </div>
+    </form>
+</body>
+</html>
