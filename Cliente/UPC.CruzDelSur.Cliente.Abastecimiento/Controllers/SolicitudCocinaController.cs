@@ -15,9 +15,18 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 		SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
 		[HttpGet]
-        public IEnumerable<SolicitudCocina> Get()
+		public IEnumerable<SolicitudCocina> Get()
 		{
-            return SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+			return SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+		}
+
+		[HttpGet]
+		public IEnumerable<SolicitudCocina> Get(DateTime fechaInicial, DateTime fechaFinal)
+		{
+			fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
+			fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
+			
+			return SolicitudCocinaNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
 		}
 
 
@@ -39,10 +48,10 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 
         [HttpPut]
-        public HttpResponseMessage Put(SolicitudCocina solicitudCocina)
+        public SolicitudCocina Put(SolicitudCocina solicitudCocina)
         {
             SolicitudCocinaNegocio.Actualizar(solicitudCocina);
-            return Request.CreateResponse(HttpStatusCode.Created, solicitudCocina);
+			return solicitudCocina;
         }
 
 		

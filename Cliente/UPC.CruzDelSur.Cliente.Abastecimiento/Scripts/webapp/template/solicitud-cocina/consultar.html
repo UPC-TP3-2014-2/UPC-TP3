@@ -14,19 +14,19 @@
             
             <div class="col-lg-3">
                 <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Nro. Solicitud" ng-model="busqueda.solicitudCocina.id" />
+                    <input type="number" class="form-control" placeholder="Nro. Solicitud" ng-model="consultar.solicitudCocinaId" />
                     <span class="input-group-btn">
-                        <button class="btn btn-success" type="button" ng-click="buscarSolicitudCocinaPorId(busqueda.solicitudCocina.id)"><i class="fa fa-search"></i> Buscar</button>
+                        <button class="btn btn-success" type="button" ng-click="consultar.buscarSolicitudCocinaPorId(consultar.solicitudCocinaId)"><i class="fa fa-search"></i> Buscar</button>
                     </span>
                 </div>
             </div>
             
             <div class="col-lg-9 form-inline">
-                <input type="date" class="form-control" id="buscar-fecha-desde" name="buscar-fecha-desde" ng-model="busqueda.solicitudCocina.fechaSolicitudDesde" />
-                <input type="date" class="form-control" id="buscar-fecha-hasta" name="buscar-fecha-hasta" ng-model="busqueda.solicitudCocina.fechaSolicitudHasta" />
+                <input type="date" class="form-control" ng-model="consultar.fechaSolicitudDesde" />
+                <input type="date" class="form-control" ng-model="busqueda.fechaSolicitudHasta" />
                 
                 <div class="form-group">
-                    <button class="btn btn-success" ng-click="buscarSolicitudCocinaPorRangoFechas(busqueda.solicitudCocina.fechaSolicitudDesde, busqueda.solicitudCocina.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudCocinaPorRangoFechas(consultar.fechaSolicitudDesde, busqueda.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
 
@@ -39,18 +39,27 @@
                         <th>Nro Solicitud</th>
                         <th>Unidad Transporte</th>
                         <th>Ruta Programada</th>
+                        <th>Estado</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="solicitudCocina in busqueda.listadoSolicitudCocina">
-                        <td>{{ solicitudCocina.fechaSolicitud }}</td>
+                    <tr ng-repeat="(key, solicitudCocina) in consultar.listado.solicitudCocina" ng-class="{ danger: solicitudCocina.estado == 0 }">
+                        <td>{{ solicitudCocina.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
                         <td>{{ solicitudCocina.id }}</td>
                         <td>{{ solicitudCocina.programacionRuta.vehiculo.placa }}</td>
                         <td>{{ solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - {{ solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }}</td>
+                        <td ng-switch on="solicitudCocina.estado">
+                            <span ng-switch-when="1">Registrado</span>
+                            <span ng-switch-when="0">Anulado</span>
+                            <span ng-switch-default>{{ solicitudCocina.estado }}</span>
+                        </td>
                         <td>
-                            <a class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Actualizar</a>
-                            <a class="btn btn-xs btn-danger"><i class="fa fa-close"></i> Anular</a>
+                            <div ng-if="solicitudCocina.estado == 1">
+                                <a class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Actualizar</a>
+                                <!--<a class="btn btn-xs btn-danger" href="#/SolicitudCocina/Anular/{{ solicitudCocina.id }}" ng-click="consultar.anularSolicitudInsumo(key)"><i class="fa fa-close"></i> Anular</a>-->
+                                <a class="btn btn-xs btn-danger" href="#/SolicitudCocina/Anular/{{ solicitudCocina.id }}"><i class="fa fa-close"></i> Anular</a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

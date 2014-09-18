@@ -52,15 +52,5 @@ end
 go
 
 
-select * from ta_insumo
 
---select * from ta_solicitudcocina
---select * from ta_det_solicitudcocina
-
---select * from ta_solicitudinsumo
---select * from ta_det_solicitudinsumo
-
-
---select int_codigo_solicitudcocina, int_codigo_programacion_ruta, dte_fecha_solicitud, tin_estado from ta_solicitudcocina where int_codigo_solicitudcocina = @int_codigo_solicitudcocina
-
---update ta_solicitudinsumo set TIN_ESTADO = 1
+select * from ta_solicitudcocina

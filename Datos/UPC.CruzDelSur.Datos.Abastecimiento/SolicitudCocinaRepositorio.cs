@@ -66,20 +66,20 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 
         public void Insertar(SolicitudCocina solicitudCocina)
         {
-            DbCommand DbCommand = Database.GetSqlStringCommand("insert into ta_solicitudcocina(int_codigo_programacion_ruta, dte_fecha_solicitud, bln_estado) values(@int_codigo_programacion_ruta, @dte_fecha_solicitud, @bln_estado)");
+			DbCommand DbCommand = Database.GetSqlStringCommand("insert into ta_solicitudcocina(int_codigo_programacion_ruta, dte_fecha_solicitud, tin_estado) values(@int_codigo_programacion_ruta, @dte_fecha_solicitud, @tin_estado)");
             Database.AddInParameter(DbCommand, "@int_codigo_programacion_ruta", DbType.Int32, solicitudCocina.ProgramacionRuta.Id);
             Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudCocina.FechaSolicitud);
-            Database.AddInParameter(DbCommand, "@bln_estado", DbType.Boolean, solicitudCocina.Estado);
+			Database.AddInParameter(DbCommand, "@tin_estado", DbType.Byte, solicitudCocina.Estado);
             int RowsAffected = Database.ExecuteNonQuery(DbCommand);
         }
 
         public void Actualizar(SolicitudCocina solicitudCocina)
         {
-            DbCommand DbCommand = Database.GetSqlStringCommand("update ta_solicitudcocina set int_codigo_programacion_ruta = @int_codigo_programacion_ruta, dte_fecha_solicitud = @dte_fecha_solicitud, bln_estado = @bln_estado where int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
+			DbCommand DbCommand = Database.GetSqlStringCommand("update ta_solicitudcocina set int_codigo_programacion_ruta = @int_codigo_programacion_ruta, dte_fecha_solicitud = @dte_fecha_solicitud, tin_estado = @tin_estado where int_codigo_solicitudcocina = @int_codigo_solicitudcocina");
             Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, solicitudCocina.Id);
             Database.AddInParameter(DbCommand, "@int_codigo_programacion_ruta", DbType.Int32, solicitudCocina.ProgramacionRuta.Id);
             Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudCocina.FechaSolicitud);
-            Database.AddInParameter(DbCommand, "@bln_estado", DbType.Boolean, solicitudCocina.Estado);
+			Database.AddInParameter(DbCommand, "@tin_estado", DbType.Byte, solicitudCocina.Estado);
             int RowsAffected = Database.ExecuteNonQuery(DbCommand);
         }
 

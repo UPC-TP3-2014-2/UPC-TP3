@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="(key, solicitudInsumo) in consultar.listado.solicitudInsumo" ng-class="{ danger: solicitudInsumo.estado == 0}">
-                        <td>{{ solicitudInsumo.fechaSolicitud }}</td>
+                        <td>{{ solicitudInsumo.fechaSolicitud | dd/mm/yyyy }}</td>
                         <td>{{ solicitudInsumo.id }}</td>
                         <td>{{ solicitudInsumo.solicitudCocina.id }}</td>
                         <td ng-switch on="solicitudInsumo.estado">
@@ -59,6 +59,28 @@
                     </tr>
                 </tbody>
             </table>
+
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">I'm a modal!</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li ng-repeat="item in items">
+                            <a ng-click="selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+
+
+
         </div>
 
     </div>

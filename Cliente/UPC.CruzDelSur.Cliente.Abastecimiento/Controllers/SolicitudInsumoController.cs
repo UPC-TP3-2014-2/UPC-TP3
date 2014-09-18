@@ -13,11 +13,21 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
     {
         protected SolicitudInsumoNegocio SolicitudInsumoNegocio = new SolicitudInsumoNegocio();
 
-        [HttpGet]
-        public IEnumerable<SolicitudInsumo> Get()
-        {
-            return SolicitudInsumoNegocio.ObtenerTodos();
-        }
+		[HttpGet]
+		public IEnumerable<SolicitudInsumo> Get()
+		{
+			return SolicitudInsumoNegocio.ObtenerTodos();
+		}
+
+
+		[HttpGet]
+		public IEnumerable<SolicitudInsumo> Get(DateTime fechaInicial, DateTime fechaFinal)
+		{
+			fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
+			fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
+
+			return SolicitudInsumoNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
+		}
 
 
         [HttpGet]
