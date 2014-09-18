@@ -175,6 +175,7 @@
     <Content Include="GestionCarga\ConsultaCliente.aspx" />
     <Content Include="GestionCarga\ConsultaProducto.aspx" />
     <Content Include="GestionCarga\ConsultaProgramacion.aspx" />
+    <Content Include="GestionCarga\GuiaRemision.aspx" />
     <Content Include="GestionCarga\ImprimirFichaCarga.aspx" />
     <Content Include="GestionCarga\ListadoFichaCarga.aspx" />
     <Content Include="GestionCarga\Login.aspx" />
@@ -231,7 +232,9 @@
     <Content Include="Styles\jquery.lightbox.ie6.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -402,6 +405,13 @@
     </Compile>
     <Compile Include="GestionCarga\ConsultaProgramacion.aspx.designer.cs">
       <DependentUpon>ConsultaProgramacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCarga\GuiaRemision.aspx.cs">
+      <DependentUpon>GuiaRemision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\GuiaRemision.aspx.designer.cs">
+      <DependentUpon>GuiaRemision.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCarga\ImprimirFichaCarga.aspx.cs">
       <DependentUpon>ImprimirFichaCarga.aspx</DependentUpon>
