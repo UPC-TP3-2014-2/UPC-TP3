@@ -1,63 +1,76 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using UPC.CruzDelSur.Cliente.Abastecimiento.Models;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using UPC.CruzDelSur.Modelo.Abastecimiento;
 using UPC.CruzDelSur.Negocio.Abastecimiento;
 
 namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
-    public class SolicitudInsumoController : Controller
+    public class SolicitudInsumoController : ApiController
     {
-
-		SolicitudInsumoNegocio SolicitudInsumoNegocio = new SolicitudInsumoNegocio();
-		DetSolicitudInsumoNegocio DetSolicitudInsumoNegocio = new DetSolicitudInsumoNegocio();
-        
+		protected SolicitudInsumoNegocio SolicitudInsumoNegocio = new SolicitudInsumoNegocio();
+		protected SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
 		[HttpGet]
-        public ActionResult Index()
+		public IEnumerable<SolicitudInsumo> Get()
+		{
+			return SolicitudInsumoNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+		}
+
+
+		[HttpGet]
+		public IEnumerable<SolicitudInsumo> Get(DateTime fechaInicial, DateTime fechaFinal)
+		{
+			fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
+			fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
+
+			return SolicitudInsumoNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
+		}
+
+
+        [HttpGet]
+        public SolicitudInsumo Get(int id)
         {
-            return View();
+            return SolicitudInsumoNegocio.ObtenerPorId(id);
         }
 
 
+        [HttpPost]
+        public SolicitudInsumo Post(SolicitudInsumo solicitudInsumo)
+        {
+			solicitudInsumo.FechaSolicitud = DateTime.Now;
+			solicitudInsumo.Estado = 1;
+			SolicitudInsumoNegocio.Insertar(solicitudInsumo);
 
-		[HttpGet]
-		public ActionResult Register()
-		{
-			return View(new SolicitudInsumoModel());
-		}
+			SolicitudCocina SolicitudCocina = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
+			SolicitudCocina.Estado = 2;
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocina);
+            
+            return solicitudInsumo;
+        }
 
 
-		[HttpPost]
-		public ActionResult Register(string SolicitudCocinaId, List<String> Insumos)
-		{
+        [HttpPut]
+        public SolicitudInsumo Put(SolicitudInsumo solicitudInsumo)
+        {
+
+			SolicitudCocina SolicitudCocinaAnterior = SolicitudInsumoNegocio.ObtenerPorId(solicitudInsumo.Id).SolicitudCocina;
+			SolicitudCocinaAnterior.Estado = 1;
+
+			SolicitudCocina SolicitudCocinaActual = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
+			SolicitudCocinaActual.Estado = 2;
+
+			SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaAnterior);
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaActual);
+
+            return solicitudInsumo;
+        }
 
 
-			SolicitudInsumo SolicitudInsumo = new SolicitudInsumo();
-			SolicitudInsumo.FechaSolicitud = DateTime.Now;
-			SolicitudInsumo.SolicitudCocina = new SolicitudCocina() { Id = Convert.ToInt32(SolicitudCocinaId) };
-			SolicitudInsumo.Estado = true;
-
-			//SolicitudInsumoNegocio.Insertar(SolicitudInsumo);
-			//SolicitudInsumo.Id = SolicitudInsumoNegocio.ObtenerUltimoId();
-
-			//foreach (var item in form.Get("Insumos"))
-			//{
-			//	DetSolicitudInsumo DetSolicitudInsumo = new DetSolicitudInsumo();
-			//	DetSolicitudInsumo.SolicitudInsumo = SolicitudInsumo;
-			//	//DetSolicitudInsumo.Insumo = new Insumo() { Id = Convert.ToInt32(item.id) };
-			//	//DetSolicitudInsumo.Cantidad = Convert.ToInt32(item.cantidad);
-			//	//DetSolicitudInsumoNegocio.Insertar(DetSolicitudInsumo);
-			//}
-			
-			return View();
-		}
 
     }
 }

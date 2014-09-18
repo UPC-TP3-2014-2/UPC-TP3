@@ -26,7 +26,7 @@
         vm.hastaOpenDatePicker = hastaOpenDatePicker;
         vm.personaIdParameter = $routeParams.idPersona;
         vm.save = save;
-        vm.tiposEducacion = ['Tecnico', 'Universitario', 'Post-Grado'];
+        vm.tiposEducacion = [];
         vm.title = 'educaciondetalle';
 
         Object.defineProperty(vm, 'canSave', {
@@ -38,6 +38,7 @@
         activate();
 
         function activate() {
+            initLookups();
             onDestroy();
             onHasChanges();
             common.activateController([getRequestedEducacion()], controllerId);
@@ -68,6 +69,11 @@
             if (vm.educacion && vm.educacion.personaId) {
                 $location.path('/persona/' + vm.educacion.personaId);
             }
+        }
+
+        function initLookups() {
+            var lookups = datacontext.lookup.lookupCachedData;
+            vm.tiposEducacion = lookups.tiposEducacion;
         }
 
         function onDestroy() {

@@ -41,7 +41,7 @@
                 <form role="form">
                     <div class="form-group">
                         <label>Tipo de Educación</label>
-                        <select data-ng-options="te for te in vm.tiposEducacion"
+                        <select data-ng-options="te.nombre for te in vm.tiposEducacion"
                                 data-ng-model="vm.educacion.tipo"
                                 class="form-control"
                                 data-z-validate></select>

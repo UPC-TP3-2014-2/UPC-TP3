@@ -1,0 +1,37 @@
+﻿@model UPC.CruzDelSur.Cliente.Abastecimiento.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Administrar cuenta";
+}
+
+<header>
+    <h1>@ViewBag.Title</h1>
+</header>
+
+<div id="main-content">
+    <p class="message-success">@ViewBag.StatusMessage</p>
+
+    <p>Ha iniciado sesión como <strong>@User.Identity.Name</strong>.</p>
+    <p>@Html.ActionLink("Volver a mi lista de tareas", "Index", "Home")</p>
+
+    <section class="todoList">
+    @if (ViewBag.HasLocalPassword)
+    {
+        @Html.Partial("_ChangePasswordPartial")
+    }
+    else
+    { 
+        @Html.Partial("_SetPasswordPartial")
+    }
+    </section>
+
+    <section class="todoList" id="externalLogins">
+        @Html.Action("RemoveExternalLogins")
+
+        <h3>Agregar un inicio de sesión externo</h3>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </section>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

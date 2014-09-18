@@ -6,14 +6,12 @@ using System.Web.Mvc;
 
 namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
-    public class HomeController : Controller
-    {
-        
+	public class HomeController : Controller
+	{
 		[HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-    }
+		public ActionResult Index()
+		{
+			return View();
+		}
+	}
 }

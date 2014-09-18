@@ -14,29 +14,9 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				name: "Solicitud_Insumo",
-				url: "SolicitudInsumo/{action}/{id}",
-				defaults: new { controller = "SolicitudInsumo", action = "Index", id = UrlParameter.Optional }
-			);
-
-			routes.MapRoute(
-				name: "Insumo",
-				url: "Insumo/{action}/{id}",
-				defaults: new { controller = "Insumo", action = "Index", id = UrlParameter.Optional }
-			);
-
-
-			routes.MapRoute(
-				name: "Solicitud_Cocina",
-				url: "SolicitudCocina/{action}/{id}",
-				defaults: new { controller = "SolicitudCocina", action = "Index", id = UrlParameter.Optional }
-			);
-
-
-			routes.MapRoute(
-				name: "Home",
-				url: "",
-				defaults: new { controller = "Home", action = "Index" }
+				name: "Default",
+				url: "{controller}/{action}/{id}",
+				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 		}
 	}
