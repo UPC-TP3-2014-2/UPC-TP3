@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es" ng-app="abastecimiento">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Abastecimiento | @ViewBag.Title</title>
-    
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
     <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
@@ -14,12 +14,18 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                @RenderBody()
+                <div ng-view>
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
-    <script src="@Url.Content("~/Scripts/jquery-1.11.1.min.js")"></script>
-    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/webapp/library/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/webapp/library/angular-route.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/webapp/library/ui-bootstrap-tpls-0.11.0.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/webapp/library/underscore-min.js")"></script>
+    <script src="@Url.Content("~/Scripts/webapp/app.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

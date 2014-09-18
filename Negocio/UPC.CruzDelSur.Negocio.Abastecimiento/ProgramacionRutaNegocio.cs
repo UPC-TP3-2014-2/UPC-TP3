@@ -18,6 +18,11 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 			return Repositorio.ObtenerTodos();
 		}
 
+		public ProgramacionRuta ObtenerPorId(int id)
+		{
+			return Repositorio.ObtenerPorId(id);
+		}
+
 
 	}
 }

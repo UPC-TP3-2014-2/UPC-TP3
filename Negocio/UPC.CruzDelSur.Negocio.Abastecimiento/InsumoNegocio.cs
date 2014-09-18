@@ -10,16 +10,16 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 {
 	public class InsumoNegocio
 	{
-		protected IInsumoRepositorio InsumoRepositorio = new InsumoRepositorio();
+		protected IInsumoRepositorio InsumoRepo = InsumoRepositorio.ObtenerInstancia();
 
 		public IQueryable<Insumo> ObtenerTodos()
 		{
-			return InsumoRepositorio.ObtenerTodos();
+			return InsumoRepo.ObtenerTodos();
 		}
 
 		public Insumo ObtenerPorId(int id)
 		{
-			return InsumoRepositorio.ObtenerPorId(id);
+			return InsumoRepo.ObtenerPorId(id);
 		}
 
 
