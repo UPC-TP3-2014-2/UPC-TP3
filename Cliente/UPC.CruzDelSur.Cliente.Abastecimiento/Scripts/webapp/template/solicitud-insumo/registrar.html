@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" disabled="disabled" value="{{ registrar.solicitudInsumo.solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - {{ registrar.solicitudInsumo.solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }}" />
             </div>
             <div class="pull-right">
-                <button class="btn btn-primary" ng-click="registrar.buscarSolicitudCocina()"><i class="fa fa-search"></i> Consultar Solicitudes de Cocina</button>
+                <button class="btn btn-primary" ng-click="registrar.buscarSolicitudCocina()" ng-disabled="registrar.registroCorrecto"><i class="fa fa-search"></i> Consultar Solicitudes de Cocina</button>
             </div>
         </div>
         
@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="(key, solicitudCocina) in registrar.listado.solicitudCocina" ng-class="{ success: $parent.registrar.solicitudCocinaIndex == key}">
-                                <td>{{ solicitudCocina.fechaSolicitud }}</td>
+                                <td>{{ solicitudCocina.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
                                 <td>{{ solicitudCocina.id }}</td>
                                 <td>{{ solicitudCocina.programacionRuta.vehiculo.placa }}</td>
                                 <td>{{ solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - {{ solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }}</td>
@@ -60,14 +60,14 @@
     <div class="panel panel-info">
         <div class="panel-heading">Insumos</div>
         <div class="panel-body">
-            <div class="col-lg-6">
+            <!--<div class="col-lg-6">
                 <input type="text" class="form-control" placeholder="Ingrese nombre del insumo." ng-model="registrar.insumoSeleccionado" typeahead="insumo as insumo.descripcion for insumo in registrar.buscarInsumos() | filter: { descripcion : $viewValue }" />
             </div>
             <div class="clearfix">
                 <div class="form-group pull-left">
                     <button class="btn btn-success" ng-click="registrar.agregarInsumo(registrar.insumoSeleccionado)"><i class="fa fa-plus"></i> Agregar Insumo</button>
                 </div>
-            </div>
+            </div>-->
 
             <table class="table table-condensed table-hover">
                 <thead>
@@ -93,8 +93,11 @@
         
     </div>
 
+    <alert type="success" ng-show="registrar.registroCorrecto">
+        Se registró correctamente la Solicitud de Insumos.
+    </alert>
     <div>
-        <button class="btn btn-success" ng-click="registrar.grabarSolicitudInsumo(registrar.solicitudInsumo)"><i class="fa fa-save"></i> Registrar Solicitud de Insumos</button>
+        <button class="btn btn-success" ng-click="registrar.grabarSolicitudInsumo()" ng-disabled="registrar.registroCorrecto"><i class="fa fa-save"></i> Registrar Solicitud de Insumos</button>
         <a class="btn btn-danger" href="#/SolicitudInsumo"><i class="fa fa-close"></i> Cancelar</a>
     </div>
 </div>

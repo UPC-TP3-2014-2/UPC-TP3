@@ -11,12 +11,13 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
     public class SolicitudInsumoController : ApiController
     {
-        protected SolicitudInsumoNegocio SolicitudInsumoNegocio = new SolicitudInsumoNegocio();
+		protected SolicitudInsumoNegocio SolicitudInsumoNegocio = new SolicitudInsumoNegocio();
+		protected SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
 		[HttpGet]
 		public IEnumerable<SolicitudInsumo> Get()
 		{
-			return SolicitudInsumoNegocio.ObtenerTodos();
+			return SolicitudInsumoNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
 		}
 
 
@@ -40,9 +41,14 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
         [HttpPost]
         public SolicitudInsumo Post(SolicitudInsumo solicitudInsumo)
         {
-            solicitudInsumo.FechaSolicitud = DateTime.Now;
-            solicitudInsumo.Estado = 1;
-            SolicitudInsumoNegocio.Insertar(solicitudInsumo);
+			solicitudInsumo.FechaSolicitud = DateTime.Now;
+			solicitudInsumo.Estado = 1;
+			SolicitudInsumoNegocio.Insertar(solicitudInsumo);
+
+			SolicitudCocina SolicitudCocina = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
+			SolicitudCocina.Estado = 2;
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocina);
+            
             return solicitudInsumo;
         }
 
@@ -50,11 +56,19 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
         [HttpPut]
         public SolicitudInsumo Put(SolicitudInsumo solicitudInsumo)
         {
-            SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
+
+			SolicitudCocina SolicitudCocinaAnterior = SolicitudInsumoNegocio.ObtenerPorId(solicitudInsumo.Id).SolicitudCocina;
+			SolicitudCocinaAnterior.Estado = 1;
+
+			SolicitudCocina SolicitudCocinaActual = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
+			SolicitudCocinaActual.Estado = 2;
+
+			SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaAnterior);
+			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaActual);
+
             return solicitudInsumo;
         }
-
-
 
 
 

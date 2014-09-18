@@ -23,10 +23,10 @@
             
             <div class="col-lg-9 form-inline">
                 <input type="date" class="form-control" ng-model="consultar.fechaSolicitudDesde" />
-                <input type="date" class="form-control" ng-model="busqueda.fechaSolicitudHasta" />
+                <input type="date" class="form-control" ng-model="consultar.fechaSolicitudHasta" />
                 
                 <div class="form-group">
-                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudCocinaPorRangoFechas(consultar.fechaSolicitudDesde, busqueda.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudCocinaPorRangoFechas(consultar.fechaSolicitudDesde, consultar.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="(key, solicitudCocina) in consultar.listado.solicitudCocina" ng-class="{ danger: solicitudCocina.estado == 0 }">
+                    <tr ng-repeat="(key, solicitudCocina) in consultar.listado.solicitudCocina" ng-class="{ danger: solicitudCocina.estado == 0, warning: solicitudCocina.estado == 2 }">
                         <td>{{ solicitudCocina.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
                         <td>{{ solicitudCocina.id }}</td>
                         <td>{{ solicitudCocina.programacionRuta.vehiculo.placa }}</td>
@@ -52,12 +52,12 @@
                         <td ng-switch on="solicitudCocina.estado">
                             <span ng-switch-when="1">Registrado</span>
                             <span ng-switch-when="0">Anulado</span>
+                            <span ng-switch-when="2">Con Solic. Insumo</span>
                             <span ng-switch-default>{{ solicitudCocina.estado }}</span>
                         </td>
                         <td>
                             <div ng-if="solicitudCocina.estado == 1">
-                                <a class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Actualizar</a>
-                                <!--<a class="btn btn-xs btn-danger" href="#/SolicitudCocina/Anular/{{ solicitudCocina.id }}" ng-click="consultar.anularSolicitudInsumo(key)"><i class="fa fa-close"></i> Anular</a>-->
+                                <a class="btn btn-xs btn-info" href="#/SolicitudCocina/Edit/{{ solicitudCocina.id }}"><i class="fa fa-edit"></i> Actualizar</a>
                                 <a class="btn btn-xs btn-danger" href="#/SolicitudCocina/Anular/{{ solicitudCocina.id }}"><i class="fa fa-close"></i> Anular</a>
                             </div>
                         </td>

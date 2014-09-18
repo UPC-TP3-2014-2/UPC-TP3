@@ -11,8 +11,7 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
     public class SolicitudCocinaController : ApiController
     {
-
-		SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
+		protected SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
 		[HttpGet]
 		public IEnumerable<SolicitudCocina> Get()
@@ -38,12 +37,12 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 
         [HttpPost]
-        public HttpResponseMessage Post(SolicitudCocina solicitudCocina)
+        public SolicitudCocina Post(SolicitudCocina solicitudCocina)
         {
             solicitudCocina.FechaSolicitud = DateTime.Now;
             solicitudCocina.Estado = 1;
             SolicitudCocinaNegocio.Insertar(solicitudCocina);
-            return Request.CreateResponse(HttpStatusCode.Created, solicitudCocina);
+			return solicitudCocina;
         }
 
 

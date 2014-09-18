@@ -334,8 +334,12 @@
     <Content Include="Scripts\webapp\library\ui-bootstrap-tpls-0.11.0.min.js" />
     <Content Include="Scripts\webapp\library\underscore-min.js" />
     <Content Include="Scripts\webapp\template\home.html" />
+    <Content Include="Scripts\webapp\template\solicitud-cocina\anular.html" />
+    <Content Include="Scripts\webapp\template\solicitud-cocina\actualizar.html" />
     <Content Include="Scripts\webapp\template\solicitud-cocina\registrar.html" />
     <Content Include="Scripts\webapp\template\solicitud-cocina\consultar.html" />
+    <Content Include="Scripts\webapp\template\solicitud-insumo\actualizar.html" />
+    <Content Include="Scripts\webapp\template\solicitud-insumo\anular.html" />
     <Content Include="Scripts\webapp\template\solicitud-insumo\consultar.html" />
     <Content Include="Scripts\webapp\template\solicitud-insumo\registrar.html" />
     <Content Include="Web.config" />

@@ -26,7 +26,7 @@
                 <input type="date" class="form-control" ng-model="consultar.fechaSolicitudHasta" />
                 
                 <div class="form-group">
-                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudInsumoPorRangoFechas(busqueda.fechaSolicitudDesde, busqueda.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-success" ng-click="consultar.buscarSolicitudInsumoPorRangoFechas(consultar.fechaSolicitudDesde, consultar.fechaSolicitudHasta)"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="(key, solicitudInsumo) in consultar.listado.solicitudInsumo" ng-class="{ danger: solicitudInsumo.estado == 0}">
-                        <td>{{ solicitudInsumo.fechaSolicitud | dd/mm/yyyy }}</td>
+                        <td>{{ solicitudInsumo.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
                         <td>{{ solicitudInsumo.id }}</td>
                         <td>{{ solicitudInsumo.solicitudCocina.id }}</td>
                         <td ng-switch on="solicitudInsumo.estado">
@@ -53,33 +53,14 @@
                             <span ng-switch-default>{{ solicitudInsumo.estado }}</span>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Actualizar</a>
-                            <a class="btn btn-xs btn-danger" ng-click="consultar.anularSolicitudInsumo(key)"><i class="fa fa-close"></i> Anular</a>
+                            <div ng-if="solicitudInsumo.estado == 1">
+                                <a class="btn btn-xs btn-info" href="#/SolicitudInsumo/Edit/{{ solicitudInsumo.id }}"><i class="fa fa-edit"></i> Actualizar</a>
+                                <a class="btn btn-xs btn-danger" href="#/SolicitudInsumo/Anular/{{ solicitudInsumo.id }}"><i class="fa fa-close"></i> Anular</a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <script type="text/ng-template" id="myModalContent.html">
-                <div class="modal-header">
-                    <h3 class="modal-title">I'm a modal!</h3>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li ng-repeat="item in items">
-                            <a ng-click="selected.item = item">{{ item }}</a>
-                        </li>
-                    </ul>
-                    Selected: <b>{{ selected.item }}</b>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" ng-click="ok()">OK</button>
-                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                </div>
-            </script>
-
-
-
 
         </div>
 
