@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Negocio.Modelo.Personal</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Negocio.Modelo.Personal</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="Capacitacion.cs" />
     <Compile Include="DetalleHojaVida.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="SolicitudCapacitacion.cs" />
     <Compile Include="SolicitudPersonal.cs" />
     <Compile Include="TipoDocumento.cs" />
+    <Compile Include="TipoEducacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Modelo.cd" />

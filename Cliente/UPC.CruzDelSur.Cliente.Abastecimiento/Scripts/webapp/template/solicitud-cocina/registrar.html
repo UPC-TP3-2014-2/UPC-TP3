@@ -1,0 +1,101 @@
+﻿<div ng-controller="SolicitudCocinaController">
+    
+    <fieldset>
+        <legend>Registrar Solicitud de Cocina</legend> 
+    </fieldset>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Ruta Programada</div>
+        
+        <div class="panel-body">
+            <div class="col-lg-3">
+                <input type="text" name="name" class="form-control" disabled="disabled" value="{{ registrar.solicitudCocina.programacionRuta.ruta.agenciaOrigen.nombre }} - ({{ registrar.solicitudCocina.programacionRuta.fechaOrigen.substr(0, 10) }})" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" name="name" class="form-control" disabled="disabled" value="{{ registrar.solicitudCocina.programacionRuta.ruta.agenciaDestino.nombre }} - ({{ registrar.solicitudCocina.programacionRuta.fechaDestino.substr(0, 10) }})" />
+            </div>
+            <div class="col-lg-3">
+                <input type="text" name="name" class="form-control" disabled="disabled" value="{{ registrar.solicitudCocina.programacionRuta.vehiculo.placa }}" />
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="registrar.buscarProgramacionRuta()" ng-disabled="registrar.registroCorrecto"><i class="fa fa-search"></i> Consultar Rutas Programadas</button>
+            </div>
+        </div>
+        
+        <div class="panel-body" collapse="registrar.collapse.programacionRuta">
+            <div class="panel panel-warning">
+                <div class="panel-heading">Búsqueda de Ruta Programada</div>
+                <div class="panel-body">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Vehículo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, programacionRuta) in registrar.listado.programacionRuta" ng-class="{ success: $parent.registrar.programacionRutaIndex == key}">
+                                <td>{{ programacionRuta.ruta.agenciaOrigen.nombre }} ({{ programacionRuta.fechaOrigen | date: 'dd/MM/yyyy' }})</td>
+                                <td>{{ programacionRuta.ruta.agenciaDestino.nombre }} ({{ programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }})</td>
+                                <td>{{ programacionRuta.vehiculo.placa }}</td>
+                                <td>
+                                    <input type="radio" name="programacionRutaIndex" ng-model="$parent.registrar.programacionRutaIndex" value="{{ key }}">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="btn btn-success" ng-click="registrar.aceptarBusquedaProgramacionRuta()"><i class="fa fa-check"></i> Aceptar</button>
+                    <button class="btn btn-danger" ng-click="registrar.cancelarBusquedaProgramacionRuta()"><i class="fa fa-close"></i> Cancelar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Refrigerios</div>
+        <div class="panel-body">
+            <!--<div class="clearfix">
+                <div class="form-group pull-left">
+                    <button class="btn btn-success"><i class="fa fa-plus"></i> Agregar Item</button>
+                </div>
+                <div class="form-group pull-right">
+                    <button class="btn btn-primary" ng-click="buscarRefrigerio()"><i class="fa fa-search"></i> Consultar Refrigerios</button>
+                </div>
+            </div>-->
+
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Unidad</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+<!--                <tbody>
+                    <tr>
+                        <td>Refrigerio 1</td>
+                        <td>Tipo Unidad 1</td>
+                        <td>10</td>
+                        <td><a class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Remover</a></td>
+                    </tr>
+                </tbody>-->
+            </table>
+        </div>
+
+        
+    </div>
+
+    <alert type="success" ng-show="registrar.registroCorrecto">
+        Se registró correctamente la Solicitud de Cocina
+    </alert>
+
+    <div>
+        <button class="btn btn-success" ng-click="registrar.grabarSolicitudCocina()" ng-disabled="registrar.registroCorrecto"><i class="fa fa-check"></i> Registrar Solicitud</button>
+        <a class="btn btn-danger" href="#/SolicitudCocina"><i class="fa fa-close"></i> Cancelar</a>
+    </div>
+</div>

@@ -1,43 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using UPC.CruzDelSur.Modelo.Abastecimiento;
 using UPC.CruzDelSur.Negocio.Abastecimiento;
 
 namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 {
-    public class InsumoController : Controller
+    public class InsumoController : ApiController
     {
 
-		InsumoNegocio InsumoNegocio = new InsumoNegocio();
+        InsumoNegocio InsumoNegocio = new InsumoNegocio();
 
-		[HttpPost]
-		public JsonResult Search()
-		{
+        [HttpGet]
+        public IEnumerable<Insumo> Get()
+        {
+            return InsumoNegocio.ObtenerTodos();
+        }
 
-			var Listado = new List<object>();
 
-			foreach (Insumo Insumo in InsumoNegocio.ObtenerTodos())
-			{
-				Listado.Add(
-					new
-					{
-						Id = Insumo.Id, 
-						Descripcion = Insumo.Descripcion
-					}
-				);
-			}
+        [HttpGet]
+        public Insumo Get(int id)
+        {
+            return InsumoNegocio.ObtenerPorId(id);
+        }
 
-			return Json(Listado, JsonRequestBehavior.AllowGet);
-		}
-
-		[HttpPost]
-		public JsonResult SearchById(int id)
-		{
-			Insumo Insumo = InsumoNegocio.ObtenerPorId(id);
-			return Json(Insumo, JsonRequestBehavior.AllowGet);
-		}
     }
 }

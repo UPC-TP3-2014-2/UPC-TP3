@@ -1,4 +1,10 @@
-﻿namespace UPC.CruzDelSur.Datos.Contratos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UPC.CruzDelSur.Datos.Contratos
 {
     public interface IContextoDatos
     {

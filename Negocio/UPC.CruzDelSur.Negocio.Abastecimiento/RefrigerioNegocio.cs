@@ -10,11 +10,17 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 	public class RefrigerioNegocio
 	{
 
-		protected RefrigerioRepositorio Repositorio = RefrigerioRepositorio.ObtenerInstancia();
+		protected RefrigerioRepositorio RefrigerioRepo = RefrigerioRepositorio.ObtenerInstancia();
 
 		public IQueryable<Refrigerio> ObtenerTodos()
 		{
-			return Repositorio.ObtenerTodos();
+			return RefrigerioRepo.ObtenerTodos();
 		}
+
+		public Refrigerio ObtenerPorId(int id)
+		{
+			return RefrigerioRepo.ObtenerPorId(id);
+		}
+
 	}
 }
