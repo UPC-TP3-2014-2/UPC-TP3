@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UPC.CruzDelSur.Datos.Abastecimiento</RootNamespace>
     <AssemblyName>UPC.CruzDelSur.Datos.Abastecimiento</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -66,14 +66,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgenciaRepositorio.cs" />
+    <Compile Include="DetSolicitudCocinaRepositorio.cs" />
     <Compile Include="DetSolicitudInsumoRepositorio.cs" />
     <Compile Include="InsumoRepositorio.cs" />
     <Compile Include="ProgramacionRutaRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RefrigerioRepositorio.cs" />
     <Compile Include="Repositorio.cs" />
+    <Compile Include="RutaRepositorio.cs" />
     <Compile Include="SolicitudCocinaRepositorio.cs" />
     <Compile Include="SolicitudInsumoRepositorio.cs" />
+    <Compile Include="VehiculoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Negocio\UPC.CruzDelSur.Modelo.Abastecimiento\UPC.CruzDelSur.Modelo.Abastecimiento.csproj">

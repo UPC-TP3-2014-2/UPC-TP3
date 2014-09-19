@@ -13,47 +13,57 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
 	public class ProgramacionRutaRepositorio : Repositorio<ProgramacionRutaRepositorio>, IProgramacionRutaRepositorio
 	{
 
-		protected Database Database = DatabaseFactory.CreateDatabase();
+		protected IRutaRepositorio RutaRepo = RutaRepositorio.ObtenerInstancia();
+		protected IVehiculoRepositorio VehiculoRepo = VehiculoRepositorio.ObtenerInstancia();
 
+		protected ProgramacionRutaRepositorio() { }
 
 		public IQueryable<ProgramacionRuta> ObtenerTodos()
 		{
-			//DbCommand DbCommand = Database.GetSqlStringCommand("select a.int_codigo_programacion_ruta, a.int_codigo_ruta, a.dtm_fecha_origen, a.dtm_fecha_destino, a.tim_hora_salida, a.tim_hora_llegada, a.int_tipo_servicio, a.int_codigovehiculo, a.int_codigopersona, a.bln_estado, b.vch_placa, c.vch_origen, c.vch_destino from ta_programacion_ruta a left outer join ta_vehiculo b on(a.int_codigovehiculo = b.int_vehiculo) left outer join ta_ruta c on(a.int_codigo_ruta = c.int_codigo_ruta)");
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_programacion_ruta, int_codigo_ruta, dtm_fecha_origen, dtm_fecha_destino, tim_hora_salida, tim_hora_llegada, int_tipo_servicio, int_codigovehiculo, int_codigopersona, bln_estado from ta_programacion_ruta");
 			IList<ProgramacionRuta> ListadoProgramacionRuta = new List<ProgramacionRuta>();
 
-			//using (IDataReader Reader = Database.ExecuteReader(DbCommand))
-			//{
-			//	while (Reader.Read())
-			//	{
-
-			//		ProgramacionRuta ProgramacionRuta = new ProgramacionRuta()
-			//		{
-			//			Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-			//			Ruta = new Ruta()
-			//			{
-			//				Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0,
-			//				Origen = (!Reader.IsDBNull(11)) ? Reader.GetString(11) : String.Empty,
-			//				Destino = (!Reader.IsDBNull(12)) ? Reader.GetString(12) : String.Empty
-			//			},
-			//			FechaOrigen = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
-			//			FechaDestino = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
-			//			Vehiculo = new Vehiculo()
-			//			{
-			//				Id = (!Reader.IsDBNull(7)) ? Reader.GetInt32(7) : 0,
-			//				Placa = (!Reader.IsDBNull(10)) ? Reader.GetString(10) : String.Empty
-			//			}
-			//		};
-
-			//		ListadoProgramacionRuta.Add(ProgramacionRuta);
-			//	}
-			//}
+			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
+			{
+				while (Reader.Read())
+				{
+					ListadoProgramacionRuta.Add(new ProgramacionRuta()
+					{
+						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+						Ruta = (!Reader.IsDBNull(1)) ? RutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new Ruta() { Id = 0 },
+						FechaOrigen = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"), 
+						FechaDestino = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
+						Vehiculo = (!Reader.IsDBNull(7)) ? VehiculoRepo.ObtenerPorId(Reader.GetInt32(7)) : new Vehiculo() { Id = 0 },
+						Estado = (!Reader.IsDBNull(9) && Reader.GetBoolean(9))
+					});
+				}
+			}
 
 			return ListadoProgramacionRuta.AsQueryable();
 		}
 
 		public ProgramacionRuta ObtenerPorId(int id)
 		{
-			throw new NotImplementedException();
+			DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_programacion_ruta, int_codigo_ruta, dtm_fecha_origen, dtm_fecha_destino, tim_hora_salida, tim_hora_llegada, int_tipo_servicio, int_codigovehiculo, int_codigopersona, bln_estado from ta_programacion_ruta where int_codigo_programacion_ruta = @int_codigo_programacion_ruta");
+			Database.AddInParameter(DbCommand, "@int_codigo_programacion_ruta", DbType.Int32, id);
+
+			using (IDataReader Reader = Database.ExecuteReader(DbCommand))
+			{
+				if (Reader.Read())
+				{
+					return new ProgramacionRuta()
+					{
+						Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+						Ruta = (!Reader.IsDBNull(1)) ? RutaRepo.ObtenerPorId(Reader.GetInt32(1)) : new Ruta() { Id = 0 },
+						FechaOrigen = (!Reader.IsDBNull(2)) ? Reader.GetDateTime(2) : Convert.ToDateTime("01/01/1900"),
+						FechaDestino = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
+						Vehiculo = (!Reader.IsDBNull(7)) ? VehiculoRepo.ObtenerPorId(Reader.GetInt32(7)) : new Vehiculo() { Id = 0 },
+						Estado = (!Reader.IsDBNull(9) && Reader.GetBoolean(9))
+					};
+				}
+			}
+
+			return null;
 		}
 
 		public void Insertar(ProgramacionRuta entidad)

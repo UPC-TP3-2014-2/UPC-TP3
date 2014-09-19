@@ -32,6 +32,102 @@ namespace UPC.CruzDelSur.Datos.Carga
             return 0;
         }
 
+
+
+        public List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga> f_Reporte(Int32 AgenciaOrigen, Int32 AgenciaDestino, String EstadoPago, String Estado, DateTime pFECHA_ORIGEN, DateTime pFECHA_DESTINO)
+        {
+            List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga> lst = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga>();
+
+            SqlParameter[] param = new SqlParameter[15];
+            param[0] = new SqlParameter("@INT_CODIGO_AGENCIA_SALIDA", SqlDbType.VarChar);
+            param[0].Value = AgenciaDestino;
+            param[0].Direction = ParameterDirection.Input;
+
+
+
+            param[1] = new SqlParameter("@INT_CODIGO_AGENCIA_ORIGEN", SqlDbType.VarChar);
+            param[1].Value = AgenciaOrigen;
+            param[1].Direction = ParameterDirection.Input;
+
+
+            param[2] = new SqlParameter("@VCH_ESTADOPAGO", SqlDbType.VarChar);
+            param[2].Value = EstadoPago;
+            param[2].Direction = ParameterDirection.Input;
+
+
+
+            param[3] = new SqlParameter("@VCH_ESTADO", SqlDbType.VarChar);
+            param[3].Value = Estado;
+            param[3].Direction = ParameterDirection.Input;
+
+
+            param[4] = new SqlParameter("@DTM_FECHA_ORIGEN", SqlDbType.DateTime);
+            param[4].Value = pFECHA_ORIGEN;
+            param[4].Direction = ParameterDirection.Input;
+
+
+            param[5] = new SqlParameter("@DTM_FECHA_DESTINO", SqlDbType.DateTime);
+            param[5].Value = pFECHA_DESTINO;
+            param[5].Direction = ParameterDirection.Input;
+
+
+            DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_GENERARREPORTE", param);
+            int ColumnCount = ds.Tables.Count;
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Object of the propery class
+                UPC.CruzDelSur.Negocio.Modelo.Carga.Carga objCarga = new UPC.CruzDelSur.Negocio.Modelo.Carga.Carga();
+                //asign values
+                if (DBNull.Value != dr["INT_CODIGO_CARGA"])
+                    objCarga.CODIGO_CARGA = Int32.Parse(dr["INT_CODIGO_CARGA"].ToString());
+
+                if (DBNull.Value != dr["VCH_FICHA"])
+                    objCarga.FICHA = dr["VCH_FICHA"].ToString();
+
+                if (DBNull.Value != dr["VCH_ORIGEN"])
+                    objCarga.ORIGEN = dr["VCH_ORIGEN"].ToString();
+
+                if (DBNull.Value != dr["VCH_DESTINO"])
+                    objCarga.DESTINO = dr["VCH_DESTINO"].ToString();
+
+                if (DBNull.Value != dr["DTM_FECHA_ORIGEN"])
+                    objCarga.FECHA_ORIGEN = DateTime.Parse(dr["DTM_FECHA_ORIGEN"].ToString());
+
+                if (DBNull.Value != dr["DTM_FECHA_DESTINO"])
+                    objCarga.FECHA_DESTINO = DateTime.Parse(dr["DTM_FECHA_DESTINO"].ToString());
+
+                if (DBNull.Value != dr["VCH_REMITENTE"])
+                    objCarga.REMITENTE = dr["VCH_REMITENTE"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_DESTINATARIO"])
+                    objCarga.DESTINATARIO = dr["VCH_DESTINATARIO"].ToString();
+
+
+
+                if (DBNull.Value != dr["VCH_CLIENTE_ORIGEN"])
+                    objCarga.CLIENTE_ORIGEN = dr["VCH_CLIENTE_ORIGEN"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_CLIENTE_DESTINO"])
+                    objCarga.CLIENTE_DESTINO = dr["VCH_CLIENTE_DESTINO"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_ESTADOPAGO"])
+                    objCarga.ESTADOPAGO = dr["VCH_ESTADOPAGO"].ToString();
+
+                if (DBNull.Value != dr["VCH_ESTADO"])
+                    objCarga.ESTADO = dr["VCH_ESTADO"].ToString();
+
+
+                //add one row to the list
+                lst.Add(objCarga);
+            }
+            return lst;
+        }
+
+
         public int f_AgregarCarga(UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBE_Carga)
         {
             SqlParameter[] param = new SqlParameter[18];

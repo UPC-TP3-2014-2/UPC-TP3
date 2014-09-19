@@ -61,7 +61,11 @@
         }
 
         function deletePersona() {
-            return bsDialog.deleteDialog('Persona')
+            return bsDialog.deleteDialog(
+                    '¿Desea desactivar esta Persona?',
+                    'Confirmar Desactivación',
+                    'Desactivar',
+                    'warning')
                 .then(confirmDelete);
 
             function confirmDelete() {

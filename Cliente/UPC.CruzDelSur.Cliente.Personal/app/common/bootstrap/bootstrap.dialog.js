@@ -21,24 +21,24 @@
             '        <p>{{message}}</p>' +
             '    </div>' +
             '    <div class="modal-footer">' +
-            '        <button class="btn btn-danger" data-ng-click="ok()">{{okText}}</button>' +
+            '        <button class="btn btn-{{okStyle}}" data-ng-click="ok()">{{okText}}</button>' +
             '        <button class="btn btn-default" data-ng-click="cancel()">{{cancelText}}</button>' +
             '    </div>' +
             '</div>');
 
         return service;
 
-        function deleteDialog(itemName) {
-            var title = 'Confirmar Eliminación';
-            itemName = itemName || 'esta entidad';
-            var msg = '¿Desea eliminar ' + itemName + '?';
-            var okText = 'Eliminar';
+        function deleteDialog(message, title, okText, okStyle) {
+            title = title || 'Alerta';
+            message = message || 'Desea confirmar?';
+            okText = okText || 'Confirmar';
+            okStyle = okStyle || 'danger';
             var cancelText = 'Cancelar';
 
-            return confirmationDialog(title, msg, okText, cancelText);
+            return confirmationDialog(title, message, okText, okStyle, cancelText);
         }
 
-        function confirmationDialog(title, msg, okText, cancelText) {
+        function confirmationDialog(title, msg, okText, okStyle, cancelText) {
 
             var modalOptions = {
                 templateUrl: 'modalDialog.tpl.html',
@@ -50,6 +50,7 @@
                             title: title,
                             message: msg,
                             okText: okText,
+                            okStyle: okStyle,
                             cancelText: cancelText
                         };
                     }
@@ -65,6 +66,7 @@
             $scope.title = options.title || 'Title';
             $scope.message = options.message || '';
             $scope.okText = options.okText || 'OK';
+            $scope.okStyle = options.okStyle || 'danger';
             $scope.cancelText = options.cancelText || 'Cancel';
             $scope.ok = function () { $modalInstance.close('ok'); };
             $scope.cancel = function () { $modalInstance.dismiss('cancel'); };

@@ -11,7 +11,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn.Interface
         List<BE_Equipaje> f_listarEquipajeBoleto(string nroboleto, string dni);
         List<BE_Equipaje> f_verificarEquipajeBoleto(string nroboleto, string dni);
         List<BE_Equipaje> f_actualizarEstadoEquipaje(string nroboleto, int accion);
-        List<BE_Equipaje> f_verificarEstadoEquipaje(string nroboleto);
+        List<BE_Equipaje> f_verificarEstadoEquipaje(string nroboleto);       
         
         BE_Tiket f_modificarEquipaje(int codequipaje, int codboleto);
     }

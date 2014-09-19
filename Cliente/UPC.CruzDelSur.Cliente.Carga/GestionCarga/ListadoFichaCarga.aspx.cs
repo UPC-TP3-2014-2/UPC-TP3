@@ -99,12 +99,7 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                 
 
 
-                if (oBEMG_ES01_FichaCarga.ESTADO == "Anulado" || oBEMG_ES01_FichaCarga.ESTADO == "Entregado")
-                {
-                    lnkButtonValidar.Visible = false;
-                    lnkModificar.Visible = false;
-                    LinkButton2.Visible = false;
-                }
+               
 
 
                 lnkButtonValidar.Attributes.Add("href", "ValidarFichaCarga.aspx?idficha=" + oBEMG_ES01_FichaCarga.CODIGO_CARGA);
@@ -127,7 +122,12 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                     LinkButton2.Visible = true;
                     LinkButton1.Visible = true;
                 }
-
+                if (oBEMG_ES01_FichaCarga.ESTADO == "Anulado" || oBEMG_ES01_FichaCarga.ESTADO == "Entregado")
+                {
+                    lnkButtonValidar.Visible = false;
+                    lnkModificar.Visible = false;
+                    LinkButton2.Visible = false;
+                }
 
 
             }

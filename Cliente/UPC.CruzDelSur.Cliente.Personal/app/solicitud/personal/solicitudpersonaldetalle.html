@@ -6,7 +6,7 @@
                     <i class="fa fa-check-circle fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Aprobado'"></i>
                     <i class="fa fa-times-circle fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Rechazado'"></i>
                     <i class="fa fa-circle-o fa-lg" data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"></i>
-                    Solicitud de Capacitación
+                    Solicitud de Personal
                     <span data-ng-show="vm.hasChanges"
                           class="disolve-animation ng-hide">
                         <i class="fa fa-asterisk fa-asterisk-large"></i>
@@ -34,11 +34,12 @@
                         <i class="fa fa-save"></i>
                         <span>Guardar</span>
                     </button>
-                    <button class="btn btn-danger"
+                    <button class="btn btn-warning"
                             data-ng-show="vm.solicitudPersonal.estado == 'Pendiente'"
-                            data-ng-click="vm.deleteEntity()">
+                            data-ng-click="vm.deleteEntity()"
+                            data-ng-disabled="vm.isNew">
                         <i class="fa fa-trash-o"></i>
-                        <span>Eliminar</span>
+                        <span>Anular</span>
                     </button>
                     <!--<button class="btn btn-warning"
                             data-ng-show="vm.solicitudPersonal.estado != 'Pendiente'"
