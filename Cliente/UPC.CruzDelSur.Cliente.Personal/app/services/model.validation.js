@@ -16,6 +16,7 @@
         var legalAgeValidator;
         var requireReferenceValidator;
         var futureDateValidator;
+        var daysInTheFutureValidatorFactory;
 
         var service = {
             applyValidators: applyValidators,
@@ -28,9 +29,21 @@
 
             applyToPersona(metadataStore);
             applyToExperienciaLaboral(metadataStore);
+            applyToEducacion(metadataStore);
             applyToSolicitudCapacitacion(metadataStore);
+            applyToSolicitudPersonal(metadataStore);
 
             log('Validators applied', null, serviceId);
+        }
+
+        function applyToEducacion(metadataStore) {
+            var educacionType = metadataStore.getEntityType(entityNames.educacion);
+
+            educacionType.validators
+                .push(fromToRangeValidator);
+
+            educacionType.getProperty('tipo').validators
+                .push(requireReferenceValidator);
         }
 
         function applyToExperienciaLaboral(metadataStore) {
@@ -71,6 +84,31 @@
             fechaPlanificada.displayName = 'Fecha Planificada';
             fechaPlanificada.validators
                 .push(futureDateValidator);
+            fechaPlanificada.validators
+                .push(daysInTheFutureValidatorFactory({ days: 4 }));
+        }
+
+        function applyToSolicitudPersonal(metadataStore) {
+            var solicitudPersonalType = metadataStore.getEntityType(entityNames.solicitudPersonal);
+
+            solicitudPersonalType.getProperty('area').validators
+                .push(requireReferenceValidator);
+
+            solicitudPersonalType.getProperty('cargo').validators
+                .push(requireReferenceValidator);
+
+            var tipoEducacion = solicitudPersonalType.getProperty('tipoEducacion');
+            tipoEducacion.displayName = 'Tipo de Educación';
+            tipoEducacion.validators
+                .push(requireReferenceValidator);
+
+            var fechaVencimiento = solicitudPersonalType.getProperty('fechaVencimiento');
+            fechaVencimiento.displayName = 'Fecha de Vencimiento';
+            fechaVencimiento.validators
+                .push(futureDateValidator);
+            fechaVencimiento.validators
+                .push(daysInTheFutureValidatorFactory({ days: 4 }));
+
         }
 
         function createAndRegister(eNames) {
@@ -91,6 +129,9 @@
 
             futureDateValidator = createFutureDateValidator();
             Validator.register(futureDateValidator);
+
+            daysInTheFutureValidatorFactory = createDaysInTheFutureValidatorFactory;
+            Validator.registerFactory(daysInTheFutureValidatorFactory, "daysInTheFutureValidator");
 
             log('Validators created and registered', null, serviceId, false);
         }
@@ -129,6 +170,21 @@
 
             function valFn(value) {
                 return value ? moment().diff(value, 'days') <= 0 : true;
+            }
+        }
+
+        function createDaysInTheFutureValidatorFactory(context) {
+            var name = 'daysInTheFuture';
+            var ctx = {
+                messageTemplate: '%displayName% debe ser %days% días después de %origin%',
+                days: context.days,
+                origin: context.origin || 'hoy'
+            };
+            var val = new Validator(name, valFn, ctx);
+            return val;
+
+            function valFn(value, innerContext) {
+                return value ? moment().diff(value, 'days') <= innerContext.days * -1 : true;
             }
         }
 

@@ -14,103 +14,85 @@ namespace UPC.CruzDelSur.Datos.Abastecimiento
     public class SolicitudInsumoRepositorio : Repositorio<SolicitudInsumoRepositorio>,  ISolicitudInsumoRepositorio
     {
 
-        protected Database Database = DatabaseFactory.CreateDatabase();
+        ISolicitudCocinaRepositorio SolicitudCocinaRepo = SolicitudCocinaRepositorio.ObtenerInstancia();
 
+        protected SolicitudInsumoRepositorio() { }
 
 
         public IQueryable<SolicitudInsumo> ObtenerTodos()
         {
-            string Query = "select int_codigo_solicitudinsumo, int_codigo_solicitudcocina, int_codigo_insumo, dte_fecha_solicitud, int_cantidad, vch_unidad, bln_estado from ta_solicitudinsumo";
-            DbCommand DbCommand = Database.GetSqlStringCommand(Query);
-            IList<SolicitudInsumo> Listado = new List<SolicitudInsumo>();
+            DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudinsumo, dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado from ta_solicitudinsumo");
+            IList<SolicitudInsumo> ListadoSolicitudInsumo = new List<SolicitudInsumo>();
 
             using (IDataReader Reader = Database.ExecuteReader(DbCommand))
             {
                 while (Reader.Read())
                 {
-					//Listado.Add(
-					//	new SolicitudInsumo()
-					//	{
-					//		Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-					//		SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
-					//		Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
-					//		FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
-					//		Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-					//		Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-					//		Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
-					//	}
-					//	);
+                    ListadoSolicitudInsumo.Add(
+                        new SolicitudInsumo()
+                        {
+                            Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+                            FechaSolicitud = (!Reader.IsDBNull(1)) ? Reader.GetDateTime(1) : Convert.ToDateTime("01/01/1900"),
+                            SolicitudCocina = (!Reader.IsDBNull(2)) ? SolicitudCocinaRepo.ObtenerPorId(Reader.GetInt32(2)) : new SolicitudCocina() { Id = 0 }, 
+                            Estado = (!Reader.IsDBNull(3)) ? Reader.GetByte(3) : 0
+                        });
                 }
             }
 
-            return Listado.AsQueryable();
+            return ListadoSolicitudInsumo.AsQueryable();
         }
-
 
         public SolicitudInsumo ObtenerPorId(int id)
         {
-            string Query = "select int_codigo_solicitudinsumo, int_codigo_solicitudcocina, int_codigo_insumo, dte_fecha_solicitud, int_cantidad, vch_unidad, bln_estado from ta_solicitudinsumo where int_codigo_solicitudinsumo = @id";
-            DbCommand DbCommand = Database.GetSqlStringCommand(Query);
-            Database.AddInParameter(DbCommand, "@id", DbType.Int32, id);
+            DbCommand DbCommand = Database.GetSqlStringCommand("select int_codigo_solicitudinsumo, dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado from ta_solicitudinsumo where int_codigo_solicitudinsumo = @int_codigo_solicitudinsumo");
+            Database.AddInParameter(DbCommand, "@int_codigo_solicitudinsumo", DbType.Int32, id);
 
             using (IDataReader Reader = Database.ExecuteReader(DbCommand))
             {
                 if (Reader.Read())
                 {
-					//return new SolicitudInsumo()
-					//{
-					//	Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
-					//	SolicitudCocina = new SolicitudCocina() { Id = (!Reader.IsDBNull(1)) ? Reader.GetInt32(1) : 0 },
-					//	Insumo = new Insumo() { Id = (!Reader.IsDBNull(2)) ? Reader.GetInt32(2) : 0, },
-					//	FechaSolicitud = (!Reader.IsDBNull(3)) ? Reader.GetDateTime(3) : Convert.ToDateTime("01/01/1900"),
-					//	Cantidad = (!Reader.IsDBNull(4)) ? Reader.GetInt32(4) : 0,
-					//	Unidad = (!Reader.IsDBNull(5)) ? Reader.GetString(5) : String.Empty,
-					//	Estado = (!Reader.IsDBNull(0) && Reader.GetBoolean(6))
-					//};
+                    return new SolicitudInsumo()
+                    {
+                        Id = (!Reader.IsDBNull(0)) ? Reader.GetInt32(0) : 0,
+                        FechaSolicitud = (!Reader.IsDBNull(1)) ? Reader.GetDateTime(1) : Convert.ToDateTime("01/01/1900"),
+                        SolicitudCocina = (!Reader.IsDBNull(2)) ? SolicitudCocinaRepo.ObtenerPorId(Reader.GetInt32(2)) : new SolicitudCocina() { Id = 0 },
+                        Estado = (!Reader.IsDBNull(3)) ? Reader.GetByte(3) : 0
+                    };
                 }
             }
 
             return null;
-
-
-
-            throw new NotImplementedException();
         }
 
         public void Insertar(SolicitudInsumo solicitudInsumo)
         {
-			string Query = "insert into ta_solicitudinsumo(dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado_solicitud) values(@dte_fecha_solicitud, @int_codigo_solicitudcocina, @tin_estado_solicitud)";
-			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
+			DbCommand DbCommand = Database.GetSqlStringCommand("insert into ta_solicitudinsumo(dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado) values(@dte_fecha_solicitud, @int_codigo_solicitudcocina, @tin_estado)");
 			Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudInsumo.FechaSolicitud);
 			Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, solicitudInsumo.SolicitudCocina.Id);
-			Database.AddInParameter(DbCommand, "@tin_estado_solicitud", DbType.Boolean, solicitudInsumo.Estado);
+			Database.AddInParameter(DbCommand, "@tin_estado", DbType.Int16, solicitudInsumo.Estado);
 			Database.ExecuteNonQuery(DbCommand);
         }
 
-        public void Actualizar(SolicitudInsumo entidad)
+        public void Actualizar(SolicitudInsumo solicitudInsumo)
         {
-            throw new NotImplementedException();
+            DbCommand DbCommand = Database.GetSqlStringCommand("update ta_solicitudinsumo set dte_fecha_solicitud = @dte_fecha_solicitud, int_codigo_solicitudcocina = @int_codigo_solicitudcocina, tin_estado = @tin_estado where int_codigo_solicitudinsumo = @int_codigo_solicitudinsumo");
+            Database.AddInParameter(DbCommand, "@int_codigo_solicitudinsumo", DbType.Int16, solicitudInsumo.Id);
+            Database.AddInParameter(DbCommand, "@dte_fecha_solicitud", DbType.Date, solicitudInsumo.FechaSolicitud);
+			Database.AddInParameter(DbCommand, "@int_codigo_solicitudcocina", DbType.Int32, solicitudInsumo.SolicitudCocina.Id);
+			Database.AddInParameter(DbCommand, "@tin_estado", DbType.Int16, solicitudInsumo.Estado);
+			Database.ExecuteNonQuery(DbCommand);
         }
 
-        public void Eliminar(SolicitudInsumo entidad)
+        public void Eliminar(SolicitudInsumo solicitudInsumo)
         {
-            throw new NotImplementedException();
+            Eliminar(solicitudInsumo.Id);
         }
 
         public void Eliminar(int id)
         {
-            throw new NotImplementedException();
+            DbCommand DbCommand = Database.GetSqlStringCommand("delete from ta_solicitudinsumo where int_codigo_solicitudinsumo = @int_codigo_solicitudinsumo");
+            Database.AddInParameter(DbCommand, "@int_codigo_solicitudinsumo", DbType.Int16, id);
+            Database.ExecuteNonQuery(DbCommand);
         }
-
-
-		public int ObtenerUltimoId()
-		{
-			string Query = "select max(int_codigo_solicitudinsumo) from ta_solicitudinsumo";
-			DbCommand DbCommand = Database.GetSqlStringCommand(Query);
-
-			return Convert.ToInt32(Database.ExecuteScalar(DbCommand));
-
-
-		}
 	}
 }

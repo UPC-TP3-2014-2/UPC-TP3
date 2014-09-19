@@ -50,7 +50,10 @@
         }
 
         function deleteExperienciaLaboral() {
-            return bsDialog.deleteDialog('Experiencia Laboral')
+            return bsDialog.deleteDialog(
+                    '¿Desea eliminar esta Experiencia Laboral?',
+                    'Confirmar Eliminación',
+                    'Eliminar')
                 .then(confirmDelete);
 
             function confirmDelete() {

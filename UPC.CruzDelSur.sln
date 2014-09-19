@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9AFCE9
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Logica", "Negocio\UPC.CruzDelSur.Negocio.Logica\UPC.CruzDelSur.Negocio.Logica.csproj", "{7D86A8FC-E12C-4F00-933E-F6AD00C97321}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Modelo.Personal", "Negocio\UPC.CruzDelSur.Negocio.Modelo.Personal\UPC.CruzDelSur.Negocio.Modelo.Personal.csproj", "{EE618541-580D-4D72-A111-D7D4FAB503C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.Personal", "Datos\UPC.CruzDelSur.Datos.Personal\UPC.CruzDelSur.Datos.Personal.csproj", "{92E1A79D-84B0-41D1-B5C6-5583FD688238}"
@@ -28,10 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.CheckIn", "Datos\UPC.CruzDelSur.Datos.CheckIn\UPC.CruzDelSur.Datos.CheckIn.csproj", "{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn(1)", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{49E46821-5BBF-4837-8DE6-D8DD1CAC5A08}|UPC.CruzDelSur.Negocio.Modelo.CheckIn.dll;{5bdb5419-ceeb-42f9-a3a2-618d5a350e8d}|UPC.CruzDelSur.Datos.CheckIn.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/UPC.CruzDelSur.Cliente.CheckIn"
 		Debug.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UPC.CruzDelSur.Cliente.CheckIn\"
@@ -63,7 +62,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Modelo.Abast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Abastecimiento", "Negocio\UPC.CruzDelSur.Negocio.Abastecimiento\UPC.CruzDelSur.Negocio.Abastecimiento.csproj", "{81A875F5-AA12-4638-8EF8-0507382AFF1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Cliente.Abastecimiento", "Cliente\UPC.CruzDelSur.Cliente.Abastecimiento\UPC.CruzDelSur.Cliente.Abastecimiento.csproj", "{AF7DFD11-7A93-4AC0-926C-BF6250336597}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Cliente.Abastecimiento", "Cliente\UPC.CruzDelSur.Cliente.Abastecimiento\UPC.CruzDelSur.Cliente.Abastecimiento.csproj", "{103D66D7-6953-466E-9A2C-37B388FDAA12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,10 +70,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D86A8FC-E12C-4F00-933E-F6AD00C97321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D86A8FC-E12C-4F00-933E-F6AD00C97321}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D86A8FC-E12C-4F00-933E-F6AD00C97321}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D86A8FC-E12C-4F00-933E-F6AD00C97321}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE618541-580D-4D72-A111-D7D4FAB503C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE618541-580D-4D72-A111-D7D4FAB503C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE618541-580D-4D72-A111-D7D4FAB503C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -127,16 +122,15 @@ Global
 		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A875F5-AA12-4638-8EF8-0507382AFF1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF7DFD11-7A93-4AC0-926C-BF6250336597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103D66D7-6953-466E-9A2C-37B388FDAA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103D66D7-6953-466E-9A2C-37B388FDAA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103D66D7-6953-466E-9A2C-37B388FDAA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103D66D7-6953-466E-9A2C-37B388FDAA12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7D86A8FC-E12C-4F00-933E-F6AD00C97321} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
 		{EE618541-580D-4D72-A111-D7D4FAB503C1} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
 		{92E1A79D-84B0-41D1-B5C6-5583FD688238} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
 		{5C474916-C5D4-41FB-BC2E-18E5DE3A3C84} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
@@ -150,7 +144,7 @@ Global
 		{006018DF-5C2C-4C3D-853F-192DF0BD0A9F} = {4699E38A-1FF4-4F42-9912-ED048612FE04}
 		{8A1B592C-7C7D-4F2A-AE9A-D8D962D9F49D} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
 		{81A875F5-AA12-4638-8EF8-0507382AFF1A} = {A902A575-64C5-4C9E-A735-E3984F23B91E}
-		{AF7DFD11-7A93-4AC0-926C-BF6250336597} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
+		{103D66D7-6953-466E-9A2C-37B388FDAA12} = {2D78FC4E-25F2-4765-BD38-3B496F89A1BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35

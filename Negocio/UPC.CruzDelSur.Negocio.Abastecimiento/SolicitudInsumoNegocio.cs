@@ -10,18 +10,29 @@ namespace UPC.CruzDelSur.Negocio.Abastecimiento
 {
 	public class SolicitudInsumoNegocio
 	{
-		
-		protected ISolicitudInsumoRepositorio SolicitudInsumoRepositorio = new SolicitudInsumoRepositorio();
 
-		public void Insertar(SolicitudInsumo solicitudInsumo)
-		{
-			SolicitudInsumoRepositorio.Insertar(solicitudInsumo);
-		}
+        protected ISolicitudInsumoRepositorio SolicitudInsumoRepo = SolicitudInsumoRepositorio.ObtenerInstancia();
 
-		public int ObtenerUltimoId()
-		{
-			return SolicitudInsumoRepositorio.ObtenerUltimoId();
-		}
+        public IQueryable<SolicitudInsumo> ObtenerTodos()
+        {
+            return SolicitudInsumoRepo.ObtenerTodos();
+        }
+
+        public SolicitudInsumo ObtenerPorId(int id)
+        {
+            return SolicitudInsumoRepo.ObtenerPorId(id);
+        }
+
+        public void Insertar(SolicitudInsumo solicitudInsumo)
+        {
+            SolicitudInsumoRepo.Insertar(solicitudInsumo);
+        }
+
+        public void Actualizar(SolicitudInsumo solicitudInsumo)
+        {
+            SolicitudInsumoRepo.Actualizar(solicitudInsumo);
+        }
+
 
 	}
 }

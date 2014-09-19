@@ -116,6 +116,10 @@
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 
+            <asp:BoundField HeaderText="Estado Verificacion" DataField="EstadoVerificacion">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+
         </Columns>      
             <EmptyDataTemplate>
                 No se encontraron registros.

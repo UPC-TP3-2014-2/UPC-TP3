@@ -9,8 +9,8 @@ namespace UPC.CruzDelSur.Modelo.Abastecimiento
     public class SolicitudInsumo
     {
         public int Id { get; set; }
-        public SolicitudCocina SolicitudCocina { get; set; }
         public DateTime FechaSolicitud { get; set; }
-        public bool Estado { get; set; }
+        public SolicitudCocina SolicitudCocina { get; set; }
+        public int Estado { get; set; }
     }
 }

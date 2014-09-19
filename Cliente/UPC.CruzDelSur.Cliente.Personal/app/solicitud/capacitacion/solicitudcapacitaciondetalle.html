@@ -34,11 +34,12 @@
                         <i class="fa fa-save"></i>
                         <span>Guardar</span>
                     </button>
-                    <button class="btn btn-danger"
+                    <button class="btn btn-warning"
                             data-ng-show="vm.solicitudCapacitacion.estado == 'Pendiente'"
-                            data-ng-click="vm.deleteEntity()">
+                            data-ng-click="vm.deleteEntity()"
+                            data-ng-disabled="vm.isNew">
                         <i class="fa fa-trash-o"></i>
-                        <span>Eliminar</span>
+                        <span>Anular</span>
                     </button>
                     <!--<button class="btn btn-warning"
                             data-ng-show="vm.solicitudCapacitacion.estado != 'Pendiente'"

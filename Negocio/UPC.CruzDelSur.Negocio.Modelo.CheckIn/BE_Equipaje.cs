@@ -21,5 +21,7 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string HoraActual { get; set; }
         public string EstadoEquipaje { get; set; }
         public int CodBoleto { get; set; }
+        public string EstadoVerificacion { get; set; }
+        
     }
 }
