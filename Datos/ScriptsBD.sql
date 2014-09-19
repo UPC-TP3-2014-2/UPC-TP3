@@ -1,4 +1,4 @@
-USE [CSURINT]
+USE [CSUR]
 GO
 /****** Object:  StoredProcedure [dbo].[SP_ACTUALIZARESTADOCARGA]    Script Date: 18/09/2014 08:15:58 p.m. ******/
 SET ANSI_NULLS ON
