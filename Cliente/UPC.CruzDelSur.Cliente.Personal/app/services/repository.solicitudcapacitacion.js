@@ -29,7 +29,7 @@
 
         function create() {
             var entity = this.manager.createEntity(entityName);
-            entity.fechaPlanificada = moment().add(1, 'months');
+
             return entity;
         }
 
