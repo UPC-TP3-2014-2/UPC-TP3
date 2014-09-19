@@ -24,6 +24,7 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
 
         public string Contrato { get; set; }
 
+        [Required]
         public int TipoEducacionId { get; set; }
 
         public virtual TipoEducacion TipoEducacion { get; set; }

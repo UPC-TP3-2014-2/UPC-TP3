@@ -30,7 +30,8 @@
                         <span>Cancelar</span>
                     </button>
                     <button class="btn btn-danger"
-                            data-ng-click="vm.deletePersona()">
+                            data-ng-click="vm.deletePersona()"
+                            data-ng-disabled="vm.isNew">
                         <i class="fa fa-trash-o"></i>
                         <span>Eliminar</span>
                     </button>
