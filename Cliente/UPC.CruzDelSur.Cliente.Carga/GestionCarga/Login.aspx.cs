@@ -23,7 +23,15 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
             if (Rol != "")
             {
                 Session["rol"] = Rol;
-                Response.Redirect("ListadoFichaCarga");
+                if (Rol == "Auxiliar Almacen")
+                {
+                    Response.Redirect("ReporteGestionCarga");
+                }
+                else
+                {
+                    Response.Redirect("ListadoFichaCarga");
+                }
+                
             }
             else
             {
