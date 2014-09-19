@@ -16,6 +16,7 @@
         var legalAgeValidator;
         var requireReferenceValidator;
         var futureDateValidator;
+        var pastDateValidator;
         var daysInTheFutureValidatorFactory;
 
         var service = {
@@ -44,6 +45,9 @@
 
             educacionType.getProperty('tipo').validators
                 .push(requireReferenceValidator);
+
+            educacionType.getProperty('hasta').validators
+                .push(pastDateValidator);
         }
 
         function applyToExperienciaLaboral(metadataStore) {
@@ -51,6 +55,9 @@
 
             experienciaLaboralType.validators
                 .push(fromToRangeValidator);
+
+            experienciaLaboralType.getProperty('hasta').validators
+                .push(pastDateValidator);
         }
 
         function applyToPersona(metadataStore) {
@@ -130,6 +137,9 @@
             futureDateValidator = createFutureDateValidator();
             Validator.register(futureDateValidator);
 
+            pastDateValidator = createPastDateValidator();
+            Validator.register(pastDateValidator);
+
             daysInTheFutureValidatorFactory = createDaysInTheFutureValidatorFactory;
             Validator.registerFactory(daysInTheFutureValidatorFactory, "daysInTheFutureValidator");
 
@@ -170,6 +180,19 @@
 
             function valFn(value) {
                 return value ? moment().diff(value, 'days') <= 0 : true;
+            }
+        }
+
+        function createPastDateValidator() {
+            var name = 'pastDate';
+            var ctx = {
+                messageTemplate: '%displayName% no puede ser una fecha en el futuro'
+            };
+            var val = new Validator(name, valFn, ctx);
+            return val;
+
+            function valFn(value) {
+                return value ? moment().diff(value, 'days') >= 0 : true;
             }
         }
 
