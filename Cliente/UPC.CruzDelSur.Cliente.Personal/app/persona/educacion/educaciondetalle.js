@@ -52,7 +52,10 @@
         }
 
         function deleteEducacion() {
-            return bsDialog.deleteDialog('Educación')
+            return bsDialog.deleteDialog(
+                    '¿Desea eliminar esta Educación?',
+                    'Confirmar Eliminación',
+                    'Eliminar')
                 .then(confirmDelete);
 
             function confirmDelete() {

@@ -33,6 +33,10 @@
             get: canSave
         });
 
+        Object.defineProperty(vm, 'isNew', {
+            get: isNew
+        });
+
         function canSave() { return vm.hasChanges && !vm.isSaving; }
 
         activate();
@@ -62,7 +66,11 @@
         }
 
         function deleteEntity() {
-            return bsDialog.deleteDialog('Solicitud de Personal')
+            return bsDialog.deleteDialog(
+                    '¿Desea anular esta Solicitud de Personal?',
+                    'Confirmar Anulación',
+                    'Anular',
+                    'warning')
                 .then(confirmDelete);
 
             function confirmDelete() {
@@ -96,6 +104,7 @@
             if (id === 'nuevo') {
                 vm.solicitudPersonal = datacontext.solicitudPersonal.create();
                 vm.solicitudPersonal.fechaRegistro = moment.utc().format('YYYY/MM/DD');
+                vm.solicitudPersonal.fechaVencimiento = moment.utc().add(1, 'months').format('YYYY/MM/DD');
                 vm.solicitudPersonal.estado = 'Pendiente';
 
                 return vm.solicitudPersonal;
@@ -118,7 +127,7 @@
         }
 
         function isNew() {
-            return vm.solicitudPersonal.id <= 0;
+            return vm.solicitudPersonal && vm.solicitudPersonal.id <= 0;
         }
 
         function openFechaVencimientoDatePicker($event) {
