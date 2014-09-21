@@ -82,6 +82,18 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
         }
 
+        
+
+        if (e.CommandName == "cmdInfraccion")
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = grvDetalle.Rows[index];
+            ListItem item = new ListItem();
+            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
+            item.Text = Server.HtmlDecode(row.Cells[1].Text);
+            Response.Redirect("~/RegistrarInfraccion.aspx?ID=" + cod + "&nroboleto=" + item.Text);
+        }
+
     }
 
     protected void btnInicio_Click(object sender, EventArgs e)

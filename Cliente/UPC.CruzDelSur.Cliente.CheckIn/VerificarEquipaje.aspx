@@ -76,6 +76,11 @@
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+
+                 <asp:ImageButton ID="ibtnInfraccion" runat="server" CausesValidation="false" CommandName="cmdInfraccion"
+                    ImageUrl="~/img/infraccion.png" ToolTip="Registrar infraccion" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>

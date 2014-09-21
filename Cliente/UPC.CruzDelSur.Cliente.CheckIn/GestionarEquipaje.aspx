@@ -58,7 +58,7 @@
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
                 <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
-                    onClientClick="return confirm('Está seguro de confirmar su Equipaje?')"
+                    onClientClick="return confirm('¿Está seguro de verificar el Equipaje?')"
                     ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
