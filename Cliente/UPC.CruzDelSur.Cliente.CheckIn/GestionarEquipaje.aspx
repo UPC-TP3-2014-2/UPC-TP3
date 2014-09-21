@@ -47,18 +47,19 @@
              </div>  
        </div>     
        
-        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
+        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
             DataKeyNames="CodBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
+<AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
                 <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
-                    onClientClick="return confirm('Está seguro de confirmar su Equipaje?')"
+                    onClientClick="return confirm('¿Está seguro de verificar el Equipaje?')"
                     ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
@@ -104,7 +105,7 @@
         <asp:BoundField HeaderText="Tipo de Equipaje" DataField="TipoEquipaje">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Ubicacion" DataField="Ubicacion">
+        <asp:BoundField HeaderText="Ubicación" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
         </asp:BoundField>
         <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
@@ -118,6 +119,8 @@
             <EmptyDataTemplate>
                 No se encontraron registros.
             </EmptyDataTemplate>            
+
+<PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
          <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
