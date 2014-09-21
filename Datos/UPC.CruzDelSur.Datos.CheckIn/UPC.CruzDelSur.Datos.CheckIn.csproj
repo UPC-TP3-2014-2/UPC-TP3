@@ -43,10 +43,12 @@
     <Compile Include="BL_Boleto.cs" />
     <Compile Include="BL_Equipaje.cs" />
     <Compile Include="BL_Filmacion.cs" />
+    <Compile Include="BL_Reclamo.cs" />
     <Compile Include="BL_Tiket.cs" />
     <Compile Include="Interface\IBL_Boleto.cs" />
     <Compile Include="Interface\IBL_Equipaje.cs" />
     <Compile Include="Interface\IBL_Filmacion.cs" />
+    <Compile Include="Interface\IBL_Reclamo.cs" />
     <Compile Include="Interface\IBL_Tiket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
