@@ -17,13 +17,28 @@
                 <li><a href="http://localhost:2382/Inicio.aspx">Checkin</a></li>
                 <li><a href="http://localhost:31026/">Carga</a></li>
                 <li class="dropdown active" on-toggle="toggled(open)">
-                    <a class="dropdown-toggle" href="#">Abastecimiento <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                    <a class="dropdown-toggle" href="http://localhost:53521/">Abastecimiento <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#/SolicitudCocina">Solicitud de Cocina</a>
+                            <a href="#">Inicio</a>
+                        </li>
+                        <li role="presentation" class="dropdown-header">
+                            Solicitud de Cocina
                         </li>
                         <li>
-                            <a href="#/SolicitudInsumo">Solicitud de Insumos</a>
+                            <a href="#/SolicitudCocina/Register">Registrar Solicitud de Cocina</a>
+                        </li>
+                        <li>
+                            <a href="#/SolicitudCocina/Search">Consultar Solicitud de Cocina</a>
+                        </li>
+                        <li role="presentation" class="dropdown-header">
+                            Solicitud de Insumos
+                        </li>
+                        <li>
+                            <a href="#">Registrar Solicitud de Insumos</a>
+                        </li>
+                        <li>
+                            <a href="#">Consultar Solicitud de Insumo</a>
                         </li>
                     </ul>
                 </li>

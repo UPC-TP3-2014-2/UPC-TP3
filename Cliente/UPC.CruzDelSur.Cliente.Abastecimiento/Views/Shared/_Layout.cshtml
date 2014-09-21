@@ -8,6 +8,7 @@
     <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <script src="//localhost:35729/livereload.js"></script>
 </head>
 <body>
     @Html.Partial("_Navbar")
@@ -20,12 +21,11 @@
             </div>
         </div>
     </div>
-
-    <script src="@Url.Content("~/Scripts/webapp/library/angular.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/webapp/library/angular-route.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/webapp/library/ui-bootstrap-tpls-0.11.0.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/webapp/library/underscore-min.js")"></script>
-    <script src="@Url.Content("~/Scripts/webapp/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/Webapp/Libraries/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Webapp/Libraries/angular-route.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Webapp/Libraries/ui-bootstrap-tpls-0.11.0.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Webapp/Libraries/underscore-min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Webapp/app.min.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
