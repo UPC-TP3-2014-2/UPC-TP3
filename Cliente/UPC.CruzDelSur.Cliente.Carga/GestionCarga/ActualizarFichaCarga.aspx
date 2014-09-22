@@ -145,11 +145,7 @@
                 </div>
                 <div class="campoderecha">
                     <asp:DropDownList ID="ddlAgenciaDestino" runat="server" Enabled="False">
-                        <asp:ListItem Value="1">Lima</asp:ListItem>
-                        <asp:ListItem Value="2">Piura</asp:ListItem>
-                        <asp:ListItem Value="3">Ica</asp:ListItem>
-                        <asp:ListItem Value="4">Arequipa</asp:ListItem>
-                        <asp:ListItem Value="5">Tacna</asp:ListItem>
+                        
                     </asp:DropDownList>
                 </div>
             </div>
@@ -395,6 +391,8 @@
         <asp:Button ID="btnIngresarCodigo" runat="server" Text="Ingresar Clave" OnClick="btnIngresarCodigo_Click"
             OnClientClick="javascript:OpenModalDialog('Validar.aspx?opt=1','null','400','800')" />
     </div>
+
+    
     <br />
     <br />
     <div class="fila">
@@ -403,6 +401,11 @@
     </div>
     <asp:HiddenField ID="HFIdClienteDest" runat="server" />
     <asp:HiddenField ID="HFIdClienteRemi" runat="server" />
+
+    <asp:HiddenField ID="HFRespuesta" runat="server" />
+    <asp:HiddenField ID="HFPregunta" runat="server" />
+
+
     <asp:HiddenField ID="MK_ProgramacionRuta_ID" runat="server" />
     <asp:HiddenField ID="hffichacarga" runat="server" Value="0" />
 </asp:Content>

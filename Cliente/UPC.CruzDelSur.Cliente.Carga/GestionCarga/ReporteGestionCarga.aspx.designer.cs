@@ -31,40 +31,22 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
         protected global::System.Web.UI.WebControls.DropDownList ddlAgenciaOrigen;
         
         /// <summary>
-        /// Control dllAgenciaDestino.
+        /// Control ddlTipoMovimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dllAgenciaDestino;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoMovimiento;
         
         /// <summary>
-        /// Control ddlEstadocarga.
+        /// Control txtFechaInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadocarga;
-        
-        /// <summary>
-        /// Control ddEstadoPago.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddEstadoPago;
-        
-        /// <summary>
-        /// Control txtFechaSalida.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaSalida;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
         
         /// <summary>
         /// Control txtFechaFin.

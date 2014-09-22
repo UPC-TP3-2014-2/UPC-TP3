@@ -20,33 +20,31 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         {
             if (!Page.IsPostBack)
             {
-                List<UPC.CruzDelSur.Negocio.Modelo.Carga.Agencia> listAgencia = new List<Negocio.Modelo.Carga.Agencia>();
-                UPC.CruzDelSur.Datos.Carga.Agencia blAgencia = new Datos.Carga.Agencia();
-                listAgencia = blAgencia.f_ListadoAgencia();
+                List<UPC.CruzDelSur.Negocio.Modelo.Carga.Almacen> listAgencia = new List<Negocio.Modelo.Carga.Almacen>();
+                UPC.CruzDelSur.Datos.Carga.Almacen blAgencia = new Datos.Carga.Almacen();
+                listAgencia = blAgencia.f_ListadoAlmacen();
 
                 ddlAgenciaOrigen.DataSource = listAgencia;
-                ddlAgenciaOrigen.DataValueField = "CODIGO_AGENCIA";
+                ddlAgenciaOrigen.DataValueField = "CODIGO_ALMACEN";
                 ddlAgenciaOrigen.DataTextField = "NOMBRE";
                 ddlAgenciaOrigen.DataBind();
-
-
-                dllAgenciaDestino.DataSource = listAgencia;
-                dllAgenciaDestino.DataValueField = "CODIGO_AGENCIA";
-                dllAgenciaDestino.DataTextField = "NOMBRE";
-                dllAgenciaDestino.DataBind();
-
-
-
             }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
 
+            if (DateTime.Parse(txtFechaFin.Text) < DateTime.Parse(txtFechaInicio.Text))
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La fecha fin no puede ser menor a la fecha de incio'); </script>"));
+                return;
+            }
+
+
             List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga> oListCarga = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga>();
             UPC.CruzDelSur.Datos.Carga.Carga BL_Carga = new Datos.Carga.Carga();
 
-            oListCarga = BL_Carga.f_Reporte(Int32.Parse(ddlAgenciaOrigen.SelectedValue), Int32.Parse(dllAgenciaDestino.SelectedValue), ddEstadoPago.SelectedValue, ddlEstadocarga.SelectedValue,DateTime.Parse(txtFechaSalida.Text),DateTime.Parse(txtFechaFin.Text));
+            oListCarga = BL_Carga.f_Reporte(Int32.Parse(ddlAgenciaOrigen.SelectedValue),Int32.Parse(ddlTipoMovimiento.SelectedValue), DateTime.Parse(txtFechaInicio.Text), DateTime.Parse( txtFechaFin.Text));
             gvDetalle.DataSource = oListCarga;
             gvDetalle.DataBind();
 
@@ -93,7 +91,7 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
 
         protected void LinkButton1_Click1(object sender, EventArgs e)
         {
-            this.Controls.Add(new LiteralControl("<script language='JavaScript'>OpenModalDialog('VistaPreliminar.aspx?agenciaSalida=" + dllAgenciaDestino.SelectedValue + "&agenciaOrigen=" + ddlAgenciaOrigen.SelectedValue + "&estadoPago=" + ddEstadoPago.SelectedValue + "&estado=" + ddlEstadocarga.SelectedValue + "&fechaOrigen=" + txtFechaSalida.Text + "&fechaDestino=" + txtFechaFin.Text  + "','null','400','1000')</script>"));
+            this.Controls.Add(new LiteralControl("<script language='JavaScript'>OpenModalDialog('VistaPreliminar.aspx?almacen=" + ddlAgenciaOrigen.SelectedValue + "&tipoMovimiento=" + ddlTipoMovimiento.SelectedValue + "&fechaincio=" + txtFechaInicio.Text + "&fechafin=" + txtFechaFin.Text + "','null','400','1000')</script>"));
         }
     }
 }
