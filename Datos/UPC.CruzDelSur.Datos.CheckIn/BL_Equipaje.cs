@@ -182,6 +182,23 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
            return new BE_Tiket();
        }
+
+
+       public int f_RegistrarInfraccion(string nroboleto, string detalleinfraccion)
+       {
+           SqlParameter[] param = new SqlParameter[5];
+           param[0] = new SqlParameter("pNROBOLETO", SqlDbType.VarChar);
+           param[0].Value = nroboleto;
+           param[0].Direction = ParameterDirection.Input;
+           param[1] = new SqlParameter("VCH_DETALLE_INFRACCION", SqlDbType.VarChar);
+           param[1].Value = detalleinfraccion;
+           param[1].Direction = ParameterDirection.Input;
+          
+
+           return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_REGISTRARINFRACCION", param);
+
+
+       }
        
     }
 }

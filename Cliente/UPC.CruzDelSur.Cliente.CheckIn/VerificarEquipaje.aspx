@@ -31,7 +31,7 @@
       <div class="form-group">
        &nbsp;       &nbsp;
 
-            <asp:Label ID="Label2" runat="server" Text="DNI" MaxLength="8"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="DNI"></asp:Label>
 
             &nbsp;&nbsp;
             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
@@ -49,13 +49,14 @@
           </div>
              </div>  
        </div>         
-        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
+        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
             DataKeyNames="CodBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
+<AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
@@ -65,12 +66,12 @@
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
-                    onClientClick="return confirm('Está seguro de Cancelar su Equipaje?')"
-                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
+                    onClientClick="return confirm('¿Está seguro que desea cancelar el equipaje?')"
+                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Boleto" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
-                    onClientClick="return confirm('Está seguro de Modificar información de su Equipaje?')"
+                    onClientClick="return confirm('¿Está seguro de Modificar la información del Equipaje?')"
                     ImageUrl="~/img/edit.png" ToolTip="Modificar Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
@@ -79,9 +80,11 @@
 
                  <asp:ImageButton ID="ibtnInfraccion" runat="server" CausesValidation="false" CommandName="cmdInfraccion"
                     ImageUrl="~/img/infraccion.png" ToolTip="Registrar infraccion" 
+                     onClientClick="return confirm('¿Está seguro que desea registrar una infracción?')"
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
 
             </ItemTemplate>
+            <HeaderStyle Width="250px" />
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
         <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
@@ -129,6 +132,8 @@
             <EmptyDataTemplate>
                 No se encontraron registros.
             </EmptyDataTemplate>            
+
+<PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
          <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
