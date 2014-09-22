@@ -142,12 +142,6 @@
         <asp:BoundField HeaderText="Conductor" DataField="Chofer">
             <ItemStyle HorizontalAlign="Left" Width="175px"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
         <asp:BoundField HeaderText="Estado Checkin" DataField="EstadoCheckin">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>

@@ -50,7 +50,7 @@
              </div>  
        </div>         
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
-            DataKeyNames="CodBoleto" runat="server" 
+            DataKeyNames="CodBoleto,EstadoVerificacion" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
@@ -63,7 +63,7 @@
                 <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
                     onClientClick="return confirm('¿Está seguro de registrar el Embarque?')"
                     ImageUrl="~/img/verificar_activo.png" ToolTip="Registrar embarque" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("EstadoVerificacion").ToString().Equals("Sin verificación") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
                     onClientClick="return confirm('¿Está seguro que desea cancelar el equipaje?')"
@@ -117,14 +117,12 @@
         <asp:BoundField HeaderText="Ubicacion" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
+
+            <asp:BoundField HeaderText="Estado Verificación" DataField="EstadoVerificacion">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 
-            <asp:BoundField HeaderText="Estado Verificacion" DataField="EstadoVerificacion">
+            <asp:BoundField HeaderText="Fecha Verificación" DataField="FechaVerificacion">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 

@@ -86,10 +86,12 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 
         if (e.CommandName == "cmdInfraccion")
         {
+         
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
+            //string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
             Response.Redirect("~/RegistrarInfraccion.aspx?ID=" + cod + "&nroboleto=" + item.Text);
         }
