@@ -22,6 +22,7 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string EstadoEquipaje { get; set; }
         public int CodBoleto { get; set; }
         public string EstadoVerificacion { get; set; }
+        public string FechaVerificacion { get; set; }
         
     }
 }

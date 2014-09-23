@@ -56,7 +56,7 @@
             </EmptyDataTemplate>            
         </asp:GridView>  
         
-         <asp:Button ID="btnRegresar" runat="server" CssClass="mybtnstyle" Text="Regresar" onclick="btnRetornar_Click"/>
+         <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-primary" Text="Regresar" onclick="btnRetornar_Click"/>
                       
     </div>
     <%--</form>

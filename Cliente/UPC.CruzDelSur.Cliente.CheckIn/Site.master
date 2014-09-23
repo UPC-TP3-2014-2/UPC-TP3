@@ -93,6 +93,14 @@
         </header>
      
        <div id="contenedor">
+
+           <div class="text-right">
+
+               <strong>Fecha y hora actual: <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+ 
+               </strong>
+ 
+           </div>
  
   <div id="cuerpo">
   

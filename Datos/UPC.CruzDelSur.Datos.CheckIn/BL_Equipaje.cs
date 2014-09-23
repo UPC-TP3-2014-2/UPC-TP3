@@ -80,12 +80,11 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                objEquipaje.FechaSalida = dr["FechaSalida"].ToString();
                objEquipaje.HoraSalida = dr["HoraSalida"].ToString();
                objEquipaje.TipoEquipaje = dr["VCH_NOMBREETIQUETA"].ToString();
-               objEquipaje.Ubicacion = dr["VCH_UBICACION"].ToString();
-               objEquipaje.FechaActual = dr["FechaActual"].ToString();
-               objEquipaje.HoraActual = dr["HoraActual"].ToString();
+               objEquipaje.Ubicacion = dr["VCH_UBICACION"].ToString();           
                objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
                objEquipaje.CodBoleto = Convert.ToInt32(dr["INT_CODIGOBOLETO"]);
                objEquipaje.EstadoVerificacion = dr["ESTADO_VERIFICACION"].ToString();
+               objEquipaje.FechaVerificacion = dr["FECHA_VERIFICACION"].ToString();
                
                //add one row to the list
                lst.Add(objEquipaje);
@@ -157,11 +156,10 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                objEquipaje.FechaSalida = dr["FechaSalida"].ToString();
                objEquipaje.HoraSalida = dr["HoraSalida"].ToString();
                objEquipaje.TipoEquipaje = dr["VCH_NOMBREETIQUETA"].ToString();
-               objEquipaje.Ubicacion = dr["VCH_UBICACION"].ToString();
-               objEquipaje.FechaActual = dr["FechaActual"].ToString();
-               objEquipaje.HoraActual = dr["HoraActual"].ToString();
+               objEquipaje.Ubicacion = dr["VCH_UBICACION"].ToString();          
                objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
                objEquipaje.EstadoVerificacion = dr["ESTADO_VERIFICACION"].ToString();
+               objEquipaje.FechaVerificacion = dr["FECHA_VERIFICACION"].ToString();
                //add one row to the list
                lst.Add(objEquipaje);
            }
@@ -181,6 +179,23 @@ namespace UPC.CruzDelSur.Datos.CheckIn
            SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_EQUIPAJEACTUALIZAR", param);
 
            return new BE_Tiket();
+       }
+
+
+       public int f_RegistrarInfraccion(string nroboleto, string detalleinfraccion)
+       {
+           SqlParameter[] param = new SqlParameter[5];
+           param[0] = new SqlParameter("pNROBOLETO", SqlDbType.VarChar);
+           param[0].Value = nroboleto;
+           param[0].Direction = ParameterDirection.Input;
+           param[1] = new SqlParameter("VCH_DETALLE_INFRACCION", SqlDbType.VarChar);
+           param[1].Value = detalleinfraccion;
+           param[1].Direction = ParameterDirection.Input;
+          
+
+           return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_REGISTRARINFRACCION", param);
+
+
        }
        
     }

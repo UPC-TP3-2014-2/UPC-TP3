@@ -56,9 +56,9 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
 
-            IBL_Equipaje carga = new BL_Equipaje();
-            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 3);
-            grvDetalle.DataSource = ListarEquipaje;
+            IBL_Boleto carga = new BL_Boleto();
+            List<BE_Boleto> ListaBoleto = carga.f_CancelarCheckIn(item.Text);
+            grvDetalle.DataSource = ListaBoleto;
             grvDetalle.DataBind();
             btnImprimir.Visible = false;
         }
@@ -86,10 +86,12 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 
         if (e.CommandName == "cmdInfraccion")
         {
+         
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
+            //string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
             Response.Redirect("~/RegistrarInfraccion.aspx?ID=" + cod + "&nroboleto=" + item.Text);
         }

@@ -46,6 +46,6 @@ public partial class ModificarEquipaje : System.Web.UI.Page
 
     protected void btnRetornar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/GestionarEquipaje.aspx");
+        Response.Redirect("~/VerificarEquipaje.aspx");
     }
 }
