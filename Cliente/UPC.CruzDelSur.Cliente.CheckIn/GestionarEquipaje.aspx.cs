@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using UPC.CruzDelSur.Negocio.Modelo.CheckIn;
 using UPC.CruzDelSur.Datos.CheckIn;
 using UPC.CruzDelSur.Datos.CheckIn.Interface;
+using System.ComponentModel;
 public partial class GestionarEquipaje : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -87,6 +88,8 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
             Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
+
+            
         }
 
     }
@@ -119,7 +122,7 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     protected void Button4_Click(object sender, EventArgs e)
     {
         btnImprimir.Visible = true;
-
+        //btnActualizarRegistroEquipaje.Enabled = false;
         
         
         
@@ -127,5 +130,9 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     protected void btnActualizarRegistroEquipaje_Click(object sender, EventArgs e)
     {
         btnImprimir.Visible = true;
+        //btnConfirmarRegistroEquipaje.Enabled = true;
     }
+
+
+ 
 }

@@ -69,25 +69,12 @@
             AlternatingRowStyle-CssClass="alt">  
 <AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
         <Columns>
-        <asp:TemplateField HeaderText="Acción" Visible="False">
+        <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
-                    onClientClick="return confirm('¿Está seguro de verificar el Equipaje?')"
-                    ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-                    &nbsp;
-               <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
-                    onClientClick="return confirm('Está seguro de Cancelar su Equipaje?')"
-                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-                    &nbsp;
-               <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
-                    onClientClick="return confirm('Está seguro de Modificar información de su Equipaje?')"
-                    ImageUrl="~/img/edit.png" ToolTip="Modificar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                &nbsp; &nbsp;
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
@@ -97,8 +84,8 @@
         <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
-         <asp:BoundField HeaderText="Apellidos y Nombres del Pasajero" DataField="Pasajero">
-            <ItemStyle HorizontalAlign="Left"  Width="175px" />
+         <asp:BoundField HeaderText="Ape y Nombres" DataField="Pasajero">
+            <ItemStyle HorizontalAlign="Left"  Width="250px" />
         </asp:BoundField>
         <asp:BoundField HeaderText="Peso" DataField="Peso">
         <ItemStyle HorizontalAlign="Left" />
@@ -140,14 +127,13 @@
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-        <input id="btnRegistrarEquipaje" type="Button" value="          Registrar Equipaje          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
-        <input id="btnModificarEquipaje" type="Button" value="          Modificar Equipaje          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
-        <input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px" />&nbsp;
-
+        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
+        <%--<input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px"  />&nbsp;
+        --%>
         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="48px" />
         
         
-           <div id='oculto' class="panel panel-default" style='display:none;'  >
+           <div id='oculto' class="panel panel-default" style='display:none;' >
         <div class="panel-heading">Registrar Equipaje del Pasajero</div>
             <br />
                     <div class="form-inline">
