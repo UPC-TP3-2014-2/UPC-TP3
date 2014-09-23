@@ -327,26 +327,26 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Webapp\app.js" />
-    <Content Include="Scripts\Webapp\app.min.js" />
-    <Content Include="Scripts\Webapp\Templates\SolicitudCocina\Register.html" />
-    <Content Include="Scripts\Webapp\Templates\SolicitudCocina\Search.html" />
-    <Content Include="Scripts\Webapp\_app.js" />
-    <Content Include="Scripts\Webapp\Libraries\angular-route.min.js" />
-    <Content Include="Scripts\Webapp\Libraries\angular.min.js" />
-    <Content Include="Scripts\Webapp\Libraries\checklist-model.js" />
-    <Content Include="Scripts\Webapp\Libraries\ui-bootstrap-0.11.0.min.js" />
-    <Content Include="Scripts\Webapp\Libraries\ui-bootstrap-tpls-0.11.0.min.js" />
-    <Content Include="Scripts\Webapp\Libraries\underscore-min.js" />
-    <Content Include="Scripts\Webapp\Templates\Home.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-cocina\anular.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-cocina\actualizar.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-cocina\registrar.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-cocina\consultar.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-insumo\actualizar.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-insumo\anular.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-insumo\consultar.html" />
-    <Content Include="Scripts\Webapp\Templates\solicitud-insumo\registrar.html" />
+    <Content Include="Webapp\app.js" />
+    <Content Include="Webapp\app.min.js" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Register.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Search.html" />
+    <Content Include="Webapp\_app.js" />
+    <Content Include="Webapp\Libraries\angular-route.min.js" />
+    <Content Include="Webapp\Libraries\angular.min.js" />
+    <Content Include="Webapp\Libraries\checklist-model.js" />
+    <Content Include="Webapp\Libraries\ui-bootstrap-0.11.0.min.js" />
+    <Content Include="Webapp\Libraries\ui-bootstrap-tpls-0.11.0.min.js" />
+    <Content Include="Webapp\Libraries\underscore-min.js" />
+    <Content Include="Webapp\Templates\Home.html" />
+    <Content Include="Webapp\Templates\solicitud-cocina\anular.html" />
+    <Content Include="Webapp\Templates\solicitud-cocina\actualizar.html" />
+    <Content Include="Webapp\Templates\solicitud-cocina\registrar.html" />
+    <Content Include="Webapp\Templates\solicitud-cocina\consultar.html" />
+    <Content Include="Webapp\Templates\solicitud-insumo\actualizar.html" />
+    <Content Include="Webapp\Templates\solicitud-insumo\anular.html" />
+    <Content Include="Webapp\Templates\solicitud-insumo\consultar.html" />
+    <Content Include="Webapp\Templates\solicitud-insumo\registrar.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -391,18 +391,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Login.cshtml" />
     <Content Include="Views\Home\_Register.cshtml" />
-    <Content Include="Scripts\Webapp\Libraries\angular-route.min.js.map" />
-    <Content Include="Scripts\Webapp\Libraries\angular.min.js.map" />
+    <Content Include="Webapp\Libraries\angular-route.min.js.map" />
+    <Content Include="Webapp\Libraries\angular.min.js.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
-    <Content Include="Scripts\Webapp\app.coffee" />
-    <Content Include="Scripts\Webapp\config.coffee" />
-    <Content Include="Scripts\Webapp\Controllers\HomeController.coffee" />
-    <Content Include="Scripts\Webapp\Controllers\NavbarController.coffee" />
-    <Content Include="Scripts\Webapp\Controllers\SolicitudCocinaController.coffee" />
+    <Content Include="Webapp\app.coffee" />
+    <Content Include="Webapp\config.coffee" />
+    <Content Include="Webapp\Controllers\HomeController.coffee" />
+    <Content Include="Webapp\Controllers\NavbarController.coffee" />
+    <Content Include="Webapp\Controllers\SolicitudCocinaController.coffee" />
+    <Content Include="Webapp\Services\SolicitudCocinaService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Webapp\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

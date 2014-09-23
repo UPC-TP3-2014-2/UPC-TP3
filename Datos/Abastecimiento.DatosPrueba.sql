@@ -54,6 +54,3 @@ go
 
 
 select * from ta_solicitudcocina
-
-delete from ta_solicitudcocina
-delete from ta_solicitudinsumo

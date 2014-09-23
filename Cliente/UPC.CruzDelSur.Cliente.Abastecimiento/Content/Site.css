@@ -1,7 +1,3 @@
-﻿/*.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus,
-.dropdown-submenu:hover > a,
-.dropdown-submenu:focus > a {
-  background-color: #007fbf;
-  color: #fff;
-}*/
+﻿.help-block.error {
+    color: #a94442;
+}

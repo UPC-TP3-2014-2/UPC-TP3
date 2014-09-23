@@ -12,12 +12,13 @@
                     join: true
                 },
                 files: {
-                    'Scripts/Webapp/app.js': [
-                        'Scripts/Webapp/app.coffee',
-                        'Scripts/Webapp/config.coffee',
-                        'Scripts/Webapp/Controllers/NavbarController.coffee',
-                        'Scripts/Webapp/Controllers/HomeController.coffee',
-                        'Scripts/Webapp/Controllers/SolicitudCocinaController.coffee'
+                    'Webapp/app.js': [
+                        'Webapp/app.coffee',
+                        'Webapp/config.coffee',
+                        'Webapp/Services/SolicitudCocinaService.coffee',
+                        'Webapp/Controllers/NavbarController.coffee',
+                        'Webapp/Controllers/HomeController.coffee',
+                        'Webapp/Controllers/SolicitudCocinaController.coffee'
                     ]
                 }
             }
@@ -26,14 +27,14 @@
         uglify: {
             minified: {
                 files: {
-                    'Scripts/Webapp/app.min.js': 'Scripts/Webapp/app.js'
+                    'Webapp/app.min.js': 'Webapp/app.js'
                 }
             }
         }, 
 
         watch: {
             coffee: {
-                files: ['Scripts/Webapp/**/*.coffee'],
+                files: ['Webapp/**/*.coffee'],
                 tasks: ['coffee:compile', 'uglify:minified'],
                 options: {
                     livereload: true
@@ -41,7 +42,7 @@
             },
 
             template: {
-                files: ['Scripts/Webapp/**/*.html'], 
+                files: ['Webapp/**/*.html'], 
                 tasks: [], 
                 options: {
                     livereload: true
