@@ -133,7 +133,7 @@
         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="48px" />
         
         
-           <div id='oculto' class="panel panel-default" style='display:none;' >
+           <div id='oculto' class="panel panel-default" style='display:none;'  >
         <div class="panel-heading">Registrar Equipaje del Pasajero</div>
             <br />
                     <div class="form-inline">
