@@ -4,8 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
         .fila {
-            width: 80%;
-            padding-left: 17%;
+            width: 100%;
+            padding-left: 5%;
         }
 
         .izquierda {
@@ -365,7 +365,7 @@
             <div class="campoderecha">
                 <asp:DropDownList ID="ddlTipoPago" runat="server" Width="116px">
                     <asp:ListItem Value="Cancelado">Pago Origen</asp:ListItem>
-                    <asp:ListItem Value="Por Cancelar">Pago Origen</asp:ListItem>
+                    <asp:ListItem Value="Por Cancelar">Pago Destino</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>

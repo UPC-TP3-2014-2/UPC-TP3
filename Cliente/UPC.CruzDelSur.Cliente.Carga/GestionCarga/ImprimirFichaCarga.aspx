@@ -7,8 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
         .fila {
-            width: 80%;
-            padding-left: 17%;
+            width: 90%;
+            padding-left: 5%;
         }
 
         .izquierda {

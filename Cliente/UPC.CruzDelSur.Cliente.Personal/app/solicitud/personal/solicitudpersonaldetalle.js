@@ -104,7 +104,7 @@
             if (id === 'nuevo') {
                 vm.solicitudPersonal = datacontext.solicitudPersonal.create();
                 vm.solicitudPersonal.fechaRegistro = moment.utc().format('YYYY/MM/DD');
-                vm.solicitudPersonal.fechaVencimiento = moment.utc().add(1, 'months').format('YYYY/MM/DD');
+                vm.solicitudPersonal.fechaVencimiento = moment.utc().add(4, 'days').format('YYYY/MM/DD');
                 vm.solicitudPersonal.estado = 'Pendiente';
 
                 return vm.solicitudPersonal;
