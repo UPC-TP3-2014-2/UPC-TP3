@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-* {
+        * {
     padding: 0; 
-    margin: 0; 
-}
+    margin: 0px 0 0 0;
+        }
 
 .mybtnstyle{
 border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow: #FEFFFF 0px 1px 1px; box-shadow: #FEFFFF 0px 1px 1px; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:14px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: 0px 1px 0 rgba(255,255,255,1);font-weight:bold; color: #4A4A4A;
@@ -38,7 +38,6 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
     <div>
     
         <h2> Gestionar Reclamo</h2>
-          <br />
         <div class="panel panel-default">
 
   <div class="panel-heading">Criterios de búsqueda</div>
@@ -59,11 +58,11 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                <br />
-          <br />
 
           </div>
-             </div>  
-       </div>     
+             </div>
+            <br />
+       </div>
         <asp:GridView ID="gv1"
              runat="server" 
             AutoGenerateColumns="False"  
@@ -72,7 +71,7 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
                  AllowPaging="true" 
  GridLines="None"
             PagerStyle-CssClass="pgr"
-            AlternatingRowStyle-CssClass="alt"
+            AlternatingRowStyle-CssClass="alt" Width="1178px"
           
             >
             <Columns>
@@ -87,32 +86,63 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
         </asp:GridView>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style1">Tipo de Solicitud:</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>  
+            <asp:Label ID="lblInfo" runat="server" ForeColor="Red" Text="Info"></asp:Label>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="lblTipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
+                </td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="dlTipoSolicitud" runat="server" Height="18px" Width="152px">
+                    <asp:DropDownList ID="dlTipoSolicitud" runat="server" Height="22px" Width="152px">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">Area:</td>
+                <td class="auto-style1">
+                    <asp:Label ID="lblArea" runat="server" Text="Area:"></asp:Label>
+                </td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="dlArea" runat="server" Height="16px" Width="151px">
+                    <asp:DropDownList ID="dlArea" runat="server" Height="22px" Width="152px">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">Motivo:</td>
+                <td class="auto-style1">
+                    <asp:Label ID="lblMotivo" runat="server" Text="Motivo:"></asp:Label>
+                </td>
                 <td class="auto-style2">
                     <asp:TextBox ID="txtMotivo" runat="server" Height="93px" Width="476px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">
+         <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
+            Text="Ir al Inicio" onclick="btnInicio_Click"/>
+
+                </td>
                 <td class="auto-style2">
-                    <asp:Button ID="btnRegistrar" runat="server" style="text-align: left" Text="Registrar" Width="112px" OnClick="btnRegistrar_Click" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btnRegistrar" runat="server" style="text-align: left" Text="Registrar" Width="112px" OnClick="btnRegistrar_Click" CssClass="btn btn-success" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
