@@ -103,7 +103,7 @@
             if (id === 'nuevo') {
                 vm.solicitudCapacitacion = datacontext.solicitudCapacitacion.create();
                 vm.solicitudCapacitacion.fechaRegistro = moment.utc().format('YYYY/MM/DD');
-                vm.solicitudCapacitacion.fechaPlanificada = moment.utc().add(1, 'months').format('YYYY/MM/DD');
+                vm.solicitudCapacitacion.fechaPlanificada = moment.utc().add(4, 'days').format('YYYY/MM/DD');
                 vm.solicitudCapacitacion.estado = 'Pendiente';
 
                 return vm.solicitudCapacitacion;

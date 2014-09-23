@@ -16,6 +16,17 @@
             return false;
         }
     </script>
+
+    <
+    <script type="text/javascript">
+        function mostrar() {
+            document.getElementById('oculto').style.display = 'block';
+            
+        }
+        </script>
+       
+    
+ 
     <div id="contenedor">
     <h2>Gestionar Equipaje</h2>
     <br />
@@ -38,7 +49,7 @@
 
              &nbsp;&nbsp;
             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar Pasajero" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                <br />
           <br />
@@ -47,6 +58,8 @@
              </div>  
        </div>     
        
+        
+
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
             DataKeyNames="CodBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
@@ -58,23 +71,10 @@
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
-                    onClientClick="return confirm('¿Está seguro de verificar el Equipaje?')"
-                    ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-                    &nbsp;
-               <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
-                    onClientClick="return confirm('Está seguro de Cancelar su Equipaje?')"
-                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-                    &nbsp;
-               <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
-                    onClientClick="return confirm('Está seguro de Modificar información de su Equipaje?')"
-                    ImageUrl="~/img/edit.png" ToolTip="Modificar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                &nbsp; &nbsp;
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
@@ -84,8 +84,8 @@
         <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
-         <asp:BoundField HeaderText="Apellidos y Nombres del Pasajero" DataField="Pasajero">
-            <ItemStyle HorizontalAlign="Left"  Width="175px" />
+         <asp:BoundField HeaderText="Ape y Nombres" DataField="Pasajero">
+            <ItemStyle HorizontalAlign="Left"  Width="250px" />
         </asp:BoundField>
         <asp:BoundField HeaderText="Peso" DataField="Peso">
         <ItemStyle HorizontalAlign="Left" />
@@ -115,18 +115,70 @@
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 
+            
         </Columns>      
             <EmptyDataTemplate>
                 No se encontraron registros.
             </EmptyDataTemplate>            
 
+            
+
+             
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Portar Equipajes" OnClientClick = "return PrintPanel();" />
-         <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
-            Text="Ir al Inicio" onclick="btnInicio_Click"/>
+        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
+        <%--<input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px"  />&nbsp;
+        --%>
+        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="48px" />
+        
+        
+           <div id='oculto' class="panel panel-default" style='display:none;' >
+        <div class="panel-heading">Registrar Equipaje del Pasajero</div>
+            <br />
+                    <div class="form-inline">
+                    <div class="form-group">
+                        &nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Nro Boleto:"></asp:Label>   &nbsp;&nbsp;
+                        <asp:TextBox ID="txtNroBoleto1" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+                        <br />
+                        <br />
+                        &nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Peso" MaxLength="8"></asp:Label>  &nbsp;&nbsp;
+                        <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control"></asp:TextBox>
+                       
+                        &nbsp;&nbsp;<asp:Label ID="Label8" runat="server" Text="Tipo Equipaje" MaxLength="8"></asp:Label>  &nbsp;&nbsp;
+                        <asp:DropDownList ID="txtTipoEquipaje" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="FRAGIL"></asp:ListItem>
+                            <asp:ListItem Value="NORMAL"></asp:ListItem>
+                        </asp:DropDownList>
+                       
+                        
+                        &nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Text="Ubicacion"></asp:Label>   &nbsp;&nbsp;
+                        <asp:DropDownList ID="txtUbicacion" runat="server">
+                            <asp:ListItem Value="BODEGA"></asp:ListItem>
+                        </asp:DropDownList>
+                        
+                                                   
+                
+                            <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnConfirmarRegistroEquipaje" runat="server" Text="Confirmar Registro de Equipaje" CssClass="btn btn-success" OnClick="Button4_Click" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnActualizarRegistroEquipaje" runat="server" Text="Actualizar Registro de Equipaje" CssClass="btn btn-success" OnClick="btnActualizarRegistroEquipaje_Click"  /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelarRegistroEquipaje" runat="server" Text="Cancelar Registro de Equipaje" CssClass="btn btn-success" OnClick="Button6_Click"  /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 --%>   <br />
+                <br /> 
+                    </div>
+                </div>
+
+        </div>
+
+
+
+
+
+
+            
         <asp:Panel ID="pnlContents" runat="server">
          <div id="impresion">        
         <h3>Información de Equipaje</h3>
@@ -154,4 +206,11 @@ Tierra de acogimiento y de tolerancia, Marruecos no deja de ser un país apegado
              
     </div>
 
+   
 </asp:Content>
+
+ <%-- Detalle de Boleto - Pasajero --%>
+
+        
+
+     
