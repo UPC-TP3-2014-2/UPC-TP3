@@ -11,16 +11,21 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        btnImprimir.Visible = false;
+        btnImprimir.Visible =false;
+        //btnRegistrarEquipaje.Visible = false;
+        //btnGenerarTickets.Visible = false;
+
+        
         if (!Page.IsPostBack)
         {
-            //btnImprimir.Visible = true;            
+            btnImprimir.Visible = true;            
         }
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         BindData();
+        txtNroBoleto1.Text = txtNroBoleto.Text;
     }
 
     private void BindData()
@@ -30,6 +35,8 @@ public partial class GestionarEquipaje : System.Web.UI.Page
         grvDetalle.DataSource = ListaBoleto;
         grvDetalle.DataBind();
         btnImprimir.Visible = true;
+        //btnRegistrarEquipaje.Visible = true;
+        //btnGenerarTickets.Visible = true;
     }
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
@@ -87,6 +94,38 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     protected void btnInicio_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Inicio.aspx");
-    }       
+    }
 
+    protected void Button6_Click(object sender, EventArgs e)
+    {
+        txtPeso.Text = "";
+       
+        txtTipoEquipaje.Text = "";
+        txtUbicacion.Text = "";
+        
+    }
+    protected void btnRegistrarEquipaje_Click(object sender, EventArgs e)
+    {
+        
+        
+        txtNroBoleto1.Text = txtNroBoleto.Text;
+        //btnRegistrarEquipaje.Visible = true;
+        //btnGenerarTickets.Visible = true;
+        btnImprimir.Visible = true;
+        
+    }
+
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        btnImprimir.Visible = true;
+
+        
+        
+        
+    }
+    protected void btnActualizarRegistroEquipaje_Click(object sender, EventArgs e)
+    {
+        btnImprimir.Visible = true;
+    }
 }
