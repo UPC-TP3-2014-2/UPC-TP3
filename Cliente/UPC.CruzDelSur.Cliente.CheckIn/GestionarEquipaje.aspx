@@ -127,10 +127,10 @@
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
+        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF; height: 52px;" />
         <%--<input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px"  />&nbsp;
         --%>
-        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="48px" />
+        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="51px" />
         
         
            <div id='oculto' class="panel panel-default" style='display:none;'  >
