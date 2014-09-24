@@ -33,14 +33,6 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Personal
 
         public virtual ICollection<DetalleHojaVida> DetallesHojaVida { get; set; }
 
-        [Required]
-        public int AreaId { get; set; }
-
-        public virtual Area Area { get; set; }
-
-        [Required]
-        public int CargoId { get; set; }
-
-        public virtual Cargo Cargo { get; set; }
+        public virtual ICollection<CargoDesempenado> CargosDesempenados { get; set; }
     }
 }

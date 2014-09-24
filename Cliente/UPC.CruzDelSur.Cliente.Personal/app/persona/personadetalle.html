@@ -36,6 +36,12 @@
                         <span>Desactivar</span>
                     </button>
                     <button class="btn btn-default"
+                            data-ng-click="vm.goToCargoDesempenado()"
+                            data-ng-disabled="vm.isNew">
+                        <i class="fa fa-plus"></i>
+                        <span>Agregar Cargo</span>
+                    </button>
+                    <button class="btn btn-default"
                             data-ng-click="vm.goToExperienciaLaboral()"
                             data-ng-disabled="vm.isNew">
                         <i class="fa fa-plus"></i>
@@ -137,6 +143,28 @@
                                        placeholder="Teléfono" />
                             </div>
                         </form>
+                    </tab>
+                    <tab>
+                        <tab-heading>
+                            Línea de Carrera
+                            <span class="badge">{{vm.persona.cargosDesempenados.length}}</span>
+                        </tab-heading>
+                        &nbsp;
+                        <div class="list-group">
+                            <a href=""
+                               class="list-group-item"
+                               title="Ver detalles"
+                               data-ng-repeat="c in vm.persona.cargosDesempenados | orderBy: vm.orderByUltimoCargo:true"
+                               data-ng-click="vm.goToCargoDesempenado(c)">
+                                <h5><strong>{{c.cargo.nombre}}</strong></h5>
+                                <h6><strong>{{c.area.nombre}}</strong></h6>
+                                <div>
+                                    <span>{{c.desde | date:'yyyy/MM/dd'}} - </span>
+                                    <span data-ng-show="c.hasta">{{c.hasta | date:'yyyy/MM/dd'}}</span>
+                                    <span data-ng-show="!c.hasta">Presente</span>
+                                </div>
+                            </a>
+                        </div>
                     </tab>
                     <tab>
                         <tab-heading>

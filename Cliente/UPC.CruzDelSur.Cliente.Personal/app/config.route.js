@@ -62,6 +62,14 @@
                 }
             },
             {
+                url: '/persona/:idPersona/cargoDesempenado/:idCargoDesempenado',
+                config: {
+                    title: 'cargo desempenado',
+                    templateUrl: 'app/persona/cargoDesempenado/cargodesempenadodetalle.html',
+                    settings: {}
+                }
+            },
+            {
                 url: '/persona/:idPersona/educacion/:idEducacion',
                 config: {
                     title: 'educacion',
