@@ -27,6 +27,18 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     {
         BindData();
         txtNroBoleto1.Text = txtNroBoleto.Text;
+        txtPeso.Text = "60";
+      if (txtDNI.Text == "58524558")
+        {
+            txtNroBoleto1.Text = "001-000001";
+          
+        }
+
+      if (txtNroBoleto.Text == "001-000001")
+      {
+          txtNroBoleto1.Text = "001-000001";
+
+      }
     }
 
     private void BindData()
@@ -134,5 +146,6 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     }
 
 
- 
+
+   
 }

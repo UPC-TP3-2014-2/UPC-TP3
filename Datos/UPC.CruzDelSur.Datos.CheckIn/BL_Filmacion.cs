@@ -13,14 +13,17 @@ namespace UPC.CruzDelSur.Datos.CheckIn
     {
 
 
-        public List<BE_Filmacion> f_ListadoFilmaciones(DateTime fechaInicio)
+        public List<BE_Filmacion> f_ListadoFilmaciones(DateTime fechaInicio, string estado)
         {
 
             List<BE_Filmacion> lst = new List<BE_Filmacion>();
-            SqlParameter[] param = new SqlParameter[1];
+            SqlParameter[] param = new SqlParameter[2];
             param[0] = new SqlParameter("DTM_FECHA_DESDE", SqlDbType.DateTime);
             param[0].Value = fechaInicio;
             param[0].Direction = ParameterDirection.Input;
+            param[1] = new SqlParameter("ESTADO", SqlDbType.VarChar);
+            param[1].Value = estado;
+            param[1].Direction = ParameterDirection.Input;
 
 
             DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_CONSULTARFILMACION", param);

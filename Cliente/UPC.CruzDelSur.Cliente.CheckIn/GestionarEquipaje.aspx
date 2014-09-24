@@ -108,10 +108,10 @@
         <asp:BoundField HeaderText="Ubicación" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
+        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual" Visible="False">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
+        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual" Visible="False">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
 
@@ -127,13 +127,13 @@
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" />
+        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF; height: 52px;" />
         <%--<input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px"  />&nbsp;
-        --%>
-        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="48px" />
+        --%>u
+        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="51px" />
         
         
-           <div id='oculto' class="panel panel-default" style='display:none;' >
+           <div id='oculto' class="panel panel-default" style='display:none;'  >
         <div class="panel-heading">Registrar Equipaje del Pasajero</div>
             <br />
                     <div class="form-inline">

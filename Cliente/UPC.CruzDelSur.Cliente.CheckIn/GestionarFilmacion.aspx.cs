@@ -12,9 +12,11 @@ public partial class GestionarFilmacion : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        txtDate.Text = Request.Form[txtDate.UniqueID];
         btnImprimir.Visible = false;
         if (!Page.IsPostBack)
         {
+
             //btnImprimir.Visible = true;            
         }
     }
@@ -31,6 +33,7 @@ public partial class GestionarFilmacion : System.Web.UI.Page
 
         IBL_Filmacion carga = new BL_Filmacion();
         string dt = Request.Form[txtDate.UniqueID];
+        string estado = DropDownList1.SelectedValue.ToString();
 
         if (dt.Equals(""))
         {
@@ -46,7 +49,7 @@ public partial class GestionarFilmacion : System.Web.UI.Page
         }
         else
         {
-            List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt));
+            List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt),estado);
             grvDetalle.DataSource = ListaFilmacion;
             grvDetalle.DataBind();
      
@@ -96,6 +99,7 @@ public partial class GestionarFilmacion : System.Web.UI.Page
 
         if (e.CommandName == "cmdCopia")
         {
+            string dt = Request.Form[txtDate.UniqueID];
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
@@ -105,16 +109,42 @@ public partial class GestionarFilmacion : System.Web.UI.Page
             string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
             string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
             string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
-            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
+           // Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
+            estado = "C";
+            IBL_Filmacion carga = new BL_Filmacion();
+            
+            string estadocmbo = DropDownList1.SelectedValue.ToString();
+            carga.f_ActualizarFilmacion(solFilmacion, iniGrab, finGrab, rutaVideo, estado);
+            List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt), estadocmbo);
+            grvDetalle.DataSource = ListaFilmacion;
+            grvDetalle.DataBind();
+            
+        
         }
 
-        if (e.CommandName == "cmdImprimir")
+        if (e.CommandName == "cmdAtender")
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
+
+            string cod = Convert.ToString(grvDetalle.DataKeys[index].Values[0].ToString());
+            string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
+            string solFilmacion = Convert.ToString(grvDetalle.DataKeys[index].Values[2].ToString());
+            string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
+            string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
+            string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
+            // Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
+            estado = "D";
+            IBL_Filmacion carga = new BL_Filmacion();
+            string dt = Request.Form[txtDate.UniqueID];
+            string estadocmbo = DropDownList1.SelectedValue.ToString();
+            carga.f_ActualizarFilmacion(solFilmacion, iniGrab, finGrab, rutaVideo, estado);
+            List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt), estadocmbo);
+            grvDetalle.DataSource = ListaFilmacion;
+            grvDetalle.DataBind();
+
+            //Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
         }
 
 
