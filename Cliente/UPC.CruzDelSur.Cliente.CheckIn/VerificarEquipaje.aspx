@@ -29,18 +29,19 @@
           
   <div class="form-inline">
       <div class="form-group">
-       &nbsp;       &nbsp;
-
-            <asp:Label ID="Label2" runat="server" Text="DNI"></asp:Label>
-
-            &nbsp;&nbsp;
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+        &nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
 
              &nbsp;&nbsp;
             <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-             
+             &nbsp;       &nbsp;
+
+            <asp:Label ID="Label2" runat="server" Text="DNI:"></asp:Label>
+
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+            &nbsp;&nbsp;
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                 <br />
@@ -67,7 +68,7 @@
                     &nbsp;
                <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
                     onClientClick="return confirm('¿Está seguro que desea cancelar el equipaje?')"
-                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Boleto" 
+                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
@@ -81,7 +82,7 @@
                  <asp:ImageButton ID="ibtnInfraccion" runat="server" CausesValidation="false" CommandName="cmdInfraccion"
                     ImageUrl="~/img/infraccion.png" ToolTip="Registrar infraccion" 
                      onClientClick="return confirm('¿Está seguro que desea registrar una infracción?')"
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'  visible='<%# Eval("EstadoVerificacion").ToString().Equals("Sin verificación") %>'/>
 
             </ItemTemplate>
             <HeaderStyle Width="250px" />
@@ -90,6 +91,7 @@
         <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
+            <asp:BoundField DataField="NroEquipaje" HeaderText="Nro. Equipaje" />
         <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>

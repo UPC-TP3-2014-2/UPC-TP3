@@ -49,7 +49,7 @@
 
              &nbsp;&nbsp;
             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar Pasajero" CssClass="btn btn-success" 
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                <br />
           <br />
@@ -71,10 +71,31 @@
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
+
+                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="cmdConfirmar"
+                    ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+
                 &nbsp; &nbsp;
+
+                <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="cmdCancelar"
+                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                      &nbsp; &nbsp;
+
+                 <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="false" CommandName="cmdEditar"
+                    ImageUrl="~/img/edit.png" ToolTip="Editar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                      &nbsp; &nbsp;
+
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                   &nbsp; &nbsp;
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>

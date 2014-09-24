@@ -38,11 +38,20 @@ public partial class GestionarEquipaje : System.Web.UI.Page
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
+
+
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
+            ListItem NroEquipaje = new ListItem();
+            NroEquipaje.Text = Server.HtmlDecode(row.Cells[2].Text);
+            int iNroEquipaje = Convert.ToInt32(NroEquipaje.Text);
+            
+            
+
+           
 
             IBL_Equipaje carga = new BL_Equipaje();
-            List<BE_Equipaje> ListarEquipaje = carga.f_verificarEstadoEquipaje(item.Text);
+            List<BE_Equipaje> ListarEquipaje = carga.f_verificarEstadoEquipaje(item.Text, iNroEquipaje);
 
             grvDetalle.DataSource = ListarEquipaje;
             grvDetalle.DataBind();
@@ -56,9 +65,9 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             ListItem item = new ListItem();
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
 
-            IBL_Boleto carga = new BL_Boleto();
-            List<BE_Boleto> ListaBoleto = carga.f_CancelarCheckIn(item.Text);
-            grvDetalle.DataSource = ListaBoleto;
+            IBL_Equipaje carga = new BL_Equipaje();
+            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 3);
+            grvDetalle.DataSource = ListarEquipaje;
             grvDetalle.DataBind();
             btnImprimir.Visible = false;
         }

@@ -18,7 +18,6 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
  }
 
         .auto-style1 {
-            width: 181px;
         }
         #Select1 {
             width: 128px;
@@ -29,6 +28,10 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
         .auto-style2 {
             width: 532px;
             text-align: left;
+        }
+
+        .auto-style3 {
+            width: 130px;
         }
 
     </style>
@@ -106,45 +109,49 @@ border:1px solid #CCCCCC;-webkit-box-shadow: #FEFFFF 0px 1px 1px;-moz-box-shadow
         <br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style1">
-                    <asp:Label ID="lblTipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
-                </td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="dlTipoSolicitud" runat="server" Height="22px" Width="152px">
+                <td colspan="2">
+
+                     <div class="form-inline">
+                   &nbsp;&nbsp;&nbsp;  <asp:Label ID="lblTipoSolicitud" runat="server" Text="Tipo de Solicitud:"></asp:Label>
+                     &nbsp;&nbsp;&nbsp;<asp:DropDownList ID="dlTipoSolicitud" CssClass="form-control" runat="server">
                     </asp:DropDownList>
+                    &nbsp;&nbsp;&nbsp; <asp:Label ID="lblArea" runat="server" Text="Area:"></asp:Label>
+                     &nbsp;&nbsp;&nbsp;<asp:DropDownList ID="dlArea" runat="server" CssClass="form-control">
+                    </asp:DropDownList>
+
+                         </div>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
-                    <asp:Label ID="lblArea" runat="server" Text="Area:"></asp:Label>
-                </td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="dlArea" runat="server" Height="22px" Width="152px">
-                    </asp:DropDownList>
-                </td>
-                <td>&nbsp;</td>
+                <td class="auto-style1" colspan="3">
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="auto-style3">
                     <asp:Label ID="lblMotivo" runat="server" Text="Motivo:"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="txtMotivo" runat="server" Height="93px" Width="476px"></asp:TextBox>
+                    <asp:TextBox ID="txtMotivo" runat="server" CssClass="form-control" TextMode="MultiLine" Height="164px" Width="335px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="auto-style3">
+                    &nbsp;</td>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td rowspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
          <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>
 
                 </td>
                 <td class="auto-style2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btnRegistrar" runat="server" style="text-align: left" Text="Registrar" Width="112px" OnClick="btnRegistrar_Click" CssClass="btn btn-success" />
                 </td>
-                <td>&nbsp;</td>
             </tr>
         </table>
         <br />

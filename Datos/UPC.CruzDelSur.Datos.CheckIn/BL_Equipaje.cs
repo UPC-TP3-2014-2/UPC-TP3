@@ -72,6 +72,9 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                //Object of the propery class
                BE_Equipaje objEquipaje = new BE_Equipaje();
                //asign values
+
+
+               objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]);               
                objEquipaje.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                objEquipaje.Pasajero = dr["Pasajero"].ToString();
                objEquipaje.Peso = dr["DEC_PESO"].ToString();
@@ -131,13 +134,16 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
 
 
-       public List<BE_Equipaje> f_verificarEstadoEquipaje(String nroboleto)
+       public List<BE_Equipaje> f_verificarEstadoEquipaje(String nroboleto, int NroEquipaje)
        {
            List<BE_Equipaje> lst = new List<BE_Equipaje>();
            SqlParameter[] param = new SqlParameter[2];
            param[0] = new SqlParameter("pNROBOLETO", SqlDbType.VarChar);
            param[0].Value = nroboleto;
            param[0].Direction = ParameterDirection.Input;
+           param[1] = new SqlParameter("pINTCODEQUIPAJE", SqlDbType.VarChar);
+           param[1].Value = NroEquipaje;
+           param[1].Direction = ParameterDirection.Input;
            
 
            DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_EQUIPAJEVERIFICARESTADO", param);
@@ -148,6 +154,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                //Object of the propery class
                BE_Equipaje objEquipaje = new BE_Equipaje();
                //asign values
+               objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]); 
                objEquipaje.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                objEquipaje.Pasajero = dr["Pasajero"].ToString();
                objEquipaje.Peso = dr["DEC_PESO"].ToString();

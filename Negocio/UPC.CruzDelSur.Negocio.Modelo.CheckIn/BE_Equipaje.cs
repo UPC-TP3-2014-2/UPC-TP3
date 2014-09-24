@@ -8,6 +8,8 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
     public class BE_Equipaje
     {
 
+
+        public int NroEquipaje { get; set; }
         public string NroBoleto { get; set; }
         public string Pasajero { get; set; }
         public string Peso { get; set; }
