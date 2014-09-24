@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Cargo">
-    <Position X="15.25" Y="0.5" Width="1.5" />
+    <Position X="14.75" Y="2.5" Width="1.5" />
     <Members>
+      <Property Name="AreaId" Hidden="true" />
       <Property Name="Id" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAQAAAAA=</HashCode>
       <FileName>Cargo.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Area" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.DetalleHojaVida">
-    <Position X="11" Y="2.25" Width="1.5" />
+    <Position X="11" Y="4.25" Width="1.5" />
     <Members>
       <Property Name="Id" Hidden="true" />
       <Property Name="PersonaId" Hidden="true" />
@@ -25,61 +29,44 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Educacion">
-    <Position X="12.25" Y="4.5" Width="1.5" />
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <Members>
+      <Property Name="TipoId" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAQAAAAAQ=</HashCode>
       <FileName>Educacion.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.EvaluacionDesempeno">
-    <Position X="14.75" Y="5.25" Width="2" />
-    <Members>
-      <Property Name="EvaluadoId" Hidden="true" />
-      <Property Name="EvaluadorId" Hidden="true" />
-      <Property Name="Id" Hidden="true" />
-    </Members>
-    <AssociationLine Name="Evaluador" Type="UPC.CruzDelSur.Negocio.Modelo.Personal.Persona">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.836" Y="0.235" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAEAAAAAAgAEAAAEAAAAAAAgEAAAAAA=</HashCode>
-      <FileName>EvaluacionDesempeno.cs</FileName>
-    </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Evaluador" />
-      <Property Name="Evaluado" />
+      <Property Name="Tipo" />
     </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.ExperienciaLaboral">
-    <Position X="9.75" Y="4.5" Width="1.75" />
+    <Position X="9.75" Y="6.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
       <FileName>ExperienciaLaboral.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Persona">
-    <Position X="14.75" Y="2.25" Width="1.75" />
+    <Position X="14.75" Y="4.25" Width="1.75" />
     <Members>
-      <Property Name="CargoId" Hidden="true" />
       <Property Name="Id" Hidden="true" />
       <Property Name="TipoDocumentoId" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>EAACAAAAAACAAgAEACAAkAAAAAAABAADAAAAQgAAAAA=</HashCode>
+      <HashCode>EAACAAAAAACAAgAEACAAgAAAAAAABAACAAIAQgAAAAA=</HashCode>
       <FileName>Persona.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="TipoDocumento" />
-      <Property Name="Cargo" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="DetallesHojaVida" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.TipoDocumento">
-    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Position X="14.75" Y="7.75" Width="1.5" />
     <Members>
       <Property Name="Id" Hidden="true" />
     </Members>
@@ -89,7 +76,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Solicitud">
-    <Position X="19.75" Y="0.5" Width="1.75" />
+    <Position X="19.75" Y="3" Width="1.75" />
     <Members>
       <Property Name="Id" Hidden="true" />
       <Method Name="Solicitud" Hidden="true" />
@@ -103,13 +90,13 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.SolicitudCapacitacion">
-    <Position X="17.75" Y="3.75" Width="1.75" />
+    <Position X="17.75" Y="5.75" Width="1.75" />
     <Members>
-      <Property Name="CursoId" Hidden="true" />
+      <Property Name="CapacitacionId" Hidden="true" />
       <Property Name="TrabajadorId" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAAAI=</HashCode>
+      <HashCode>QAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAI=</HashCode>
       <FileName>SolicitudCapacitacion.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -118,21 +105,57 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.SolicitudPersonal">
-    <Position X="21.5" Y="3.75" Width="1.75" />
+    <Position X="21.5" Y="5.75" Width="2" />
+    <Members>
+      <Property Name="AreaId" Hidden="true" />
+      <Property Name="CargoId" Hidden="true" />
+      <Property Name="TipoEducacionId" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAABAAAAAAAAA=</HashCode>
+      <HashCode>AAAACEACIAAAAAAAAAIAEMAAAAEAAAABIAAAAYAAgAA=</HashCode>
       <FileName>SolicitudPersonal.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Area" />
+      <Property Name="Cargo" />
+      <Property Name="TipoEducacion" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Capacitacion">
-    <Position X="17.75" Y="5.75" Width="1.5" />
+    <Position X="17.75" Y="7.75" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Capacitacion.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.Area">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Area.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Cargos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UPC.CruzDelSur.Negocio.Modelo.Personal.TipoEducacion">
+    <Position X="21.75" Y="9.5" Width="1.5" />
+    <Members>
+      <Property Name="Id" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TipoEducacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="UPC.CruzDelSur.Negocio.Modelo.Personal.EstadoSolicitud" Collapsed="true">
-    <Position X="23.5" Y="0.5" Width="1.5" />
+    <Position X="17" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQI=</HashCode>
       <FileName>EstadoSolicitud.cs</FileName>

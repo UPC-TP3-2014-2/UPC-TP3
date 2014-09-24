@@ -43,7 +43,7 @@
             return EntityQuery
                 .from('Personas')
                 .orderBy(orderBy)
-                .expand('tipoDocumento, detallesHojaVida, cargo')
+                .expand('tipoDocumento, detallesHojaVida, cargosDesempenados')
                 .toType(entityName)
                 .using(self.manager)
                 .execute()

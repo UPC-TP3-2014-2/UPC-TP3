@@ -29,12 +29,29 @@
         function applyValidators(metadataStore) {
 
             applyToPersona(metadataStore);
+            applyToCargoDesempenado(metadataStore);
             applyToExperienciaLaboral(metadataStore);
             applyToEducacion(metadataStore);
             applyToSolicitudCapacitacion(metadataStore);
             applyToSolicitudPersonal(metadataStore);
 
             log('Validators applied', null, serviceId);
+        }
+
+        function applyToCargoDesempenado(metadataStore) {
+            var cargoDesempenadoType = metadataStore.getEntityType(entityNames.cargoDesempenado);
+
+            cargoDesempenadoType.validators
+                .push(fromToRangeValidator);
+
+            cargoDesempenadoType.getProperty('area').validators
+                .push(requireReferenceValidator);
+
+            cargoDesempenadoType.getProperty('cargo').validators
+                .push(requireReferenceValidator);
+
+            cargoDesempenadoType.getProperty('hasta').validators
+                .push(pastDateValidator);
         }
 
         function applyToEducacion(metadataStore) {
@@ -72,9 +89,6 @@
             var tipoDocumento = personaType.getProperty('tipoDocumento');
             tipoDocumento.displayName = 'Tipo de Documento';
             tipoDocumento.validators
-                .push(requireReferenceValidator);
-
-            personaType.getProperty('cargo').validators
                 .push(requireReferenceValidator);
         }
 

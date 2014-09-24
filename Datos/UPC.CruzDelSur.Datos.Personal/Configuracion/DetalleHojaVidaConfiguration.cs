@@ -24,7 +24,7 @@ namespace UPC.CruzDelSur.Datos.Personal.Configuracion
             HasRequired(d => d.Persona)
                 .WithMany(p => p.DetallesHojaVida)
                 .HasForeignKey(d => d.PersonaId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
         }
     }
 }
