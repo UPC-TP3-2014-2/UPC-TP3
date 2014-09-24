@@ -1,11 +1,65 @@
 ﻿<div ng-controller="SolicitudCocinaController">
 
+<div class="row">
     <div class="panel panel-info    ">
-        <div class="panel panel-heading">
-            <h4 class="panel-title">Ruta Programada</h4>
+        <div class="panel panel-heading">Ruta Programada</div>
+        <div class="panel-body">
+            <div class="form-group col-md-3">
+                <label class="control-label">Nro. Programación Ruta</label>
+                <input type="number" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.id }}" />
+            </div>
+            <div class="form-group col-md-3">
+                <div class="col-xs-2">
+                    <label class="control-label" for="aa">Fecha Origen</label>
+                    <input type="date" name="aa" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaOrigen | date: 'dd/MM/yyyy' }}" />
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">Fecha Destino</label>
+                <input type="date" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }}" />
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">Vehículo</label>
+                <input type="text" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.vehiculo.placa }}" />
+            </div>
+        </div>
+
+        
+        <div class="panel-body">
+            <div class="panel panel-success">
+                <div class="panel-heading">Seleccione una Programación de Ruta</div>
+                <div class="panel-body">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nro. Programación Ruta</th>
+                                <th>Fecha Origen</th>
+                                <th>Fecha Destino</th>
+                                <th>Vehículo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="programacionRuta in registrar.listadoProgramacionRuta">
+                                <td>{{ programacionRuta.id }}</td>
+                                <td>{{ programacionRuta.fechaOrigen | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ programacionRuta.vehiculo.placa }}</td>
+                                <td>
+                                    <input type="radio" name="programacionRuta" ng-model="$parent.registrar.solicitudCocinaId" value="{{ $ }}" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click=""><i class="fa fa-check"></i> Aceptar</button>
+                        <button class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+</div>
 
     <div class="panel panel-info">
         <div class="panel panel-heading">
@@ -90,6 +144,6 @@
     
     <div>
         <a class="btn btn-success"><i class="fa fa-check"></i> Registrar</a>
-        <a href="#" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
+        <a href="#/SolicitudCocina/Consultar" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
     </div>
 </div>

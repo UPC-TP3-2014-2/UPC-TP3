@@ -1,12 +1,21 @@
 ﻿# SolicitudCocinaController.coffee
 # @author: Ricardo Barreno <rickraf.@gmail.com>
 
-abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams", "$location", "SolicitudCocinaService", ($scope, $routeParams, $location, $solicitudCocinaService) ->
+abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams", "$location", "SolicitudCocinaService", "ProgramacionRutaService", ($scope, $routeParams, $location, $solicitudCocinaService, $programacionRutaService) ->
     $scope.consultar = {}
     $scope.anular = {}
     $scope.registrar = {}
     
     $scope.registrar.message = "Hola Mundo desde Solicitud Cocina Controller - Register"
+
+
+    $programacionRutaService
+        .getAll()
+        .success (data) ->
+            $scope.registrar.listadoProgramacionRuta = data
+            return
+
+
 
     if not angular.isUndefined $routeParams.id
         $solicitudCocinaService

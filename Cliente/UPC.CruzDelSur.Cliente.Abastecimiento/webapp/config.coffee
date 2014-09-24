@@ -23,6 +23,14 @@ abastecimiento.config ["$routeProvider", ($routeProvider) ->
             templateUrl: "Webapp/Templates/SolicitudCocina/Anular.html"
             controller: "SolicitudCocinaController"
         }
+        .when "/SolicitudInsumo/Consultar", {
+            templateUrl: "Webapp/Templates/SolicitudInsumo/Consultar.html"
+            controller: "SolicitudInsumoController"
+        }
+        .when "/SolicitudInsumo/Anular/:id", {
+            templateUrl: "Webapp/Templates/SolicitudInsumo/Anular.html"
+            controller: "SolicitudInsumoController"
+        }
         .otherwise {
             redirectTo: "/"
         }

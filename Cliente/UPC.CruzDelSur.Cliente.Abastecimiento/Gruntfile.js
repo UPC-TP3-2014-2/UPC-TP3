@@ -16,9 +16,12 @@
                         'Webapp/app.coffee',
                         'Webapp/config.coffee',
                         'Webapp/Services/SolicitudCocinaService.coffee',
+                        'Webapp/Services/SolicitudInsumoService.coffee',
+                        'Webapp/Services/ProgramacionRutaService.coffee',
                         'Webapp/Controllers/NavbarController.coffee',
                         'Webapp/Controllers/HomeController.coffee',
-                        'Webapp/Controllers/SolicitudCocinaController.coffee'
+                        'Webapp/Controllers/SolicitudCocinaController.coffee', 
+                        'Webapp/Controllers/SolicitudInsumoController.coffee'
                     ]
                 }
             }

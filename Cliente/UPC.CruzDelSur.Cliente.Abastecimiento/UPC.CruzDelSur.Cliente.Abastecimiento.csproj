@@ -329,8 +329,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Webapp\app.js" />
     <Content Include="Webapp\app.min.js" />
-    <Content Include="Webapp\Templates\SolicitudCocina\Register.html" />
-    <Content Include="Webapp\Templates\SolicitudCocina\Search.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Anular.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Consultar.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Registrar.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Anular.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Consultar.html" />
     <Content Include="Webapp\_app.js" />
     <Content Include="Webapp\Libraries\angular-route.min.js" />
     <Content Include="Webapp\Libraries\angular.min.js" />
@@ -400,6 +403,9 @@
     <Content Include="Webapp\Controllers\NavbarController.coffee" />
     <Content Include="Webapp\Controllers\SolicitudCocinaController.coffee" />
     <Content Include="Webapp\Services\SolicitudCocinaService.coffee" />
+    <Content Include="Webapp\Controllers\SolicitudInsumoController.coffee" />
+    <Content Include="Webapp\Services\SolicitudInsumoService.coffee" />
+    <Content Include="Webapp\Services\ProgramacionRutaService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
