@@ -3,6 +3,7 @@
 
 abastecimiento.controller "NavbarController", ["$scope", ($scope) ->
     
+    
 
 
 

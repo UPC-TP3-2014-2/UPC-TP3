@@ -42,7 +42,7 @@ begin
 	values(@contador, dateadd(day, @contador * -1, getdate()), dateadd(day, @contador, getdate()), @contador, @contador, 1)
 	
 	insert into TA_SOLICITUDCOCINA(int_codigo_programacion_ruta, dte_fecha_solicitud, tin_estado)
-	values(@contador, dateadd(day, @contador, getdate()), 1)
+	values(@contador, dateadd(day, @contador * -1, getdate()), 1)
 	
 	insert into TA_SOLICITUDINSUMO(dte_fecha_solicitud, int_codigo_solicitudcocina, tin_estado)
 	values(dateadd(day, @contador, getdate()),  @contador, 1)

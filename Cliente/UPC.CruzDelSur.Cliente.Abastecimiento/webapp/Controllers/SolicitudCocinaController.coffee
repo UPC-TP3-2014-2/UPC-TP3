@@ -92,19 +92,18 @@ abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams"
 
     $scope.registrar.seleccionarProgramacionRuta = (programacionRuta) ->
         $scope.registrar.solicitudCocina.programacionRuta = programacionRuta
+        $scope.registrar.cancelarBusquedaProgramacionRuta()
         return
 
     $scope.registrar.registrarSolicitud = (solicitudCocina) ->
         solicitudCocina.id = 0
         solicitudCocina.estado = 1
-        console.log $scope.registrar.refrigeriosSeleccionados
 
-        ###$solicitudCocinaService
+        $solicitudCocinaService
             .save(solicitudCocina)
             .success (data) ->
                 $scope.registrar.registrado = true
-                return###
-
+                return
         return
     
     $scope.registrar.seleccionarRefrigerio = (refrigerio) ->

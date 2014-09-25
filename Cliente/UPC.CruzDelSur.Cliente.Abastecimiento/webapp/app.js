@@ -215,18 +215,14 @@ abastecimiento.controller("SolicitudCocinaController", [
     };
     $scope.registrar.seleccionarProgramacionRuta = function(programacionRuta) {
       $scope.registrar.solicitudCocina.programacionRuta = programacionRuta;
+      $scope.registrar.cancelarBusquedaProgramacionRuta();
     };
     $scope.registrar.registrarSolicitud = function(solicitudCocina) {
       solicitudCocina.id = 0;
       solicitudCocina.estado = 1;
-      console.log($scope.registrar.refrigeriosSeleccionados);
-
-      /*$solicitudCocinaService
-          .save(solicitudCocina)
-          .success (data) ->
-              $scope.registrar.registrado = true
-              return
-       */
+      $solicitudCocinaService.save(solicitudCocina).success(function(data) {
+        $scope.registrar.registrado = true;
+      });
     };
     $scope.registrar.seleccionarRefrigerio = function(refrigerio) {
       console.log(refrigerio);

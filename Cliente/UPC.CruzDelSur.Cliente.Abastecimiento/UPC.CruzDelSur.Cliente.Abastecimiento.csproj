@@ -221,7 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProgramacionRutaModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +330,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Webapp\app.js" />
     <Content Include="Webapp\app.min.js" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Anular.html" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Consultar.html" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Registrar.html" />
     <Content Include="Webapp\Templates\SolicitudCocina\Anular.html" />
     <Content Include="Webapp\Templates\SolicitudCocina\Consultar.html" />
     <Content Include="Webapp\Templates\SolicitudCocina\Registrar.html" />
@@ -402,6 +405,8 @@
     <Content Include="Webapp\Services\ProgramacionRutaService.coffee" />
     <Content Include="Webapp\Services\InsumoService.coffee" />
     <Content Include="Webapp\Services\RefrigerioService.coffee" />
+    <Content Include="Webapp\Controllers\GuiaSalidaInsumoController.coffee" />
+    <Content Include="Webapp\Services\GuiaSalidaInsumoService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

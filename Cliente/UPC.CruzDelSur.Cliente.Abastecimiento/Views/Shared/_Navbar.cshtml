@@ -22,41 +22,73 @@
                         <li>
                             <a href="#">Inicio</a>
                         </li>
-                        <li role="presentation" class="dropdown-header">
+                        
+                        
+                        
+                        <li role="presentation" class="dropdown-header" ng-show="rol.tipo == 1 || rol.tipo == 2">
                             Solicitud de Cocina
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 2">
                             <a href="#/SolicitudCocina/Registrar">Registrar Solicitud de Cocina</a>
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 2">
                             <a href="#/SolicitudCocina/Consultar">Consultar Solicitud de Cocina</a>
                         </li>
-                        <li role="presentation" class="dropdown-header">
+                        
+                        
+                        
+                        <li role="presentation" class="dropdown-header" ng-show="rol.tipo == 1 || rol.tipo == 3">
                             Solicitud de Insumos
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 3">
                             <a href="#/SolicitudInsumo/Registrar">Registrar Solicitud de Insumos</a>
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 3">
                             <a href="#/SolicitudInsumo/Consultar">Consultar Solicitud de Insumos</a>
                         </li>
-                        <li role="presentation" class="dropdown-header">
+                        
+                        
+                        
+                        <li role="presentation" class="dropdown-header" ng-show="rol.tipo == 1 || rol.tipo == 4">
                             Guía de Salida de Insumos
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 4">
                             <a href="#/GuiaSalidaInsumo/Registrar">Registrar Guía de Salida de Insumos</a>
                         </li>
-                        <li>
+                        <li ng-show="rol.tipo == 1 || rol.tipo == 4">
                             <a href="#/GuiaSalidaInsumo/Consultar">Consultar Guía de Salida de Insumos</a>
                         </li>
+
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-switch="rol.tipo" ng-init="rol.tipo = 1">
+                        <span ng-switch-when="1">Administrador</span>
+                        <span ng-switch-when="2">Asistente de Operaciones</span>
+                        <span ng-switch-when="3">Jefe de Cocina</span>
+                        <span ng-switch-when="4">Operario de Almacén</span>
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Configuración</a></li>
+                        <li role="presentation" class="dropdown-header">Roles</li>
+                        <li ng-class="{disabled: rol.tipo == 1 }">
+                            <a href="#" ng-click="rol.tipo = 1">Administrador</a>
+                        </li>
+                        <li ng-class="{disabled: rol.tipo == 2 }">
+                            <a href="#" ng-click="rol.tipo = 2">Asistente de Operaciones</a>
+                        </li>
+                        <li ng-class="{disabled: rol.tipo == 3 }">
+                            <a href="#" ng-click="rol.tipo = 3">Jefe de Cocina</a>
+                        </li>
+                        <li ng-class="{disabled: rol.tipo == 4 }">
+                            <a href="#" ng-click="rol.tipo = 4">Operario de Almacén</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Configuración</a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="#">Cerrar Sesión</a></li>
                     </ul>
