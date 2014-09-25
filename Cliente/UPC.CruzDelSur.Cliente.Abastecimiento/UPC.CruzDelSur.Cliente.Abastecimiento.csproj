@@ -406,6 +406,9 @@
     <Content Include="Webapp\Controllers\SolicitudInsumoController.coffee" />
     <Content Include="Webapp\Services\SolicitudInsumoService.coffee" />
     <Content Include="Webapp\Services\ProgramacionRutaService.coffee" />
+    <Content Include="Webapp\Directives\DateGreaterThanDirective.coffee" />
+    <Content Include="Webapp\Services\InsumoService.coffee" />
+    <Content Include="Webapp\Services\RefrigerioService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

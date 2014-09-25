@@ -2,8 +2,7 @@
 # @author: Ricardo Barreno Cortijo <rickraf.01@gmail.com>
 
 abastecimiento.factory "SolicitudCocinaService", ["$http", ($http) ->
-
-    return {
+    {
         getAll: () ->
             return $http.get "api/SolicitudCocina"
 

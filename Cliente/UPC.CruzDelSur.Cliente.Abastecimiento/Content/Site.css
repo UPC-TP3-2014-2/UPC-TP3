@@ -1,3 +1,7 @@
 ﻿.help-block.error {
     color: #a94442;
 }
+
+.form-inline.form-group {
+    vertical-align: bottom;
+}

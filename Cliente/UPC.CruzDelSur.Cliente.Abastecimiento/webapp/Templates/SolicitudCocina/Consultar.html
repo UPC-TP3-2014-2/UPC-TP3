@@ -9,28 +9,27 @@
             <div class="panel panel-info">
                 <div class="panel-heading">Criterios de Búsqueda</div>
                 <div class="panel-body">
-                    <form method="post" role="search" novalidate>
+                    <form name="searchByIdForm" method="post" role="search" novalidate>
                         <div class="form-group">
                             <label class="control-label">Nro de Solicitud</label>
-                            <input type="number" class="form-control" required ng-model="consultar.solicitudCocinaId" />
-                            <!--<span class="help-block error">Ingrese el Nro de solicitud.</span>-->
+                            <input type="number" name="nroSolicitud" class="form-control" required ng-model="consultar.solicitudCocinaId" placeholder="Ingrese Nro. Solicitud" />
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block" ng-click="consultar.buscarPorId(consultar.solicitudCocinaId)"><i class="fa fa-search"></i> Consultar por Nro Solicitud</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorId(consultar.solicitudCocinaId)"><i class="fa fa-search"></i> Consultar por Nro Solicitud</button>
                         </div>
+                    </form>
                         <hr />
+                    <form name="searchByDateRangeForm" method="post" role="search" novalidate>
                         <div class="form-group">
                             <label class="control-label">Fecha Inicial</label>
-                            <input type="date" class="form-control" required ng-model="consultar.fechaInicial" />
-                            <!--<span class="help-block error">Seleccione la fecha inicial.</span>-->
+                            <input type="date" name="fechaInicial" class="form-control" required ng-model="consultar.fechaInicial" />
                         </div>
                         <div class="form-group">
                             <label class="control-label">Fecha Final</label>
-                            <input type="date" class="form-control" required ng-model="consultar.fechaFinal" />
-                            <!--<span class="help-block error">Seleccione la fecha inicial.</span>-->
+                            <input type="date" name="fechaFinal" class="form-control" required ng-model="consultar.fechaFinal" />
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block" ng-click="consultar.buscarPorRangoFechas(consultar.fechaInicial, consultar.fechaFinal)"><i class="fa fa-search"></i> Consultar por Fechas</button>
+                            <button class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorRangoFechas(consultar.fechaInicial, consultar.fechaFinal)"><i class="fa fa-search"></i> Consultar por Fechas</button>
                         </div>
                     </form>
                 </div>
