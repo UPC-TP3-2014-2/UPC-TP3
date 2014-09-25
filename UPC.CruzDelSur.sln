@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.CheckIn", "Datos\UPC.CruzDelSur.Datos.CheckIn\UPC.CruzDelSur.Datos.CheckIn.csproj", "{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn(1)", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"

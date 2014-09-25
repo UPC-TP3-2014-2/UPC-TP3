@@ -73,12 +73,12 @@
             
             <asp:TemplateField HeaderText="Àcciones">
                 <ItemTemplate>
-                    <asp:LinkButton ID="lnkModificar" runat="server" CommandName="Modificar" CommandArgument='<%# Eval("CODIGO_CARGA")%>' >Modificar</asp:LinkButton>
-                    <asp:LinkButton ID="lnkButtonValidar" runat="server" CommandName="validar" CommandArgument='<%# Eval("CODIGO_CARGA")%>'  >Validar</asp:LinkButton>
+                    <asp:LinkButton ID="lnkModificar" runat="server" CommandName="Modificar" CommandArgument='<%# Eval("CODIGO_CARGA")%>' >Modificar  <span style="color:black" > </span>  </asp:LinkButton> 
+                    <asp:LinkButton ID="lnkButtonValidar" runat="server" CommandName="validar" CommandArgument='<%# Eval("CODIGO_CARGA")%>'  >Validar <span style="color:black" > </span> </asp:LinkButton> <br />
 
-                    <asp:LinkButton ID="LinkButton3" runat="server" CommandName="cambiarclave" CommandArgument='<%# Eval("CODIGO_CARGA")%>'  >Cambiar Clave</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" runat="server" CommandName="cambiarclave" CommandArgument='<%# Eval("CODIGO_CARGA")%>'  >Cambiar Clave <span style="color:black" > </span> </asp:LinkButton> <br />
 
-                    <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Anular"  CommandArgument='<%# Eval("CODIGO_CARGA")%>' OnClientClick="javascript:if(confirm('Desea anular la ficha?') == false) return false;">Anular</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Anular"  CommandArgument='<%# Eval("CODIGO_CARGA")%>' OnClientClick="javascript:if(confirm('Desea anular la ficha?') == false) return false;">Anular <span style="color:black" > </span> </asp:LinkButton> <br />
 
 
                     <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Imprimir" CommandArgument='<%# Eval("CODIGO_CARGA")%>' >Imprimir</asp:LinkButton>
