@@ -115,6 +115,8 @@
             <ItemStyle HorizontalAlign="Left" Width="175px"  />
         </asp:BoundField>
 
+            <asp:BoundField DataField="IntCodigoBoleto" HeaderText="Id Codigo Boleto" />
+
         </Columns>      
             <EmptyDataTemplate>
                 No se encontraron registros.

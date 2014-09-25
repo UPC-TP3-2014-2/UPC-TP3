@@ -74,7 +74,11 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
             item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
+            string uno = Server.HtmlDecode(row.Cells[2].Text);
+            string dos = Server.HtmlDecode(row.Cells[3].Text);
+            string tres = Server.HtmlDecode(row.Cells[4].Text);
+            string cuatro = Server.HtmlDecode(row.Cells[5].Text);
+            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text + "&nroboleto=" + uno +"&nroboleto=" + dos +"&nroboleto=" + tres +"&nroboleto=" + cuatro);
         }
 
         if (e.CommandName == "cmdImprimir")

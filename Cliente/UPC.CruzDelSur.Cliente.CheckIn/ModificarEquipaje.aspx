@@ -1,65 +1,86 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ModificarEquipaje.aspx.cs" Inherits="ModificarEquipaje" %>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
-    <!DOCTYPE html>
 
-<%--<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>.:| Empresa de Transportes Cruz del Sur</title>
-</head>
-<body class="mainbar" >
-    <form id="form1" runat="server">--%>
-    <div id="contenedor">
-    <h2>GESTIONAR EQUIPAJE</h2>
-    <h3>Listado de Tiket Pendientes de Asignar</h3>
-    <br />              
-    <h2>Boleto Nro: <asp:Label ID="lblNroBoleta" runat="server"></asp:Label></h2>
-        
-        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
-            DataKeyNames="Codigo" runat="server" 
-            OnRowCommand="grvDetalle_RowCommand" 
-            GridLines="None"
-            CssClass="table"
-            PagerStyle-CssClass="pgr"
-            AlternatingRowStyle-CssClass="alt">  
-        <Columns>
-        <asp:TemplateField HeaderText="Acción">
-            <ItemTemplate>
-                <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdModificarEquipaje" 
-                    onClientClick="return confirm('Está seguro de modificar su Equipaje?')"
-                    ImageUrl="~/img/ok.jpg" ToolTip="Asignar Tiket al Boleto" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-            </ItemTemplate>
-            <ItemStyle HorizontalAlign="Center" Width="100px" />
-        </asp:TemplateField>
-        <asp:BoundField HeaderText="Nro de Tiket" DataField="Numero">
-            <ItemStyle HorizontalAlign="Center" Width="80px" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Peso" DataField="Peso">
-        <ItemStyle HorizontalAlign="Left" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Tamaño" DataField="Tamano">
-            <ItemStyle HorizontalAlign="Left"  Width="90px" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Código de Barra" DataField="CodBarra">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Estado Equipaje" DataField="EstadoEquipaje">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Tipo Equipaje" DataField="TipoEtiqueta">
-            <ItemStyle HorizontalAlign="Left" Width="100px"  />
-        </asp:BoundField>
-        </Columns>      
-            <EmptyDataTemplate>
-                No se encontraron registros.
-            </EmptyDataTemplate>            
-        </asp:GridView>  
-        
-         <asp:Button ID="btnRegresar" runat="server" CssClass="mybtnstyle" Text="Regresar" onclick="btnRetornar_Click"/>
-                      
-    </div>
-    <%--</form>
-</body>
-</html>--%>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
 </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+
+    
+
+
+     <h2 class="h2">Actualizar Equipaje del Pasajero</h2>
+    
+    <br />
+
+
+        <div class="panel panel-default">
+
+  <div class="panel-heading">Información de equipaje</div>
+
+          
+            <br />
+
+          
+  <div class="form-inline">
+   
+        <div class="form-group">
+            &nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Nro Boleto:"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtNroBoleto1" runat="server" MaxLength="10" CssClass="form-control" ReadOnly="True"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Codigo Barra:"></asp:Label>
+            <asp:TextBox ID="txtCodigoBarra" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Ancho:"></asp:Label>
+            <asp:TextBox ID="txtAncho" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="alto:"></asp:Label>
+            <asp:TextBox ID="txtAlto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+
+            &nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Peso" MaxLength="8"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control"></asp:TextBox>
+            <br />
+            <br />
+            <%--<asp:Label ID="Label6" runat="server" Text="Tamaño" MaxLength="8"></asp:Label>
+            <asp:TextBox ID="txtTamano" runat="server" CssClass="form-control"></asp:TextBox>
+            &nbsp;&nbsp;--%>
+            <asp:Label ID="Label8" runat="server" Text="Tipo Equipaje" MaxLength="8"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:DropDownList ID="txtTipoEquipaje" runat="server" CssClass="form-control">
+                <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
+                <asp:ListItem Value="1">Pesado</asp:ListItem>
+                <asp:ListItem Value="2">Ligero</asp:ListItem>
+            </asp:DropDownList>
+            &nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Text="Ubicacion"></asp:Label>
+            &nbsp;&nbsp;
+            
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                <asp:ListItem Value="0">--Seleccionar--</asp:ListItem>
+                <asp:ListItem Value="1">Bodega</asp:ListItem>
+                <asp:ListItem Value="2">Local</asp:ListItem>
+            </asp:DropDownList>
+
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           
+            <br />
+            <br />
+           <asp:Button ID="btnActualizarRegistroEquipaje" runat="server" Text="Actualizar Registro de Equipaje" CssClass="btn btn-success" OnClick="btnActualizarRegistroEquipaje_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <br />
+            <br />
+            <asp:Label ID="lblResultado" runat="server"></asp:Label>
+        
+  
+          
+    
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="Server">
+</asp:Content>
+

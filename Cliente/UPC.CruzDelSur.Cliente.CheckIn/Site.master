@@ -72,9 +72,9 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Checkin <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="http://localhost:2382/AdministrarCheckin.aspx">Gestionar Checkin</a></li>
+                                     <li><a href="http://localhost:2382/VerificarEquipaje.aspx">Verificar Equipaje</a></li>
                                     <li><a href="http://localhost:2382/GestionarEquipaje.aspx">Gestionar Equipaje</a></li>
-                                    <li><a href="http://localhost:2382/VerificarEquipaje.aspx">Verificar Equipaje</a></li>
-                                    <li><a href="http://localhost:2382/GestionarFilmacion.aspx">Gestionar Filmación</a></li>
+                                   <li><a href="http://localhost:2382/GestionarFilmacion.aspx">Gestionar Filmación</a></li>
                                     <li><a href="http://localhost:2382/GestionarReclamo.aspx">Gestionar Reclamo</a></li>
                                 </ul>
                             </li>

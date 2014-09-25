@@ -38,7 +38,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
         }
 
 
-        public int f_RegistrarFilmacion(List<BE_Tiket> lista)
+        public int f_RegistrarTicket(List<BE_Tiket> lista)
         {
             int valor = 0;
 

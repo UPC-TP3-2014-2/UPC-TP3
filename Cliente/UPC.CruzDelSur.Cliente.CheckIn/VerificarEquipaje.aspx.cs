@@ -39,11 +39,14 @@ public partial class GestionarEquipaje : System.Web.UI.Page
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
+            ListItem item2 = new ListItem();
+            item2.Text = Server.HtmlDecode(row.Cells[15].Text); //IntCodigoBoleto
             ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text); //Boleto
-            Response.Redirect("~/RegistrarTicketEquipaje.aspx?nroboleto=" + item.Text);
-        
-        
+            item.Text = Server.HtmlDecode(row.Cells[1].Text); //CodigoBoleto
+
+
+            Response.Redirect("~/RegistrarTicketEquipaje.aspx?ID=" + item2.Text + "&nroboleto=" + item.Text);
+                    
         }
 
         
