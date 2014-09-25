@@ -56,14 +56,17 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
         public int f_RegistrarFilmacion(string codBus, string iniGrab, string finGrab, string rutaVideo, string estado)
         {
+
+
+           
             SqlParameter[] param = new SqlParameter[5];
             param[0] = new SqlParameter("VCH_COD_SAL_BUS", SqlDbType.VarChar);
             param[0].Value = codBus;
             param[0].Direction = ParameterDirection.Input;
-            param[1] = new SqlParameter("INI_GRAB", SqlDbType.VarChar);
+            param[1] = new SqlParameter("INI_GRAB", SqlDbType.Time);
             param[1].Value = iniGrab;
             param[1].Direction = ParameterDirection.Input;
-            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.VarChar);
+            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.Time);
             param[2].Value = finGrab;
             param[2].Direction = ParameterDirection.Input;
             param[3] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
@@ -85,10 +88,10 @@ namespace UPC.CruzDelSur.Datos.CheckIn
             param[0] = new SqlParameter("INT_SOL_FILM", SqlDbType.VarChar);
             param[0].Value = SolFilmacion;
             param[0].Direction = ParameterDirection.Input;
-            param[1] = new SqlParameter("INI_GRAB", SqlDbType.VarChar);
+            param[1] = new SqlParameter("INI_GRAB", SqlDbType.Time);
             param[1].Value = iniGrab;
             param[1].Direction = ParameterDirection.Input;
-            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.VarChar);
+            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.Time);
             param[2].Value = finGrab;
             param[2].Direction = ParameterDirection.Input;
             param[3] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);

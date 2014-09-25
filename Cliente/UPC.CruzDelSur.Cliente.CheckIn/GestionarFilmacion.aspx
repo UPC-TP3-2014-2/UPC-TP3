@@ -3,19 +3,23 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <script type = "text/javascript">
-        function PrintPanel() {
-            var panel = document.getElementById("<%=pnlContents.ClientID %>");
-             var printWindow = window.open('', '', 'height=400,width=800');
-             printWindow.document.write('<html><head>');
-             printWindow.document.write('</head><body >');
-             printWindow.document.write(panel.innerHTML);
-             printWindow.document.write('</body></html>');
-             printWindow.document.close();
-             setTimeout(function () {
-                 printWindow.print();
-             }, 500);
-             return false;
+    <script src="Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+
+     <script type = "text/javascript">
+         function PrintPanel() {
+             var panel = document.getElementById("<%=pnlContents.ClientID %>");
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
          }
 
 
@@ -24,13 +28,13 @@
                  showOn: 'button',
                  buttonImageOnly: true,
                  buttonImage: '/img/calendar.jpg',
-                 dateFormat: 'dd/mm/yy'
-
+                 dateFormat:'dd/mm/yy'
+                 
              });
          });
 
-
-          </script>
+     
+    </script>
 
 
 
@@ -55,7 +59,7 @@
             &nbsp;&nbsp;
             <asp:TextBox ID="txtDate" runat="server" ReadOnly = "true" CssClass="form-control"></asp:TextBox>
             &nbsp;&nbsp;
-             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+             <asp:DropDownList ID="DropDownList1" runat="server">
                 <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
                 <asp:ListItem Value="N">No atendido</asp:ListItem>
                 <asp:ListItem Value="P">Pendiente</asp:ListItem>
@@ -75,7 +79,7 @@
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
-            DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo"
+            DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo,HoraSalida"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
 <AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>

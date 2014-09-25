@@ -77,7 +77,9 @@ public partial class GestionarFilmacion : System.Web.UI.Page
             string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
             string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
             string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
-            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
+            string horaSalida = Convert.ToString(grvDetalle.DataKeys[index].Values[6].ToString());
+           
+            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo + "&horaSalida=" + horaSalida );
 
         }
 
@@ -93,7 +95,8 @@ public partial class GestionarFilmacion : System.Web.UI.Page
             string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
             string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
             string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
-            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
+            string horaSalida = Convert.ToString(grvDetalle.DataKeys[index].Values[6].ToString());
+            Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo + "&horaSalida=" + horaSalida);
 
         }
 
