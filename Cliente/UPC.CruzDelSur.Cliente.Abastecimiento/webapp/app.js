@@ -16,12 +16,24 @@ abastecimiento.config([
     }).when("/SolicitudCocina/Anular/:id", {
       templateUrl: "Webapp/Templates/SolicitudCocina/Anular.html",
       controller: "SolicitudCocinaController"
+    }).when("/SolicitudInsumo/Registrar", {
+      templateUrl: "Webapp/Templates/SolicitudInsumo/Registrar.html",
+      controller: "SolicitudInsumoController"
     }).when("/SolicitudInsumo/Consultar", {
       templateUrl: "Webapp/Templates/SolicitudInsumo/Consultar.html",
       controller: "SolicitudInsumoController"
     }).when("/SolicitudInsumo/Anular/:id", {
       templateUrl: "Webapp/Templates/SolicitudInsumo/Anular.html",
       controller: "SolicitudInsumoController"
+    }).when("/GuiaSalidaInsumo/Registrar", {
+      templateUrl: "Webapp/Templates/GuiaSalidaInsumo/Registrar.html",
+      controller: "GuiaSalidaInsumoController"
+    }).when("/GuiaSalidaInsumo/Consultar", {
+      templateUrl: "Webapp/Templates/GuiaSalidaInsumo/Consultar.html",
+      controller: "GuiaSalidaInsumoController"
+    }).when("/GuiaSalidaInsumo/Anular/:id", {
+      templateUrl: "Webapp/Templates/GuiaSalidaInsumo/Anular.html",
+      controller: "GuiaSalidaInsumoController"
     }).otherwise({
       redirectTo: "/"
     });
@@ -72,6 +84,28 @@ abastecimiento.factory("SolicitudInsumoService", [
   }
 ]);
 
+abastecimiento.factory("GuiaSalidaInsumoService", [
+  "$http", function($http) {
+    return {
+      getAll: function() {
+        return $http.get("api/GuiaSalidaInsumo");
+      },
+      getById: function(id) {
+        return $http.get("api/GuiaSalidaInsumo/" + id);
+      },
+      getByDateRange: function(fechaInicial, fechaFinal) {
+        return $http.get("api/GuiaSalidaInsumo?fechaInicial=" + fechaInicial + "&fechaFinal=" + fechaFinal);
+      },
+      save: function(guiaSalidaInsumo) {
+        return $http.post("api/GuiaSalidaInsumo", guiaSalidaInsumo);
+      },
+      update: function(guiaSalidaInsumo) {
+        return $http.put("api/GuiaSalidaInsumo", guiaSalidaInsumo);
+      }
+    };
+  }
+]);
+
 abastecimiento.factory("ProgramacionRutaService", [
   "$http", function($http) {
     return {
@@ -114,42 +148,6 @@ abastecimiento.factory("InsumoService", [
   }
 ]);
 
-
-/*
-abastecimiento.directive "dateGreatherThan", ["$filter", ($filter) ->
-    {
-        require: "ngModel"
-        link: (scope, elm, attrs, ctrl) ->
-            var validateDateRange = (inputValue) ->
-                fromDate = $filter("date")(attrs.dateGreaterThan, "short")
-                toDate = $filter("date")(inputValue, "short")
-                ctrl.$setValidity('dateGreaterThan', isValid);
-                inputValue;
-            return
-    }
-]
-
-return {
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {            
-            var validateDateRange = function (inputValue) {
-                var fromDate = $filter('date')(attrs.dateGreaterThan, 'short');
-                var toDate = $filter('date')(inputValue, 'short');
-                var isValid = isValidDateRange(fromDate, toDate);
-                ctrl.$setValidity('dateGreaterThan', isValid);
-                return inputValue;
-            };
-
-            ctrl.$parsers.unshift(validateDateRange);
-            ctrl.$formatters.push(validateDateRange);
-            attrs.$observe('dateGreaterThan', function () {
-                validateDateRange(ctrl.$viewValue);
-
-            });
-        }
-    };
- */
-
 abastecimiento.controller("NavbarController", ["$scope", function($scope) {}]);
 
 abastecimiento.controller("HomeController", [
@@ -159,11 +157,12 @@ abastecimiento.controller("HomeController", [
 ]);
 
 abastecimiento.controller("SolicitudCocinaController", [
-  "$scope", "$routeParams", "$location", "SolicitudCocinaService", "ProgramacionRutaService", "InsumoService", function($scope, $routeParams, $location, $solicitudCocinaService, $programacionRutaService, $insumoService) {
+  "$scope", "$routeParams", "$location", "SolicitudCocinaService", "ProgramacionRutaService", "RefrigerioService", function($scope, $routeParams, $location, $solicitudCocinaService, $programacionRutaService, $refrigerioService) {
     $scope.consultar = {};
     $scope.anular = {};
     $scope.registrar = {};
-    $scope.registrar.message = "Hola Mundo desde Solicitud Cocina Controller - Register";
+    $scope.registrar.solicitudCocina = {};
+    $scope.registrar.registrado = false;
     if (!angular.isUndefined($routeParams.id)) {
       $solicitudCocinaService.getById($routeParams.id).success(function(data) {
         $scope.anular.solicitudCocina = data;
@@ -181,7 +180,7 @@ abastecimiento.controller("SolicitudCocinaController", [
       }
     };
     $scope.consultar.buscarPorRangoFechas = function(fechaInicial, fechaFinal) {
-      if (angular.isUndefined(fechaInicial) || angular.isUndefined(fechaFinal)) {
+      if ((angular.isUndefined(fechaInicial) || fechaInicial.trim() === "") || (angular.isUndefined(fechaFinal) || fechaFinal.trim() === "")) {
         $solicitudCocinaService.getAll().success(function(data) {
           $scope.consultar.listadoSolicitudesCocina = data;
         });
@@ -197,8 +196,11 @@ abastecimiento.controller("SolicitudCocinaController", [
         $location.path("/SolicitudCocina/Consultar");
       });
     };
+    $refrigerioService.getAll().success(function(data) {
+      $scope.registrar.listadoRefrigerios = data;
+    });
     $scope.registrar.buscarProgramacionRuta = function(fechaInicialOrigen, fechaFinalOrigen) {
-      if (angular.isUndefined(fechaInicialOrigen) || angular.isUndefined(fechaFinalOrigen)) {
+      if ((angular.isUndefined(fechaInicialOrigen) || fechaInicialOrigen.trim() === "") || (angular.isUndefined(fechaFinalOrigen) || fechaFinalOrigen.trim() === "")) {
         $programacionRutaService.getAll().success(function(data) {
           $scope.registrar.listadoProgramacionRuta = data;
         });
@@ -208,15 +210,37 @@ abastecimiento.controller("SolicitudCocinaController", [
         });
       }
     };
+    $scope.registrar.cancelarBusquedaProgramacionRuta = function() {
+      $scope.registrar.listadoProgramacionRuta = [];
+    };
+    $scope.registrar.seleccionarProgramacionRuta = function(programacionRuta) {
+      $scope.registrar.solicitudCocina.programacionRuta = programacionRuta;
+    };
+    $scope.registrar.registrarSolicitud = function(solicitudCocina) {
+      solicitudCocina.id = 0;
+      solicitudCocina.estado = 1;
+      console.log($scope.registrar.refrigeriosSeleccionados);
+
+      /*$solicitudCocinaService
+          .save(solicitudCocina)
+          .success (data) ->
+              $scope.registrar.registrado = true
+              return
+       */
+    };
+    $scope.registrar.seleccionarRefrigerio = function(refrigerio) {
+      console.log(refrigerio);
+    };
   }
 ]);
 
 abastecimiento.controller("SolicitudInsumoController", [
-  "$scope", "$routeParams", "$location", "SolicitudInsumoService", function($scope, $routeParams, $location, $solicitudInsumoService) {
+  "$scope", "$routeParams", "$location", "SolicitudInsumoService", "SolicitudCocinaService", "InsumoService", function($scope, $routeParams, $location, $solicitudInsumoService, $solicitudCocinaService, $insumoService) {
     $scope.consultar = {};
     $scope.anular = {};
     $scope.registrar = {};
-    $scope.registrar.message = "Hola Mundo desde Solicitud Insumo Controller - Registrar.";
+    $scope.registrar.solicitudInsumo = {};
+    $scope.registrar.registrado = false;
     if (!angular.isUndefined($routeParams.id)) {
       $solicitudInsumoService.getById($routeParams.id).success(function(data) {
         $scope.anular.solicitudInsumo = data;
@@ -224,22 +248,22 @@ abastecimiento.controller("SolicitudInsumoController", [
     }
     $scope.consultar.buscarPorId = function(id) {
       if (angular.isUndefined(id)) {
-        console.log("El id es indefinido");
+        $solicitudInsumoService.getAll().success(function(data) {
+          $scope.consultar.listadoSolicitudesInsumo = data;
+        });
       } else {
         $solicitudInsumoService.getById(id).success(function(data) {
-          console.log("Búsqueda por id: " + id);
           $scope.consultar.listadoSolicitudesInsumo = [data];
         });
       }
     };
     $scope.consultar.buscarPorRangoFechas = function(fechaInicial, fechaFinal) {
-      if (angular.isUndefined(fechaInicial)) {
-        console.log("No se ha ingreso la fecha inicial.");
-      } else if (angular.isUndefined(fechaFinal)) {
-        console.log("No se ha ingreso la fecha final.");
+      if ((angular.isUndefined(fechaInicial) || fechaInicial.trim() === "") || (angular.isUndefined(fechaFinal) || fechaFinal.trim() === "")) {
+        $solicitudInsumoService.getAll().success(function(data) {
+          $scope.consultar.listadoSolicitudesInsumo = data;
+        });
       } else {
         $solicitudInsumoService.getByRangeDate(fechaInicial, fechaFinal).success(function(data) {
-          console.log("Búsqueda por fechas: " + fechaInicial + " - " + fechaFinal);
           $scope.consultar.listadoSolicitudesInsumo = data;
         });
       }
@@ -248,6 +272,108 @@ abastecimiento.controller("SolicitudInsumoController", [
       solicitudInsumo.estado = 0;
       $solicitudInsumoService.update(solicitudInsumo).success(function(data) {
         $location.path("/SolicitudInsumo/Consultar");
+      });
+    };
+    $insumoService.getAll().success(function(data) {
+      $scope.registrar.listadoInsumos = data;
+    });
+    $scope.registrar.buscarSolicitudCocina = function(fechaInicial, fechaFinal) {
+      if ((angular.isUndefined(fechaInicial) || fechaInicial.trim() === "") || (angular.isUndefined(fechaFinal) || fechaFinal.trim() === "")) {
+        $solicitudCocinaService.getAll().success(function(data) {
+          $scope.registrar.listadoSolicitudCocina = _.where(data, {
+            estado: 1
+          });
+        });
+      } else {
+        $solicitudCocinaService.getByDateRange(fechaInicial, fechaFinal).success(function(data) {
+          $scope.registrar.listadoSolicitudCocina = _.where(data, {
+            estado: 1
+          });
+        });
+      }
+    };
+    $scope.registrar.cancelarBusquedaSolicitudCocina = function() {
+      $scope.registrar.listadoSolicitudCocina = [];
+    };
+    $scope.registrar.seleccionarSolicitudCocina = function(solicitudCocina) {
+      $scope.registrar.solicitudInsumo.solicitudCocina = solicitudCocina;
+    };
+    $scope.registrar.registrarSolicitud = function(solicitudInsumo) {
+      solicitudInsumo.id = 0;
+      solicitudInsumo.estado = 0;
+      $solicitudInsumoService.save(solicitudInsumo).success(function(data) {
+        $scope.registrar.registrado = true;
+      });
+    };
+  }
+]);
+
+abastecimiento.controller("GuiaSalidaInsumoController", [
+  "$scope", "$routeParams", "$location", "GuiaSalidaInsumoService", "SolicitudInsumoService", function($scope, $routeParams, $location, $guiaSalidaInsumoService, $solicitudInsumoService) {
+    $scope.consultar = {};
+    $scope.anular = {};
+    $scope.registrar = {};
+    $scope.registrar.guiaSalidaInsumo = {};
+    $scope.registrar.registrado = false;
+    if (!angular.isUndefined($routeParams.id)) {
+      $guiaSalidaInsumoService.getById($routeParams.id).success(function(data) {
+        $scope.anular.guiaSalidaInsumo = data;
+      });
+    }
+    $scope.consultar.buscarPorId = function(id) {
+      if (angular.isUndefined(id)) {
+        $guiaSalidaInsumoService.getAll().success(function(data) {
+          $scope.consultar.listadoGuiaSalidaInsumo = data;
+        });
+      } else {
+        $guiaSalidaInsumoService.getById(id).success(function(data) {
+          $scope.consultar.listadoGuiaSalidaInsumo = [data];
+        });
+      }
+    };
+    $scope.consultar.buscarPorRangoFechas = function(fechaInicial, fechaFinal) {
+      if ((angular.isUndefined(fechaInicial) || fechaInicial.trim() === "") || (angular.isUndefined(fechaFinal) || fechaFinal.trim() === "")) {
+        $guiaSalidaInsumoService.getAll().success(function(data) {
+          $scope.consultar.listadoGuiaSalidaInsumo = data;
+        });
+      } else {
+        $solicitudInsumoService.getByRangeDate(fechaInicial, fechaFinal).success(function(data) {
+          $scope.consultar.listadoGuiaSalidaInsumo = data;
+        });
+      }
+    };
+    $scope.anular.anularGuiaSalidaInsumo = function(guiaSalidaInsumo) {
+      guiaSalidaInsumo.estado = 0;
+      $guiaSalidaInsumoService.update(guiaSalidaInsumo).success(function(data) {
+        $location.path("/GuiaSalidaInsumo/Consultar");
+      });
+    };
+    $scope.registrar.buscarSolicitudInsumo = function(fechaInicial, fechaFinal) {
+      if ((angular.isUndefined(fechaInicial) || fechaInicial.trim() === "") || (angular.isUndefined(fechaFinal) || fechaFinal.trim() === "")) {
+        $solicitudInsumoService.getAll().success(function(data) {
+          $scope.registrar.listadoSolicitudInsumo = _.where(data, {
+            estado: 1
+          });
+        });
+      } else {
+        $solicitudInsumoService.getByRangeDate(fechaInicial, fechaFinal).success(function(data) {
+          $scope.registrar.listadoSolicitudInsumo = _.where(data, {
+            estado: 1
+          });
+        });
+      }
+    };
+    $scope.registrar.cancelarBusquedaSolicitudInsumo = function() {
+      $scope.registrar.listadoSolicitudInsumo = [];
+    };
+    $scope.registrar.seleccionarSolicitudInsumo = function(solicitudInsumo) {
+      $scope.registrar.guiaSalidaInsumo.solicitudInsumo = solicitudInsumo;
+    };
+    $scope.registrar.registrarGuiaSalidaInsumo = function(guiaSalidaInsumo) {
+      guiaSalidaInsumo.id = 0;
+      guiaSalidaInsumo.estado = 0;
+      $guiaSalidaInsumoService.save(guiaSalidaInsumo).success(function(data) {
+        $scope.registrar.registrado = true;
       });
     };
   }

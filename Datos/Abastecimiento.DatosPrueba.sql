@@ -51,6 +51,13 @@ begin
 end
 go
 
+select * from ta_solproductodecabina
+
+
 
 
 select * from ta_solicitudcocina
+select * from ta_solicitudInsumo
+select * from ta_guiasalidainsumo
+--delete from ta_solicitudinsumo
+--delete from ta_solicitudcocina

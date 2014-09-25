@@ -69,6 +69,7 @@
     <Compile Include="AgenciaRepositorio.cs" />
     <Compile Include="DetSolicitudCocinaRepositorio.cs" />
     <Compile Include="DetSolicitudInsumoRepositorio.cs" />
+    <Compile Include="GuiaSalidaInsumoRepositorio.cs" />
     <Compile Include="InsumoRepositorio.cs" />
     <Compile Include="ProgramacionRutaRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

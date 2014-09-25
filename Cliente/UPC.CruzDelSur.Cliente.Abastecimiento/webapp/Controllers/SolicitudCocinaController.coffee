@@ -1,12 +1,12 @@
 ﻿# SolicitudCocinaController.coffee
 # @author: Ricardo Barreno <rickraf.@gmail.com>
 
-abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams", "$location", "SolicitudCocinaService", "ProgramacionRutaService", "InsumoService", ($scope, $routeParams, $location, $solicitudCocinaService, $programacionRutaService, $insumoService) ->
+abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams", "$location", "SolicitudCocinaService", "ProgramacionRutaService", "RefrigerioService", ($scope, $routeParams, $location, $solicitudCocinaService, $programacionRutaService, $refrigerioService) ->
     $scope.consultar = {}
     $scope.anular = {}
     $scope.registrar = {}
-    
-    $scope.registrar.message = "Hola Mundo desde Solicitud Cocina Controller - Register"
+    $scope.registrar.solicitudCocina = {}
+    $scope.registrar.registrado = false
 
 
     if not angular.isUndefined $routeParams.id
@@ -36,7 +36,7 @@ abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams"
 
     $scope.consultar.buscarPorRangoFechas = (fechaInicial, fechaFinal) ->
         
-        if angular.isUndefined(fechaInicial) or angular.isUndefined(fechaFinal)
+        if (angular.isUndefined(fechaInicial) or fechaInicial.trim() == "") or (angular.isUndefined(fechaFinal) or fechaFinal.trim() == "")
             $solicitudCocinaService
                 .getAll()
                 .success (data) ->
@@ -64,8 +64,15 @@ abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams"
 
 
     # registrar
+
+    $refrigerioService
+        .getAll()
+        .success (data) ->
+            $scope.registrar.listadoRefrigerios = data
+            return
+
     $scope.registrar.buscarProgramacionRuta = (fechaInicialOrigen, fechaFinalOrigen) ->
-        if angular.isUndefined(fechaInicialOrigen) or angular.isUndefined(fechaFinalOrigen)
+        if (angular.isUndefined(fechaInicialOrigen) or fechaInicialOrigen.trim() == "" ) or (angular.isUndefined(fechaFinalOrigen) or fechaFinalOrigen.trim() == "")
             $programacionRutaService
                 .getAll()
                 .success (data)->
@@ -78,8 +85,31 @@ abastecimiento.controller "SolicitudCocinaController", ["$scope", "$routeParams"
                     $scope.registrar.listadoProgramacionRuta = data
                     return
         return
+    
+    $scope.registrar.cancelarBusquedaProgramacionRuta = () ->
+        $scope.registrar.listadoProgramacionRuta = []
+        return
 
+    $scope.registrar.seleccionarProgramacionRuta = (programacionRuta) ->
+        $scope.registrar.solicitudCocina.programacionRuta = programacionRuta
+        return
 
+    $scope.registrar.registrarSolicitud = (solicitudCocina) ->
+        solicitudCocina.id = 0
+        solicitudCocina.estado = 1
+        console.log $scope.registrar.refrigeriosSeleccionados
+
+        ###$solicitudCocinaService
+            .save(solicitudCocina)
+            .success (data) ->
+                $scope.registrar.registrado = true
+                return###
+
+        return
+    
+    $scope.registrar.seleccionarRefrigerio = (refrigerio) ->
+        console.log refrigerio
+        return
 
 
 

@@ -17,14 +17,15 @@
                         'Webapp/config.coffee',
                         'Webapp/Services/SolicitudCocinaService.coffee',
                         'Webapp/Services/SolicitudInsumoService.coffee',
+                        'Webapp/Services/GuiaSalidaInsumoService.coffee',
                         'Webapp/Services/ProgramacionRutaService.coffee',
                         'Webapp/Services/RefrigerioService.coffee',
                         'Webapp/Services/InsumoService.coffee',
-                        'Webapp/Directives/DateGreaterThanDirective.coffee',
                         'Webapp/Controllers/NavbarController.coffee',
                         'Webapp/Controllers/HomeController.coffee',
                         'Webapp/Controllers/SolicitudCocinaController.coffee', 
-                        'Webapp/Controllers/SolicitudInsumoController.coffee'
+                        'Webapp/Controllers/SolicitudInsumoController.coffee',
+                        'Webapp/Controllers/GuiaSalidaInsumoController.coffee'
                     ]
                 }
             }

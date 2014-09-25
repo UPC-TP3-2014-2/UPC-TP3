@@ -46,6 +46,7 @@
     <Compile Include="IDetalleCargaRepositorio.cs" />
     <Compile Include="IDetSolicitudCocinaRepositorio.cs" />
     <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
+    <Compile Include="IGuiaSalidaInsumoRepositorio.cs" />
     <Compile Include="IInsumoRepositorio.cs" />
     <Compile Include="IPersonasRepositorio.cs" />
     <Compile Include="IProductoRepositorio.cs" />

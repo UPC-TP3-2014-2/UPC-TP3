@@ -207,6 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\GuiaSalidaInsumoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InsumoController.cs" />
     <Compile Include="Controllers\ProgramacionRutaController.cs" />
@@ -334,6 +335,7 @@
     <Content Include="Webapp\Templates\SolicitudCocina\Registrar.html" />
     <Content Include="Webapp\Templates\SolicitudInsumo\Anular.html" />
     <Content Include="Webapp\Templates\SolicitudInsumo\Consultar.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Registrar.html" />
     <Content Include="Webapp\_app.js" />
     <Content Include="Webapp\Libraries\angular-route.min.js" />
     <Content Include="Webapp\Libraries\angular.min.js" />
@@ -342,14 +344,6 @@
     <Content Include="Webapp\Libraries\ui-bootstrap-tpls-0.11.0.min.js" />
     <Content Include="Webapp\Libraries\underscore-min.js" />
     <Content Include="Webapp\Templates\Home.html" />
-    <Content Include="Webapp\Templates\solicitud-cocina\anular.html" />
-    <Content Include="Webapp\Templates\solicitud-cocina\actualizar.html" />
-    <Content Include="Webapp\Templates\solicitud-cocina\registrar.html" />
-    <Content Include="Webapp\Templates\solicitud-cocina\consultar.html" />
-    <Content Include="Webapp\Templates\solicitud-insumo\actualizar.html" />
-    <Content Include="Webapp\Templates\solicitud-insumo\anular.html" />
-    <Content Include="Webapp\Templates\solicitud-insumo\consultar.html" />
-    <Content Include="Webapp\Templates\solicitud-insumo\registrar.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -406,12 +400,12 @@
     <Content Include="Webapp\Controllers\SolicitudInsumoController.coffee" />
     <Content Include="Webapp\Services\SolicitudInsumoService.coffee" />
     <Content Include="Webapp\Services\ProgramacionRutaService.coffee" />
-    <Content Include="Webapp\Directives\DateGreaterThanDirective.coffee" />
     <Content Include="Webapp\Services\InsumoService.coffee" />
     <Content Include="Webapp\Services\RefrigerioService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Webapp\Directives\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

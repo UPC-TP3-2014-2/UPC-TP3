@@ -1,5 +1,9 @@
 ﻿<div ng-controller="SolicitudCocinaController">
 
+<fieldset>
+    <legend>Registrar Solicitud de Cocina</legend>
+</fieldset>
+
 <div class="row">
     <div class="panel panel-info">
         <div class="panel panel-heading">Ruta Programada</div>
@@ -14,13 +18,13 @@
                 <div class="form-group">
                     <label class="control-label" for="aa">Fecha Origen</label>
                     <div class="control-group">
-                        <input type="date" name="aa" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaOrigen | date: 'dd/MM/yyyy' }}" />
+                        <input type="text" name="aa" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaOrigen | date: 'dd/MM/yyyy' }}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Fecha Destino</label>
                     <div class="control-group">
-                        <input type="date" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }}" />
+                        <input type="text" class="form-control" disabled value="{{ registrar.solicitudCocina.programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }}" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,7 +42,7 @@
                 <legend>Consultar Programación Ruta</legend>
             </fieldset>
                 
-            <div class="col-lg-3">
+            <div class="col-md-3 col-lg-3">
                 <div class="panel panel-success">
                     <div class="panel-heading">Criterios de Búsqueda</div>
                     <div class="panel-body">
@@ -51,13 +55,13 @@
                             <input type="date" class="form-control" ng-model="registrar.fechaFinalOrigen" />
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" ng-click="registrar.buscarProgramacionRuta(registrar.fechaInicialOrigen, registrar.fechaFinalOrigen)"><i class="fa fa-search"></i> Consultar</button>
-                            <button class="btn btn-danger" ng-click="registrar.cancelarBusquedaProgramacionRuta()"><i class="fa fa-close"></i> Cancelar</button>
+                            <button class="btn btn-primary" ng-disabled="registrar.registrado" ng-click="registrar.buscarProgramacionRuta(registrar.fechaInicialOrigen, registrar.fechaFinalOrigen)"><i class="fa fa-search"></i> Consultar</button>
+                            <button class="btn btn-danger" ng-disabled="registrar.registrado" ng-click="registrar.cancelarBusquedaProgramacionRuta()"><i class="fa fa-close"></i> Cancelar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-md-9 col-lg-9">
                 <div class="panel panel-success">
                     <div class="panel-heading">Listado de Programación de Ruta</div>
                     <div class="panel-body">
@@ -78,7 +82,7 @@
                                     <td>{{ programacionRuta.fechaDestino | date: 'dd/MM/yyyy' }}</td>
                                     <td>{{ programacionRuta.vehiculo.placa }}</td>
                                     <td>
-                                        <button class="btn btn-success btn-xs" ng-click="registrar.seleccionarProgramacionRuta(programacionRuta)"><i class="fa fa-check"></i> Seleccionar</button>
+                                        <button class="btn btn-success btn-xs" ng-disabled="registrar.registrado" ng-click="registrar.seleccionarProgramacionRuta(programacionRuta)"><i class="fa fa-check"></i> Seleccionar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -90,9 +94,6 @@
     </div>
 </div>
 
-
-
-
 <div class="row">
     <div class="panel panel-info">
         <div class="panel panel-heading">
@@ -100,59 +101,44 @@
         </div>
         <div class="panel-body">
             <div class="col-lg-12">
-                <div class="panel panel-success">
-                    <div class="panel-heading">Refrigerios Asignados a la Solicitud de Cocina</div>
-                    <div class="panel-body">
-                        <table class="table table-condensed table-hover">
-                            <thead>
-                                <tr>
-                                    <!--<th>Nro. Item</th>-->
-                                    <th>Seleccionar</th>
-                                    <th>Refrigerio</th>
-                                    <th>Tipo Unidad</th>
-                                    <th>Cantidad</th>
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Seleccionar</th>
+                            <th>Refrigerio</th>
+                            <th>Tipo Unidad</th>
+                            <th>Cantidad</th>
                                     
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <!--<button class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Remover Item</button>-->
-                                        <input type="checkbox" name="name" value=" " />
-                                    </td>
-                                    <!--<td>5</td>-->
-                                    <td>Tallarines Rojos</td>
-                                    <td>Unidad</td>
-                                    <td>
-                                        <div class="col-lg-4">
-                                            <input type="number" class="form-control" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!--<button class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Remover Item</button>-->
-                                        <input type="checkbox" name="name" value=" " />
-                                    </td>
-                                    <!--<td>5</td>-->
-                                    <td>Tallarines Rojos</td>
-                                    <td>Unidad</td>
-                                    <td>
-                                        <div class="col-lg-4">
-                                            <input type="number" class="form-control" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="refrigerio in registrar.listadoRefrigerios" ng-class="{success: registrar.refrigerioSeleccionado[$index] == 1}">
+                            <td>
+                                <input type="checkbox" name="name" value="1" ng-model="registrar.refrigerioSeleccionado[$index]" />
+                            </td>
+                            <td>{{ refrigerio.descripcion }}</td>
+                            <td>{{ refrigerio.tipoUnidad }}</td>
+                            <td>
+                                <div class="col-lg-4">
+                                    <input type="number" class="form-control" value="" ng-model="refrigerio.cantidad" ng-disabled="!registrar.refrigerioSeleccionado[$index]" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    
-    <div>
-        <a class="btn btn-success"><i class="fa fa-check"></i> Registrar</a>
+
+    <div class="form-group" ng-show="registrar.registrado">
+        <alert type="success">
+            Se registró correctamente la Solicitud de Cocina.
+        </alert>
+        <a href="#/SolicitudCocina/Consultar" class="btn btn-primary"><i class="fa fa-undo"></i> Regresar a Consultar Solicitud Cocina</a>
+    </div>
+
+    <div class="form-group" ng-show="!registrar.registrado">
+        <a class="btn btn-success" ng-click="registrar.registrarSolicitud(registrar.solicitudCocina)"><i class="fa fa-check"></i> Registrar</a>
         <a href="#/SolicitudCocina/Consultar" class="btn btn-danger"><i class="fa fa-close"></i> Cancelar</a>
     </div>
 </div>
