@@ -25,8 +25,9 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 
     private void BindData()
     {
-        IBL_Equipaje carga = new BL_Equipaje();
-        List<BE_Equipaje> ListaBoleto = carga.f_verificarEquipajeBoleto(txtNroBoleto.Text, txtDNI.Text);
+        //IBL_Boleto carga = new BL_Boleto();
+        IBL_Boleto carga = new BL_Boleto();
+        List<BE_Boleto> ListaBoleto = carga.f_ListadoBoleto(txtNroBoleto.Text, txtDNI.Text);
         grvDetalle.DataSource = ListaBoleto;
         grvDetalle.DataBind();
         btnImprimir.Visible = true;
@@ -34,76 +35,18 @@ public partial class GestionarEquipaje : System.Web.UI.Page
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
     {
-        if (e.CommandName == "cmdConfirmar")
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = grvDetalle.Rows[index];
-
-
-            ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            ListItem NroEquipaje = new ListItem();
-            NroEquipaje.Text = Server.HtmlDecode(row.Cells[2].Text);
-            int iNroEquipaje = Convert.ToInt32(NroEquipaje.Text);
-            
-            
-
-           
-
-            IBL_Equipaje carga = new BL_Equipaje();
-            List<BE_Equipaje> ListarEquipaje = carga.f_verificarEstadoEquipaje(item.Text, iNroEquipaje);
-
-            grvDetalle.DataSource = ListarEquipaje;
-            grvDetalle.DataBind();
-            btnImprimir.Visible = true;
-        }
-
-        if (e.CommandName == "cmdCancelar")
+        if (e.CommandName == "cmdRegistrarTicket")
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-
-            IBL_Equipaje carga = new BL_Equipaje();
-            List<BE_Equipaje> ListarEquipaje = carga.f_actualizarEstadoEquipaje(item.Text, 3);
-            grvDetalle.DataSource = ListarEquipaje;
-            grvDetalle.DataBind();
-            btnImprimir.Visible = false;
-        }
-
-        if (e.CommandName == "cmdEditar")
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = grvDetalle.Rows[index];
-            ListItem item = new ListItem();
-            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/ModificarVerificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
-        }
-
-        if (e.CommandName == "cmdImprimir")
-        {
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = grvDetalle.Rows[index];
-            ListItem item = new ListItem();
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Write("<script>window.open('ImprimirEquipaje.aspx?nroboleto=" + item.Text + "','_blank')</script>");
+            item.Text = Server.HtmlDecode(row.Cells[1].Text); //Boleto
+            Response.Redirect("~/RegistrarTicketEquipaje.aspx?nroboleto=" + item.Text);
+        
+        
         }
 
         
-
-        if (e.CommandName == "cmdInfraccion")
-        {
-         
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = grvDetalle.Rows[index];
-            ListItem item = new ListItem();
-            string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            //string estado = Convert.ToString(grvDetalle.DataKeys[index].Values[1].ToString());
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/RegistrarInfraccion.aspx?ID=" + cod + "&nroboleto=" + item.Text);
-        }
 
     }
 

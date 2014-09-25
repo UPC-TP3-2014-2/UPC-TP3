@@ -8,6 +8,20 @@
             display:none;
         }
 
+        .auto-style1 {
+            width: 22px;
+            height: 22px;
+            text-align: center;
+        }
+
+        .auto-style2 {
+            width: 135px;
+        }
+        .auto-style3 {
+            text-align: center;
+            width: 105px;
+        }
+
     </style>
 
     <script type="text/javascript">
@@ -70,7 +84,21 @@
 
  <div id="contenedor">
     <h2>GESTIONAR ASIENTO</h2>
-    <h3>Asientos Disponibles</h3>
+    
+     <br />
+     <table  width="170px">
+         <tr>
+             <td >Asientos Disponibles:</td>
+             <td class="text-center">
+         <img alt="Asiento disponible" class="auto-style1" src="Images/asiento.gif" /></td>
+         </tr>
+         <tr>
+             <td class="auto-style2">Asientos Ocupados:</td>
+             <td class="auto-style3">
+         <img alt="Asiento ocupado" class="auto-style1" src="Images/asiento_ocupado.gif" /></td>
+         </tr>
+     </table>
+     <br />
     <br />
         <asp:GridView ID="grvAsientos" runat="server" AutoGenerateColumns="False" AllowPaging="true" 
             DataKeyNames="Asiento" 
@@ -115,6 +143,8 @@
         <br />
 
     </div>
+
+
 <table>
 <tr>
 <td>

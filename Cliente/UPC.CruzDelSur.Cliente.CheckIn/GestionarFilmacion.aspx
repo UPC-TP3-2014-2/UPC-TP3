@@ -59,7 +59,7 @@
             &nbsp;&nbsp;
             <asp:TextBox ID="txtDate" runat="server" ReadOnly = "true" CssClass="form-control"></asp:TextBox>
             &nbsp;&nbsp;
-             <asp:DropDownList ID="DropDownList1" runat="server">
+             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                 <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
                 <asp:ListItem Value="N">No atendido</asp:ListItem>
                 <asp:ListItem Value="P">Pendiente</asp:ListItem>
