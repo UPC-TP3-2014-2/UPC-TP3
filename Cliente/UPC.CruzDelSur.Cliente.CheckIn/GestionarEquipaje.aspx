@@ -91,13 +91,14 @@
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
-        <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
+        <asp:BoundField HeaderText="Nro. Boleto" DataField="NroBoleto">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
+            <asp:BoundField DataField="NroEquipaje" HeaderText="Nro. Equipaje" />
         <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
-         <asp:BoundField HeaderText="Ape y Nombres" DataField="Pasajero">
+         <asp:BoundField HeaderText="Apellidos y Nombres" DataField="Pasajero">
             <ItemStyle HorizontalAlign="Left"  Width="250px" />
         </asp:BoundField>
         <asp:BoundField HeaderText="Peso" DataField="Peso">
@@ -127,6 +128,11 @@
         <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual" Visible="False">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
+
+            
+            <asp:BoundField DataField="CodigoBarras" HeaderText="Codigo de Barras" />
+            <asp:BoundField DataField="Tamano" HeaderText="Tamaño" />
+            <asp:BoundField DataField="CodEquipaje" HeaderText="ID Equipaje" />
 
             
         </Columns>      

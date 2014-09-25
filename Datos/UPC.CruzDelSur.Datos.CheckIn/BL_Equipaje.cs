@@ -44,6 +44,12 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                objEquipaje.HoraActual = dr["HoraActual"].ToString();
                objEquipaje.EstadoEquipaje = dr["VCH_ESTADOEQUIPAJE"].ToString();
                objEquipaje.CodBoleto = Convert.ToInt32(dr["INT_CODIGOBOLETO"]);
+               objEquipaje.CodEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]);
+               objEquipaje.NroEquipaje = dr["CHR_NUMEROEQUIPAJE"].ToString();               
+               objEquipaje.CodigoBarras = dr["CHR_CODIGOBARRAS"].ToString();
+               objEquipaje.Tamano = dr["CHR_TAMANO"].ToString();
+               
+               
             
                //add one row to the list
                lst.Add(objEquipaje);
@@ -74,7 +80,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                //asign values
 
 
-               objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]);               
+              // objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]);               
                objEquipaje.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                objEquipaje.Pasajero = dr["Pasajero"].ToString();
                objEquipaje.Peso = dr["DEC_PESO"].ToString();
@@ -154,7 +160,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                //Object of the propery class
                BE_Equipaje objEquipaje = new BE_Equipaje();
                //asign values
-               objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]); 
+               //objEquipaje.NroEquipaje = Convert.ToInt32(dr["INT_CODEQUIPAJE"]); 
                objEquipaje.NroBoleto = dr["CHR_NUMEROBOLETO"].ToString();
                objEquipaje.Pasajero = dr["Pasajero"].ToString();
                objEquipaje.Peso = dr["DEC_PESO"].ToString();

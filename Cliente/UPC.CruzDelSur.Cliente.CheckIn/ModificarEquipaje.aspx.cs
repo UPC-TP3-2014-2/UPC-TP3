@@ -21,6 +21,16 @@ public partial class ModificarEquipaje : System.Web.UI.Page
             NumBoleto = Convert.ToString(Request.QueryString["nroboleto"]);
             Session["CodBoleto"] = CodBoleto;
             Session["NumBoleto"] = NumBoleto;
+
+
+            txtCodigoBarra.Text = null;
+            txtAncho.Text = null;
+            txtAlto.Text = null;
+            txtPeso.Text = null;
+            txtTipoEquipaje.SelectedValue = "0";
+            DropDownList1.SelectedValue = "0";
+       
+
             
         }
     }

@@ -166,7 +166,7 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
         BE_Tiket objTiket = new BE_Tiket();
         objTiket.CodBoleto = ID;
         objTiket.CodBarra = txtCodigoBarra.Text;
-        objTiket.Tamano = txtAlto.Text + "X" + txtAncho.Text;
+        objTiket.Tamano = txtAncho.Text + "X" + txtAlto.Text;
         objTiket.Peso = txtPeso.Text;
         objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Value;
         objTiket.ubicacion = DropDownList1.SelectedItem.Value;

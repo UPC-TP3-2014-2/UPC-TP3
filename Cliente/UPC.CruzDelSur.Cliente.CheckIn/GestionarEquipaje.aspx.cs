@@ -73,12 +73,15 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            string uno = Server.HtmlDecode(row.Cells[2].Text);
-            string dos = Server.HtmlDecode(row.Cells[3].Text);
-            string tres = Server.HtmlDecode(row.Cells[4].Text);
-            string cuatro = Server.HtmlDecode(row.Cells[5].Text);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text + "&nroboleto=" + uno +"&nroboleto=" + dos +"&nroboleto=" + tres +"&nroboleto=" + cuatro);
+            string NroBoleto = Server.HtmlDecode(row.Cells[1].Text);
+            string NroEquipaje = Server.HtmlDecode(row.Cells[2].Text);
+            string NroBarras = Server.HtmlDecode(row.Cells[12].Text);
+            string Tamano = Server.HtmlDecode(row.Cells[13].Text);
+            string ancho =Tamano.Substring(0,2);
+            string alto = Tamano.Substring(2, 2);            
+            string peso = Server.HtmlDecode(row.Cells[5].Text);
+
+            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&NroBoleto=" + NroBoleto + "&NroEquipaje=" + NroEquipaje + "&NroBarras=" + NroBarras + "&Tamano=" + Tamano + "&ancho=" + ancho + "&alto=" + alto + "&peso=" + peso);
         }
 
         if (e.CommandName == "cmdImprimir")

@@ -47,7 +47,14 @@ public partial class Reclamo_GestionarReclamo : System.Web.UI.Page
         if (i.Equals(0))
         {
             lblInfo.Text = "No existe el numero de boleto ingresado.";
-            //lblInfo.ForeColor = ConsoleColor.Red;
+            lblTipoSolicitud.Visible = false;
+            lblArea.Visible = false;
+            lblMotivo.Visible = false;
+            dlTipoSolicitud.Visible = false;
+            dlArea.Visible = false;
+            txtMotivo.Visible = false;
+            btnRegistrar.Visible = false;
+            gv1.Visible = false;
         }
         else
         {

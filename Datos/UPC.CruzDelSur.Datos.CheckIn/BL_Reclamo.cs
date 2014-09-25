@@ -96,7 +96,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
             SqlParameter[] param = new SqlParameter[0];
 
-            DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.Text, "SELECT INT_AREA, VCH_NOMBRE FROM TA_AREA", param);
+            DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.Text, "SELECT INT_CODIGOAREA, VCH_NOMBRE FROM TA_AREAS", param);
 
             int ColumnCount = ds.Tables.Count;
             DataTable dt = ds.Tables[0];
@@ -104,7 +104,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
             {
                 BE_Area pArea = new BE_Area();
 
-                pArea.IdArea = Convert.ToInt32(dr["INT_AREA"]);
+                pArea.IdArea = Convert.ToInt32(dr["INT_CODIGOAREA"]);
                 pArea.Nombre = dr["VCH_NOMBRE"].ToString();
 
                 _lista.Add(pArea);

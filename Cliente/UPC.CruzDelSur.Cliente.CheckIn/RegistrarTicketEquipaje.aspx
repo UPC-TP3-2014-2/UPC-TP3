@@ -52,16 +52,16 @@
             &nbsp;&nbsp;
             <asp:DropDownList ID="txtTipoEquipaje" runat="server" CssClass="form-control">
                 <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
-                <asp:ListItem Value="1">Pesado</asp:ListItem>
-                <asp:ListItem Value="2">Ligero</asp:ListItem>
+                <asp:ListItem Value="1">FRAGIL</asp:ListItem>
+                <asp:ListItem Value="2">NORMAL</asp:ListItem>
             </asp:DropDownList>
             &nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Text="Ubicacion"></asp:Label>
             &nbsp;&nbsp;
             
             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                 <asp:ListItem Value="0">--Seleccionar--</asp:ListItem>
-                <asp:ListItem Value="1">Bodega</asp:ListItem>
-                <asp:ListItem Value="2">Local</asp:ListItem>
+                <asp:ListItem Value="1">BODEGA</asp:ListItem>
+                <asp:ListItem Value="2">INTERIOR</asp:ListItem>
             </asp:DropDownList>
             <br />
             <br />
