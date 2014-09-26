@@ -13,6 +13,7 @@
             auditoria: 'AuditEntry',
             capacitacion: 'Capacitacion',
             cargo: 'Cargo',
+            cargoDesempenado: 'CargoDesempenado',
             educacion: 'Educacion',
             experienciaLaboral: 'ExperienciaLaboral',
             persona: 'Persona',
@@ -99,6 +100,22 @@
                     }
                     
                     return ultimaExperienciaLaboral;
+                }
+            });
+
+            Object.defineProperty(Persona.prototype, 'cargoActual', {
+                get: function() {
+                    var cargoActual = null;
+                    var cargosDesempenados = this.cargosDesempenados;
+                    var ultimosCargos = cargosDesempenados
+                        .filter(function(cargoDesempenado) {
+                            return (cargoDesempenado.hasta === null);
+                        });
+                    if (ultimosCargos.length > 0) {
+                        cargoActual = ultimosCargos[0];
+                    }
+
+                    return cargoActual;
                 }
             });
 

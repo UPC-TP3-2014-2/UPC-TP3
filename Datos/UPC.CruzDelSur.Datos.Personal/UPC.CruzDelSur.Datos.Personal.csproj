@@ -68,6 +68,7 @@
     <Compile Include="Configuracion\AreaConfiguration.cs" />
     <Compile Include="Configuracion\CapacitacionConfiguration.cs" />
     <Compile Include="Configuracion\CargoConfiguration.cs" />
+    <Compile Include="Configuracion\CargoDesempenadoConfiguration.cs" />
     <Compile Include="Configuracion\DetalleHojaVidaConfiguration.cs" />
     <Compile Include="Configuracion\EducacionConfiguration.cs" />
     <Compile Include="Configuracion\EvaluacionDesempenoConfiguration.cs" />

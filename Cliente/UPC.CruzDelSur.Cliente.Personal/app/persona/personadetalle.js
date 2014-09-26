@@ -19,6 +19,7 @@
         vm.datePickerOpened = false;
         vm.deletePersona = deletePersona;
         vm.goBack = goBack;
+        vm.goToCargoDesempenado = goToCargoDesempenado;
         vm.goToEducacion = goToEducacion;
         vm.goToExperienciaLaboral = goToExperienciaLaboral;
         vm.hasChanges = false;
@@ -26,6 +27,7 @@
         vm.persona = undefined;
         vm.personaIdParameter = $routeParams.id;
         vm.openDatePicker = openDatePicker;
+        vm.orderByUltimoCargo = orderByUltimoCargo;
         vm.save = save;
         vm.tiposDocumento = [];
         vm.title = 'personadetalle';
@@ -96,6 +98,14 @@
 
         function goBack() { gotoPersonas(); }
 
+        function goToCargoDesempenado(cargoDesempenado) {
+            if (vm.persona && vm.persona.id) {
+                var id = (cargoDesempenado ? (cargoDesempenado.id || 'nuevo') : 'nuevo');
+
+                $location.path('/persona/' + vm.persona.id + '/cargoDesempenado/' + id);
+            }
+        }
+
         function goToEducacion(educacion) {
             if (vm.persona && vm.persona.id) {
                 var id = (educacion ? (educacion.id || 'nuevo') : 'nuevo');
@@ -141,6 +151,12 @@
             $event.stopPropagation();
 
             vm.datePickerOpened = true;
+        }
+
+        function orderByUltimoCargo(cargoDesempenado) {
+            var hasta = moment(cargoDesempenado.hasta || new Date());
+
+            return hasta;
         }
 
         function save() {

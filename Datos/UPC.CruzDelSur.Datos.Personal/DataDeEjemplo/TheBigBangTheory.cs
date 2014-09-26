@@ -30,8 +30,22 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Cooper",
                 FechaNacimiento = new DateTime(1985, 04, 27),
                 Foto = "Sheldon_Cooper.jpg",
-                Area = Gerencia,
-                Cargo = Gerente,
+                CargosDesempenados = new List<CargoDesempenado>
+                {
+                    new CargoDesempenado
+                    {
+                        Area = Operaciones,
+                        Cargo = Conductor,
+                        Desde = new DateTime(2010, 03, 04),
+                        Hasta = new DateTime(2013, 05, 11)
+                    },
+                    new CargoDesempenado
+                    {
+                        Area = Gerencia,
+                        Cargo = Gerente,
+                        Desde = new DateTime(2013, 05, 11)
+                    }
+                },
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
                     new ExperienciaLaboral
@@ -77,8 +91,29 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Hofstadter",
                 FechaNacimiento = new DateTime(1982, 07, 20),
                 Foto = "Leonard_Hofstadter.jpg",
-                Area = Operaciones,
-                Cargo = Conductor,
+                CargosDesempenados = new List<CargoDesempenado>
+                {
+                    new CargoDesempenado
+                    {
+                        Area = Operaciones,
+                        Cargo = Copiloto,
+                        Desde = new DateTime(2011, 10, 11),
+                        Hasta = new DateTime(2012, 12, 10)
+                    },
+                    new CargoDesempenado
+                    {
+                        Area = Operaciones,
+                        Cargo = Conductor,
+                        Desde = new DateTime(2012, 12, 10),
+                        Hasta = new DateTime(2014, 03, 20)
+                    },
+                    new CargoDesempenado
+                    {
+                        Area = Operaciones,
+                        Cargo = SupervisorConductores,
+                        Desde = new DateTime(2014, 03, 20)
+                    }
+                },
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
                     new ExperienciaLaboral
@@ -114,8 +149,15 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
                 Apellidos = "Wolowitz",
                 FechaNacimiento = new DateTime(1987, 06, 10),
                 Foto = "Howard_Wolowitz.jpg",
-                Area = Operaciones,
-                Cargo = Conductor,
+                CargosDesempenados = new List<CargoDesempenado>
+                {
+                    new CargoDesempenado
+                    {
+                        Area = Operaciones,
+                        Cargo = Conductor,
+                        Desde = new DateTime(2013, 07, 10)
+                    }
+                },
                 DetallesHojaVida = new List<DetalleHojaVida>
                 {
                     new ExperienciaLaboral

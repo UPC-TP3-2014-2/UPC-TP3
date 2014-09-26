@@ -130,6 +130,8 @@
     <Content Include="app\layout\sidebar.js" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
+    <Content Include="app\persona\cargoDesempenado\cargodesempenadodetalle.html" />
+    <Content Include="app\persona\cargoDesempenado\cargodesempenadodetalle.js" />
     <Content Include="app\persona\educacion\educaciondetalle.html" />
     <Content Include="app\persona\educacion\educaciondetalle.js" />
     <Content Include="app\persona\experienciaLaboral\experiencialaboraldetalle.html" />
@@ -146,6 +148,7 @@
     <Content Include="app\services\repositories.js" />
     <Content Include="app\services\repository.abstract.js" />
     <Content Include="app\services\repository.auditoria.js" />
+    <Content Include="app\services\repository.cargoDesempenado.js" />
     <Content Include="app\services\repository.educacion.js" />
     <Content Include="app\services\repository.experienciaLaboral.js" />
     <Content Include="app\services\repository.lookup.js" />
@@ -278,6 +281,7 @@
       <Name>UPC.CruzDelSur.Negocio.Modelo.Personal</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

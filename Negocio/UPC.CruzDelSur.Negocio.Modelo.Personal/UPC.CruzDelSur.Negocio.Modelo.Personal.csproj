@@ -46,6 +46,7 @@
     <Compile Include="EstadoSolicitud.cs" />
     <Compile Include="EvaluacionDesempeno.cs" />
     <Compile Include="ExperienciaLaboral.cs" />
+    <Compile Include="CargoDesempenado.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solicitud.cs" />

@@ -26,6 +26,8 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
         protected readonly TipoDocumento CarneExtranjeria = new TipoDocumento {Nombre = "Carne de Extranjeria"};
 
         protected readonly Cargo Conductor = new Cargo {Nombre = "Conductor"};
+        protected readonly Cargo Copiloto = new Cargo {Nombre = "Copiloto"};
+        protected readonly Cargo SupervisorConductores = new Cargo {Nombre = "Supervisor Conductores"};
         protected readonly Cargo EncargadoLogistica = new Cargo {Nombre = "Encargado de Logística"};
         protected readonly Cargo Gerente = new Cargo {Nombre = "Gerente"};
 
@@ -60,7 +62,7 @@ namespace UPC.CruzDelSur.Datos.Personal.DataDeEjemplo
         private void SeedAreas(DbContext context)
         {
             Gerencia.Cargos = new[] {Gerente};
-            Operaciones.Cargos = new[] {Conductor};
+            Operaciones.Cargos = new[] {SupervisorConductores, Conductor, Copiloto};
             Logistica.Cargos = new[] {EncargadoLogistica};
 
             context.Set<Area>().AddRange(new[]
