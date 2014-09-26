@@ -61,11 +61,11 @@
 
 
 
-    <h5>Ficha de Carga</h5>
+    <h5>Ficha Movimiento</h5>
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
-                Agencia Origen
+                Almacen
             </div>
             <div class="campoderecha">
                 <asp:DropDownList ID="ddlAgenciaOrigen" runat="server">
@@ -74,53 +74,25 @@
         </div>
         <div class="derecha">
             <div class="campoizquierda">
-                Agencia Destino
+                Tipo Movimiento
             </div>
             <div class="campoderecha">
-                <asp:DropDownList ID="dllAgenciaDestino" runat="server">
+                <asp:DropDownList ID="ddlTipoMovimiento" runat="server">
+                    <asp:ListItem Value="1">Ingreso</asp:ListItem>
+                    <asp:ListItem Value="2">Salida</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>
     </div>
 
+    <br />
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
-                Estado de Carga
+                Fecha de Registro de
             </div>
             <div class="campoderecha">
-
-                <asp:DropDownList ID="ddlEstadocarga" runat="server" Width="116px">
-                    <asp:ListItem Value="Entregado">Entregado</asp:ListItem>
-                    <asp:ListItem Value="Registrado">Registrado</asp:ListItem>
-                    <asp:ListItem Value="Anulado">Anulado</asp:ListItem>
-                </asp:DropDownList>
-
-            </div>
-        </div>
-        <div class="derecha">
-            <div class="campoizquierda">
-                Estado de Pago
-            </div>
-            <div class="campoderecha">
-
-                <asp:DropDownList ID="ddEstadoPago" runat="server" Width="116px">
-                    <asp:ListItem Value="Cancelado">Cancelado</asp:ListItem>
-                    <asp:ListItem Value="Por Cancelar">Por Cancelar</asp:ListItem>
-                    
-                    
-                </asp:DropDownList>
-            </div>
-        </div>
-    </div>
-    <h5>Fecha Programada</h5>
-    <div class="fila">
-        <div class="izquierda">
-            <div class="campoizquierda">
-                Fecha de Salida
-            </div>
-            <div class="campoderecha">
-                <asp:TextBox ID="txtFechaSalida" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFechaInicio" runat="server"></asp:TextBox>
 
                 <img src="../img/Calendario.png" id="f_btn1fechasalida" />
 
@@ -128,8 +100,9 @@
             </div>
         </div>
         <div class="derecha">
-            <div class="campoizquierda">
-                Fecha Llegada
+            <div class="campoizquierda" >
+                Fecha de Registro Hasta
+                
             </div>
             <div class="campoderecha">
                 <asp:TextBox ID="txtFechaFin" runat="server"></asp:TextBox>
@@ -160,7 +133,7 @@
     </asp:GridView>
     <script type="text/javascript">//<![CDATA[
         Calendar.setup({
-            inputField: "MainContent_txtFechaSalida",
+            inputField: "MainContent_txtFechaInicio",
             trigger: "f_btn1fechasalida",
             onSelect: function () { this.hide() },
             showTime: 12,

@@ -19,6 +19,8 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Carga
         public Nullable<Double> DBL_TOTAL { get; set; }
         public String OBSERVACION { get; set; }
         public String CLAVE_SEGURIDAD { get; set; }
+        public String PREGUNTA_SEGURIDAD { get; set; }
+        public String RESPUESTA_SEGURIDAD { get; set; }
         public Nullable<Int32> TIPO_PAGO { get; set; }
         public Nullable<Int32> CODIGO_PROGRAMACION_RUTA { get; set; }
         public String CLIENTE_ORIGEN { get; set; }
@@ -33,7 +35,7 @@ namespace UPC.CruzDelSur.Negocio.Modelo.Carga
         public String DESTINO { get; set; }
         public Nullable<DateTime> FECHA_ORIGEN { get; set; }
         public Nullable<DateTime> FECHA_DESTINO { get; set; }
-        
+
 
     }
 }

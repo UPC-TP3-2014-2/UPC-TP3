@@ -18,12 +18,10 @@
 </rsweb:ReportViewer>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=.;Initial Catalog=CSUR;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SP_GENERARREPORTEDETALLE" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="3" Name="INT_CODIGO_AGENCIA_SALIDA" QueryStringField="agenciaSalida" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="3" Name="INT_CODIGO_AGENCIA_ORIGEN" QueryStringField="agenciaOrigen" Type="Int32" />
-            <asp:QueryStringParameter DefaultValue="Cancelado" Name="VCH_ESTADOPAGO" Type="String" QueryStringField="estadoPago"/>
-            <asp:QueryStringParameter DefaultValue="Registrado" Name="VCH_ESTADO" Type="String" QueryStringField="estado"/>
-            <asp:QueryStringParameter DefaultValue="15/09/2015" Name="DTM_FECHA_ORIGEN" QueryStringField="fechaOrigen" Type="DateTime" />
-            <asp:QueryStringParameter DefaultValue="15/09/2014" Name="DTM_FECHA_DESTINO" QueryStringField="fechaDestino" Type="DateTime" />
+            <asp:QueryStringParameter DefaultValue="3" Name="INT_CODIGO_ALMACEN" QueryStringField="almacen" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="3" Name="INT_TIPO_MOVIMIENTO" QueryStringField="tipoMovimiento" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="15/09/2015" Name="DTM_FECHAHORAINICIO" Type="DateTime" QueryStringField="fechaincio"/>
+            <asp:QueryStringParameter DefaultValue="15/09/2015" Name="DTM_FECHAHORAFIN" QueryStringField="fechafin" Type="DateTime" />
         </SelectParameters>
     </asp:SqlDataSource>
         <asp:ScriptManager ID="ScriptManager1" runat="server">

@@ -11,7 +11,12 @@ namespace CRUZDELSUR.UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["rol"] != null)
+            {
+                lblPerfl.Text = Session["rol"].ToString();
+            }
 
+            
         }
     }
 }
