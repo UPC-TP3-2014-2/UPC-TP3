@@ -32,9 +32,117 @@ namespace UPC.CruzDelSur.Datos.Carga
             return 0;
         }
 
+
+        public int f_ActualizarClave(String pVCH_CLAVE, String pINT_CODIGO_CARGA)
+        {
+            SqlParameter[] param = new SqlParameter[16];
+            param[0] = new SqlParameter("@VCH_CLAVE_SEGURIDAD", SqlDbType.VarChar);
+            param[0].Value = pVCH_CLAVE;
+            param[0].Direction = ParameterDirection.Input;
+
+
+            param[1] = new SqlParameter("@INT_CODIGO_CARGA", SqlDbType.Int);
+            param[1].Value = pINT_CODIGO_CARGA;
+            param[1].Direction = ParameterDirection.Input;
+
+
+
+
+            int CodigoCarga = SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_ACTUALIZARCLAVE", param);
+            return 0;
+        }
+
+
+
+        public List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga> f_Reporte(Int32 pINT_CODIGO_ALMACEN, Int32 pINT_TIPO_MOVIMIENTO, DateTime pDTM_FECHAHORAINICIO, DateTime pDTM_FECHAHORAFIN)
+        {
+            List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga> lst = new List<UPC.CruzDelSur.Negocio.Modelo.Carga.Carga>();
+
+            SqlParameter[] param = new SqlParameter[15];
+            param[0] = new SqlParameter("@INT_CODIGO_ALMACEN ", SqlDbType.Int);
+            param[0].Value = pINT_CODIGO_ALMACEN;
+            param[0].Direction = ParameterDirection.Input;
+
+
+
+            param[1] = new SqlParameter("@INT_TIPO_MOVIMIENTO", SqlDbType.Int);
+            param[1].Value = pINT_TIPO_MOVIMIENTO;
+            param[1].Direction = ParameterDirection.Input;
+
+
+            param[2] = new SqlParameter("@DTM_FECHAHORAINICIO", SqlDbType.DateTime);
+            param[2].Value = pDTM_FECHAHORAINICIO;
+            param[2].Direction = ParameterDirection.Input;
+
+
+
+            param[3] = new SqlParameter("@DTM_FECHAHORAFIN", SqlDbType.DateTime);
+            param[3].Value = pDTM_FECHAHORAFIN;
+            param[3].Direction = ParameterDirection.Input;
+
+
+            
+
+            DataSet ds = SqlHelper.ExecuteDataSet(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_GENERARREPORTE", param);
+            int ColumnCount = ds.Tables.Count;
+            DataTable dt = ds.Tables[0];
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Object of the propery class
+                UPC.CruzDelSur.Negocio.Modelo.Carga.Carga objCarga = new UPC.CruzDelSur.Negocio.Modelo.Carga.Carga();
+                //asign values
+                if (DBNull.Value != dr["INT_CODIGO_CARGA"])
+                    objCarga.CODIGO_CARGA = Int32.Parse(dr["INT_CODIGO_CARGA"].ToString());
+
+                if (DBNull.Value != dr["VCH_FICHA"])
+                    objCarga.FICHA = dr["VCH_FICHA"].ToString();
+
+                if (DBNull.Value != dr["VCH_ORIGEN"])
+                    objCarga.ORIGEN = dr["VCH_ORIGEN"].ToString();
+
+                if (DBNull.Value != dr["VCH_DESTINO"])
+                    objCarga.DESTINO = dr["VCH_DESTINO"].ToString();
+
+                if (DBNull.Value != dr["DTM_FECHA_ORIGEN"])
+                    objCarga.FECHA_ORIGEN = DateTime.Parse(dr["DTM_FECHA_ORIGEN"].ToString());
+
+                if (DBNull.Value != dr["DTM_FECHA_DESTINO"])
+                    objCarga.FECHA_DESTINO = DateTime.Parse(dr["DTM_FECHA_DESTINO"].ToString());
+
+                if (DBNull.Value != dr["VCH_REMITENTE"])
+                    objCarga.REMITENTE = dr["VCH_REMITENTE"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_DESTINATARIO"])
+                    objCarga.DESTINATARIO = dr["VCH_DESTINATARIO"].ToString();
+
+
+
+                if (DBNull.Value != dr["VCH_CLIENTE_ORIGEN"])
+                    objCarga.CLIENTE_ORIGEN = dr["VCH_CLIENTE_ORIGEN"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_CLIENTE_DESTINO"])
+                    objCarga.CLIENTE_DESTINO = dr["VCH_CLIENTE_DESTINO"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_ESTADOPAGO"])
+                    objCarga.ESTADOPAGO = dr["VCH_ESTADOPAGO"].ToString();
+
+                if (DBNull.Value != dr["VCH_ESTADO"])
+                    objCarga.ESTADO = dr["VCH_ESTADO"].ToString();
+
+
+                //add one row to the list
+                lst.Add(objCarga);
+            }
+            return lst;
+        }
+
+
         public int f_AgregarCarga(UPC.CruzDelSur.Negocio.Modelo.Carga.Carga oBE_Carga)
         {
-            SqlParameter[] param = new SqlParameter[18];
+            SqlParameter[] param = new SqlParameter[20];
             param[0] = new SqlParameter("@VCH_FICHA", SqlDbType.VarChar);
             param[0].Value = oBE_Carga.FICHA;
             param[0].Direction = ParameterDirection.Input;
@@ -130,6 +238,16 @@ namespace UPC.CruzDelSur.Datos.Carga
             param[17] = new SqlParameter("@DBL_IGV", SqlDbType.Decimal);
             param[17].Value = oBE_Carga.DBL_IGV;
             param[17].Direction = ParameterDirection.Input;
+
+
+            param[18] = new SqlParameter("@VCH_PREGUNTA_SEGURIDAD", SqlDbType.VarChar);
+            param[18].Value = oBE_Carga.PREGUNTA_SEGURIDAD;
+            param[18].Direction = ParameterDirection.Input;
+
+
+            param[19] = new SqlParameter("@VCH_RESPUESTA_SEGURIDAD", SqlDbType.VarChar);
+            param[19].Value = oBE_Carga.RESPUESTA_SEGURIDAD;
+            param[19].Direction = ParameterDirection.Input;
 
             String CodigoCarga = SqlHelper.ExecuteScalar(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_INSERTARCARGA", param);
 
@@ -341,8 +459,16 @@ namespace UPC.CruzDelSur.Datos.Carga
 
 
 
+                if (DBNull.Value != dr["VCH_RESPUESTA_SEGURIDAD"])
+                    objCarga.RESPUESTA_SEGURIDAD = dr["VCH_RESPUESTA_SEGURIDAD"].ToString();
+
+
+                if (DBNull.Value != dr["VCH_PREGUNTA_SEGURIDAD"])
+                    objCarga.PREGUNTA_SEGURIDAD= dr["VCH_PREGUNTA_SEGURIDAD"].ToString();
+
                 if (DBNull.Value != dr["VCH_OBSERVACION"])
                     objCarga.OBSERVACION = dr["VCH_OBSERVACION"].ToString();
+
 
 
                 if (DBNull.Value != dr["DBL_IMPORTETOTAL"])

@@ -113,8 +113,6 @@
             </EmptyDataTemplate>    
         </asp:GridView>
         <br />
-        <asp:Button ID="btnRetornar" runat="server" Text="Regresar" 
-            onclick="btnRetornar_Click" CssClass="btn" />
 
     </div>
 <table>
@@ -198,5 +196,8 @@
         </td>
     </tr>
 </table>
+            <asp:Button ID="btnRetornar" runat="server" Text="Regresar" 
+            onclick="btnRetornar_Click" CssClass="btn btn-primary" />
 
+    
     </asp:Content>

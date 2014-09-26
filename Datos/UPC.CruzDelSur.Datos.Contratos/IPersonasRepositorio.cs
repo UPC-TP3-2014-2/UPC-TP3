@@ -11,14 +11,4 @@ namespace UPC.CruzDelSur.Datos.Contratos
     {
         Persona ObtenerPorDNI(string dni);
     }
-
-    public interface IEducacionesRepositorio : IRepositorio<Educacion>
-    {
-         
-    }
-
-    public interface IExperienciasLaboralesRepositorio : IRepositorio<ExperienciaLaboral>
-    {
-         
-    }
 }

@@ -77,22 +77,7 @@
             AlternatingRowStyle-CssClass="alt">  
 <AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
         <Columns>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
-            <ItemStyle HorizontalAlign="Center" Width="175px" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora de Salida" DataField="HoraSalida">
-            <ItemStyle HorizontalAlign="Center" Width="80px" />
-        </asp:BoundField>
-         <asp:BoundField HeaderText="Cod Salida" DataField="CodSalida">
-            <ItemStyle HorizontalAlign="Left"  Width="80px" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora de Destino" DataField="HoraDestino">
-        <ItemStyle HorizontalAlign="Left" Width="80px"/>
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Pasajeros" DataField="CantPasajeros">
-            <ItemStyle HorizontalAlign="Left"  Width="90px" />
-        </asp:BoundField>
-        <asp:TemplateField HeaderText="opcion">
+        <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
 
 
@@ -114,6 +99,22 @@
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
+
+        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
+            <ItemStyle HorizontalAlign="Center" Width="175px" />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Hora de Salida" DataField="HoraSalida">
+            <ItemStyle HorizontalAlign="Center" Width="80px" />
+        </asp:BoundField>
+         <asp:BoundField HeaderText="Cod Salida" DataField="CodSalida">
+            <ItemStyle HorizontalAlign="Left"  Width="80px" />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Hora de Destino" DataField="HoraDestino">
+        <ItemStyle HorizontalAlign="Left" Width="80px"/>
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Pasajeros" DataField="CantPasajeros">
+            <ItemStyle HorizontalAlign="Left"  Width="90px" />
+        </asp:BoundField>
 
         </Columns>      
             <EmptyDataTemplate>

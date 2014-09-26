@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAgenciaRepositorio.cs" />
+    <Compile Include="IAreasRepositorio.cs" />
     <Compile Include="ICapacitacionesRepositorio.cs" />
     <Compile Include="ICargaRepositorio.cs" />
     <Compile Include="ICargosRepositorio.cs" />
@@ -47,6 +48,8 @@
     <Compile Include="IDetSolicitudCocinaRepositorio.cs" />
     <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
     <Compile Include="IGuiaSalidaInsumoRepositorio.cs" />
+    <Compile Include="IEducacionesRepositorio.cs" />
+    <Compile Include="IExperienciasLaboralesRepositorio.cs" />
     <Compile Include="IInsumoRepositorio.cs" />
     <Compile Include="IPersonasRepositorio.cs" />
     <Compile Include="IProductoRepositorio.cs" />
@@ -56,9 +59,11 @@
     <Compile Include="IRutaRepositorio.cs" />
     <Compile Include="ISolicitudCocinaRepositorio.cs" />
     <Compile Include="ISolicitudesCapacitacionRepositorio.cs" />
+    <Compile Include="ISolicitudesPersonalRepositorio.cs" />
     <Compile Include="ISolicitudInsumoRepositorio.cs" />
     <Compile Include="ITiposDocumentoRepositorio.cs" />
     <Compile Include="IProgramacionRutaRepositorio.cs" />
+    <Compile Include="ITiposEducacionRepositorio.cs" />
     <Compile Include="IVehiculoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

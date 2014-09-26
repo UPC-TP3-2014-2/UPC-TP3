@@ -68,7 +68,8 @@
                                     <li><a href="http://localhost:2382/AdministrarCheckin.aspx">Gestionar Checkin</a></li>
                                     <li><a href="http://localhost:2382/GestionarEquipaje.aspx">Gestionar Equipaje</a></li>
                                     <li><a href="http://localhost:2382/VerificarEquipaje.aspx">Verificar Equipaje</a></li>
-                                    <li><a href="http://localhost:2382/GestionarFilmacion.aspx">Gestionar Filmacion</a></li>
+                                    <li><a href="http://localhost:2382/GestionarFilmacion.aspx">Gestionar Filmación</a></li>
+                                    <li><a href="http://localhost:2382/GestionarReclamo.aspx">Gestionar Reclamo</a></li>
                                 </ul>
                             </li>
                             <li><a href="http://localhost:31026/">Carga</a></li>
@@ -92,6 +93,14 @@
         </header>
      
        <div id="contenedor">
+
+           <div class="text-right">
+
+               <strong>Fecha y hora actual: <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+ 
+               </strong>
+ 
+           </div>
  
   <div id="cuerpo">
   
