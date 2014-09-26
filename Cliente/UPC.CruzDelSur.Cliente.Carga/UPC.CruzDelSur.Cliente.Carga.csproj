@@ -173,6 +173,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionCarga\ActualizarFichaCarga.aspx" />
+    <Content Include="GestionCarga\CambiarClave.aspx" />
     <Content Include="GestionCarga\ConsultaCliente.aspx" />
     <Content Include="GestionCarga\ConsultaProducto.aspx" />
     <Content Include="GestionCarga\ConsultaProgramacion.aspx" />
@@ -474,6 +475,13 @@
     </Compile>
     <Compile Include="GestionCarga\ActualizarFichaCarga.aspx.designer.cs">
       <DependentUpon>ActualizarFichaCarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCarga\CambiarClave.aspx.cs">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\CambiarClave.aspx.designer.cs">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCarga\ConsultaCliente.aspx.cs">
       <DependentUpon>ConsultaCliente.aspx</DependentUpon>

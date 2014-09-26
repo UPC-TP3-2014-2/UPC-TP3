@@ -319,6 +319,24 @@ namespace CRUZDELSUR.UI.Web.GestionCarga {
         protected global::System.Web.UI.WebControls.HiddenField HFIdClienteRemi;
         
         /// <summary>
+        /// Control HFRespuesta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFRespuesta;
+        
+        /// <summary>
+        /// Control HFPregunta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFPregunta;
+        
+        /// <summary>
         /// Control MK_ProgramacionRuta_ID.
         /// </summary>
         /// <remarks>
