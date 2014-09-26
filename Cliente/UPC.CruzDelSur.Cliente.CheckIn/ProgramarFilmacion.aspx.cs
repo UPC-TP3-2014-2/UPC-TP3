@@ -25,7 +25,7 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
 
-            for (int i = 1; i < 61; i++)
+            for (int i = 1; i < 60; i++)
             {
                 if(i<10)
 
@@ -33,7 +33,7 @@ public partial class ProgramarFilmacion : System.Web.UI.Page
                 else
                     DropDownList1.Items.Add(new ListItem(  i.ToString(), i.ToString()));
             }
-            for (int i = 1; i < 61; i++)
+            for (int i = 1; i < 60; i++)
             {
                 if (i < 10)
 

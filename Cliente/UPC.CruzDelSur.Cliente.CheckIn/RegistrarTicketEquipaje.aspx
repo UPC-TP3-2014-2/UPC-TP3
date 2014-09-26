@@ -35,10 +35,10 @@
             &nbsp;&nbsp;
 
             <asp:Label ID="Label2" runat="server" Text="Ancho:"></asp:Label>
-            <asp:TextBox ID="txtAncho" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtAncho" runat="server" MaxLength="2" CssClass="form-control"></asp:TextBox>
             &nbsp;&nbsp;
             <asp:Label ID="Label5" runat="server" Text="Alto:"></asp:Label>
-            <asp:TextBox ID="txtAlto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtAlto" runat="server" MaxLength="2" CssClass="form-control"></asp:TextBox>
             <br />
             <br />
             &nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Peso" MaxLength="8"></asp:Label>

@@ -105,7 +105,7 @@
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("Estado").ToString().Equals("A") %>'/>
                 <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="cmdAtender"
                    
-                    ImageUrl="~/img/checkin.jpg" Width="24px" Height="24px" ToolTip="Atender Copia" 
+                    ImageUrl="~/img/descarga.png" Width="24px" Height="24px" ToolTip="Atender Copia" 
                    onClientClick="return confirm('Desea Atender la copia?')"
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("Estado").ToString().Equals("C") %>'/>
             </ItemTemplate>
