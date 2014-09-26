@@ -14,32 +14,8 @@
     <script src="Scripts/jquery-ui-1.8.20.min.js"></script>
     <link href="css/jquery-ui.css" rel="stylesheet" />
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#<%=txtIniGrab.ClientID %>").dynDateTime({
-               showsTime: true,
-               ifFormat: "%d/%m/%Y %H:%M:%S",
-               daFormat: "%l;%M %p, %e %m, %Y",
-               align: "BR",
-               electric: false,
-               singleClick: false,
-               displayArea: ".siblings('.dtcDisplayArea')",
-               button: ".next()"
-           });
-       });
-       
-        $(document).ready(function () {
-            $("#<%=txtFinGrab.ClientID %>").dynDateTime({
-                  showsTime: true,
-                  ifFormat: "%d/%m/%Y %H:%M:%S",
-                  daFormat: "%l;%M %p, %e %m, %Y",
-                  align: "BR",
-                  electric: false,
-                  singleClick: false,
-                  displayArea: ".siblings('.dtcDisplayArea')",
-                  button: ".next()"
-              });
-          });
 
+      
 
 
 </script>
@@ -65,17 +41,25 @@
          </tr>
          <tr>
          <td>Inicio Grabacion: </td>
+
          <td>
-               <asp:TextBox ID="txtIniGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
-                      <img src="/img/calendar.jpg" />
+              <asp:DropDownList ID="DropDownList1" runat="server">
+                  <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
+          </asp:DropDownList>
+
+              <%-- <asp:TextBox ID="txtIniGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
+                      <img src="/img/calendar.jpg" />--%>
 
          </td>
          </tr>
          <tr>
          <td>Fin Grabacion: </td>
          <td>
-             <asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
-                      <img src="/img/calendar.jpg" />
+                  <asp:DropDownList ID="DropDownList2" runat="server">
+                  <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
+          </asp:DropDownList>
+             <%--<asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
+                      <img src="/img/calendar.jpg" />--%>
 
          </td>
          </tr>

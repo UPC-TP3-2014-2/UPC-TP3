@@ -59,7 +59,14 @@
             &nbsp;&nbsp;
             <asp:TextBox ID="txtDate" runat="server" ReadOnly = "true" CssClass="form-control"></asp:TextBox>
             &nbsp;&nbsp;
-    
+             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
+                <asp:ListItem Value="N">No atendido</asp:ListItem>
+                <asp:ListItem Value="P">Pendiente</asp:ListItem>
+                <asp:ListItem Value="A">Atendido</asp:ListItem>
+                <asp:ListItem Value="C">Pendiente Copia</asp:ListItem>
+                <asp:ListItem Value="D">Atendido Copia</asp:ListItem>
+          </asp:DropDownList>
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" onclick="btnBuscar_Click"/>
      
              <br />
@@ -72,7 +79,7 @@
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
-            DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo"
+            DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo,HoraSalida"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
 <AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
@@ -93,9 +100,14 @@
                     &nbsp;
                <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdCopia"
                    
-                    ImageUrl="~/img/print.jpg" ToolTip="Gestionar Copia" 
+                    ImageUrl="~/img/vista-backup-icon.jpg" Width="24px" Height="24px" ToolTip="Gestionar Copia" 
+                   onClientClick="return confirm('Desea Generar una Copia de Video?')"
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("Estado").ToString().Equals("A") %>'/>
-                
+                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="cmdAtender"
+                   
+                    ImageUrl="~/img/checkin.jpg" Width="24px" Height="24px" ToolTip="Atender Copia" 
+                   onClientClick="return confirm('Desea Atender la copia?')"
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("Estado").ToString().Equals("C") %>'/>
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>

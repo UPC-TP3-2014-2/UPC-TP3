@@ -80,22 +80,22 @@
             <ItemTemplate>
                 
                 <asp:ImageButton ID="ibtnChecIn" runat="server" CausesValidation="false" CommandName="cmdCheckIn" 
-                    onClientClick="return confirm('Está seguro de confirmar su asiento?')"
+                    onClientClick="return confirm('¿Está seguro de confirmar su asiento?')"
                     ImageUrl="~/img/ok.jpg" ToolTip="Check In" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("EstadoCheckin").ToString().Equals("Sin Checkin") || Eval("EstadoHora").ToString().Equals("VENCIDO") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
                     onClientClick="return confirm('Está seguro de Cancelar su asiento?')"
                     ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("EstadoCheckin").ToString().Equals("Sin Checkin") || Eval("EstadoHora").ToString().Equals("VENCIDO") %>' />
                     &nbsp;
                <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
                     onClientClick="return confirm('Está seguro de cambiar su asiento?')"
                     ImageUrl="~/img/edit.png" ToolTip="Cambiar asiento" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>'  visible='<%# Eval("EstadoCheckin").ToString().Equals("Sin Checkin") || Eval("EstadoHora").ToString().Equals("VENCIDO") %>'/>
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("EstadoCheckin").ToString().Equals("Sin Checkin") || Eval("EstadoHora").ToString().Equals("VENCIDO") %>' />
             </ItemTemplate>
             <HeaderStyle Width="250px" />
             <ItemStyle HorizontalAlign="Center" Width="145px" />

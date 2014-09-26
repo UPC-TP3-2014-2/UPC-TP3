@@ -13,32 +13,17 @@ public partial class GestionarEquipaje : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         btnImprimir.Visible =false;
-        //btnRegistrarEquipaje.Visible = false;
-        //btnGenerarTickets.Visible = false;
-
-        
+       
         if (!Page.IsPostBack)
         {
-            btnImprimir.Visible = true;            
+            //btnImprimir.Visible = true;            
         }
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         BindData();
-        txtNroBoleto1.Text = txtNroBoleto.Text;
-        txtPeso.Text = "60";
-      if (txtDNI.Text == "58524558")
-        {
-            txtNroBoleto1.Text = "001-000001";
-          
-        }
-
-      if (txtNroBoleto.Text == "001-000001")
-      {
-          txtNroBoleto1.Text = "001-000001";
-
-      }
+        
     }
 
     private void BindData()
@@ -48,8 +33,7 @@ public partial class GestionarEquipaje : System.Web.UI.Page
         grvDetalle.DataSource = ListaBoleto;
         grvDetalle.DataBind();
         btnImprimir.Visible = true;
-        //btnRegistrarEquipaje.Visible = true;
-        //btnGenerarTickets.Visible = true;
+        
     }
 
     protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
@@ -89,8 +73,15 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             GridViewRow row = grvDetalle.Rows[index];
             ListItem item = new ListItem();
             string cod = Convert.ToString(grvDetalle.DataKeys[index].Value);
-            item.Text = Server.HtmlDecode(row.Cells[1].Text);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&nroboleto=" + item.Text);
+            string NroBoleto = Server.HtmlDecode(row.Cells[1].Text);
+            string NroEquipaje = Server.HtmlDecode(row.Cells[2].Text);
+            string NroBarras = Server.HtmlDecode(row.Cells[12].Text);
+            string Tamano = Server.HtmlDecode(row.Cells[13].Text);
+            string ancho =Tamano.Substring(0,2);
+            string alto = Tamano.Substring(2, 2);            
+            string peso = Server.HtmlDecode(row.Cells[5].Text);
+
+            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&NroBoleto=" + NroBoleto + "&NroEquipaje=" + NroEquipaje + "&NroBarras=" + NroBarras + "&Tamano=" + Tamano + "&ancho=" + ancho + "&alto=" + alto + "&peso=" + peso);
         }
 
         if (e.CommandName == "cmdImprimir")
@@ -111,41 +102,11 @@ public partial class GestionarEquipaje : System.Web.UI.Page
         Response.Redirect("~/Inicio.aspx");
     }
 
-    protected void Button6_Click(object sender, EventArgs e)
-    {
-        txtPeso.Text = "";
-       
-        txtTipoEquipaje.Text = "";
-        txtUbicacion.Text = "";
-        
-    }
-    protected void btnRegistrarEquipaje_Click(object sender, EventArgs e)
+       protected void btnRegistrarEquipaje_Click(object sender, EventArgs e)
     {
         
-        
-        txtNroBoleto1.Text = txtNroBoleto.Text;
-        //btnRegistrarEquipaje.Visible = true;
-        //btnGenerarTickets.Visible = true;
         btnImprimir.Visible = true;
         
     }
 
-
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        btnImprimir.Visible = true;
-        //btnActualizarRegistroEquipaje.Enabled = false;
-        
-        
-        
-    }
-    protected void btnActualizarRegistroEquipaje_Click(object sender, EventArgs e)
-    {
-        btnImprimir.Visible = true;
-        //btnConfirmarRegistroEquipaje.Enabled = true;
-    }
-
-
-
-   
 }

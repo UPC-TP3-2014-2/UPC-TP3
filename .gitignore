@@ -79,6 +79,7 @@ build/
 *.scc
 *.sc
 *.dll
+Web.config
 
 # Visual C++ cache files
 ipch/

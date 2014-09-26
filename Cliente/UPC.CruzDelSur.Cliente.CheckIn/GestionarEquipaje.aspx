@@ -17,14 +17,6 @@
         }
     </script>
 
-    <
-    <script type="text/javascript">
-        function mostrar() {
-            document.getElementById('oculto').style.display = 'block';
-            
-        }
-        </script>
-       
     
  
     <div id="contenedor">
@@ -49,7 +41,7 @@
 
              &nbsp;&nbsp;
             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar Pasajero" CssClass="btn btn-success" 
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                <br />
           <br />
@@ -71,20 +63,42 @@
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
+
+                <asp:ImageButton ID="ImageButton1" runat="server" CausesValidation="false" CommandName="cmdConfirmar"
+                    ImageUrl="~/img/ok.jpg" ToolTip="Confirmar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+
                 &nbsp; &nbsp;
+
+                <asp:ImageButton ID="ImageButton2" runat="server" CausesValidation="false" CommandName="cmdCancelar"
+                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                      &nbsp; &nbsp;
+
+                 <asp:ImageButton ID="ImageButton3" runat="server" CausesValidation="false" CommandName="cmdEditar"
+                    ImageUrl="~/img/edit.png" ToolTip="Editar Equipaje" 
+                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                      &nbsp; &nbsp;
+
                 <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' ImageAlign="Middle" />
+
+                   &nbsp; &nbsp;
             </ItemTemplate>
             <ItemStyle HorizontalAlign="Center" Width="140px" />
         </asp:TemplateField>
-        <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
+        <asp:BoundField HeaderText="Nro. Boleto" DataField="NroBoleto">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
+            <asp:BoundField DataField="NroEquipaje" HeaderText="Nro. Equipaje" />
         <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
-         <asp:BoundField HeaderText="Ape y Nombres" DataField="Pasajero">
+         <asp:BoundField HeaderText="Apellidos y Nombres" DataField="Pasajero">
             <ItemStyle HorizontalAlign="Left"  Width="250px" />
         </asp:BoundField>
         <asp:BoundField HeaderText="Peso" DataField="Peso">
@@ -108,12 +122,17 @@
         <asp:BoundField HeaderText="Ubicación" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
+        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual" Visible="False">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
+        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual" Visible="False">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
+
+            
+            <asp:BoundField DataField="CodigoBarras" HeaderText="Codigo de Barras" />
+            <asp:BoundField DataField="Tamano" HeaderText="Tamaño" />
+            <asp:BoundField DataField="CodEquipaje" HeaderText="ID Equipaje" />
 
             
         </Columns>      
@@ -127,57 +146,8 @@
 <PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
         
-        <input id="btnRegistrarEquipaje" type="Button" value="          Equipajes          " onclick="mostrar()" style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF; height: 52px;" />
-        <%--<input id="btnGenerarTickets" type="Button" value="          Generar Ticket     "  style="font-family: Arial, Helvetica, sans-serif; font-size: large; background-color: #339933; color: #FFFFFF" height="44px"  />&nbsp;
-        --%>u
         <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Recomendaciones para Equipajes" OnClientClick = "return PrintPanel();" BackColor="#339933" Font-Bold="True" ForeColor="White" Height="51px" />
         
-        
-           <div id='oculto' class="panel panel-default" style='display:none;'  >
-        <div class="panel-heading">Registrar Equipaje del Pasajero</div>
-            <br />
-                    <div class="form-inline">
-                    <div class="form-group">
-                        &nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Nro Boleto:"></asp:Label>   &nbsp;&nbsp;
-                        <asp:TextBox ID="txtNroBoleto1" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
-                        <br />
-                        <br />
-                        &nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Peso" MaxLength="8"></asp:Label>  &nbsp;&nbsp;
-                        <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control"></asp:TextBox>
-                       
-                        &nbsp;&nbsp;<asp:Label ID="Label8" runat="server" Text="Tipo Equipaje" MaxLength="8"></asp:Label>  &nbsp;&nbsp;
-                        <asp:DropDownList ID="txtTipoEquipaje" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="FRAGIL"></asp:ListItem>
-                            <asp:ListItem Value="NORMAL"></asp:ListItem>
-                        </asp:DropDownList>
-                       
-                        
-                        &nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Text="Ubicacion"></asp:Label>   &nbsp;&nbsp;
-                        <asp:DropDownList ID="txtUbicacion" runat="server">
-                            <asp:ListItem Value="BODEGA"></asp:ListItem>
-                        </asp:DropDownList>
-                        
-                                                   
-                
-                            <br />
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnConfirmarRegistroEquipaje" runat="server" Text="Confirmar Registro de Equipaje" CssClass="btn btn-success" OnClick="Button4_Click" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnActualizarRegistroEquipaje" runat="server" Text="Actualizar Registro de Equipaje" CssClass="btn btn-success" OnClick="btnActualizarRegistroEquipaje_Click"  /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancelarRegistroEquipaje" runat="server" Text="Cancelar Registro de Equipaje" CssClass="btn btn-success" OnClick="Button6_Click"  /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 --%>   <br />
-                <br /> 
-                    </div>
-                </div>
-
-        </div>
-
-
-
-
-
-
             
         <asp:Panel ID="pnlContents" runat="server">
          <div id="impresion">        
@@ -209,7 +179,7 @@ Tierra de acogimiento y de tolerancia, Marruecos no deja de ser un país apegado
    
 </asp:Content>
 
- <%-- Detalle de Boleto - Pasajero --%>
+
 
         
 
