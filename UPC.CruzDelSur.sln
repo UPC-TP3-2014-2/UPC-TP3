@@ -26,10 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Negocio.Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPC.CruzDelSur.Datos.CheckIn", "Datos\UPC.CruzDelSur.Datos.CheckIn\UPC.CruzDelSur.Datos.CheckIn.csproj", "{5BDB5419-CEEB-42F9-A3A2-618D5A350E8D}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn(1)", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "UPC.CruzDelSur.Cliente.CheckIn", "http://localhost:2382", "{B70C5C48-BB02-40FB-A038-8809AAAD3B3E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{49e46821-5bbf-4837-8de6-d8dd1cac5a08}|UPC.CruzDelSur.Negocio.Modelo.CheckIn.dll;{5bdb5419-ceeb-42f9-a3a2-618d5a350e8d}|UPC.CruzDelSur.Datos.CheckIn.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/UPC.CruzDelSur.Cliente.CheckIn"
 		Debug.AspNetCompiler.PhysicalPath = "Cliente\UPC.CruzDelSur.Cliente.CheckIn\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\UPC.CruzDelSur.Cliente.CheckIn\"

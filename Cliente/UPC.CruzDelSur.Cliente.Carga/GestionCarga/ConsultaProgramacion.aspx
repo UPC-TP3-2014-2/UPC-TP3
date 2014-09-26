@@ -5,13 +5,14 @@
     <h1>Consultar Programacion Ruta
     </h1>
     <script src="../Scripts/OpenModalDialog.js" type="text/javascript"></script>
-    Agencia Destino
+    Departamento Destino
     <asp:DropDownList ID="ddlAgencias" runat="server">
-        <asp:ListItem Value="3">Lima</asp:ListItem>
-        <asp:ListItem Value="4">Piura</asp:ListItem>
-        <asp:ListItem Value="5">Ica</asp:ListItem>
-        <asp:ListItem Value="6">Arequipa</asp:ListItem>
-        <asp:ListItem Value="7">Tacna</asp:ListItem>
+        <asp:ListItem Value="04">Arequipa</asp:ListItem>
+        <asp:ListItem Value="11">Ica</asp:ListItem>
+        <asp:ListItem Value="15">Lima</asp:ListItem>
+        <asp:ListItem Value="20">Piura</asp:ListItem>
+        <asp:ListItem Value="23">Tacna</asp:ListItem>
+        
     </asp:DropDownList>
     <asp:Button ID="btnConsultar" runat="server" Text="Consultar" 
         onclick="btnConsultar_Click" />

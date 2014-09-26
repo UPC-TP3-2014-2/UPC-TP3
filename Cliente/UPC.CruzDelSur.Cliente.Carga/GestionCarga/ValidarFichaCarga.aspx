@@ -115,6 +115,34 @@
     </div>
 
 
+
+    <div class="fila">
+        <div class="izquierda">
+            <div class="campoizquierda">
+                <span class="campo">IGV:</span>
+            </div>
+            <div class="campoderecha">
+                <asp:Label ID="lbligv" runat="server" Text="Label"></asp:Label>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="fila">
+        <div class="izquierda">
+            <div class="campoizquierda">
+                <span class="campo">Total:</span>
+            </div>
+            <div class="campoderecha">
+                <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">

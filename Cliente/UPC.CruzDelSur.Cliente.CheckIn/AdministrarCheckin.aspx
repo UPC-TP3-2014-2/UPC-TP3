@@ -65,18 +65,20 @@
        </div>     
 
    
-
+    <div class="col-md-23" style="overflow-x: auto">
        
-        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="true" 
+        <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
             DataKeyNames="NroBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
+<AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
+                
                 <asp:ImageButton ID="ibtnChecIn" runat="server" CausesValidation="false" CommandName="cmdCheckIn" 
                     onClientClick="return confirm('Está seguro de confirmar su asiento?')"
                     ImageUrl="~/img/ok.jpg" ToolTip="Check In" 
@@ -95,6 +97,7 @@
                     ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
             </ItemTemplate>
+            <HeaderStyle Width="250px" />
             <ItemStyle HorizontalAlign="Center" Width="145px" />
         </asp:TemplateField>
         <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
@@ -139,12 +142,6 @@
         <asp:BoundField HeaderText="Conductor" DataField="Chofer">
             <ItemStyle HorizontalAlign="Left" Width="175px"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
         <asp:BoundField HeaderText="Estado Checkin" DataField="EstadoCheckin">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
@@ -157,8 +154,10 @@
             <EmptyDataTemplate>
                 No se encontraron registros.
             </EmptyDataTemplate>            
+
+<PagerStyle CssClass="pgr"></PagerStyle>
         </asp:GridView>  
-        
+        </div>
          <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Imprimir Información de Viaje" OnClientClick = "return PrintPanel();" OnClick="btnImprimir_Click" />
          <asp:Button ID="btnInicio" runat="server" CssClass="btn btn-primary" 
             Text="Ir al Inicio" onclick="btnInicio_Click"/>

@@ -10,6 +10,6 @@ namespace UPC.CruzDelSur.Datos.CheckIn.Interface
     {
         List<BE_Filmacion> f_ListadoFilmaciones(DateTime fechaInicio);
         int f_RegistrarFilmacion(string codBus, string iniGrab, string finGrab, string rutaVideo, string estado);
-        int f_ActualizarFilmacion(string SolFilmacion, string iniGrab, string finGrab, string rutaVideo);
+        int f_ActualizarFilmacion(string SolFilmacion, string iniGrab, string finGrab, string rutaVideo, string estado);
     }
 }

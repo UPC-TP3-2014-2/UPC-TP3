@@ -14,6 +14,9 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Init(object sender, EventArgs e)
     {
+
+        Label1.Text = DateTime.Now.ToString();
+        
         // El código siguiente ayuda a proteger frente a ataques XSRF
         var requestCookie = Request.Cookies[AntiXsrfTokenKey];
         Guid requestCookieGuidValue;

@@ -27,6 +27,11 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
             Session.Remove("idProducto");
             Session.Remove("idcarga");
             Session.Remove("clave");
+
+            Session.Remove("pregunta");
+            Session.Remove("respuesta");
+
+
             Response.Redirect("ActualizarFichaCarga.aspx");
 
         }
@@ -57,6 +62,9 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                 Session.Remove("ListaProducto");
                 Session.Remove("idProducto");
                 Session.Remove("idcarga");
+
+                Session.Remove("pregunta");
+                Session.Remove("respuesta");
                 Response.Redirect(String.Concat("ActualizarFichaCarga.aspx?idficha=", e.CommandArgument));
             }
             if (e.CommandName == "Anular")
@@ -68,6 +76,8 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                 Session.Remove("ListaProducto");
                 Session.Remove("idcarga");
 
+                Session.Remove("pregunta");
+                Session.Remove("respuesta");
                 UPC.CruzDelSur.Datos.Carga.Carga oBL_Carga = new UPC.CruzDelSur.Datos.Carga.Carga();
                 int o = oBL_Carga.f_ActualizarEstadoCarga("Anulado", e.CommandArgument.ToString());
                 CargarFichas();
@@ -94,20 +104,18 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                 LinkButton lnkButtonValidar = (LinkButton)e.Row.FindControl("lnkButtonValidar");
                 LinkButton lnkModificar = (LinkButton)e.Row.FindControl("lnkModificar");
                 LinkButton LinkButton2 = (LinkButton)e.Row.FindControl("LinkButton2");
+                LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("LinkButton3");
+
 
 
                 
 
 
-                if (oBEMG_ES01_FichaCarga.ESTADO == "Anulado" || oBEMG_ES01_FichaCarga.ESTADO == "Entregado")
-                {
-                    lnkButtonValidar.Visible = false;
-                    lnkModificar.Visible = false;
-                    LinkButton2.Visible = false;
-                }
-
+               
+                
 
                 lnkButtonValidar.Attributes.Add("href", "ValidarFichaCarga.aspx?idficha=" + oBEMG_ES01_FichaCarga.CODIGO_CARGA);
+                LinkButton3.Attributes.Add("href", "CambiarClave.aspx?idficha=" + oBEMG_ES01_FichaCarga.CODIGO_CARGA);
 
 
                 LinkButton LinkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
@@ -119,6 +127,7 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                     lnkModificar.Visible = false;
                     LinkButton2.Visible = false;
                     LinkButton1.Visible = false;
+                    LinkButton3.Visible = false;
                 }
                 else
                 {
@@ -126,11 +135,23 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                     lnkModificar.Visible = true;
                     LinkButton2.Visible = true;
                     LinkButton1.Visible = true;
+                    LinkButton3.Visible = true;
+                }
+                if (oBEMG_ES01_FichaCarga.ESTADO == "Anulado" || oBEMG_ES01_FichaCarga.ESTADO == "Entregado")
+                {
+                    lnkButtonValidar.Visible = false;
+                    lnkModificar.Visible = false;
+                    LinkButton2.Visible = false;
+                    LinkButton3.Visible = false;
                 }
 
 
-
             }
+        }
+
+        protected void btncancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
         }
 
     }

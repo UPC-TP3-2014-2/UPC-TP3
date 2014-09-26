@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -172,27 +173,77 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GestionCarga\ActualizarFichaCarga.aspx" />
+    <Content Include="GestionCarga\CambiarClave.aspx" />
     <Content Include="GestionCarga\ConsultaCliente.aspx" />
     <Content Include="GestionCarga\ConsultaProducto.aspx" />
     <Content Include="GestionCarga\ConsultaProgramacion.aspx" />
+    <Content Include="GestionCarga\GuiaRemision.aspx" />
     <Content Include="GestionCarga\ImprimirFichaCarga.aspx" />
     <Content Include="GestionCarga\ListadoFichaCarga.aspx" />
     <Content Include="GestionCarga\Login.aspx" />
+    <Content Include="GestionCarga\ReporteGestionCarga.aspx" />
+    <Content Include="GestionCarga\ReporteGestionCargaDetalle.aspx" />
     <Content Include="GestionCarga\Validar.aspx" />
     <Content Include="GestionCarga\ValidarFichaCarga.aspx" />
+    <Content Include="GestionCarga\VistaPreliminar.aspx" />
+    <Content Include="img\Calendario.png" />
+    <Content Include="img\descarga.jpg" />
     <Content Include="img\fondo.jpg" />
     <Content Include="img\fondo.png" />
+    <Content Include="img\images.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\Search.ico" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="CSURDataSet.xsc">
+      <DependentUpon>CSURDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="CSURDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CSURDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CSURDataSet.xss">
+      <DependentUpon>CSURDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="CSURDataSet2.xsc">
+      <DependentUpon>CSURDataSet2.xsd</DependentUpon>
+    </Content>
+    <None Include="CSURDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CSURDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CSURDataSet2.xss">
+      <DependentUpon>CSURDataSet2.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\js\jscal2.js" />
+    <Content Include="Scripts\js\lang\ca.js" />
+    <Content Include="Scripts\js\lang\cn.js" />
+    <Content Include="Scripts\js\lang\cz.js" />
+    <Content Include="Scripts\js\lang\de.js" />
+    <Content Include="Scripts\js\lang\en.js" />
+    <Content Include="Scripts\js\lang\es.js" />
+    <Content Include="Scripts\js\lang\fr.js" />
+    <Content Include="Scripts\js\lang\hr.js" />
+    <Content Include="Scripts\js\lang\it.js" />
+    <Content Include="Scripts\js\lang\jp.js" />
+    <Content Include="Scripts\js\lang\nl.js" />
+    <Content Include="Scripts\js\lang\pl.js" />
+    <Content Include="Scripts\js\lang\pt.js" />
+    <Content Include="Scripts\js\lang\ro.js" />
+    <Content Include="Scripts\js\lang\ru.js" />
+    <Content Include="Scripts\js\lang\sk.js" />
+    <Content Include="Scripts\js\lang\sv.js" />
+    <Content Include="Scripts\js\unicode-letter.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\OpenModalDialog.js" />
     <Content Include="Scripts\respond.js" />
@@ -223,6 +274,37 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Styles\css\border-radius.css" />
+    <Content Include="Styles\css\gold\brushed-steel.jpg" />
+    <Content Include="Styles\css\gold\coolbg.png" />
+    <Content Include="Styles\css\gold\gold.css" />
+    <Content Include="Styles\css\gold\gold.jpg" />
+    <Content Include="Styles\css\img\cool-bg-hard-inv.png" />
+    <Content Include="Styles\css\img\cool-bg-hard.png" />
+    <Content Include="Styles\css\img\cool-bg-inv.png" />
+    <Content Include="Styles\css\img\cool-bg.png" />
+    <Content Include="Styles\css\img\drop-down.gif" />
+    <Content Include="Styles\css\img\drop-up.gif" />
+    <Content Include="Styles\css\img\nav-left-x2.gif" />
+    <Content Include="Styles\css\img\nav-left.gif" />
+    <Content Include="Styles\css\img\nav-right-x2.gif" />
+    <Content Include="Styles\css\img\nav-right.gif" />
+    <Content Include="Styles\css\img\time-down.png" />
+    <Content Include="Styles\css\img\time-up.png" />
+    <Content Include="Styles\css\jscal2.css" />
+    <Content Include="Styles\css\matrix\matrix.css" />
+    <Content Include="Styles\css\matrix\nav-left-x2.gif" />
+    <Content Include="Styles\css\matrix\nav-left.gif" />
+    <Content Include="Styles\css\matrix\nav-right-x2.gif" />
+    <Content Include="Styles\css\matrix\nav-right.gif" />
+    <Content Include="Styles\css\reduce-spacing.css" />
+    <Content Include="Styles\css\shadow-b.png" />
+    <Content Include="Styles\css\steel\brushed-steel.jpg" />
+    <Content Include="Styles\css\steel\brushed-steel.png" />
+    <Content Include="Styles\css\steel\coolbg.png" />
+    <Content Include="Styles\css\steel\steel.css" />
+    <Content Include="Styles\css\steel\steel.jpg" />
+    <Content Include="Styles\css\win2k\win2k.css" />
     <Content Include="Styles\images\jquery-lightbox-theme.gif" />
     <Content Include="Styles\images\jquery-lightbox-theme.png" />
     <Content Include="Styles\images\loading.gif" />
@@ -231,7 +313,9 @@
     <Content Include="Styles\jquery.lightbox.ie6.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -368,6 +452,16 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CSURDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSURDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CSURDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSURDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,6 +475,13 @@
     </Compile>
     <Compile Include="GestionCarga\ActualizarFichaCarga.aspx.designer.cs">
       <DependentUpon>ActualizarFichaCarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCarga\CambiarClave.aspx.cs">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\CambiarClave.aspx.designer.cs">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionCarga\ConsultaCliente.aspx.cs">
       <DependentUpon>ConsultaCliente.aspx</DependentUpon>
@@ -403,6 +504,13 @@
     <Compile Include="GestionCarga\ConsultaProgramacion.aspx.designer.cs">
       <DependentUpon>ConsultaProgramacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionCarga\GuiaRemision.aspx.cs">
+      <DependentUpon>GuiaRemision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\GuiaRemision.aspx.designer.cs">
+      <DependentUpon>GuiaRemision.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionCarga\ImprimirFichaCarga.aspx.cs">
       <DependentUpon>ImprimirFichaCarga.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -424,6 +532,20 @@
     <Compile Include="GestionCarga\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GestionCarga\ReporteGestionCarga.aspx.cs">
+      <DependentUpon>ReporteGestionCarga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\ReporteGestionCarga.aspx.designer.cs">
+      <DependentUpon>ReporteGestionCarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCarga\ReporteGestionCargaDetalle.aspx.cs">
+      <DependentUpon>ReporteGestionCargaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\ReporteGestionCargaDetalle.aspx.designer.cs">
+      <DependentUpon>ReporteGestionCargaDetalle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionCarga\Validar.aspx.cs">
       <DependentUpon>Validar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -437,6 +559,13 @@
     </Compile>
     <Compile Include="GestionCarga\ValidarFichaCarga.aspx.designer.cs">
       <DependentUpon>ValidarFichaCarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCarga\VistaPreliminar.aspx.cs">
+      <DependentUpon>VistaPreliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionCarga\VistaPreliminar.aspx.designer.cs">
+      <DependentUpon>VistaPreliminar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -490,6 +619,9 @@
       <Project>{eb815d4a-6e92-4cac-ab9e-29fc56ee9c50}</Project>
       <Name>UPC.CruzDelSur.Negocio.Modelo.Carga</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GestionCarga\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
