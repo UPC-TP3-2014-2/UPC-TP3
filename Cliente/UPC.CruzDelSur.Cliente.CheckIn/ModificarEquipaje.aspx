@@ -27,6 +27,12 @@
             &nbsp;&nbsp;
             <asp:TextBox ID="txtNroBoleto1" runat="server" MaxLength="10" CssClass="form-control" ReadOnly="True"></asp:TextBox>
              &nbsp;&nbsp;
+
+
+             &nbsp;&nbsp;<asp:Label ID="Label6" runat="server" Text="Nro Equipaje:"></asp:Label>
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtNroEquipaje" runat="server" MaxLength="10" CssClass="form-control" ReadOnly="True"></asp:TextBox>
+             &nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Codigo Barra:"></asp:Label>
             <asp:TextBox ID="txtCodigoBarra" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
             <br />
@@ -83,6 +89,7 @@
           
     
 
+     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="Server">
 </asp:Content>

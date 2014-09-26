@@ -43,7 +43,7 @@
          <td>Inicio Grabacion: </td>
 
          <td>
-              <asp:DropDownList ID="DropDownList1" runat="server">
+              <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                   <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
           </asp:DropDownList>
 
@@ -55,7 +55,7 @@
          <tr>
          <td>Fin Grabacion: </td>
          <td>
-                  <asp:DropDownList ID="DropDownList2" runat="server">
+                  <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
                   <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
           </asp:DropDownList>
              <%--<asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>

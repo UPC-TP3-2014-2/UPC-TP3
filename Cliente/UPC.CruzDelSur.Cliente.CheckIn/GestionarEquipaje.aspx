@@ -121,15 +121,8 @@
         </asp:BoundField>
         <asp:BoundField HeaderText="Ubicación" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Fecha Actual" DataField="FechaActual" Visible="False">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Hora Actual" DataField="HoraActual" Visible="False">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
+        </asp:BoundField>              
 
-            
             <asp:BoundField DataField="CodigoBarras" HeaderText="Codigo de Barras" />
             <asp:BoundField DataField="Tamano" HeaderText="Tamaño" />
             <asp:BoundField DataField="CodEquipaje" HeaderText="ID Equipaje" />

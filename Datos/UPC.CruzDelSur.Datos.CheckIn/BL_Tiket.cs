@@ -82,5 +82,46 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
             return valor;
         }
+
+        public int f_ActualizarTicket(List<BE_Tiket> lista)
+        {
+            int valor = 0;
+
+            foreach (BE_Tiket objeto in lista)
+            {
+                SqlParameter[] param = new SqlParameter[7];
+                //param[0] = new SqlParameter("codigoBoleto ", SqlDbType.Int);
+                //param[0].Value = objeto.CodBoleto;
+                //param[0].Direction = ParameterDirection.Input;
+                param[0] = new SqlParameter("codigoEtiqueta", SqlDbType.Int);
+                param[0].Value = int.Parse(objeto.TipoEtiqueta);
+                param[0].Direction = ParameterDirection.Input;
+                param[1] = new SqlParameter("nroEquipaje", SqlDbType.VarChar);
+                param[1].Value = objeto.Numero;
+                param[1].Direction = ParameterDirection.Input;
+                param[2] = new SqlParameter("peso", SqlDbType.Decimal);
+                param[2].Value = objeto.Peso;
+                param[2].Direction = ParameterDirection.Input;
+                param[3] = new SqlParameter("tamaño", SqlDbType.VarChar);
+                param[3].Value = objeto.Tamano;
+                param[3].Direction = ParameterDirection.Input;
+                param[4] = new SqlParameter("precio", SqlDbType.Decimal);
+                param[4].Value = 12;
+                param[4].Direction = ParameterDirection.Input;
+                param[5] = new SqlParameter("ubicacion", SqlDbType.VarChar);
+                param[5].Value = objeto.ubicacion;
+                param[5].Direction = ParameterDirection.Input;
+                param[6] = new SqlParameter("codigoBarra", SqlDbType.VarChar);
+                param[6].Value = objeto.CodBarra;
+                param[6].Direction = ParameterDirection.Input;
+                
+                
+
+                valor = SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_ACTUALIZARTIKET", param);
+            }
+
+
+            return valor;
+        }
     }
 }
