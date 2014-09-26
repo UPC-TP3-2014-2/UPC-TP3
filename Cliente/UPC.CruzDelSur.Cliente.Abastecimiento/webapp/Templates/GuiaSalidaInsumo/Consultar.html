@@ -1,0 +1,76 @@
+﻿<div ng-controller="GuiaSalidaInsumoController">
+    
+    <fieldset>
+        <legend>Consultar Guía de Salida de Insumos</legend>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">Criterios de Búsqueda</div>
+                <div class="panel-body">
+                    <form method="post" role="search" novalidate>
+                        <div class="form-group">
+                            <label class="control-label">Nro de Guía</label>
+                            <input type="number" class="form-control" required ng-model="consultar.guiaSalidaInsumoId" placeholder="Ingrese Nro. Guía" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorId(consultar.guiaSalidaInsumoId)"><i class="fa fa-search"></i> Consultar por Nro. Guía</button>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label class="control-label">Fecha Inicial</label>
+                            <input type="date" class="form-control" required ng-model="consultar.fechaInicial" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Fecha Final</label>
+                            <input type="date" class="form-control" required ng-model="consultar.fechaFinal" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorRangoFechas(consultar.fechaInicial, consultar.fechaFinal)"><i class="fa fa-search"></i> Consultar por Fechas</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">Listado de Guía de Salida de Insumos</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha de Ingreso</th>
+                                <th>Nro. de Guía</th>
+                                <th>Nro. de Solicitud Insumo</th>
+                                <th>Unidad de Transporte</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="guiaSalidaInsumo in consultar.listadoGuiaSalidaInsumo" ng-class="{ danger: guiaSalidaInsumo.estado == 0 }">
+                                <td>{{ guiaSalidaInsumo.fechaGuia | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ guiaSalidaInsumo.id }}</td>
+                                <td>{{ guiaSalidaInsumo.solicitudInsumo.id }}</td>
+                                <td>{{ guiaSalidaInsumo.solicitudInsumo.solicitudCocina.programacionRuta.vehiculo.placa }}</td>
+                                <td ng-switch on="guiaSalidaInsumo.estado">
+                                    <span ng-switch-when="0">Anulado</span>
+                                    <span ng-switch-when="1">Registrado</span>
+                                    <span ng-switch-default>{{ guiaSalidaInsumo.estado }}</span>
+                                </td>
+                                <td>
+                                    <a href="#/GuiaSalidaInsumo/Anular/{{ guiaSalidaInsumo.id }}" class="btn btn-danger btn-xs" ng-if="guiaSalidaInsumo.estado == 1"><i class="fa fa-close"></i> Anular Guía</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

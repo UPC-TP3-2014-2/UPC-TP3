@@ -48,6 +48,9 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 objBoleto.CodVehiculo = dr["INT_VEHICULO"].ToString();
                 objBoleto.EstadoCheckin = dr["ESTADO_CHECKIN"].ToString();
                 objBoleto.EstadoHora = dr["ESTADO_HORA"].ToString();
+                objBoleto.IntCodigoBoleto = Convert.ToInt32(dr["INT_CODIGOBOLETO"]);
+               
+                
                 //add one row to the list
                 lst.Add(objBoleto);
             }

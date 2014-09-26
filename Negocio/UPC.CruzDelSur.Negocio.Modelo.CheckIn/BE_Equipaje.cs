@@ -8,6 +8,10 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
     public class BE_Equipaje
     {
 
+
+        public int CodEquipaje { get; set; }
+        public int CodBoleto { get; set; }
+        public string NroEquipaje { get; set; }
         public string NroBoleto { get; set; }
         public string Pasajero { get; set; }
         public string Peso { get; set; }
@@ -19,10 +23,15 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string Ubicacion { get; set; }
         public string FechaActual { get; set; }
         public string HoraActual { get; set; }
-        public string EstadoEquipaje { get; set; }
-        public int CodBoleto { get; set; }
+        public string EstadoEquipaje { get; set; }       
         public string EstadoVerificacion { get; set; }
-        public string FechaVerificacion { get; set; }
+        public string FechaVerificacion { get; set; }        
+        public string CodigoBarras { get; set; }
+        public string Tamano { get; set; }
+
+        
+
+        
         
     }
 }

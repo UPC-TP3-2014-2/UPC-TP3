@@ -29,18 +29,19 @@
           
   <div class="form-inline">
       <div class="form-group">
-       &nbsp;       &nbsp;
-
-            <asp:Label ID="Label2" runat="server" Text="DNI"></asp:Label>
-
-            &nbsp;&nbsp;
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+        &nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Nro Boleto:"></asp:Label>
 
              &nbsp;&nbsp;
             <asp:TextBox ID="txtNroBoleto" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
 
-             
+             &nbsp;       &nbsp;
+
+            <asp:Label ID="Label2" runat="server" Text="DNI:"></asp:Label>
+
+            &nbsp;&nbsp;
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+            &nbsp;&nbsp;
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                 <br />
@@ -50,7 +51,7 @@
              </div>  
        </div>         
         <asp:GridView ID="grvDetalle" AutoGenerateColumns="False" AllowPaging="True" 
-            DataKeyNames="CodBoleto,EstadoVerificacion" runat="server" 
+            DataKeyNames="NroBoleto" runat="server" 
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
@@ -60,44 +61,34 @@
         <Columns>
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnConfirmar" runat="server" CausesValidation="false" CommandName="cmdConfirmar" 
-                    onClientClick="return confirm('¿Está seguro de registrar el Embarque?')"
-                    ImageUrl="~/img/verificar_activo.png" ToolTip="Registrar embarque" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' visible='<%# Eval("EstadoVerificacion").ToString().Equals("Sin verificación") %>' />
-                    &nbsp;
-               <asp:ImageButton ID="ibtnCancelar" runat="server" CausesValidation="false" CommandName="cmdCancelar"
-                    onClientClick="return confirm('¿Está seguro que desea cancelar el equipaje?')"
-                    ImageUrl="~/img/cancela.jpg" ToolTip="Cancelar Boleto" 
+                &nbsp;
+                <asp:ImageButton ID="ibtnChecIn" runat="server" CausesValidation="false" CommandName="cmdRegistrarTicket" 
+                    onClientClick="return confirm('Está seguro de registrar el equipaje?')"
+                    ImageUrl="~/img/verificar_activo.png" ToolTip="Registrar Equipaje" 
                     CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
                     &nbsp;
-               <asp:ImageButton ID="ibtnEditar" runat="server" CausesValidation="false" CommandName="cmdEditar"
-                    onClientClick="return confirm('¿Está seguro de Modificar la información del Equipaje?')"
-                    ImageUrl="~/img/edit.png" ToolTip="Modificar Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-                <asp:ImageButton ID="ibtnImprimir" runat="server" CausesValidation="false" CommandName="cmdImprimir"
-                    ImageUrl="~/img/print.jpg" ToolTip="Imprimir Equipaje" 
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-
-                 <asp:ImageButton ID="ibtnInfraccion" runat="server" CausesValidation="false" CommandName="cmdInfraccion"
-                    ImageUrl="~/img/infraccion.png" ToolTip="Registrar infraccion" 
-                     onClientClick="return confirm('¿Está seguro que desea registrar una infracción?')"
-                    CommandArgument='<%# DataBinder.Eval(Container,"RowIndex") %>' />
-
+               
             </ItemTemplate>
             <HeaderStyle Width="250px" />
-            <ItemStyle HorizontalAlign="Center" Width="140px" />
+            <ItemStyle HorizontalAlign="Center" Width="145px" />
         </asp:TemplateField>
         <asp:BoundField HeaderText="Nro de Boleto" DataField="NroBoleto">
-            <ItemStyle HorizontalAlign="Center" Width="80px" />
-        </asp:BoundField>
-        <asp:BoundField HeaderText="Estado" DataField="EstadoEquipaje">
             <ItemStyle HorizontalAlign="Center" Width="80px" />
         </asp:BoundField>
          <asp:BoundField HeaderText="Apellidos y Nombres del Pasajero" DataField="Pasajero">
             <ItemStyle HorizontalAlign="Left"  Width="175px" />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Peso" DataField="Peso">
+        <asp:BoundField HeaderText="Precio" DataField="Precio">
         <ItemStyle HorizontalAlign="Left" />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Vehiculo" DataField="CodVehiculo">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Placa" DataField="Placa">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Tipo de Servicio" DataField="TipoServicio">
+            <ItemStyle HorizontalAlign="Left" Width="100px" />
         </asp:BoundField>
         <asp:BoundField HeaderText="Origen" DataField="Origen">
             <ItemStyle HorizontalAlign="Left"  Width="90px" />
@@ -111,20 +102,20 @@
         <asp:BoundField HeaderText="Hora Salida" DataField="HoraSalida">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
-        <asp:BoundField HeaderText="Tipo de Equipaje" DataField="TipoEquipaje">
+        <asp:BoundField HeaderText="Asiento" DataField="Asiento">
+            <ItemStyle HorizontalAlign="Left"  />
+        </asp:BoundField>
+        <asp:BoundField HeaderText="Est.Asiento" DataField="EstadoAsiento">
             <ItemStyle HorizontalAlign="Left"  />
         </asp:BoundField>
         <asp:BoundField HeaderText="Ubicacion" DataField="Ubicacion">
             <ItemStyle HorizontalAlign="Left" Width="100px"  />
         </asp:BoundField>
-
-            <asp:BoundField HeaderText="Estado Verificación" DataField="EstadoVerificacion">
-            <ItemStyle HorizontalAlign="Left"  />
+        <asp:BoundField HeaderText="Conductor" DataField="Chofer">
+            <ItemStyle HorizontalAlign="Left" Width="175px"  />
         </asp:BoundField>
 
-            <asp:BoundField HeaderText="Fecha Verificación" DataField="FechaVerificacion">
-            <ItemStyle HorizontalAlign="Left"  />
-        </asp:BoundField>
+            <asp:BoundField DataField="IntCodigoBoleto" HeaderText="Id Codigo Boleto" />
 
         </Columns>      
             <EmptyDataTemplate>

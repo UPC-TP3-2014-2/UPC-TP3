@@ -16,6 +16,9 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string CodBarra { get; set; }
         public string EstadoEquipaje { get; set; }
         public string TipoEtiqueta { get; set; }
+        public string ubicacion { get; set; }
+        public string ancho { get; set; }
+        public string alto { get; set; }
         public int CodBoleto { get; set; }
     }
 }

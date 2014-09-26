@@ -14,25 +14,46 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 		protected SolicitudCocinaNegocio SolicitudCocinaNegocio = new SolicitudCocinaNegocio();
 
 		[HttpGet]
-		public IEnumerable<SolicitudCocina> Get()
+		public HttpResponseMessage Get()
 		{
-			return SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+            IEnumerable<SolicitudCocina> ListadoSolicitudesCocina = SolicitudCocinaNegocio.ObtenerTodos().OrderBy(item => item.FechaSolicitud);
+
+            if (ListadoSolicitudesCocina.Count()<= 0)
+	        {
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+	        }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ListadoSolicitudesCocina);
 		}
 
-		[HttpGet]
-		public IEnumerable<SolicitudCocina> Get(DateTime fechaInicial, DateTime fechaFinal)
-		{
-			fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
-			fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
-			
-			return SolicitudCocinaNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
-		}
+        [HttpGet]
+        public HttpResponseMessage Get(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            fechaInicial = fechaInicial.Date + new TimeSpan(0, 0, 0);
+            fechaFinal = fechaFinal.Date + new TimeSpan(23, 59, 59);
+
+            IEnumerable<SolicitudCocina> ListadoSolicitudesCocina = SolicitudCocinaNegocio.ObtenerTodos().Where(item => item.FechaSolicitud >= fechaInicial && item.FechaSolicitud <= fechaFinal).OrderBy(item => item.FechaSolicitud);
+
+            if (ListadoSolicitudesCocina.Count() <= 0)
+	        {
+		        return Request.CreateResponse(HttpStatusCode.NoContent);
+	        }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ListadoSolicitudesCocina);
+        }
 
 
         [HttpGet]
-        public SolicitudCocina Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return SolicitudCocinaNegocio.ObtenerPorId(id);
+            SolicitudCocina SolicitudCocina = SolicitudCocinaNegocio.ObtenerPorId(id);
+
+            if (SolicitudCocina == null)
+	        {
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+	        }
+
+            return Request.CreateResponse(HttpStatusCode.OK, SolicitudCocina);
         }
 
 
@@ -47,10 +68,10 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
 
 
         [HttpPut]
-        public SolicitudCocina Put(SolicitudCocina solicitudCocina)
+        public HttpResponseMessage Put(SolicitudCocina solicitudCocina) 
         {
             SolicitudCocinaNegocio.Actualizar(solicitudCocina);
-			return solicitudCocina;
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 		

@@ -79,6 +79,7 @@ build/
 *.scc
 *.sc
 *.dll
+Web.config
 
 # Visual C++ cache files
 ipch/
@@ -215,3 +216,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+node_modules

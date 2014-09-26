@@ -1,0 +1,77 @@
+﻿<div ng-controller="SolicitudCocinaController as SolicitudCocinaCtrl">
+    
+    <fieldset>
+        <legend>Consultar Solicitud de Cocina</legend>
+    </fieldset>
+
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">Criterios de Búsqueda</div>
+                <div class="panel-body">
+                    <form name="searchByIdForm" method="post" role="search" novalidate>
+                        <div class="form-group">
+                            <label class="control-label">Nro de Solicitud</label>
+                            <input type="number" name="nroSolicitud" class="form-control" required ng-model="consultar.solicitudCocinaId" placeholder="Ingrese Nro. Solicitud" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorId(consultar.solicitudCocinaId)"><i class="fa fa-search"></i> Consultar por Nro Solicitud</button>
+                        </div>
+                    </form>
+                        <hr />
+                    <form name="searchByDateRangeForm" method="post" role="search" novalidate>
+                        <div class="form-group">
+                            <label class="control-label">Fecha Inicial</label>
+                            <input type="date" name="fechaInicial" class="form-control" required ng-model="consultar.fechaInicial" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Fecha Final</label>
+                            <input type="date" name="fechaFinal" class="form-control" required ng-model="consultar.fechaFinal" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block btn-sm" ng-click="consultar.buscarPorRangoFechas(consultar.fechaInicial, consultar.fechaFinal)"><i class="fa fa-search"></i> Consultar por Fechas</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">Listado de Solicitudes de Cocina</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fecha de Ingreso</th>
+                                <th>Nro. de Solicitud</th>
+                                <th>Unidad de Transporte</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="solicitudCocina in consultar.listadoSolicitudesCocina" ng-class="{ danger: solicitudCocina.estado == 0, success: solicitudCocina.estado == 2 }">
+                                <td>{{ solicitudCocina.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ solicitudCocina.id }}</td>
+                                <td>{{ solicitudCocina.programacionRuta.vehiculo.placa }}</td>
+                                <td ng-switch on="solicitudCocina.estado">
+                                    <span ng-switch-when="0">Anulado</span>
+                                    <span ng-switch-when="1">Registrado</span>
+                                    <span ng-switch-when="2">Con Solic. Insumos</span>
+                                    <span ng-switch-default>{{ solicitudCocina.estado }}</span>
+                                </td>
+                                <td>
+                                    <a href="#/SolicitudCocina/Anular/{{ solicitudCocina.id }}" class="btn btn-danger btn-xs" ng-if="solicitudCocina.estado == 1"><i class="fa fa-close"></i> Anular Solicitud</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

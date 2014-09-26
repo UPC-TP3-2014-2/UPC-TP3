@@ -9,6 +9,9 @@ using UPC.CruzDelSur.Datos.CheckIn;
 using UPC.CruzDelSur.Datos.CheckIn.Interface;
 public partial class ModificarEquipaje : System.Web.UI.Page
 {
+    
+    
+
     public int CodBoleto = 0;
     public string NumBoleto = "";
 
@@ -17,35 +20,58 @@ public partial class ModificarEquipaje : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             //btnImprimir.Visible = true;  
-            CodBoleto = Convert.ToInt32(Request.QueryString["ID"]);
-            NumBoleto = Convert.ToString(Request.QueryString["nroboleto"]);
-            Session["CodBoleto"] = CodBoleto;
-            Session["NumBoleto"] = NumBoleto;
-            lblNroBoleta.Text = NumBoleto.ToString();
+            string NroBoleto = Convert.ToString(Request.QueryString["NroBoleto"]);
+            string NroEquipaje = Convert.ToString(Request.QueryString["NroEquipaje"]);
+            string NroBarras = Convert.ToString(Request.QueryString["NroBarras"]);
+            string ancho = Convert.ToString(Request.QueryString["ancho"]);
+            string alto = Convert.ToString(Request.QueryString["alto"]);
+            string peso = Convert.ToString(Request.QueryString["peso"]);
 
-            IBL_Tiket carga = new BL_Tiket();
-            List<BE_Tiket> ListaTiket = carga.f_listarTiket();
-            grvDetalle.DataSource = ListaTiket;
-            grvDetalle.DataBind();
+
+            txtNroBoleto1.Text = NroBoleto;
+            txtNroEquipaje.Text = NroEquipaje;
+            txtCodigoBarra.Text = NroBarras;
+            txtAncho.Text = ancho;
+            txtAlto.Text = alto;
+            txtPeso.Text = peso;
+            txtTipoEquipaje.SelectedValue = "1";
+            DropDownList1.SelectedValue = "1";
+                       
         }
     }
 
-    protected void grvDetalle_RowCommand(Object sender, GridViewCommandEventArgs e)
+
+    protected void btnActualizarRegistroEquipaje_Click(object sender, EventArgs e)
     {
-        if (e.CommandName == "cmdModificarEquipaje")
+
+        IBL_Tiket tiket = new BL_Tiket();
+        BE_Tiket objTiket = new BE_Tiket();
+        //objTiket.CodBoleto = ID;
+        List<BE_Tiket> ActEquipaje = new List<BE_Tiket>();
+        objTiket.CodBarra = txtCodigoBarra.Text;
+        objTiket.Tamano = txtAncho.Text.Trim() + "X" + txtAlto.Text.Trim();
+        objTiket.Peso = txtPeso.Text.Trim();
+        objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Value;
+        objTiket.ubicacion = DropDownList1.SelectedItem.Value;
+        objTiket.Numero = txtNroEquipaje.Text.Trim();
+        ActEquipaje.Add(objTiket);
+        int resultado = tiket.f_ActualizarTicket(ActEquipaje);
+        if (resultado > 0)
         {
-            int index = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = grvDetalle.Rows[index];
-            IBL_Equipaje carga = new BL_Equipaje();
-            CodBoleto = (int)(Session["CodBoleto"]);
-            int cod = Convert.ToInt32(grvDetalle.DataKeys[index].Value);
-           BE_Tiket objBoleto = carga.f_modificarEquipaje(cod, CodBoleto);
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + CodBoleto + "&nroboleto=" + Session["NumBoleto"]);
-        }
-    }
+            Session["listTiket"] = null;
 
-    protected void btnRetornar_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("~/GestionarEquipaje.aspx");
+            //lblResultado.Text = "Registro Exitoso";
+            Response.Redirect("~/GestionarEquipaje.aspx");
+
+            string message = "Registro Exitoso.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("alert('");
+            sb.Append(message);
+            sb.Append("')};");
+            sb.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
     }
 }

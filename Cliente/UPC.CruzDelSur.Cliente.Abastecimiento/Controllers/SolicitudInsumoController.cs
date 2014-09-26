@@ -57,15 +57,25 @@ namespace UPC.CruzDelSur.Cliente.Abastecimiento.Controllers
         public SolicitudInsumo Put(SolicitudInsumo solicitudInsumo)
         {
 
-			SolicitudCocina SolicitudCocinaAnterior = SolicitudInsumoNegocio.ObtenerPorId(solicitudInsumo.Id).SolicitudCocina;
-			SolicitudCocinaAnterior.Estado = 1;
+			if (solicitudInsumo.Estado == 0) // Anular
+			{
+				SolicitudCocina SolicitudCocina = SolicitudInsumoNegocio.ObtenerPorId(solicitudInsumo.Id).SolicitudCocina;
+				SolicitudCocina.Estado = 1;
+				SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
+				SolicitudCocinaNegocio.Actualizar(SolicitudCocina);
+			}
+			else
+			{
+				SolicitudCocina SolicitudCocinaAnterior = SolicitudInsumoNegocio.ObtenerPorId(solicitudInsumo.Id).SolicitudCocina;
+				SolicitudCocinaAnterior.Estado = 1;
 
-			SolicitudCocina SolicitudCocinaActual = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
-			SolicitudCocinaActual.Estado = 2;
+				SolicitudCocina SolicitudCocinaActual = SolicitudCocinaNegocio.ObtenerPorId(solicitudInsumo.SolicitudCocina.Id);
+				SolicitudCocinaActual.Estado = 2;
 
-			SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
-			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaAnterior);
-			SolicitudCocinaNegocio.Actualizar(SolicitudCocinaActual);
+				SolicitudInsumoNegocio.Actualizar(solicitudInsumo);
+				SolicitudCocinaNegocio.Actualizar(SolicitudCocinaAnterior);
+				SolicitudCocinaNegocio.Actualizar(SolicitudCocinaActual);
+			}
 
             return solicitudInsumo;
         }
