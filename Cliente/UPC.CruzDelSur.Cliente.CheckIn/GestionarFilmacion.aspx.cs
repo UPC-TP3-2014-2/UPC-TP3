@@ -112,12 +112,13 @@ public partial class GestionarFilmacion : System.Web.UI.Page
             string iniGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[3].ToString());
             string finGrab = Convert.ToString(grvDetalle.DataKeys[index].Values[4].ToString());
             string rutaVideo = Convert.ToString(grvDetalle.DataKeys[index].Values[5].ToString());
+            string horaSalida = Convert.ToString(grvDetalle.DataKeys[index].Values[6].ToString());
            // Response.Redirect("~/ProgramarFilmacion.aspx?ID=" + cod + "&codSalida=" + cod + "&estado=" + estado + "&solFilm=" + solFilmacion + "&iniGrab=" + iniGrab + "&finGrab=" + finGrab + "&rutaVideo=" + rutaVideo);
             estado = "C";
             IBL_Filmacion carga = new BL_Filmacion();
             
             string estadocmbo = DropDownList1.SelectedValue.ToString();
-            carga.f_ActualizarFilmacion(solFilmacion, iniGrab, finGrab, rutaVideo, estado);
+            carga.f_ActualizarFilmacion(solFilmacion, horaSalida, horaSalida, rutaVideo, estado);
             List<BE_Filmacion> ListaFilmacion = carga.f_ListadoFilmaciones(DateTime.Parse(dt), estadocmbo);
             grvDetalle.DataSource = ListaFilmacion;
             grvDetalle.DataBind();

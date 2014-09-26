@@ -168,9 +168,10 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
         objTiket.CodBarra = txtCodigoBarra.Text;
         objTiket.Tamano = txtAncho.Text + "X" + txtAlto.Text;
         objTiket.Peso = txtPeso.Text;
-        objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Value;
-        objTiket.ubicacion = DropDownList1.SelectedItem.Value;
+        objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Text;
+        objTiket.ubicacion = DropDownList1.SelectedItem.Text;
         objTiket.Numero=objTiket.CodBoleto+"-"+objTiket.CodBarra;
+        objTiket.codigoEtiqueta = int.Parse(txtTipoEquipaje.SelectedValue);
         listaEquipaje.Add(objTiket);
 
         GridView1.DataSource = listaEquipaje;

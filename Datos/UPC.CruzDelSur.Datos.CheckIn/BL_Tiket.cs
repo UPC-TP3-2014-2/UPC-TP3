@@ -49,7 +49,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 param[0].Value = objeto.CodBoleto;
                 param[0].Direction = ParameterDirection.Input;
                 param[1] = new SqlParameter("codigoEtiqueta", SqlDbType.Int);
-                param[1].Value = int.Parse(objeto.TipoEtiqueta);
+                param[1].Value = objeto.codigoEtiqueta;
                 param[1].Direction = ParameterDirection.Input;
                 param[2] = new SqlParameter("nroEquipaje", SqlDbType.VarChar);
                 param[2].Value = objeto.Numero;
