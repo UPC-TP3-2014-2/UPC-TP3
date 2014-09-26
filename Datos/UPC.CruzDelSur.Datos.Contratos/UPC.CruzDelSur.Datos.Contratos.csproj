@@ -47,6 +47,7 @@
     <Compile Include="IDetalleCargaRepositorio.cs" />
     <Compile Include="IDetSolicitudCocinaRepositorio.cs" />
     <Compile Include="IDetSolicitudInsumoRepositorio.cs" />
+    <Compile Include="IGuiaSalidaInsumoRepositorio.cs" />
     <Compile Include="IEducacionesRepositorio.cs" />
     <Compile Include="IExperienciasLaboralesRepositorio.cs" />
     <Compile Include="IInsumoRepositorio.cs" />

@@ -207,6 +207,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\GuiaSalidaInsumoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InsumoController.cs" />
     <Compile Include="Controllers\ProgramacionRutaController.cs" />
@@ -220,7 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProgramacionRutaModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +313,7 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Gruntfile.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -326,22 +328,25 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\webapp\app.js" />
-    <Content Include="Scripts\webapp\library\angular-route.min.js" />
-    <Content Include="Scripts\webapp\library\angular.min.js" />
-    <Content Include="Scripts\webapp\library\checklist-model.js" />
-    <Content Include="Scripts\webapp\library\ui-bootstrap-0.11.0.min.js" />
-    <Content Include="Scripts\webapp\library\ui-bootstrap-tpls-0.11.0.min.js" />
-    <Content Include="Scripts\webapp\library\underscore-min.js" />
-    <Content Include="Scripts\webapp\template\home.html" />
-    <Content Include="Scripts\webapp\template\solicitud-cocina\anular.html" />
-    <Content Include="Scripts\webapp\template\solicitud-cocina\actualizar.html" />
-    <Content Include="Scripts\webapp\template\solicitud-cocina\registrar.html" />
-    <Content Include="Scripts\webapp\template\solicitud-cocina\consultar.html" />
-    <Content Include="Scripts\webapp\template\solicitud-insumo\actualizar.html" />
-    <Content Include="Scripts\webapp\template\solicitud-insumo\anular.html" />
-    <Content Include="Scripts\webapp\template\solicitud-insumo\consultar.html" />
-    <Content Include="Scripts\webapp\template\solicitud-insumo\registrar.html" />
+    <Content Include="Webapp\app.js" />
+    <Content Include="Webapp\app.min.js" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Anular.html" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Consultar.html" />
+    <Content Include="Webapp\Templates\GuiaSalidaInsumo\Registrar.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Anular.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Consultar.html" />
+    <Content Include="Webapp\Templates\SolicitudCocina\Registrar.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Anular.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Consultar.html" />
+    <Content Include="Webapp\Templates\SolicitudInsumo\Registrar.html" />
+    <Content Include="Webapp\_app.js" />
+    <Content Include="Webapp\Libraries\angular-route.min.js" />
+    <Content Include="Webapp\Libraries\angular.min.js" />
+    <Content Include="Webapp\Libraries\checklist-model.js" />
+    <Content Include="Webapp\Libraries\ui-bootstrap-0.11.0.min.js" />
+    <Content Include="Webapp\Libraries\ui-bootstrap-tpls-0.11.0.min.js" />
+    <Content Include="Webapp\Libraries\underscore-min.js" />
+    <Content Include="Webapp\Templates\Home.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -386,12 +391,26 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Login.cshtml" />
     <Content Include="Views\Home\_Register.cshtml" />
-    <Content Include="Scripts\webapp\library\angular-route.min.js.map" />
-    <Content Include="Scripts\webapp\library\angular.min.js.map" />
+    <Content Include="Webapp\Libraries\angular-route.min.js.map" />
+    <Content Include="Webapp\Libraries\angular.min.js.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Webapp\app.coffee" />
+    <Content Include="Webapp\config.coffee" />
+    <Content Include="Webapp\Controllers\HomeController.coffee" />
+    <Content Include="Webapp\Controllers\NavbarController.coffee" />
+    <Content Include="Webapp\Controllers\SolicitudCocinaController.coffee" />
+    <Content Include="Webapp\Services\SolicitudCocinaService.coffee" />
+    <Content Include="Webapp\Controllers\SolicitudInsumoController.coffee" />
+    <Content Include="Webapp\Services\SolicitudInsumoService.coffee" />
+    <Content Include="Webapp\Services\ProgramacionRutaService.coffee" />
+    <Content Include="Webapp\Services\InsumoService.coffee" />
+    <Content Include="Webapp\Services\RefrigerioService.coffee" />
+    <Content Include="Webapp\Controllers\GuiaSalidaInsumoController.coffee" />
+    <Content Include="Webapp\Services\GuiaSalidaInsumoService.coffee" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Webapp\Directives\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
