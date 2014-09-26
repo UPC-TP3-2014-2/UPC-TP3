@@ -78,10 +78,10 @@ public partial class GestionarEquipaje : System.Web.UI.Page
             string NroBarras = Server.HtmlDecode(row.Cells[12].Text);
             string Tamano = Server.HtmlDecode(row.Cells[13].Text);
             string ancho =Tamano.Substring(0,2);
-            string alto = Tamano.Substring(2, 2);            
+            string alto = Tamano.Substring(3, 2);            
             string peso = Server.HtmlDecode(row.Cells[5].Text);
 
-            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&NroBoleto=" + NroBoleto + "&NroEquipaje=" + NroEquipaje + "&NroBarras=" + NroBarras + "&Tamano=" + Tamano + "&ancho=" + ancho + "&alto=" + alto + "&peso=" + peso);
+            Response.Redirect("~/ModificarEquipaje.aspx?ID=" + cod + "&NroBoleto=" + NroBoleto + "&NroEquipaje=" + NroEquipaje + "&NroBarras=" + NroBarras + "&ancho=" + ancho + "&alto=" + alto + "&peso=" + peso);
         }
 
         if (e.CommandName == "cmdImprimir")
