@@ -11,7 +11,7 @@
 
                     <asp:TemplateField HeaderText="Tipo carga">
                         <ItemTemplate>
-                            <asp:DropDownList ID="ddlTipoCarga" runat="server">
+                            <asp:DropDownList ID="ddlTipoCarga" runat="server" Enabled="false">
                                 <asp:ListItem Value="1">Fragil</asp:ListItem>
                                 <asp:ListItem Value="2" Selected="True">Normal</asp:ListItem>
                             </asp:DropDownList>

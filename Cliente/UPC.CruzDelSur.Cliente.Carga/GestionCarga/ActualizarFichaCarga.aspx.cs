@@ -28,6 +28,23 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
             {
                 UPC.CruzDelSur.Datos.Carga.Carga CodigoFicha  = new UPC.CruzDelSur.Datos.Carga.Carga();
 
+                UPC.CruzDelSur.Datos.Carga.Agencia blAgencia = new UPC.CruzDelSur.Datos.Carga.Agencia();
+
+
+                ddlAgenciaOrigen.DataSource = blAgencia.f_ListadoAgencia();
+                ddlAgenciaOrigen.DataValueField = "CODIGO_AGENCIA";
+                ddlAgenciaOrigen.DataTextField = "NOMBRE";
+                ddlAgenciaOrigen.DataBind();
+
+
+                ddlAgenciaDestino.DataSource = blAgencia.f_ListadoAgencia();
+                ddlAgenciaDestino.DataValueField = "CODIGO_AGENCIA";
+                ddlAgenciaDestino.DataTextField = "NOMBRE";
+                ddlAgenciaDestino.DataBind();
+
+
+
+
                 txtFicha.Text = CodigoFicha.f_GenerarNumero();
                 if (!String.IsNullOrEmpty(Context.Request.QueryString["idficha"]))
                 {
@@ -148,7 +165,9 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
             }
             if (Session["clave"] != null)
             {
-                lblClave.Text = Session["clave"].ToString();
+                lblClave.Text = "******";
+                HFPregunta.Value = Session["pregunta"].ToString();
+                HFRespuesta.Value = Session["respuesta"].ToString();
             }
 
 
@@ -282,15 +301,9 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                 oDetalleFCargaDTO.CODIGO_CARGA = oBE_Carga.CODIGO_CARGA;
                 oListaDetalleFCargaDTO.Add(oDetalleFCargaDTO);
             }
-
-
-
-
-
-
-
-
-            oBE_Carga.CLAVE_SEGURIDAD = lblClave.Text;
+            oBE_Carga.CLAVE_SEGURIDAD = Session["clave"].ToString(); ;
+            oBE_Carga.PREGUNTA_SEGURIDAD = HFPregunta.Value ;
+            oBE_Carga.RESPUESTA_SEGURIDAD = HFRespuesta.Value;
             oBE_Carga.DESTINATARIO = txtDestinatario.Text;
             oBE_Carga.CLIENTE_DESTINO = HFIdClienteDest.Value;
             oBE_Carga.DESTINATARIO = txtDestinatario.Text;

@@ -1,13 +1,44 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true"
-    CodeBehind="ValidarFichaCarga.aspx.cs" Inherits="CRUZDELSUR.UI.Web.GestionCarga.ValidarFichaCarga" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SitePopup.Master" AutoEventWireup="true" CodeBehind="CambiarClave.aspx.cs" Inherits="UPC.CruzDelSur.Cliente.Carga.GestionCarga.CambiarClave" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+
+        .fila
+        {
+            width: 30%;
+            padding-left: 5%;
+            margin-top: 5px;
+            margin-bottom: 15px
+        }
+        .izquierda
+        {
+            width: 100%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        .campoizquierda
+        {
+            width: 46%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .campo
+        {
+            color: #003399;
+            font-weight: bold;
+        }
+        .campoderecha
+        {
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>
-        Validar Entregar de carga
-    </h1>
+    <h1>Cambiar clave de carga</h1>
     <style>
+
         .fila
         {
             width: 30%;
@@ -54,7 +85,6 @@
             </div>
         </div>
     </div>
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -65,9 +95,6 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -78,8 +105,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -90,7 +115,6 @@
             </div>
         </div>
     </div>
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -101,8 +125,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -113,9 +135,6 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -126,10 +145,7 @@
             </div>
         </div>
     </div>
-
-
-
-        <div class="fila">
+    <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
                 <span class="campo">Total:</span>
@@ -139,10 +155,6 @@
             </div>
         </div>
     </div>
-
-
-
-
     <div class="fila">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -153,7 +165,6 @@
             </div>
         </div>
     </div>
-
     <div class="fila" style="display: inline-block;width:30%;vertical-align:top">
         <div class="izquierda">
             <div class="campoizquierda">
@@ -162,18 +173,13 @@
             <div class="campoderecha">
                 <asp:Label ID="lblClave" runat="server" Text="Label"></asp:Label>
             </div>
-            
         </div>
-        
     </div>
     <div style="display: inline-block;width:30%;vertical-align:top">
-        
-
-        <asp:Button ID="btnIngresarCodigo" runat="server" Text="Ingresar Clave" 
-            />
+        <asp:Button ID="btnIngresarCodigo" runat="server" Text="Cambiar Clave" />
     </div>
     <br />
-    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
-    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+    <asp:Button ID="btnAceptar" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
+    <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" />
     <asp:HiddenField ID="hffichacarga" runat="server" />
 </asp:Content>

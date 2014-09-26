@@ -39,7 +39,7 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
         {
             //Invocamos al controlador de flota
             UPC.CruzDelSur.Datos.Carga.Programacion_Ruta oBL_Programacion_Ruta = new UPC.CruzDelSur.Datos.Carga.Programacion_Ruta();
-            gvProgramacionRuta.DataSource = oBL_Programacion_Ruta.f_Programacion_Ruta(Int32.Parse(ddlAgencias.SelectedValue));
+            gvProgramacionRuta.DataSource = oBL_Programacion_Ruta.f_Programacion_RutaPorDepartamento(ddlAgencias.SelectedValue);
             gvProgramacionRuta.DataBind();
         }
     }

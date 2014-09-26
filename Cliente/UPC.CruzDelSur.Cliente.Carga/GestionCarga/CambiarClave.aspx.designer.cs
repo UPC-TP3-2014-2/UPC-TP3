@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CRUZDELSUR.UI.Web.GestionCarga {
+namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
     
     
-    public partial class ValidarFichaCarga {
+    public partial class CambiarClave {
         
         /// <summary>
         /// Control lblNumeroFicha.

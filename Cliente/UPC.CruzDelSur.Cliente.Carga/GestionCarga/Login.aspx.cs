@@ -11,7 +11,10 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                Session.Remove("rol");
+            }
         }
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
