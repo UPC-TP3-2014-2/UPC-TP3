@@ -27,4 +27,7 @@
                     
                 </Columns>
             </asp:GridView>
+
+
+    <asp:Button ID="Button2" runat="server" Text="Cancelar" OnClientClick="javascript:window.close();" />
 </asp:Content>

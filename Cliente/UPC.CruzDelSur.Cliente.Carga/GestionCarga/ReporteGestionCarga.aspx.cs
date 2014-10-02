@@ -93,5 +93,10 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         {
             this.Controls.Add(new LiteralControl("<script language='JavaScript'>OpenModalDialog('VistaPreliminar.aspx?almacen=" + ddlAgenciaOrigen.SelectedValue + "&tipoMovimiento=" + ddlTipoMovimiento.SelectedValue + "&fechaincio=" + txtFechaInicio.Text + "&fechafin=" + txtFechaFin.Text + "','null','400','1000')</script>"));
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
+        }
     }
 }

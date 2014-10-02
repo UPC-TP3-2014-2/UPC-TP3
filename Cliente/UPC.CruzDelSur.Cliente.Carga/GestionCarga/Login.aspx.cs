@@ -25,6 +25,7 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
 
             if (Rol != "")
             {
+                
                 Session["rol"] = Rol;
                 if (Rol == "Auxiliar Almacen")
                 {

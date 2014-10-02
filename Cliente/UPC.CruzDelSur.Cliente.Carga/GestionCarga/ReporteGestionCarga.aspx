@@ -131,6 +131,10 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Cancelar" OnClick="Button1_Click" />
+
     <script type="text/javascript">//<![CDATA[
         Calendar.setup({
             inputField: "MainContent_txtFechaInicio",

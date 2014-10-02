@@ -14,9 +14,16 @@ namespace CRUZDELSUR.UI.Web
             if (Session["rol"] != null)
             {
                 lblPerfl.Text = Session["rol"].ToString();
+                lbSession.Text = "Cerrar sesion";
             }
+            else { lbSession.Text = "Iniciar sesion"; }
 
             
+        }
+
+        protected void lbSession_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/GestionCarga/login.aspx");
         }
     }
 }

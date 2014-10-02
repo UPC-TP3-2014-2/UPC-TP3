@@ -30,7 +30,18 @@
     <div>
         <asp:TextBox ID="txtClave" runat="server" TextMode="Password"></asp:TextBox>
     </div>
-    <asp:Button ID="Button1" runat="server" Text="Aceptar"
+
+
+    <div>
+        Repetir Clave
+    </div>
+    <div>
+        <asp:TextBox ID="txtrepetirclave" runat="server" TextMode="Password"></asp:TextBox>
+    </div>
+     <asp:CompareValidator ID="CompareValidator" ForeColor="Red" ValidationGroup="Clavetest"  runat="server" ControlToValidate="txtClave" ControlToCompare="txtrepetirclave" ErrorMessage="La clave no es igual">  
+                </asp:CompareValidator>
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Aceptar" ValidationGroup="Clavetest"
         OnClick="Button1_Click" />
 
     <asp:Button ID="Button2" runat="server" Text="Cancelar" OnClientClick="javascript:window.close();" />

@@ -58,13 +58,13 @@ namespace CRUZDELSUR.UI.Web {
         protected global::System.Web.UI.WebControls.Label lblPerfl;
         
         /// <summary>
-        /// Control HeadLoginView.
+        /// Control lbSession.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        protected global::System.Web.UI.WebControls.LinkButton lbSession;
         
         /// <summary>
         /// Control MainContent.

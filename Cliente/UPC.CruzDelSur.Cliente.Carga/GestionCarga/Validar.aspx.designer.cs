@@ -49,6 +49,24 @@ namespace CRUZDELSUR.UI.Web.GestionCarga {
         protected global::System.Web.UI.WebControls.TextBox txtClave;
         
         /// <summary>
+        /// Control txtrepetirclave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtrepetirclave;
+        
+        /// <summary>
+        /// Control CompareValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>

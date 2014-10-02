@@ -63,20 +63,10 @@
                     <!--div id="txtLogo"></div-->
                 </div>--%>
                 <div class="loginDisplay" style="background-image: url('/img/fondo.jpg')">
-                    <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                        <AnonymousTemplate>
-                            [ <a href="~/GestionCarga/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
-                            ]
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            Welcome <span class="bold">
-                                <asp:LoginName ID="HeadLoginName" runat="server" />
-                            </span>! [
-                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
-                                LogoutPageUrl="~/" />
-                            ]
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+
+                    <asp:LinkButton ID="lbSession" runat="server" Text="Iniciar Sesion" OnClick="lbSession_Click">
+                    </asp:LinkButton>
+                    
                 </div>
             </div>
             <div class="clear hideSkiplink">
