@@ -41,8 +41,7 @@ namespace UPC.CruzDelSur.Datos.CheckIn
                 objBoleto.CantPasajeros = dr["CANTIDAD"].ToString();
                 objBoleto.estado = dr["ESTADO"].ToString();
                 objBoleto.solFilmacion = dr["INT_SOLICITUD"].ToString();
-                objBoleto.inicioGrab = dr["INICIO_GRABACION"].ToString();
-                objBoleto.finGrab = dr["FINAL_GRABACION"].ToString();
+                objBoleto.MinGrab = dr["MINUTOS_GRABACION"].ToString();
                 objBoleto.rutaVideo = dr["RUTA_VIDEO"].ToString();
                 // objBoleto.estado = dr["estado"].ToString();
                 lst.Add(objBoleto);
@@ -54,27 +53,24 @@ namespace UPC.CruzDelSur.Datos.CheckIn
 
 
 
-        public int f_RegistrarFilmacion(string codBus, string iniGrab, string finGrab, string rutaVideo, string estado)
+        public int f_RegistrarFilmacion(string codBus, string MinGrab, string rutaVideo, string estado)
         {
 
 
            
-            SqlParameter[] param = new SqlParameter[5];
+            SqlParameter[] param = new SqlParameter[4];
             param[0] = new SqlParameter("VCH_COD_SAL_BUS", SqlDbType.VarChar);
             param[0].Value = codBus;
             param[0].Direction = ParameterDirection.Input;
-            param[1] = new SqlParameter("INI_GRAB", SqlDbType.Time);
-            param[1].Value = iniGrab;
+            param[1] = new SqlParameter("MIN_GRAB", SqlDbType.VarChar);
+            param[1].Value = MinGrab;
             param[1].Direction = ParameterDirection.Input;
-            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.Time);
-            param[2].Value = finGrab;
+            param[2] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
+            param[2].Value = rutaVideo;
             param[2].Direction = ParameterDirection.Input;
-            param[3] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
-            param[3].Value = rutaVideo;
+            param[3] = new SqlParameter("ESTADO", SqlDbType.VarChar);
+            param[3].Value = estado;
             param[3].Direction = ParameterDirection.Input;
-            param[4] = new SqlParameter("ESTADO", SqlDbType.VarChar);
-            param[4].Value = estado;
-            param[4].Direction = ParameterDirection.Input;
 
             return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_INSERTARFILMACION", param);
 
@@ -82,24 +78,21 @@ namespace UPC.CruzDelSur.Datos.CheckIn
         }
 
 
-        public int f_ActualizarFilmacion(string SolFilmacion, string iniGrab, string finGrab, string rutaVideo, string estado)
+        public int f_ActualizarFilmacion(string SolFilmacion, string MinGrab, string rutaVideo, string estado)
         {
-            SqlParameter[] param = new SqlParameter[5];
+            SqlParameter[] param = new SqlParameter[4];
             param[0] = new SqlParameter("INT_SOL_FILM", SqlDbType.VarChar);
             param[0].Value = SolFilmacion;
             param[0].Direction = ParameterDirection.Input;
-            param[1] = new SqlParameter("INI_GRAB", SqlDbType.Time);
-            param[1].Value = iniGrab;
+            param[1] = new SqlParameter("MIN_GRAB", SqlDbType.VarChar);
+            param[1].Value = MinGrab;
             param[1].Direction = ParameterDirection.Input;
-            param[2] = new SqlParameter("FIN_GRAB", SqlDbType.Time);
-            param[2].Value = finGrab;
+            param[2] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
+            param[2].Value = rutaVideo;
             param[2].Direction = ParameterDirection.Input;
-            param[3] = new SqlParameter("RUTA_VIDEO", SqlDbType.VarChar);
-            param[3].Value = rutaVideo;
+            param[3] = new SqlParameter("ESTADO", SqlDbType.VarChar);
+            param[3].Value = estado;
             param[3].Direction = ParameterDirection.Input;
-            param[4] = new SqlParameter("ESTADO", SqlDbType.VarChar);
-            param[4].Value = estado;
-            param[4].Direction = ParameterDirection.Input;
 
             return SqlHelper.ExecuteNonQuery(Conexion.CadenaConexion, System.Data.CommandType.StoredProcedure, "SP_ACTUALIZARFILMACION", param);
 

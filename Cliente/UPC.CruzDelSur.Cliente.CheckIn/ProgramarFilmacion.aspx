@@ -40,7 +40,7 @@
          <td style="width:25%"><asp:Label ID="lblCodBus" runat="server" ></asp:Label></td>
          </tr>
          <tr>
-         <td>Inicio Grabacion: </td>
+         <td>Minutos Grabacion: </td>
 
          <td>
               <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
@@ -48,17 +48,6 @@
           </asp:DropDownList>
 
               <%-- <asp:TextBox ID="txtIniGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
-                      <img src="/img/calendar.jpg" />--%>
-
-         </td>
-         </tr>
-         <tr>
-         <td>Fin Grabacion: </td>
-         <td>
-                  <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
-                  <asp:ListItem Value="0">--Seleccione--</asp:ListItem>
-          </asp:DropDownList>
-             <%--<asp:TextBox ID="txtFinGrab" runat="server" ReadOnly="true" Width="150px" CssClass="form-control"></asp:TextBox>
                       <img src="/img/calendar.jpg" />--%>
 
          </td>

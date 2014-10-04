@@ -20,9 +20,22 @@ public partial class Default2 : System.Web.UI.Page
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
-    { 
-        BindData();
-    }
+    {
+        if (txtNroBoleto.Text.IndexOf('-') == 3)
+            BindData();
+        else
+        {
+            string message = "Ingrese un formato de boleto correcto.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<script type = 'text/javascript'>");
+            sb.Append("window.onload=function(){");
+            sb.Append("alert('");
+            sb.Append(message);
+            sb.Append("')};");
+            sb.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+        }
+        }
 
     private void BindData()
     {

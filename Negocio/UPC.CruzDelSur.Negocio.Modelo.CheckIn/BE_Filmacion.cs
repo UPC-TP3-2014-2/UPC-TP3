@@ -15,8 +15,7 @@ namespace UPC.CruzDelSur.Negocio.Modelo.CheckIn
         public string CantPasajeros { get; set; }
         public string estado { get; set; }
         public string solFilmacion { get; set; }
-        public string inicioGrab { get; set; }
-        public string finGrab { get; set; }
+        public string MinGrab { get; set; }
         public string rutaVideo { get; set; }
     }
 }
