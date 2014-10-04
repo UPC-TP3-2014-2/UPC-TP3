@@ -50,7 +50,7 @@
        &nbsp;&nbsp;
        <asp:Label ID="Label2" runat="server" Text="Nro DNI:" CssClass="form-group"></asp:Label>
     
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" ></asp:TextBox>
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" MaxLength="8" ></asp:TextBox>
     
             &nbsp;&nbsp;
     
