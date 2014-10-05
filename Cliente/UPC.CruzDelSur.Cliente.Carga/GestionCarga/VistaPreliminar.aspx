@@ -16,6 +16,8 @@
         </DataSources>
     </LocalReport>
 </rsweb:ReportViewer>
+
+        <asp:Button ID="Button2" runat="server" Text="Cancelar" OnClientClick="javascript:window.close();" />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=.;Initial Catalog=CSUR;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SP_GENERARREPORTEDETALLE" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:QueryStringParameter DefaultValue="3" Name="INT_CODIGO_ALMACEN" QueryStringField="almacen" Type="Int32" />

@@ -49,6 +49,15 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
         protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
         
         /// <summary>
+        /// Control RequiredFieldValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// Control txtFechaFin.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
+        
+        /// <summary>
+        /// Control RequiredFieldValidator2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// Control btnBuscar.
@@ -67,15 +85,6 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
         protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
-        /// Control gvDetalle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDetalle;
-        
-        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,14 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Control gvDetalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvDetalle;
     }
 }

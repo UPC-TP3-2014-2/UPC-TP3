@@ -34,6 +34,20 @@ namespace UPC.CruzDelSur.Cliente.Carga.GestionCarga
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
 
+            if (txtFechaFin.Text.Trim().Length == 0 || txtFechaInicio.Text.Trim().Length == 0)
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Debe Ingresar las fechas'); </script>"));
+                return;
+            }
+
+
+
+            if (DateTime.Parse(txtFechaFin.Text) > DateTime.Now.Date )
+            {
+                this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La fecha fin no puede ser mayor a la fecha atual'); </script>"));
+                return;
+            }
+
             if (DateTime.Parse(txtFechaFin.Text) < DateTime.Parse(txtFechaInicio.Text))
             {
                 this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La fecha fin no puede ser menor a la fecha de incio'); </script>"));

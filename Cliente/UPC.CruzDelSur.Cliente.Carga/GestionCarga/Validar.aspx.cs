@@ -62,16 +62,16 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
                     {
                         if (txtRespuesta.Text.ToUpper().Trim().ToString() != hfRespuesta.Value.ToUpper().Trim().ToString())
                         {
-                            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La respuesta no coincide con la informacion general de la ficha carga');</script>"));
+                            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La respuesta no coincide con la información general de la ficha carga');</script>"));
                         }
                         else
                         {
-                            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Seleccionado'); CloseFormOK();</script>"));
+                            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave Ingresada'); CloseFormOK();</script>"));
                         }
                     }
                     else
                     {
-                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Seleccionado'); CloseFormOK();</script>"));
+                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave Ingresada'); CloseFormOK();</script>"));
                     }
 
                     
@@ -88,12 +88,12 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
 
                     if (oBE_Carga.CLAVE_SEGURIDAD == Seguridad.Encriptar(txtClave.Text).ToString())
                     {
-                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El codigo Ingresado es correcto'); CloseFormOK();</script>"));
+                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('El código Ingresado es correcto'); CloseFormOK();</script>"));
                         int o = oBL_Carga.f_ActualizarEstadoCarga("Entregado", Context.Request.QueryString["idcarga"]);
 
                     }
                     else
-                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave ingresada no es validad, no se puede validar la carga'); CloseFormOK();</script>"));
+                        this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('Clave ingresada no es valida, no se puede validar la carga'); CloseFormOK();</script>"));
 
                 }
             }

@@ -93,10 +93,10 @@
             </div>
             <div class="campoderecha">
                 <asp:TextBox ID="txtFechaInicio" runat="server"></asp:TextBox>
-
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Debe Ingresar fecha" ControlToValidate="txtFechaInicio" ValidationGroup="consultar" Display="Dynamic" ForeColor="Red" ></asp:RequiredFieldValidator>
                 <img src="../img/Calendario.png" id="f_btn1fechasalida" />
 
-
+                
             </div>
         </div>
         <div class="derecha">
@@ -106,13 +106,14 @@
             </div>
             <div class="campoderecha">
                 <asp:TextBox ID="txtFechaFin" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Debe Ingresar fecha" ControlToValidate="txtFechaFin" ValidationGroup="consultar" Display="Dynamic" ForeColor="Red" ></asp:RequiredFieldValidator>
                 <img src="../img/Calendario.png" id="f_btn1fechallegada" />
             </div>
         </div>
     </div>
     <br />
-    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
-
+    <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"  ValidationGroup="consultar"/>
+    <asp:Button ID="Button1" runat="server" Text="Cancelar" OnClick="Button1_Click" />
 
     <asp:GridView ID="gvDetalle" runat="server" Width="100%" AutoGenerateColumns="False" OnRowDataBound="gvDetalle_RowDataBound" EmptyDataText="No Existen Datos..">
         <Columns>
@@ -133,7 +134,7 @@
     </asp:GridView>
 
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Cancelar" OnClick="Button1_Click" />
+    
 
     <script type="text/javascript">//<![CDATA[
         Calendar.setup({
