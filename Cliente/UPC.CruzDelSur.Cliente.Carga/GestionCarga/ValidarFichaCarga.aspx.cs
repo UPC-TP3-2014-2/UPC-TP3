@@ -60,7 +60,9 @@ namespace CRUZDELSUR.UI.Web.GestionCarga
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListadoFichaCarga.aspx");
+
+
+            this.Controls.Add(new LiteralControl("<script language='JavaScript'>alert('La entrega de carga se realizó con éxito'); window.location = 'ListadoFichaCarga.aspx'; </script>"));
         }
     }
 }
