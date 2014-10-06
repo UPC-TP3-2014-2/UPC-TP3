@@ -62,19 +62,7 @@ public partial class Reclamo_GestionarReclamo : System.Web.UI.Page
                 sb.Append("</script>");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
             }
-            else if (txtDNI.Text.Trim().Equals(""))
-            {
-                string message = "Ingrese un numero de DNI.";
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                sb.Append("<script type = 'text/javascript'>");
-                sb.Append("window.onload=function(){");
-                sb.Append("alert('");
-                sb.Append(message);
-                sb.Append("')};");
-                sb.Append("</script>");
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
-
-            }
+          
 
 
         }
