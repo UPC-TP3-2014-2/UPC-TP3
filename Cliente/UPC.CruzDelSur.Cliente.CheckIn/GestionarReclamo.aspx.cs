@@ -32,7 +32,43 @@ public partial class Reclamo_GestionarReclamo : System.Web.UI.Page
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
-        BindData();
+        if (txtNroBoleto.Text.Trim().Equals("") || txtDNI.Text.Trim().Equals(""))
+        {
+            if (txtNroBoleto.Text.Trim().Equals(""))
+            {
+
+                string message = "Ingrese un número de Boleto.";
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append("<script type = 'text/javascript'>");
+                sb.Append("window.onload=function(){");
+                sb.Append("alert('");
+                sb.Append(message);
+                sb.Append("')};");
+                sb.Append("</script>");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+            }
+
+
+
+            else if (txtNroBoleto.Text.IndexOf('-') != 3)
+            {
+                string message = "Ingrese un formato de boleto correcto.";
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                sb.Append("<script type = 'text/javascript'>");
+                sb.Append("window.onload=function(){");
+                sb.Append("alert('");
+                sb.Append(message);
+                sb.Append("')};");
+                sb.Append("</script>");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+            }
+          
+
+
+        }
+
+        else
+            BindData();
     }
 
     private void BindData()

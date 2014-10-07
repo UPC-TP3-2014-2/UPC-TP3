@@ -47,7 +47,6 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
 
         ID = Convert.ToInt32(Request.QueryString["ID"]);
 
-       
 
          if ( txtCodigoBarra.Text == String.Empty)
          {
@@ -91,7 +90,25 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
 
          }
 
-         else if (txtPeso.Text == String.Empty)
+
+
+
+         else if (txtLargo.Text == String.Empty)
+         {
+
+             string message = "El largo del equipaje es obligatorio";
+             System.Text.StringBuilder sb = new System.Text.StringBuilder();
+             sb.Append("<script type = 'text/javascript'>");
+             sb.Append("window.onload=function(){");
+             sb.Append("alert('");
+             sb.Append(message);
+             sb.Append("')};");
+             sb.Append("</script>");
+             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+
+         }
+
+                 else if (txtPeso.Text == String.Empty)
          {
 
              string message = "El peso del equipaje es obligatorio";
@@ -105,8 +122,9 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
              ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
 
          }
+        
 
-         else if ( txtTipoEquipaje.SelectedValue == "0")
+                  else if ( txtTipoEquipaje.SelectedValue == "0")
          {
 
              string message = "El tipo de equipaje es obligatorio";
@@ -138,17 +156,33 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
 
          else {
 
-
              int Ancho = Convert.ToInt32(txtAncho.Text);
              int Alto = Convert.ToInt32(txtAlto.Text);
+             int Largo = Convert.ToInt32(txtLargo.Text);
+             int Peso = Convert.ToInt32(txtPeso.Text);
+             
 
-
-
-             if (Ancho > 30 || Alto > 80)
+             if (Ancho > 30 || Alto > 80  || Largo > 20)
              {
 
 
-                 string message = "El tamaño permitido de las maletas ha sido superado, es 80X30. El equipaje se trasladará por cargo.";
+                 string message = "El tamaño del equipaje sin cargo adicional ha sido superado, es 80X30X20. El equipaje se trasladará por cargo.";
+                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                 sb.Append("<script type = 'text/javascript'>");
+                 sb.Append("window.onload=function(){");
+                 sb.Append("alert('");
+                 sb.Append(message);
+                 sb.Append("')};");
+                 sb.Append("</script>");
+                 ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+
+             }
+
+             if (Peso > 30)
+             {
+
+
+                 string message = "El peso del equipaje sin cargo adicional es 30 KG. El equipaje se trasladará por cargo.";
                  System.Text.StringBuilder sb = new System.Text.StringBuilder();
                  sb.Append("<script type = 'text/javascript'>");
                  sb.Append("window.onload=function(){");
@@ -161,12 +195,14 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
 
              }
 
+           
 
+             
 
         BE_Tiket objTiket = new BE_Tiket();
         objTiket.CodBoleto = ID;
         objTiket.CodBarra = txtCodigoBarra.Text;
-        objTiket.Tamano = txtAncho.Text + "X" + txtAlto.Text;
+        objTiket.Tamano = txtAncho.Text + "X" + txtAlto.Text + "X" + txtLargo.Text;
         objTiket.Peso = txtPeso.Text;
         objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Text;
         objTiket.ubicacion = DropDownList1.SelectedItem.Text;
@@ -177,6 +213,8 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
         GridView1.DataSource = listaEquipaje;
         GridView1.DataBind();
         limpiarTexto();
+
+             
              
          
          }
@@ -214,6 +252,7 @@ public partial class RegistrarTicketEquipaje : System.Web.UI.Page
         txtAncho.Text = null;
         txtAlto.Text = null;
         txtPeso.Text = null;
+        txtLargo.Text = null;
         txtTipoEquipaje.SelectedValue = "0";
         DropDownList1.SelectedValue = "0";
        

@@ -79,7 +79,7 @@
             OnRowCommand="grvDetalle_RowCommand" 
             GridLines="None"
             CssClass="table"
-            DataKeyNames="CodSalida,Estado,solFilmacion,inicioGrab,finGrab,rutaVideo,HoraSalida"
+            DataKeyNames="CodSalida,Estado,solFilmacion,rutaVideo,HoraSalida,MinGrab"
             PagerStyle-CssClass="pgr"
             AlternatingRowStyle-CssClass="alt">  
 <AlternatingRowStyle CssClass="alt"></AlternatingRowStyle>

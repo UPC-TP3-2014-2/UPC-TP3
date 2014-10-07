@@ -25,6 +25,7 @@ public partial class ModificarEquipaje : System.Web.UI.Page
             string NroBarras = Convert.ToString(Request.QueryString["NroBarras"]);
             string ancho = Convert.ToString(Request.QueryString["ancho"]);
             string alto = Convert.ToString(Request.QueryString["alto"]);
+            string largo = Convert.ToString(Request.QueryString["largo"]);
             string peso = Convert.ToString(Request.QueryString["peso"]);
 
 
@@ -34,6 +35,7 @@ public partial class ModificarEquipaje : System.Web.UI.Page
             txtAncho.Text = ancho;
             txtAlto.Text = alto;
             txtPeso.Text = peso;
+            txtLargo.Text = largo;
             txtTipoEquipaje.SelectedValue = "1";
             DropDownList1.SelectedValue = "1";
                        
@@ -49,7 +51,7 @@ public partial class ModificarEquipaje : System.Web.UI.Page
         //objTiket.CodBoleto = ID;
         List<BE_Tiket> ActEquipaje = new List<BE_Tiket>();
         objTiket.CodBarra = txtCodigoBarra.Text;
-        objTiket.Tamano = txtAncho.Text.Trim() + "X" + txtAlto.Text.Trim();
+        objTiket.Tamano = txtAncho.Text.Trim() + "X" + txtAlto.Text.Trim() + "X" + txtLargo.Text.Trim();
         objTiket.Peso = txtPeso.Text.Trim();
         objTiket.TipoEtiqueta = txtTipoEquipaje.SelectedItem.Value;
         objTiket.ubicacion = DropDownList1.SelectedItem.Value;

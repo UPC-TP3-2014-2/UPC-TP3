@@ -40,7 +40,7 @@
             <asp:Label ID="Label2" runat="server" Text="DNI" MaxLength="8"></asp:Label>
 
              &nbsp;&nbsp;
-            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" MaxLength="8"></asp:TextBox>
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-success" 
                 onclick="btnBuscar_Click" />
                <br />
