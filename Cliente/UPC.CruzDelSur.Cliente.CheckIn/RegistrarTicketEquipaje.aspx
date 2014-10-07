@@ -41,6 +41,11 @@
             <asp:TextBox ID="txtAlto" runat="server" MaxLength="2" CssClass="form-control"></asp:TextBox>
             <br />
             <br />
+
+            &nbsp;&nbsp;<asp:Label ID="Label6" runat="server" Text="Largo:"></asp:Label>
+            <asp:TextBox ID="txtLargo" runat="server" MaxLength="2" CssClass="form-control"></asp:TextBox>
+            <br />
+            <br />
             &nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Peso" MaxLength="8"></asp:Label>
             &nbsp;&nbsp;
             <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control"></asp:TextBox>
